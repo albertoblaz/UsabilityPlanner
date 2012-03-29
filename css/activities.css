@@ -1,0 +1,32 @@
+
+/* Activities */
+
+#activities  .sub-headline {
+	margin-top: -1.5%;
+	margin-bottom: 3%;
+}
+
+#activities-selection {
+	overflow: hidden;
+	/* padding-bottom: 45px; */
+}
+
+#activities-selection .padding {
+	/* padding: 30px 80px; */
+	padding: 4% 8%;
+}
+
+.subactivity {
+	cursor: pointer;
+    display: inline-block;
+    margin: 15px 0;
+    width: 100%;
+}
+
+.subactivity .description {
+	width: 65%;
+}
+
+.big-tabs {
+	width: 101%;
+}
