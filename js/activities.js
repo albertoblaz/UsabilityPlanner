@@ -1,5 +1,5 @@
 
-//$(document).ready(function() {
+$(document).ready(function() {
 
 	/* Constants */
 	
@@ -8,6 +8,7 @@
 
 	/* jQuery Object Variables */
 	
+	var content    = $('.content');
 	var container  = $('.container');
 	
 	var activities = $('#activities');
@@ -26,11 +27,9 @@
 
 
 	/* Initialization */
-
 	for (var i=0; i < infos.length; i++)
 	{
-		heights[i] = infos.eq(i).height();
-		console.log(heights[i]);
+		heights[i] = infos.eq(i).height() + 105;
 	}
 
 	//infos.eq(i).height(heights[i]);
@@ -46,16 +45,16 @@
 	/* Events Definition */
 	
 	var tabsEvent = function(event) {
-		pos = $(this).prevAll().length;
-		/* Start the sliding animation */
-		
+		var $this = $(this);
+
 		tabs.removeClass('tab-active');
-		tabs.eq(pos).addClass('tab-active');
-		
-		container.stop().animate({height: heights[pos]}, ANIMATION_SPEED);//, function() {	
+
+		pos = $this.prevAll().length;
+		$this.addClass('tab-active');
+
+		container.stop().animate({height: heights[pos]}, ANIMATION_SPEED);
 		infos.addClass('hidden');
-		infos.eq(pos).removeClass('hidden');		
-		//});
+		infos.eq(pos).removeClass('hidden');
 
 		event.preventDefault();
 	}
@@ -87,4 +86,4 @@
 	tabs.on("click", tabsEvent);
 	subactivities.on("click", subactivitiesEvent);
 	subactivitiesCheckbox.on("click", subactivitiesCheckboxEvent);
-//});
+});

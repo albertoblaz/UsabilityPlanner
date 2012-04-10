@@ -1,6 +1,15 @@
 
 /* Activities */
 
+#activities .headline a {
+	color: rgb(75, 85, 172);
+	font-size: 0.85em;
+}
+
+#activities .headline a:hover {
+	color: rgb(75, 75, 255);
+}
+
 #activities  .sub-headline {
 	margin-top: -1.5%;
 	margin-bottom: 3%;
@@ -27,6 +36,34 @@
 	width: 65%;
 }
 
-.big-tabs {
+
+/* Tabs */
+
+.tabs {
 	width: 101%;
+
+}
+
+.tab {
+	background-color: white;
+	border: #C6D3DA 1px solid;
+	border-left: 0;
+	cursor: pointer;
+	display: inline;
+	float: left;
+	text-align: center;
+	padding: 10px 0;
+}
+
+.last-tab {
+	border-right: 0;
+}
+
+.tab p {
+	display: inline;
+	font-size: 18px;
+}
+
+.tab-active {
+	background-color: #DDD;
 }

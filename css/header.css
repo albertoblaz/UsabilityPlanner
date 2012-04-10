@@ -3,10 +3,21 @@
 
 .header {
 	margin: 2% 0;
+	width: 98%;
 }
 
 .logo {
 	padding: 5px;
+}
+
+/* Navigation Items (buttons and links) */
+
+.nav-link {
+	display: block;
+	font-family: Helvetica, Arial, sans-serif;
+	font-weight: bold;
+	color: #4B5565;
+	text-decoration: none;
 }
 
 
@@ -21,47 +32,31 @@
 	margin: 0 10px;
 }
 
-.nav-button {
+.current-stage a {
+	background: url('../images/nav-button-selected.gif') no-repeat right center;
+}
+
+.button {
 	background: url('../images/nav-button.png') no-repeat right center;
 	padding: 15px 30px 15px 30px;
 	text-align: center;
 	width: 100px;
 }
 
-.nav-button, .nav-link {
-	display: block;
-	font-family: Helvetica, Arial, sans-serif;
-	font-weight: bold;
-	color: #4B5565;
-	text-decoration: none;
-}
 
-.current-stage a {
-	background: url('../images/nav-button-selected.gif') no-repeat right center;
-}
+/* 'Back' and 'Next' Link Buttons */
 
-/* 'Back' and 'Next' Buttons (and previous .nav-link) */
-
-.back-link, .next-link {
+.nav-item {
 	display: inline-block;
-	padding: 15px 10px;
+	padding: 15px 5px;
 }
 
-.back-link {
-	padding-right: 5px;
-}
-
-.next-link {
-	padding-left: 5px;
-}
-
-.back-link .nav-link { 
+.back { 
 	background: url('../images/back.gif') left no-repeat;
 	padding: 3px 0 3px 30px;
-	
 }
 
-.next-link .nav-link {
+.next {
 	background: url('../images/next.gif') right no-repeat;
 	padding: 3px 30px 3px 0;
 }

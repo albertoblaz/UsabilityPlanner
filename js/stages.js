@@ -1,5 +1,5 @@
 ﻿
-//$(document).ready(function() {
+$(document).ready(function() {
 
 	/* Constants */
 	var SPEED = 500;
@@ -15,8 +15,8 @@
 	/* jQuery Object Variables */
 	
 	var stages   = $('.stage');
-	var backLink = $('.back-link');	
-	var nextLink = $('.next-link');	
+	var backLink = $('.back');	
+	var nextLink = $('.next');	
 
 	var container = $('.container'); 
 	var contents = container.find('.main-content');
@@ -25,7 +25,7 @@
 	/* Auxiliary Functions */
 	
 	function init() {	
-		contents.width(mainContainerWidth);
+		contents.width(mainContainerWidth-1);
 		var totWidth = mainContainerWidth * contents.length;
 		container.width(totWidth);
 			
@@ -42,16 +42,25 @@
 		container.stop().animate({marginLeft: pos, height: height}, SPEED);
 	}
 
-
+	function changeHashLink(elem) {
+		var hash = elem.find('a').attr('href');
+		history.pushState({}, "", hash);
+	}
+	
+	
 	/* Events Definition */
 	
 	var stagesEvent = function(event) {
-		var newPosition = $(this).prevAll().length;
+		var $this = $(this);
+		
+		var newPosition = $this.prevAll().length;
 		animate(newPosition, currentStage);
 		
 		currentStage = newPosition;		// Updating to the new current stage
 
 		event.preventDefault();
+		
+		//changeHashLink($this);
 	}
 
 	var backLinkEvent = function(event) {
@@ -60,17 +69,21 @@
 			var oldStage = currentStage;
 			currentStage--;
 			animate(currentStage, oldStage);
+			
+			//changeHashLink(stages.eq(currentStage));
 		}
 
 		event.preventDefault();
 	}
-	
+
 	var nextLinkEvent = function(event) {
 		if (currentStage < stages.length-1)
 		{
 			var oldStage = currentStage;
 			currentStage++;
 			animate(currentStage, oldStage);
+			
+			//changeHashLink(stages.eq(currentStage));
 		}
 
 		event.preventDefault();
@@ -86,4 +99,4 @@
 	
 	init();		/* Initialization */	
 	
-//});
+});

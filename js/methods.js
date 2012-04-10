@@ -1,16 +1,13 @@
 
-//$(document).ready(function() {
+$(document).ready(function() {
 
 	/* Constants */
-	
-	var MAX_METHODS      = 12;
+
 	var FADE_SPEED       = 700;
 	var DISABLED_OPACITY = 0.5;
-
+	var SLIDE_SPEED      = 300;
 	
 	/* jQuery Object Variables */
-	
-	var sliderCount     = $('#slider-count');
 	
 	/*
 	var constraintsSection  = $('#constraints-selection');
@@ -18,8 +15,7 @@
 	*/
 	var constraints     = $('#constraints-selection').find('.constraint');
 	
-	var methodsSection  = $('#methods');
-	var tabs            = methodsSection.find('.tab');
+	var methodsSection  = $('#methods-selection');
 	var tabCounters     = methodsSection.find('.tab-count');
 	var info            = methodsSection.find('.info');
 	var listsTitles     = methodsSection.find('.expandable');
@@ -29,9 +25,15 @@
 	
 	
 	/* Auxiliary Variables */
-	
-	var currentTab = 0;
-	var sliderValue = parseInt(sliderCount.text());
+
+	var sliderValue = 1;
+	var valoration = ["strongly recommended", 
+						"neutral", 
+						"slightly recommended",
+						"not recommended"];
+
+
+
 	
 	
 	/* Auxiliary Function */
@@ -57,10 +59,7 @@
 		obj.find('a').toggleClass('checked');
 	}
 	
-	
-	/* Animations Definition */
-		
-	var disableMethodAnimation = function(li) {
+	function disableMethodAnimation(li) {
 		var CSSClass = 'disabled';
 		var bar = li.find('.bar');
 		
@@ -80,51 +79,37 @@
 	
 	
 	/* Events Definition */
-	/*
-	var tabAllMethodsEvent = function() {
-		info.removeClass('hidden');
-		
-		$(this).addClass('tab-active');
-	}*/
 	
-	var tabsEvent = function() {	
-		info.addClass('hidden');								// Hiding the old table methods
-		tabs.eq(currentTab).removeClass('tab-active');			// Deactivating old tab
-		
-		currentTab = $(this).prevAll().length;					// Getting the new current tab
-		
-		if (currentTab === 0)
-		{
-			info.removeClass('hidden');							// If 'All Methods' then show all
-			info.eq(0).addClass('hidden');
-		}
-		else 
-		{
-			info.eq(currentTab).removeClass('hidden');			// Showing just the current table methods
-		}
-		
-		//info.eq(currentTab).removeClass('hidden');				// Showing just the current table methods
-		
-		tabs.eq(currentTab).addClass('tab-active');				// Activating new tab
+	var constraintsEvent = function(event) {
+		activateCheckbox($(this));
+		event.preventDefault();
 	}
 	
 	var expandEvent = function() {
-		var elem = $(this);
+		var elem = $(this);		
+		var className = 'collapsed';
 		
-		if (elem.hasClass('collapsed'))
-			elem.removeClass('collapsed');
-		else
-			elem.addClass('collapsed');
-
-		elem.siblings('.list-methods').slideToggle();
+		if (elem.hasClass(className)) {
+			elem.removeClass(className);
+		} else {
+			elem.addClass(className);
+		}
+		
+		elem.parent().siblings().slideToggle(SLIDE_SPEED);
+	}
+		
+	var expandAllEvent = function() {		
+		for (var i=0; i < listsTitles.length; i++) {
+			listsTitles.eq(i).removeClass('collapsed');
+			listsTitles.eq(i).parent().siblings().slideDown(SLIDE_SPEED);
+		}
 	}
 	
-	var constraintsEvent = function(event) {
-		var $this = $(this);
-				
-		activateCheckbox($this);
-		
-		event.preventDefault();
+	var collapseAllEvent = function() {
+		for (var i=0; i < listsTitles.length; i++) {
+			listsTitles.eq(i).addClass('collapsed');
+			listsTitles.eq(i).parent().siblings().slideUp(SLIDE_SPEED);
+		}
 	}
 	
 	var methodsCheckboxEvent = function(event) {
@@ -166,18 +151,23 @@
 			expandButton.removeClass('expanded');
 		}
 	}
-	
-	
-	/* Slider Event Definitions */
-	
+
+	var scrollToSectionsEvent = function (e) {
+		var section = $(this).attr('href');
+		var sectionPosition = Math.floor($(section).offset().top);
+
+		$('html, body').animate({scrollTop: sectionPosition}, FADE_SPEED);
+
+		e.preventDefault();
+	};
+
 	var sliderEvent = (function(event, ui) {
 		// Updating slide text value
-		var newSliderValue = Math.floor(ui.value/100 * MAX_METHODS);
-		sliderCount.text(newSliderValue);
-		
+		newSliderValue = ui.value;
+
 		// Showing or hiding methods on the lists
 		fadingMethods(newSliderValue);
-		
+
 		// Updating the old value for next function call
 		sliderValue = newSliderValue;
 		
@@ -185,40 +175,52 @@
 		updateTabCounters();
 	});
 
+	
+	
+	/////////////////////////////////////////////////////////////
+	
+	// Auxiliary Function
+	
+	/////////////////////////////////////////////////////////////
+	
 	var fadingMethods = function(newSliderValue) {
-		// Local vars used for loops indexes
 		var i, j;
-		var numMethods;
-		var elem;
+		var text;
+		var methods = $('.method');
 		
+		methods.addClass('hidden').removeClass('visible').removeClass('last-method');
+		
+		for (i=0; i < methods.length; i++)
+		{
+			text = methods.eq(i).find('.valoration').text();
+			for (j=0; j <= newSliderValue && j < valoration.length; j++)
+			{
+				if (text != 'null' && text != 'undefined' && text.localeCompare(valoration[j]) == 0)
+				{
+					methods.eq(i).removeClass('hidden').addClass('visible');
+				}
+			}
+		}
+		
+		for (i=0; i < lists.length; i++)
+		{
+			lists.eq(i).find('.visible').last().addClass('last-method');
+		}
+		/*
 		if (sliderValue < newSliderValue)
 		{
 			for (i=0; i < lists.length; i++)
-			{				
-				/*
-				old = 2 - normal
-				new = 3 - slightly
-				
-				recorremos todos los metodos en nuestra estructura de datos
-					miramos el valor de valoration
-					
-					si el peso del metodo es 3
-						destaparlo
-						ponemos valoration 'slightly'
-						ponemos barra de color orange
-				fin_bucle
-				*/
-				
+			{
 				elem = lists.eq(i).children().eq(sliderValue-1);
 				numMethods = lists.eq(i).children().length;
 				
 				for (j=sliderValue; j < newSliderValue && j < numMethods; j++)
 				{
-					elem.removeClass('last-child');
+					elem.removeClass('last-method');
 					
 					elem = lists.eq(i).children().eq(j);
 					elem.css({opacity: 0});
-					elem.addClass('last-child');
+					elem.addClass('last-method');
 					
 					elem.removeClass('hidden');
 					if (elem.hasClass('disabled'))
@@ -236,40 +238,43 @@
 				{
 					elem = lists.eq(i).children().eq(j);
 					elem.addClass('hidden');
-					elem.removeClass('last-child');
+					elem.removeClass('last-method');
 					
 					elem = lists.eq(i).children().eq(j-1);
-					elem.addClass('last-child');
+					elem.addClass('last-method');
 				}
 			}
-		}
+		}*/
 	}
 	
 	
-	/* Slider Event Setup */
-	
-	$('#slider').slider({
-		value: 30,
-		orientation: "horizontal",
-		min: 10,
-		range: "min",
-		animate: true,
-		slide: sliderEvent
-	});
-
-
 	/* Events Assignments */
-	
-	tabs.on("click", tabsEvent);
-	
-	//constraintsCheckbox.on("click", constraintsCheckboxEvent);
-	//methodsCheckbox.removeClass('checked');
-	
+
 	methodsCheckbox.on("click", methodsCheckboxEvent);
 	
 	constraints.on("click", constraintsEvent);
-	
+
 	listsTitles.on("click", expandEvent);
 	methodInfos.on("click", methodInfoEvent);
+	
+	methodsSection.find('.filtering a').on("click", scrollToSectionsEvent);
+	methodsSection.find('#expand').on("click", expandAllEvent);
+	methodsSection.find('#collapse').on("click", collapseAllEvent);
+	
+	
+	/* Initialization */
+	
+	$('#slider').slider({	/* Slider Event Setup */
+		orientation: "horizontal",
+		range: "min",
+		min: 0,
+		max: valoration.length-1,
+		value: sliderValue,
+		animate: true,
+		slide: sliderEvent
+	});
+	
+	fadingMethods(sliderValue);
+	
 
-//});	//$(document).ready
+});	//$(document).ready
