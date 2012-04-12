@@ -5,7 +5,7 @@
 	border: rgb(198, 211, 218) 1px solid;
 	border-right: 0;
 	height: 32px;
-	margin-left: 33.21%;
+	margin-left: 33.2%;
 }
 
 .recommendation .title {
@@ -40,6 +40,7 @@
 	background: white;
 	border: #C6D3DA 1px solid;
 	width: 33%;
+	min-width: 309px;
 }
 
 #constraints-selection .headline {
@@ -69,7 +70,8 @@
 /* Filtering */
 
 .filtering {
-	padding: 0 20px;
+	margin: 0 auto;
+	width: 95%;
 }
 
 .filtering a,
@@ -103,27 +105,29 @@
 /* Methods */
 
 #methods-selection {
+	min-width: 622px;
 	width: 66.7%;
 }
 
 #methods-selection .info {
-	/* padding: 10px 20px; */
-	/* background: rgb(255, 250, 200); */
-	margin: 10px 20px;
-	/*
-	border: #C6D3DA 1px solid;
-	border-radius: 8px;
-	*/
+	/* margin: 10px 20px; */
+	width: 95%;
+	margin: 0 auto;
 }
 
-#methods-selection .info article {
+#methods-selection .info > article {
 	padding: 0 20px;
 }
 
 .expandable {
 	background: url('../images/arrow-down.png') 5px 5px no-repeat;
+	cursor: pointer;
 	padding-left: 30px;
 }
+
+.expandable:hover {
+	color: blue;
+} 
 
 .collapsed {
 	background-image: url('../images/arrow-up.png');
@@ -138,7 +142,7 @@
 }
 
 .method {
-	height: 25px;
+	min-height: 25px;
 	padding: 5px 10px;
 	/* background: white; */
 	border: #DEDEDE 1px solid;
@@ -199,7 +203,7 @@
 }
 
 
-/* Constraints Tooltip */
+/* Tooltips */
 
 .constraint .tooltip {
 	display: none;
@@ -213,13 +217,14 @@
 	border: 1px solid #FFAD33;
 	border-radius: 5px 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; 
 	box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1); -webkit-box-shadow: 5px 5px rgba(0, 0, 0, 0.1); -moz-box-shadow: 5px 5px rgba(0, 0, 0, 0.1);
-	margin-left: -225px; 
+	margin-left: 225px; 
 	margin-top: -30px;
-	width: 150px;
+	width: 30%;
+	z-index: 100;
 }
 
 
-.tab-count {
+.filter-count {
 	font-size: 15px;
 }
 
@@ -252,43 +257,7 @@ a.checked {	/* checked */
 	margin-top: 5px;
 }
 
-/*
-.method label {
-	display: block;
-	cursor: pointer;
-	line-height: 20px;
-	padding-bottom: 9px;
-	text-shadow: 0 -1px 0 rgba(0,0,0,.2);
+.method-title,
+.method-valoration {
+	width: 46%;
 }
-
-.label_check input,
-.label_radio input {
-	margin-right: 5px;
-}
-
-.label_check,
-.label_radio {
-	padding-left: 34px;
-}
-
-.label_radio {
-	background: url(radio-off.png) no-repeat;
-}
-
-.label_check {
-	background: url(check-off.png) no-repeat;
-}
-
-label.c_on {
-	background: url(check-on.png) no-repeat;
-}
-
-label.r_on {
-	background: url(radio-on.png) no-repeat;
-}
-
-.label_check input,
-.label_radio input {
-	position: absolute; left: -9999px;
-}
-*/

@@ -14,7 +14,7 @@ $(document).ready(function() {
 	var activities = $('#activities');
 	
 	var infos      = $('#activities-selection').find('.info');
-	var tabs       = activities.find('.big');
+	var tabs       = activities.find('.tab');
 
 	var subactivities         = activities.find('.subactivity');
 	var subactivitiesCheckbox = activities.find('.checkboxWrapper');
