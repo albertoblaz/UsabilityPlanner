@@ -6,9 +6,10 @@ $(document).ready(function() {
 	var FADE_SPEED       = 700;
 	var DISABLED_OPACITY = 0.5;
 	var SLIDE_SPEED      = 300;
-	
+
+
 	/* jQuery Object Variables */
-	
+
 	/*
 	var constraintsSection  = $('#constraints-selection');
 	var constraints         = constraintsSection.
@@ -16,7 +17,7 @@ $(document).ready(function() {
 	var constraints     = $('#constraints-selection').find('.constraint');
 	
 	var methodsSection  = $('#methods-selection');
-	var tabCounters     = methodsSection.find('.tab-count');
+	var filterCounters     = methodsSection.find('.filter-count');
 	var info            = methodsSection.find('.info');
 	var listsTitles     = methodsSection.find('.expandable');
 	var lists           = methodsSection.find('.list-methods');
@@ -38,7 +39,7 @@ $(document).ready(function() {
 	
 	/* Auxiliary Function */
 
-	function updateTabCounters() {
+	function updateFilterCounters() {
 		var numMethods   = 0;
 		var totalMethods = 0;
 		var info = methodsSection.find('.info');
@@ -47,12 +48,12 @@ $(document).ready(function() {
 		for (var i=0; i < info.length; i++)
 		{
 			numMethods = info.eq(i).find(methods).length;
-			tabCounters.eq(i).text(numMethods);
+			filterCounters.eq(i+1).text(numMethods);	// filter(n+1) corresponds with info(n)
 			
 			totalMethods += numMethods;
 		}
 
-		tabCounters.eq(0).text(totalMethods);
+		filterCounters.eq(0).text(totalMethods);		// filter(0) adjusted with the total amount
 	}
 	
 	function activateCheckbox(obj) {
@@ -120,7 +121,7 @@ $(document).ready(function() {
 		activateCheckbox(checkbox);
 
 		// Updating tab counters value
-		updateTabCounters();
+		updateFilterCounters();
 
 		event.preventDefault();
 	}
@@ -152,13 +153,13 @@ $(document).ready(function() {
 		}
 	}
 
-	var scrollToSectionsEvent = function (e) {
+	var scrollToSectionsEvent = function (event) {
 		var section = $(this).attr('href');
 		var sectionPosition = Math.floor($(section).offset().top);
 
 		$('html, body').animate({scrollTop: sectionPosition}, FADE_SPEED);
 
-		e.preventDefault();
+		event.preventDefault();
 	};
 
 	var sliderEvent = (function(event, ui) {
@@ -172,7 +173,7 @@ $(document).ready(function() {
 		sliderValue = newSliderValue;
 		
 		// Updating tab counters value
-		updateTabCounters();
+		updateFilterCounters();
 	});
 
 	
@@ -275,6 +276,6 @@ $(document).ready(function() {
 	});
 	
 	fadingMethods(sliderValue);
-	
+	updateFilterCounters();
 
 });	//$(document).ready
