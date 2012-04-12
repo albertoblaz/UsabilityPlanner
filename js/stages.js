@@ -7,9 +7,8 @@ $(document).ready(function() {
 	
 	/* Auxiliary Variable */
 
-	var currentStage       = 0;
-	var mainContainer      = $('.main-container');
-	var mainContainerWidth = mainContainer.width();
+	var currentStage  = 0;
+	var mainContainer = $('.main-container');
 
 	
 	/* jQuery Object Variables */
@@ -25,10 +24,9 @@ $(document).ready(function() {
 	/* Auxiliary Functions */
 	
 	function init() {	
-		contents.width(mainContainerWidth-1);
-		var totWidth = mainContainerWidth * contents.length;
-		container.width(totWidth);
-			
+		var totalWidth = mainContainer.width() * contents.length;
+		container.width(totalWidth);
+		
 		var firstHeight = contents.height();
 		container.height(firstHeight);
 	}
@@ -38,7 +36,7 @@ $(document).ready(function() {
 		stages.eq(newIndex).addClass('current-stage');		// New tab
 		
 		var height = contents.eq(newIndex).height();
-		var pos = -mainContainerWidth * newIndex;
+		var pos = (mainContainer.width()+1) * -newIndex;
 		container.stop().animate({marginLeft: pos, height: height}, SPEED);
 	}
 
@@ -89,14 +87,32 @@ $(document).ready(function() {
 		event.preventDefault();
 	}
 
-
+	
 	/* Events Assignment */
 	
 	stages.on("click", stagesEvent);
 	backLink.on("click", backLinkEvent);
 	nextLink.on("click", nextLinkEvent);
 
+
+	/* Handlers Definition */
 	
-	init();		/* Initialization */	
+	$(window).bind('resize', function() {
+		contents.width(mainContainer.width());
+		var width = mainContainer.width() * 3;
+		container.width(width);
+		var pos = (mainContainer.width()+1) * -currentStage;
+		container.css({marginLeft: pos});
+	});
+
+	
+	/* Handlers Assignment */
+	
+	$(window).trigger('resize');
+	
+	
+	/* Initialization */
+	
+	init();
 	
 });
