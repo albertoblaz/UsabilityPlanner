@@ -1,40 +1,122 @@
 
 $(document).ready(function() {
 
+
+	/* Object Definition */
+
+	function Method(jqObject, constraints) {
+		this.jqObject    = jqObject;
+		this.constraints = constraints;
+		var selected    = true;
+		var valoration  = 0;
+
+		// Private API
+		function searchConstraints(op, constraintText) {
+			var weight = 0;
+			var c;
+
+			for (var i=0; i<constraints.length; i++) {
+				c = constraints.eq(i);
+				if (c.text() === constraintText) {
+					weight = parseInt(c.attr('weight'));
+
+					if (op === true) {
+						valoration += weight;
+					} else {
+						valoration -= weight;
+					}
+
+					console.log(valoration);
+				}
+			}
+		};
+
+		var updateValue = (function() {
+			if (valoration > 2) {
+				jqObject.find('valoration').text("not not");
+			}
+		});
+
+
+		// Public API
+		var obj = {};
+
+		obj.constraints = constraints;
+	
+		obj.incrementValue = function(constraintText) {
+			var increment = true;
+			searchConstraints(increment, constraintText);
+
+			/*
+			var weight = 0;
+			var c;
+
+			for (var i=0; i<constraints.length; i++) {
+				c = constraints.eq(i);
+				if (c.text() === constraintText) {
+					weight = parseInt(c.attr('weight'));
+
+					valoration += weight;
+					
+					console.log(valoration);
+				}
+			}
+			*/
+		};
+
+		obj.decrementValue = (function(constraintText) {
+			var decrement = false;
+			searchConstraints(decrement, constraintText);
+
+			/*
+			var weight = 0;
+			var c;
+
+			for (var i=0; i<constraints.length; i++) {
+				c = constraints.eq(i);
+				if (c.text() === constraintText) {
+					weight = parseInt(c.attr('weight'));
+
+					valoration -= weight;
+
+					console.log(valoration);
+				}
+			}
+			*/
+		});
+
+		return obj;
+	}
+
+
 	/* Constants */
 
-	var FADE_SPEED       = 700;
-	var DISABLED_OPACITY = 0.5;
-	var SLIDE_SPEED      = 300;
+	const FADE_SPEED       = 700;
+	const DISABLED_OPACITY = 0.5;
+	const SLIDE_SPEED      = 300;
 
 
-	/* jQuery Object Variables */
+	/* jQuery (Cached) Object Variables */
 
-	/*
-	var constraintsSection  = $('#constraints-selection');
-	var constraints         = constraintsSection.
-	*/
 	var constraints     = $('#constraints-selection').find('.constraint');
 	
 	var methodsSection  = $('#methods-selection');
-	var filterCounters     = methodsSection.find('.filter-count');
-	var info            = methodsSection.find('.info');
+	var filterCounters  = methodsSection.find('.filter-count');
+	var infoActivity    = methodsSection.find('.info-activity');
 	var listsTitles     = methodsSection.find('.expandable');
 	var lists           = methodsSection.find('.list-methods');
 	var methodsCheckbox = methodsSection.find('.checkboxWrapper');
 	var methodInfos     = methodsSection.find('.method-info');
 	
 	
-	/* Auxiliary Variables */
+	/* Auxiliary Global Variables */
 
-	var sliderValue = 1;
-	var valoration = ["strongly recommended", 
-						"neutral", 
-						"slightly recommended",
-						"not recommended"];
-
-
-
+	var arrayMethods = new Array();
+	var sliderValue  = 1;
+	const valoration = [ "strongly recommended", 
+				"neutral", 
+				"slightly recommended",
+				"not recommended" ];
 	
 	
 	/* Auxiliary Function */
@@ -42,13 +124,13 @@ $(document).ready(function() {
 	function updateFilterCounters() {
 		var numMethods   = 0;
 		var totalMethods = 0;
-		var info = methodsSection.find('.info');
+		var infoActivity = methodsSection.find('.info-activity');
 		var methods = $('.method').not('.hidden').not('.disabled');
 		
-		for (var i=0; i < info.length; i++)
+		for (var i=0; i < infoActivity.length; i++)
 		{
-			numMethods = info.eq(i).find(methods).length;
-			filterCounters.eq(i+1).text(numMethods);	// filter(n+1) corresponds with info(n)
+			numMethods = infoActivity.eq(i).find(methods).length;
+			filterCounters.eq(i+1).text(numMethods);	// filter(n+1) corresponds with infoActivity(n)
 			
 			totalMethods += numMethods;
 		}
@@ -78,11 +160,46 @@ $(document).ready(function() {
 		}
 	}
 	
+	function fadingMethods(newSliderValue) {
+		var i, j;
+		var text;
+		var methods = $('.method');
+		
+		methods.addClass('hidden').removeClass('visible').removeClass('last-method');
+		
+		for (i=0; i < methods.length; i++) {
+			text = methods.eq(i).find('.valoration').text();
+			for (j=0; j <= newSliderValue && j < valoration.length; j++) {
+				if (text != 'null' && text != 'undefined' && text.localeCompare(valoration[j]) == 0) {
+					methods.eq(i).removeClass('hidden').addClass('visible');
+				}
+			}
+		}
+		
+		for (i=0; i < lists.length; i++) {
+			lists.eq(i).find('.visible').last().addClass('last-method');
+		}
+	}
 	
+
+
 	/* Events Definition */
 	
 	var constraintsEvent = function(event) {
-		activateCheckbox($(this));
+		var $this = $(this);
+
+		activateCheckbox($this);
+		var constraintText = $this.find('.label-constraint').text();
+		var checked = $this.find('.checkbox').hasClass('checked');
+		for (var i=0; i < 2; i++) {
+			if (checked) {
+				arrayMethods[i].incrementValue(constraintText);
+			} else {
+				arrayMethods[i].decrementValue(constraintText);
+			}
+		}
+
+
 		event.preventDefault();
 	}
 	
@@ -109,7 +226,11 @@ $(document).ready(function() {
 	var collapseAllEvent = function() {
 		for (var i=0; i < listsTitles.length; i++) {
 			listsTitles.eq(i).addClass('collapsed');
-			listsTitles.eq(i).parent().siblings().slideUp(SLIDE_SPEED);
+			listsTitles.eq(i).parent().siblings().slideUp(SLIDE_SPEED, function() {
+				var that = $(this);
+				that.addClass('hidden');
+				that.css({display: block});
+			});
 		}
 	}
 	
@@ -178,77 +299,6 @@ $(document).ready(function() {
 
 	
 	
-	/////////////////////////////////////////////////////////////
-	
-	// Auxiliary Function
-	
-	/////////////////////////////////////////////////////////////
-	
-	var fadingMethods = function(newSliderValue) {
-		var i, j;
-		var text;
-		var methods = $('.method');
-		
-		methods.addClass('hidden').removeClass('visible').removeClass('last-method');
-		
-		for (i=0; i < methods.length; i++)
-		{
-			text = methods.eq(i).find('.valoration').text();
-			for (j=0; j <= newSliderValue && j < valoration.length; j++)
-			{
-				if (text != 'null' && text != 'undefined' && text.localeCompare(valoration[j]) == 0)
-				{
-					methods.eq(i).removeClass('hidden').addClass('visible');
-				}
-			}
-		}
-		
-		for (i=0; i < lists.length; i++)
-		{
-			lists.eq(i).find('.visible').last().addClass('last-method');
-		}
-		/*
-		if (sliderValue < newSliderValue)
-		{
-			for (i=0; i < lists.length; i++)
-			{
-				elem = lists.eq(i).children().eq(sliderValue-1);
-				numMethods = lists.eq(i).children().length;
-				
-				for (j=sliderValue; j < newSliderValue && j < numMethods; j++)
-				{
-					elem.removeClass('last-method');
-					
-					elem = lists.eq(i).children().eq(j);
-					elem.css({opacity: 0});
-					elem.addClass('last-method');
-					
-					elem.removeClass('hidden');
-					if (elem.hasClass('disabled'))
-						elem.stop().animate({opacity: DISABLED_OPACITY}, FADE_SPEED);
-					else						
-						elem.stop().animate({opacity: 1}, FADE_SPEED);
-				}
-			}
-		} 
-		else if (sliderValue > newSliderValue)
-		{
-			for (i=0; i < lists.length; i++)
-			{
-				for (j=sliderValue; j >= newSliderValue; j--)
-				{
-					elem = lists.eq(i).children().eq(j);
-					elem.addClass('hidden');
-					elem.removeClass('last-method');
-					
-					elem = lists.eq(i).children().eq(j-1);
-					elem.addClass('last-method');
-				}
-			}
-		}*/
-	}
-	
-	
 	/* Events Assignments */
 
 	methodsCheckbox.on("click", methodsCheckboxEvent);
@@ -265,6 +315,26 @@ $(document).ready(function() {
 	
 	/* Initialization */
 	
+	// Getting and parsing XML file with Ajax
+	(function() {
+		const xml = 'xml/projectStagesDataDevelopers.xml';
+		$.get(xml, function(xml) {
+			var $methodsDOM = $('.method');
+
+			// Find every method in XML file and create an object to represent it
+			$(xml).find('method').each(function(i) {
+			    var jqObject = $methodsDOM.eq(i);
+		           var constraints  = $(this).find('constraint');
+			    var m = Method(jqObject, constraints);
+			    arrayMethods.push(m);
+			});
+
+			console.log(arrayMethods[1].constraints);
+		});
+
+	})();	// <-- Anonymous function (never called by anyone) executed!
+
+
 	$('#slider').slider({	/* Slider Event Setup */
 		orientation: "horizontal",
 		range: "min",
@@ -278,4 +348,4 @@ $(document).ready(function() {
 	fadingMethods(sliderValue);
 	updateFilterCounters();
 
-});	//$(document).ready
+});

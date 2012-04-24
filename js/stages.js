@@ -1,4 +1,4 @@
-﻿
+
 $(document).ready(function() {
 
 	/* Constants */
@@ -98,10 +98,12 @@ $(document).ready(function() {
 	/* Handlers Definition */
 	
 	$(window).bind('resize', function() {
-		contents.width(mainContainer.width());
-		var width = mainContainer.width() * 3;
+		var mainContainerWidth = mainContainer.width();
+
+		contents.width(mainContainerWidth);
+		var width = mainContainerWidth * 3;
 		container.width(width);
-		var pos = (mainContainer.width()+1) * -currentStage;
+		var pos = (mainContainerWidth + 1) * -currentStage;
 		container.css({marginLeft: pos});
 	});
 

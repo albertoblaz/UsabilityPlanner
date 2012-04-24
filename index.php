@@ -84,6 +84,19 @@
 					
 					<section id="activities-selection">
 					
+<?php
+$xml = new DomDocument();
+$xml->load('xml/projectStagesDataDevelopers.xml');
+
+$activities = new DomDocument();
+$activities->load('xsl/activities.xsl');
+
+$proc = new xsltprocessor();
+$proc->importStyleSheet($activities);
+
+echo($proc->transformToXML($xml));
+?>
+
 					</section>   <!-- #activities-selection -->
 
 				</div>   <!-- #content -->
@@ -106,7 +119,17 @@
 
 				<div class="content">
 				
-					<aside id="constraints-selection" class="left"></aside>
+					<aside id="constraints-selection" class="left">
+<?php
+$constraints = new DomDocument();
+$constraints->load('xsl/constraints.xsl');
+
+$proc = new xsltprocessor();
+$proc->importStyleSheet($constraints);
+
+echo($proc->transformToXML($xml));
+?>
+					</aside>
 
 					<section id="methods-selection" class="left">
 						
@@ -122,6 +145,16 @@
 							</div>
 						</div>
 						
+<?php
+$methods = new DomDocument();
+$methods->load('xsl/methods.xsl');
+
+$proc = new xsltprocessor();
+$proc->importStyleSheet($methods);
+
+echo($proc->transformToXML($xml));
+?>
+
 					</section>   <!-- #techniques -->
 					
 				</div>   <!-- #content -->
@@ -169,9 +202,7 @@
 		<script type="text/javascript" src="js/lib/jquery-1.7.1.min.js"></script>
 		<script type="text/javascript" src="js/lib/jquery-ui-1.8.18.min.js"></script>
 
-		<script type="text/javascript" src="js/parser.js"></script>
 		<script type="text/javascript" src="js/stages.js"></script>
-
 		<script type="text/javascript" src="js/activities.js"></script>
 		<script type="text/javascript" src="js/methods.js"></script>
 		

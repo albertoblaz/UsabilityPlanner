@@ -109,13 +109,13 @@
 	width: 66.7%;
 }
 
-#methods-selection .info {
+#methods-selection .info-activity {
 	/* margin: 10px 20px; */
 	width: 95%;
 	margin: 0 auto;
 }
 
-#methods-selection .info > article {
+.info-activity .info-subactivity {
 	padding: 0 20px;
 }
 

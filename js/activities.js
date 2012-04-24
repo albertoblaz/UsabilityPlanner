@@ -13,7 +13,7 @@ $(document).ready(function() {
 	
 	var activities = $('#activities');
 	
-	var infos      = $('#activities-selection').find('.info');
+	var infos      = $('#activities-selection').find('.activity');
 	var tabs       = activities.find('.tab');
 
 	var subactivities         = activities.find('.subactivity');
@@ -67,23 +67,9 @@ $(document).ready(function() {
 		event.preventDefault();
 	}
 	
-	var subactivitiesCheckboxEvent = function(event) {
-		var checkbox = $(this);
 
-		var li = checkbox.parent();
-		disableMethodAnimation(li);
-		activateCheckbox(checkbox);
-
-		// Updating tab counters value
-		updateTabCounters();
-
-		event.preventDefault();
-	}
-	
-	
 	/* Event Assignment */
 	
 	tabs.on("click", tabsEvent);
 	subactivities.on("click", subactivitiesEvent);
-	subactivitiesCheckbox.on("click", subactivitiesCheckboxEvent);
 });

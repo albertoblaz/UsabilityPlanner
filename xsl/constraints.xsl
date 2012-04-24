@@ -9,16 +9,37 @@
 </xsl:template>
 
 <xsl:template match="usabilityPlanner">
-	<xsl:apply-templates select="projectConstraints" />
+	<xsl:apply-templates select="constraints" />
 </xsl:template>
 
-<xsl:template match="projectConstraints">
+<xsl:template match="constraints">
+	<xsl:apply-templates select="constraintsGroup" />
+</xsl:template>
+
+<xsl:template match="constraintsGroup">
 	<article class="constraints">
-		<h4 class="headline small underlined">Constraints</h4>
+		<h3 class="headline small underlined">
+			<xsl:value-of select="@name" />
+		</h3>
 		<ul>
-			<p><xsl:apply-templates select="projectConstraint" /></p>
+			<xsl:apply-templates select="constraint" />
 		</ul>
 	</article>
+</xsl:template>
+
+<xsl:template match="constraint">
+	<li class="constraint">
+		<span class="checkboxWrapper">
+			<a href="#" class="checkbox"></a>
+			<input type="checkbox" class="hidden" />
+		</span>
+		<label class="label-constraint">
+			<xsl:value-of select="@name" />
+			<span class="tooltip">
+				<xsl:value-of select="@description" />
+			</span>
+		</label>
+	</li>
 </xsl:template>
 
 </xsl:stylesheet>

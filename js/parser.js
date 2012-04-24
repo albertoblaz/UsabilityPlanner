@@ -1,50 +1,52 @@
-$(document).ready(function() {
 
-function loadXMLDoc(dname) {
-	/*
-	if (window.XMLHttpRequest)
-	{
-		xhr = new XMLHttpRequest();
-	}
-	else
-	{
-		xhr = new ActiveXObject("Microsoft.XMLHTTP");
-	}
-	
-	xhr.open("GET",dname,false);
-	xhr.send("");
-	return xhr.responseXML;
-	*/
-	$.get(dname);
+//$(document).ready(function() {
 
-	$.ajaxSetup({
-		'beforeSend' : function(xhr) {
-			xhr.overrideMimeType('text/xml; charset=UTF-8');
-		}
-	});
-}
+	function Method(jqObject, constraints) {
+		this.jqObject    = jqObject;
+		this.constraints = constraints;
+		this.selected    = true;
+		this.valoration  = 0;
 
-function displayResult() {
-	xml = loadXMLDoc("xml/projectStagesDataDevelopers.xml");
-	xsl = loadXMLDoc("xsl/constraints.xsl");
-	
-	
-	if (window.ActiveXObject)   // code for IE
-	{
-		resultDocument = xml.transformNode(xsl);
-		document.getElementById("constraints-selection").innerHTML = resultDocument;
-	}
-	else if (document.implementation && document.implementation.createDocument)
-	{   // code for Mozilla, Firefox, Opera, etc.
-		xsltProcessor = new XSLTProcessor();
-		xsltProcessor.importStylesheet(xsl);
-		resultDocument = xsltProcessor.transformToFragment(xml,document);
-		document.getElementById("constraints-selection").appendChild(resultDocument);
-	}
-	
-	//$('constraints-selection').html(resultDocument);
-}
+		var obj = {};
 
-displayResult();
+		obj.constraints = constraints;
 	
-});
+		obj.calculateValoration = (function(constraint) {
+			constraints.each(function(i) {
+				var that = $(this);
+				var weight;
+
+				if (that.val() === constraint) {
+					weight = that.attr('weight');
+					this.valoration += weight;
+				}
+			});
+		});
+
+		return obj;
+	}
+
+	var arrayMethods = new Array();
+
+
+	function parseXML() {
+
+		$.get('xml/projectStagesDataDevelopers.xml', function(xml) {
+			var $methodsDOM = $('.method');
+
+			// Find every method in XML file and create an object to represent it
+			$(xml).find('method').each(function(i) {
+			    var jqObject = $methodsDOM.eq(i);
+		           var constraints  = $(this).find('constraint');
+			    var m = Method(jqObject, constraints);
+			    arrayMethods.push(m);
+			});
+
+			console.log(arrayMethods[1].constraints);
+		});
+
+	};
+
+	parseXML();
+
+//});

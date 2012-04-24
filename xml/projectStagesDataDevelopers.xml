@@ -7,8 +7,8 @@
  * Description: XML with core information. The operation of the tool depends on this file. 
  * Change or modify this file can stop working the tool or the results of calculation may be incorrect.
  *   
- * @author Nigel Bevan, Xavier Ferre Tomas Anton Escobar, Copyright (C) 2011.
- * @version 1.3 5/1/2011
+ * @author Alberto Blazquez, Tomas Anton Escobar, Nigel Bevan, Xavier Ferre, Copyright (C) 2012.
+ * @version 2 13/04/2012
  *   
  * @see The GNU Public License (GPL)
  * 
@@ -19,38 +19,16 @@
  * 
  */
 
+
+REMEMBER: Don't use "quotes" inside of a description, name or atributte in general. Quotes are XML reserved words
 -->
 
-<!-- REMEMBER: Don't use "quotes" inside of a description, name or atributte in general. Quotes are XML reserved words -->
+
 <usabilityPlanner>
 
-	<!-- GENERAL LIST OF COST BENEFITS -->
-	<!-- To insert a new one, just copy and complete a row <costBenefit name=" " description=" "> </costBenefit> -->
-	<!-- If DESCRIPTION doesn't exist put a blank: " " -->
-
-	<costBenefits>		
-		<costBenefit name = "Development: reduced time/costs" description = ""></costBenefit>
-		<costBenefit name = "Product usability: improved product sales" description = ""></costBenefit>
-		<costBenefit name = "Web site usability: improved usage/sales" description = ""></costBenefit>
-		<costBenefit name = "Efficiency in use: increased productivity" description = ""></costBenefit>
-		<costBenefit name = "Support and maintenance: reduced costs" description= "" ></costBenefit>
-	</costBenefits>
-	
-	<!-- GENERAL LIST OF RISKS -->
-	<!-- To insert a new one, just copy and complete a row <risk name=" " description=" "> </risk> -->
-	<!-- If DESCRIPTION doesn't exist put a blank: " " -->
-	
-	<businessRisks>
-		<risk name = "Development: increased time/costs" description = ""></risk>
-		<risk name = "Product usability: reduced product sales" description=  ""></risk>		
-		<risk name = "Web site usability: reduced usage/sales" description = ""></risk>
-		<risk name = "Efficiency in use: reduced productivity" description = ""></risk>
-		<risk name = "Support and maintenance: increased costs" description = ""></risk>
-	</businessRisks>
 
 	<!-- GENERAL LIST OF CONSTRAINTS -->
-	<!-- If DESCRIPTION doesn't exist put a blank: " " -->
-	
+
 	<constraints>
 		<constraintsGroup name="Project Constraints">
 			<constraint name = "Need quick results" description =""></constraint>
@@ -89,12 +67,6 @@
 		</constraintsGroup>
 	</constraints>
 
-
-
-	<!-- GENERAL LIST OF METHODS WITH DESCRIPTIONS AND URLS -->
-	<!-- Has three atributes: NAME, DESCRIPTION, AND URL-->
-	<!-- To insert a new one, just copy and complete a row <methodInfo name=" " description=" " url=" "> </methodInfo> -->
-	<!-- If DESCRIPTION or URL doesn't exist put a blank: " " -->
 
 	<methods> 
 		<methodInfo name="Affinity diagramming" description="A participatory method where concepts written on cards are sorted into logical groups on the wall" url="http://www.usabilitybok.org/methods/affinity-diagram"></methodInfo>	
@@ -160,8 +132,88 @@
 		<methodInfo name="Workload assessment" description="Assessment of the amount of work assigned to or expected from a worker in a specified time period and the associated mental workload. Can be measured objectively, or subjectively by the operator." url=" "></methodInfo>	
 		<methodInfo name="KLM-GOMS" description="Part of the GOMS family of predictive models, the Keystroke-Level Model GOMS (KLM-GOMS) is a quantitative modeling tool for predicting how long it will take expert users to complete a specific task with no errors. KLM-GOMS predicts task times based on a simple set of physical and mental operators including keystrokes, button clicks, pointer movement, keyboard to mouse movement, and thinking time. To obtain the predicted time for a task, you add the times for individual operators." url=" "></methodInfo>	
 	</methods>
+
 	
-	
+	<activities>
+		<activity name="Analysis" description="This activity consists on grouping a set of usability concepts and techniques based on the identification and comprehension of the users needs according to their features, their problems and the context where they are inmerse">
+			<subactivity name="User Analysis" description="Analysis of the potential users that will use the system">
+				<method name="Affinity diagramming 1" description="A participatory method where concepts written on cards are sorted into logical groups on the wall" url="http://www.usabilitybok.org/methods/affinity-diagram">
+					<constraint weight="1">Need quick results</constraint>
+					<constraint weight="1">Very restricted budget</constraint>
+				</method>
+				<method name="Affinity diagramming 2" description="A participatory method where concepts written on cards are sorted into logical groups on the wall" url="http://www.usabilitybok.org/methods/affinity-diagram">
+					<constraint weight="3">Need quick results</constraint>
+					<constraint weight="4">Very restricted budget</constraint>
+				</method>
+			</subactivity>
+
+
+			<subactivity name="Task Analysis" description="To know how the user works and do his tasks with the current resources">
+				<method name="Affinity diagramming " description="A participatory method where concepts written on cards are sorted into logical groups on the wall" url="http://www.usabilitybok.org/methods/affinity-diagram">
+				</method>
+			</subactivity>
+
+
+			<subactivity name="Concept Product Design" description="To think of what kind of features must be satisfied according to the current user needs">
+				<method name="Affinity diagramming " description="A participatory method where concepts written on cards are sorted into logical groups on the wall" url="http://www.usabilitybok.org/methods/affinity-diagram">
+				</method>
+			</subactivity>
+
+
+			<subactivity name="Prototyping" description="Development of rapid prototypes to see common mistakes and think how to fix them">
+				<method name="Affinity diagramming 1" description="A participatory method where concepts written on cards are sorted into logical groups on the wall" url="http://www.usabilitybok.org/methods/affinity-diagram">
+				</method>
+
+				<method name="Affinity diagramming 2" description="A participatory method where concepts written on cards are sorted into logical groups on the wall" url="http://www.usabilitybok.org/methods/affinity-diagram">
+				</method>
+			</subactivity>
+
+
+			<subactivity name="Requirements Specification" description="To establish a set of requierements or usability objectives that a developer must to improve the user experience">
+				<method name="Affinity diagramming 1" description="A participatory method where concepts written on cards are sorted into logical groups on the wall" url="http://www.usabilitybok.org/methods/affinity-diagram">
+				</method>
+				<method name="Affinity diagramming 2" description="A participatory method where concepts written on cards are sorted into logical groups on the wall" url="http://www.usabilitybok.org/methods/affinity-diagram">
+				</method>
+				<method name="Affinity diagramming 3" description="A participatory method where concepts written on cards are sorted into logical groups on the wall" url="http://www.usabilitybok.org/methods/affinity-diagram">
+				</method>
+				<method name="Affinity diagramming 4" description="A participatory method where concepts written on cards are sorted into logical groups on the wall" url="http://www.usabilitybok.org/methods/affinity-diagram">
+				</method>
+			</subactivity>
+
+
+			<subactivity name="Requirements Validation" description="Checking if the system satisfies the usability objectives marked to correct the UX">
+
+			</subactivity>
+		</activity>
+
+
+		<activity name="Design" description="Design activity consists on several ideas and methods that try to help a developer to understand and design the user interaction and the interface based on his behaviour at the time of using the system">
+			<subactivity name="Interaction Design" description="Group of methods to help a developer thinking how a user interacts with the system and how to avoid his mistakes">
+
+			</subactivity>
+
+			<subactivity name="General Design" description="Group of methods to help a developer thinking how a user interacts with the system and how to avoid his mistakes">
+
+			</subactivity>
+		</activity>
+
+
+		<activity name="Evaluation" description="This activity tries to recommend some quite useful techniques to catch and correct errors on a new or existing system with potential users, usability experts or performance metrics in order to improve the user experience">
+			<subactivity name="Expert Evaluation" description="Useful but complex techniques that requieres an expert colaboration to inspect and evaluate the system behaviour">
+
+			</subactivity>
+
+			<subactivity name="Usability Tests" description="Set of techniques that involve potential users who does not know how the system works and represent a concrete profile">
+
+			</subactivity>
+
+			<subactivity name="Monitoring Studies" description="Evaluations of existing methods using some perfomance or user interaction metrics, reporting a feedback that could be used to improve the usability">
+
+			</subactivity>
+		</activity>
+	</activities>
+
+
 	<stages>
 		<stage name="Analysis" description="During inception, you establish the business rationale for the project and decide on the scope of the project. This is when you get the commitment from the project sponsor to go further. Therefore, the focus is on handling the risks related to the business case: Is this project financially worthy? Is it feasible?">
 

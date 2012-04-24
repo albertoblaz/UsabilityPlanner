@@ -1,6 +1,6 @@
 # Usability Planner
 
-This project is not finished and it is currently being developed.
+This project is not finished and currently being developed.
 
 Project URL address -  http://raptor.ls.fi.upm.es/usabilityplanner/app
 
