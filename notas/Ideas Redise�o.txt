@@ -1,0 +1,31 @@
+
+Versión para developers y otra para UX professionals con logo distinto para cada uno y páginas distintas. Enlace desde uno al otro estilo Amazon
+
+Header lo mantenemos fijo?
+Back y Next arriba a la derecha en el Header
+
+[Stages/Activities]
+Sustituimos Stages por Activities (Analysis, Design y Evaluation). Diseño similar al actual y especificamos las sub-actividades de cada uno con un "more information" para explicar los aportes de la usabilidad en ese tipo (tanto para actividades principales como para las sub)
+Enlace para informar acerca de las actividades y no etapas: Activities and Stages in an iterative development
+
+[Methods]
+Slider o control para poner un umbral que te muestra todas las técnicas o sólo las más recomendadas
+Organizarlas según actividades y sub
+Al seleccionar el mínimo del umbral, será siempre 1 técnica por cada sub
+Plegar y desplegar sub-actividades con indicador de X métodos recomendados
+La parte visual de recomendación, sustituyendo estrellas por barras y palabras al pasar el ratón por encima
+Al pulsar o posicionar el ratón sobre una restricción, informar de a qué métodos afecta
+
+
+[Implementar]
+Cargar tu propio XML con los pesos personalizados
+Salvar en un XML el plan has recibido
+
+Guia de técnicas de usabilidad organizadas
+
+[Posibles futuras ideas]
+Registro de usuarios para guardar información acerca de sus proyectos, destacar y compartir experiencias con determinadas técnicas y aconsejar o desaconsejar su uso
+Permitir un histórico de los proyectos realizados para saber que el usuario sepa qué técnicas utilizó (relacionado con lo anterior)
+Añadir herramientas de gestión y planificación de los proyectos (hitos, tareas, etc...) o generar algún documento válido para una herramienta estándar de planificación
+
+
