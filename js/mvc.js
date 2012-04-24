@@ -1,150 +1,242 @@
-// An example Backbone application contributed by
-// [Jérôme Gravel-Niquet](http://jgn.me/). This demo uses a simple
-// [LocalStorage adapter](backbone-localstorage.js)
-// to persist Backbone models within your browser.
 
-// Load the application once the DOM is ready, using `jQuery.ready`:
+// Load the application once the DOM is ready, using `jQuery.ready`
 $(function(){
 
-  // Todo Model
-  // ----------
+	/* Constants */
+	
+	const FADE_SPEED       = 700;
+	const DISABLED_OPACITY = 0.5;
+	const SLIDE_SPEED      = 300;
 
-  // Our basic **Todo** model has `content`, `order`, and `done` attributes.
-  var Model = Backbone.Model.extend({
-
-    // Default attributes for the todo.
-    defaults: {
-      content: "",
-      selected: true,
-	  constraints: [],
-	  valoration: 0
-    },
-
-    // Ensure that each method created has `content`.
-    initialize: function() {
-        this.set({
-			"content": this.defaults.content,
-			"selected": this.defaults.selected,
-			"constraints": this.defaults.constraints,
-			"valoration": this.defaults.valoration
-		});
-    },
-
-    // Toggle the `selected` state of this todo item.
-    toggle: function() {
-		this.save({selected: !this.get("selected")});
-    },
-
-    calculateValoration: function() {
-		this.defaults.valoration++;
+	const recommendation = [ "strongly recommended", "neutral", "slightly recommended", "not recommended" ];
+	
+	
+	/* Auxiliary Variables */
+	
+	var sliderValue  = 1;
+	
+	
+	/* Auxiliary Functions */
+	
+	function activateCheckbox(obj) {
+		obj.find('a').toggleClass('checked');
 	}
 	
-  });
+	
+	/* Models */
+	
+	var Method = Backbone.Model.extend({
+	
+		defaults: {
+			weights = [];
+			content: "",
+			selected: true,
+			value: 0
+		},
+		
+		initialize: function(weights) {
+			this.set({
+				"weights": weights,
+				"content": this.defaults.content,
+				"selected": this.defaults.selected,
+				"value": this.defaults.value
+			});
+		},
+		
+		calculateValue: function() {
+			// Según la constraint seleccionada, se aplicará el peso correspondiente al valor total
+			//this.value += ;
+		}
+		
+	});
+	
+	
+	var Constraint = Backbone.Model.extend({
+	
+		defaults: {
+				this.selected = false;
+		},
+		
+		initialize: function(name, description) {
+			this.set({
+				"name" : name,
+				"description" : description
+				"selected" : this.defaults.selected;
+			});
+		},
+		
+		selectConstraint: function() {
+			this.selected = true;
+			// En cuanto una constraint ha sido seleccionada, los modelos de Methods deben recalcular su valor
+		},
+		
+		unselectConstraint: function() {
+			this.selected = false;
+			// En cuanto una constraint ha sido deseleccionada, los modelos de Methods deben recalcular su valor
+		}
+		
+	});
+	
+	
+	var Subactivity = Backbone.Model.extend({
+		
+		defaults: {
+			this.name = "";
+			this.description = "";
+			this.methodsCol = [];
+		}
+		
+		initialize: function(name, description, methodsCollection) {
+			this.set({
+				"name" : this.defaults.name
+				"description" : this.defaults.description,
+				"methodsCol" : this.defaults.methodsCol
+			});
+		}
+		
+	});
+	
+	
+	var Activity = Backbone.Model.extend({
+		
+		defaults: {
+			this.name = "";
+			this.description = "";
+			this.subactivitiesCol = [];
+		}
+		
+		initialize: function(name, description, subactivitiesCol) {
+			this.set({
+				"name" : this.defaults.name
+				"description" : this.defaults.description,
+				"subactivitiesCol" : this.defaults.subactivitiesCol
+			});
+		}
+		
+	});
+	
+	
+	/* Views */
+	
+	ConstraintView = Backbone.View.extend({
+		initialize: function($node) {
+			$el = $node;
+		},
+		
+		events: {
+			"click .constraint" : "constraintSelectedEvent",
+		},
+		
+		constraintSelectedEvent: function(event) {
+			event.preventDefault();
+			
+			var $this = $(this);
+			activateCheckbox($this);
+			
+			this.model.selectConstraint();		// Actualizar el modelo de Constraint llamando a su método select
+		}
+		
+	});
+	
+	
+	MethodView = Backbone.View.extend({	
+		initialize: function($node) {
+			$el = $node;
+		},
+		
+		events: {
+			"click #methods-section.checkboxWrapper" : "checkboxEvent",
+			"click #methods-section.methodInfo" : "displayInfoEvent",
+		},
+		
+		checkboxEvent: function(event) {
+			event.preventDefault();
+			
+			var checkbox = $(this);
 
-  // Todo Collection
-  // ---------------
+			var li = checkbox.parent();
+			disableMethodAnimation(li);
+			activateCheckbox(checkbox);
 
-  // The collection of todos is backed by *localStorage* instead of a remote
-  // server.
-  var TodoList = Backbone.Collection.extend({
+			// Updating tab counters value
+			updateFilterCounters();
+		},
+		
+		displayInfoEvent: function() {
+			var $this = $(this);
+			var description  = $this.siblings('.method-description');
+			var expandButton = $this.find('.expand-button');
+			var method       = $this.parent();
+			
+			if (description.hasClass('hidden')) {
+				description.css({opacity: 0});
+				description.removeClass('hidden');
+				
+				var height = description.height() + 40;
+				method.stop().animate({height: height}, FADE_SPEED);
+				
+				description.stop().animate({opacity: 1}, FADE_SPEED);
+				expandButton.addClass('expanded');
+			} else {
+				method.stop().animate({height: 25}, FADE_SPEED);
+				description.stop().animate({opacity: 0}, FADE_SPEED, function() {
+					description.addClass('hidden');
+				});
+				expandButton.removeClass('expanded');
+			}
+		},
+		
+		disableMethodAnimation: function(li) {
+			var CSSClass = 'disabled';
+			var bar = li.find('.bar');
+			
+			if (li.hasClass(CSSClass)) {
+				li.removeClass(CSSClass);
+				li.animate({opacity: '1'}, FADE_SPEED);
+				bar.animate({opacity: '1'}, FADE_SPEED);
+			} else {
+				li.addClass(CSSClass);
+				li.animate({opacity: DISABLED_OPACITY}, FADE_SPEED);
+				bar.animate({opacity: DISABLED_OPACITY}, FADE_SPEED);
+			}
+		}
 
-    // Reference to this collection's model.
-    model: Todo,
+	});
+	
+	
+	/* Collections */
+	
+	MethodCollection = Backbone.Collection.extend({
+		model: Method,
 
-    // Save all of the todo items under the `"todos"` namespace.
-    localStorage: new Store("todos-backbone"),
+		comparator: function(todo) {
+			return Method.get('value');
+		}
 
-    // Filter down the list of all todo items that are finished.
-    done: function() {
-      return this.filter(function(todo){ return todo.get('done'); });
-    },
+	});
 
-    // Filter down the list to only todo items that are still not finished.
-    remaining: function() {
-      return this.without.apply(this, this.done());
-    },
+	
+	/* Other Classes */
+	
+	var Weight = function () {
+		var constraint;
+		var numWeight;
+		
+		// Public API
+		return {
+			weightOfConstraint : function(constraintName) {
+				if (constraintName === constraint.get("name")) {
+					return numWeight;
+				}
+			}
+		};
+	};
+	
+	
+	
+	// Create our global collection of 'Methods'
+	var MethodCollection = new MethodCollection();
 
-    // We keep the Todos in sequential order, despite being saved by unordered
-    // GUID in the database. This generates the next order number for new items.
-    nextOrder: function() {
-      if (!this.length) return 1;
-      return this.last().get('order') + 1;
-    },
-
-    // Todos are sorted by their original insertion order.
-    comparator: function(todo) {
-      return todo.get('order');
-    }
-
-  });
-
-  // Create our global collection of **Todos**.
-  var Todos = new TodoList;
-
-  // Todo Item View
-  // --------------
-
-  // The DOM element for a todo item...
-  var MethodView = Backbone.View.extend({
-
-    el:  "",
-
-    // Cache the template function for a single item.
-    template: _.template($('#item-template').html()),
-
-    // The DOM events specific to an item.
-    events: {
-      "click .check"              : "toggleDone",
-      "dblclick label.todo-content" : "edit",
-      "click span.todo-destroy"   : "clear",
-      "keypress .todo-input"      : "updateOnEnter",
-      "blur .todo-input"          : "close"
-    },
-
-    // The TodoView listens for changes to its model, re-rendering. Since there's
-    // a one-to-one correspondence between a **Todo** and a **TodoView** in this
-    // app, we set a direct reference on the model for convenience.
-    initialize: function() {
-      _.bindAll(this, 'render', 'close', 'remove');
-      this.model.bind('change', this.render);
-      this.model.bind('destroy', this.remove);
-    },
-
-    // Re-render the contents of the todo item.
-    render: function() {
-      $(this.el).html(this.template(this.model.toJSON()));
-      this.input = this.$('.todo-input');
-      return this;
-    },
-
-    // Toggle the `"done"` state of the model.
-    toggleDone: function() {
-      this.model.toggle();
-    },
-
-    // Switch this view into `"editing"` mode, displaying the input field.
-    edit: function() {
-      $(this.el).addClass("editing");
-      this.input.focus();
-    },
-
-    // Close the `"editing"` mode, saving changes to the todo.
-    close: function() {
-      this.model.save({content: this.input.val()});
-      $(this.el).removeClass("editing");
-    },
-
-    // If you hit `enter`, we're through editing the item.
-    updateOnEnter: function(e) {
-      if (e.keyCode == 13) this.close();
-    },
-
-    // Remove the item, destroy the model.
-    clear: function() {
-      this.model.clear();
-    }
-
-  });
 
   // The Application
   // ---------------

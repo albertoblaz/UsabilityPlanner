@@ -1,124 +1,14 @@
 
 $(document).ready(function() {
 
-
-	/* Object Definition */
-
-	function Method(jqObject, constraints) {
-		this.jqObject    = jqObject;
-		this.constraints = constraints;
-		var selected    = true;
-		var valoration  = 0;
-
-		// Private API
-		function searchConstraints(op, constraintText) {
-			var weight = 0;
-			var c;
-
-			for (var i=0; i<constraints.length; i++) {
-				c = constraints.eq(i);
-				if (c.text() === constraintText) {
-					weight = parseInt(c.attr('weight'));
-
-					if (op === true) {
-						valoration += weight;
-					} else {
-						valoration -= weight;
-					}
-
-					console.log(valoration);
-				}
-			}
-		};
-
-		var updateValue = (function() {
-			if (valoration > 2) {
-				jqObject.find('valoration').text("not not");
-			}
-		});
-
-
-		// Public API
-		var obj = {};
-
-		obj.constraints = constraints;
-	
-		obj.incrementValue = function(constraintText) {
-			var increment = true;
-			searchConstraints(increment, constraintText);
-
-			/*
-			var weight = 0;
-			var c;
-
-			for (var i=0; i<constraints.length; i++) {
-				c = constraints.eq(i);
-				if (c.text() === constraintText) {
-					weight = parseInt(c.attr('weight'));
-
-					valoration += weight;
-					
-					console.log(valoration);
-				}
-			}
-			*/
-		};
-
-		obj.decrementValue = (function(constraintText) {
-			var decrement = false;
-			searchConstraints(decrement, constraintText);
-
-			/*
-			var weight = 0;
-			var c;
-
-			for (var i=0; i<constraints.length; i++) {
-				c = constraints.eq(i);
-				if (c.text() === constraintText) {
-					weight = parseInt(c.attr('weight'));
-
-					valoration -= weight;
-
-					console.log(valoration);
-				}
-			}
-			*/
-		});
-
-		return obj;
-	}
-
-
-	/* Constants */
-
-	const FADE_SPEED       = 700;
-	const DISABLED_OPACITY = 0.5;
-	const SLIDE_SPEED      = 300;
-
-
 	/* jQuery (Cached) Object Variables */
-
-	var constraints     = $('#constraints-selection').find('.constraint');
 	
-	var methodsSection  = $('#methods-selection');
 	var filterCounters  = methodsSection.find('.filter-count');
 	var infoActivity    = methodsSection.find('.info-activity');
 	var listsTitles     = methodsSection.find('.expandable');
 	var lists           = methodsSection.find('.list-methods');
-	var methodsCheckbox = methodsSection.find('.checkboxWrapper');
-	var methodInfos     = methodsSection.find('.method-info');
 	
-	
-	/* Auxiliary Global Variables */
 
-	var arrayMethods = new Array();
-	var sliderValue  = 1;
-	const valoration = [ "strongly recommended", 
-				"neutral", 
-				"slightly recommended",
-				"not recommended" ];
-	
-	
 	/* Auxiliary Function */
 
 	function updateFilterCounters() {
@@ -138,27 +28,6 @@ $(document).ready(function() {
 		filterCounters.eq(0).text(totalMethods);		// filter(0) adjusted with the total amount
 	}
 	
-	function activateCheckbox(obj) {
-		obj.find('a').toggleClass('checked');
-	}
-	
-	function disableMethodAnimation(li) {
-		var CSSClass = 'disabled';
-		var bar = li.find('.bar');
-		
-		if (li.hasClass(CSSClass))
-		{
-			li.removeClass(CSSClass);
-			li.animate({opacity: '1'}, FADE_SPEED);
-			bar.animate({opacity: '1'}, FADE_SPEED);
-		}
-		else
-		{
-			li.addClass(CSSClass);
-			li.animate({opacity: DISABLED_OPACITY}, FADE_SPEED);
-			bar.animate({opacity: DISABLED_OPACITY}, FADE_SPEED);
-		}
-	}
 	
 	function fadingMethods(newSliderValue) {
 		var i, j;
@@ -184,25 +53,7 @@ $(document).ready(function() {
 
 
 	/* Events Definition */
-	
-	var constraintsEvent = function(event) {
-		var $this = $(this);
-
-		activateCheckbox($this);
-		var constraintText = $this.find('.label-constraint').text();
-		var checked = $this.find('.checkbox').hasClass('checked');
-		for (var i=0; i < 2; i++) {
-			if (checked) {
-				arrayMethods[i].incrementValue(constraintText);
-			} else {
-				arrayMethods[i].decrementValue(constraintText);
-			}
-		}
-
-
-		event.preventDefault();
-	}
-	
+		
 	var expandEvent = function() {
 		var elem = $(this);		
 		var className = 'collapsed';
@@ -234,46 +85,6 @@ $(document).ready(function() {
 		}
 	}
 	
-	var methodsCheckboxEvent = function(event) {
-		var checkbox = $(this);
-
-		var li = checkbox.parent();
-		disableMethodAnimation(li);
-		activateCheckbox(checkbox);
-
-		// Updating tab counters value
-		updateFilterCounters();
-
-		event.preventDefault();
-	}
-
-	var methodInfoEvent = function() {
-		var $this = $(this);
-		var description  = $this.siblings('.method-description');
-		var expandButton = $this.find('.expand-button');
-		var method       = $this.parent();
-		
-		if (description.hasClass('hidden'))
-		{
-			description.css({opacity: 0});
-			description.removeClass('hidden');
-			
-			var height = description.height() + 40;
-			method.stop().animate({height: height}, FADE_SPEED);
-			
-			description.stop().animate({opacity: 1}, FADE_SPEED);
-			expandButton.addClass('expanded');
-		}
-		else
-		{
-			method.stop().animate({height: 25}, FADE_SPEED);
-			description.stop().animate({opacity: 0}, FADE_SPEED, function() {
-				description.addClass('hidden');
-			});
-			expandButton.removeClass('expanded');
-		}
-	}
-
 	var scrollToSectionsEvent = function (event) {
 		var section = $(this).attr('href');
 		var sectionPosition = Math.floor($(section).offset().top);
@@ -300,13 +111,8 @@ $(document).ready(function() {
 	
 	
 	/* Events Assignments */
-
-	methodsCheckbox.on("click", methodsCheckboxEvent);
 	
-	constraints.on("click", constraintsEvent);
-
 	listsTitles.on("click", expandEvent);
-	methodInfos.on("click", methodInfoEvent);
 	
 	methodsSection.find('.filtering a').on("click", scrollToSectionsEvent);
 	methodsSection.find('#expand').on("click", expandAllEvent);
