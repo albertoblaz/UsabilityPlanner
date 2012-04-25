@@ -4,22 +4,43 @@
 
 		$.get('xml/projectStagesDataDevelopers.xml', function(xml) {
 			var $methodsDOM = $('.method');
-			var methodCol = new MethodCollection();
+			var methodCol = new UP.MethodCollection();
 			
 			// Find every method in XML file and create an object to represent it
 			$(xml).find('method').each(function(i) {
-				var method = new Method();
+				var constraints  = $(this).find('method').find('constraint');
 
-			    var jqObject = $methodsDOM.eq(i);
-				
-				var methodView = new MethodView(jqObject);
-				
-				var constraints  = $(this).find('constraint');
-			    
-			    arrayMethods.push(m);
+				var weights = [];
+				constraints.each(function(i) {
+					self = $(this);
+					console.log(self);
+					if (self != '[]') {
+						var name = self.text();
+						var numberWeight = parseInt(self.attr('weight'));
+
+						console.log(name);
+						console.log(numberWeight);
+
+						var w = new UP.Weight(name, numberWeight);
+						weights.push(w);
+					}
+				});
+
+				var method = new UP.Method(weights);
+				var jqObject = $methodsDOM.eq(i);
+
+				var methodView = new UP.MethodView(method, jqObject);
 			});
 
-			console.log(arrayMethods[1].constraints);
+			function createWeights(constraints) {
+				var weight;
+				var listWeights = [];
+
+				
+
+				return listWeights;
+			}
+
 		});
 
 	})();

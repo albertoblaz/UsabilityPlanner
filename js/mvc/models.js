@@ -1,26 +1,28 @@
 	
-	var globalObject = function() {};
-	
-	var UP = new globalObject();
-	
-	UP.Weight = function () {
-		var constraint;
-		var numWeight;
-		
-		// Public API
-		return {
-			weightOfConstraint : function(constraintName) {
-				if (constraintName === constraint.get("name")) {
-					return numWeight;
-				}
+	UP.Weight = Backbone.Model.extend({
+		defaults: {
+			constraint: "",
+			numWeight: 0
+		},
+
+		initialize: function(constraint, numWeight) {
+			this.set({
+				"constraint" : constraint,
+				"numWeight" : numWeight
+			});
+		},
+
+		weightOfConstraint : function(constraintName) {
+			if (constraintName === this.constraint) {
+				return numWeight;
 			}
-		};
-	};
+		}
+	});
 	
 	
 	UP.Method = Backbone.Model.extend({
-	
 		defaults: {
+			weights: [],
 			content: "",
 			selected: true,
 			value: 0
@@ -46,14 +48,14 @@
 	UP.Constraint = Backbone.Model.extend({
 	
 		defaults: {
-				this.selected = false;
+			selected: false
 		},
 		
 		initialize: function(name, description) {
 			this.set({
 				"name" : name,
-				"description" : description
-				"selected" : this.defaults.selected;
+				"description" : description,
+				"selected" : this.defaults.selected
 			});
 		},
 		
@@ -73,14 +75,14 @@
 	UP.Subactivity = Backbone.Model.extend({
 		
 		defaults: {
-			this.name = "";
-			this.description = "";
-			this.methodsCol = [];
-		}
+			name : "",
+			description : "",
+			methodsCol : []
+		},
 		
 		initialize: function(name, description, methodsCollection) {
 			this.set({
-				"name" : this.defaults.name
+				"name" : this.defaults.name,
 				"description" : this.defaults.description,
 				"methodsCol" : this.defaults.methodsCol
 			});
@@ -92,14 +94,14 @@
 	UP.Activity = Backbone.Model.extend({
 		
 		defaults: {
-			this.name = "";
-			this.description = "";
-			this.subactivitiesCol = [];
-		}
+			name : "",
+			description : "",
+			subactivitiesCol : []
+		},
 		
 		initialize: function(name, description, subactivitiesCol) {
 			this.set({
-				"name" : this.defaults.name
+				"name" : this.defaults.name,
 				"description" : this.defaults.description,
 				"subactivitiesCol" : this.defaults.subactivitiesCol
 			});

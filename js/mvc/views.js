@@ -22,34 +22,42 @@
 	
 	
 	UP.MethodView = Backbone.View.extend({	
-		initialize: function($node) {
-			$el = $node;
+		initialize: function(model, $jqNode) {
+			this.model = model;
+			$el = $jqNode;
+
+			// Observing model
 			this.model.bind('change', this.render, this);
+
+			// Event Handlers
+			$el.find('.checkboxWrapper').on("click", this.checkboxEvent);
+			$el.find('.method-info').on("click", this.displayInfoEvent);
 		},
 		
 		events: {
-			"click #methods-section.checkboxWrapper" : "checkboxEvent",
-			"click #methods-section.methodInfo" : "displayInfoEvent",
+			// "click .method-info" : "displayInfoEvent"
 		},
 		
 		render : function() {
 			$el.find('.valoration').text("Hola!!!");
-		}
+		},
 		
 		checkboxEvent: function(event) {
 			event.preventDefault();
 			
 			var checkbox = $(this);
+			checkbox.find('a').toggleClass('checked');
 
 			var li = checkbox.parent();
-			disableMethodAnimation(li);
-			activateCheckbox(checkbox);
+			this.disableMethodAnimation(li);
 
 			// Updating tab counters value
-			updateFilterCounters();
+			//updateFilterCounters();
 		},
 		
 		displayInfoEvent: function() {
+			const FADE_SPEED = UP.constants.FADE_SPEED;
+
 			var $this = $(this);
 			var description  = $this.siblings('.method-description');
 			var expandButton = $this.find('.expand-button');
