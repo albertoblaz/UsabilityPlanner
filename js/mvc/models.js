@@ -19,6 +19,23 @@
 		}
 	});
 	
+	UP.Counter = Backbone.Model.extend({
+		initialize: function() {
+			this.set({
+				value : 0
+			});
+		},
+
+		increment: function() {
+			this.set(this.value++);
+			console.log(this.value);
+		},
+
+		decrement: function() {
+			this.value--;
+		}
+	});
+
 	
 	UP.Method = Backbone.Model.extend({
 		defaults: {
@@ -59,8 +76,9 @@
 			});
 		},
 		
-		selectConstraint: function() {
-			this.selected = true;
+		changeSelection: function() {
+			this.selected = !this.selected;
+			console.log(this);
 			// En cuanto una constraint ha sido seleccionada, los modelos de Methods deben recalcular su valor
 		},
 		

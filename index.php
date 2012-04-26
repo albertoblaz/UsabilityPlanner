@@ -134,10 +134,10 @@ echo($proc->transformToXML($xml));
 					<section id="methods-selection" class="left">
 						
 						<div class="filtering">							
-							<p class="methods-shown"><label class="filter-count">18</label> methods shown:</p>
-							<a href="#analysis-methods">Analysis (<label class="filter-count">3</label>)</a>
-							<a href="#design-methods">Design (<label class="filter-count">3</label>)</a>
-							<a href="#evaluation-methods">Evaluation (<label class="filter-count">3</label>)</a>
+							<p class="total-counter"><label class="filter-count">18</label> methods shown:</p>
+							<a class="counter" href="#analysis-methods">Analysis (<label class="filter-count">3</label>)</a>
+							<a class="counter" href="#design-methods">Design (<label class="filter-count">3</label>)</a>
+							<a class="counter" href="#evaluation-methods">Evaluation (<label class="filter-count">3</label>)</a>
 							
 							<div class="right">
 								<p id="expand"   class="expand-all">Expand All</p>
@@ -215,7 +215,7 @@ echo($proc->transformToXML($xml));
 	<script type="text/javascript" src="js/parser.js"></script>
 
 	<script type="text/javascript" src="js/animations/stages.js"></script>
-	<script type="text/javascript" src="js/animations/activities.js"></script>
+	<!--script type="text/javascript" src="js/animations/activities.js"></script-->
 	<!--script type="text/javascript" src="js/animations/methods.js"></script-->
 	<script type="text/javascript" src="js/animations/logic.js"></script>
 

@@ -3,45 +3,86 @@
 	(function() {
 
 		$.get('xml/projectStagesDataDevelopers.xml', function(xml) {
-			var $methodsDOM = $('.method');
-			var methodCol = new UP.MethodCollection();
-			
-			// Find every method in XML file and create an object to represent it
-			$(xml).find('method').each(function(i) {
-				var constraints  = $(this).find('method').find('constraint');
+			// Caching XML object
+			var $xml = $(xml);
 
-				var weights = [];
-				constraints.each(function(i) {
-					self = $(this);
-					console.log(self);
-					if (self != '[]') {
-						var name = self.text();
-						var numberWeight = parseInt(self.attr('weight'));
 
-						console.log(name);
-						console.log(numberWeight);
+			// Parsing constraints in XML file
 
-						var w = new UP.Weight(name, numberWeight);
-						weights.push(w);
-					}
+			var constraintsCol = new UP.ConstraintCollection();			// Creating collections of models
+			var $DOMConstraints = $('.constraint');					// Getting the DOM constraints
+
+			$xml.find('constraints').find('constraint').each(function(i) {
+				var self = $(this);
+				var name = self.attr('name');
+				var description = self.attr('description');
+
+				// Creating a new constraint model object
+				var cmodel = new UP.Constraint(name, description);
+				constraintsCol.add(cmodel);
+
+				// Creating a new constraint view object
+				var cnode = $DOMConstraints.eq(i);
+				var cview = new UP.ConstraintView({
+					model: cmodel, 
+					el: cnode
 				});
 
-				var method = new UP.Method(weights);
-				var jqObject = $methodsDOM.eq(i);
-
-				var methodView = new UP.MethodView(method, jqObject);
 			});
 
-			function createWeights(constraints) {
-				var weight;
-				var listWeights = [];
 
-				
 
-				return listWeights;
+			// Parsing activities in XML file
+
+//			var $DOMMethodsDOM = $('.method');
+			var activitiesCol = new UP.ActivityCollection();
+//			var subactivityCol = new UP.ActivityCollection();
+//			var methodCol = new UP.MethodCollection();
+
+			var $DOMActivities        = $('.activity');
+			var $DOMActivitiesTab     = $('.tab');
+			var $DOMActivitiesCounter = $('.counter');
+
+			var arrayViews = [];
+
+			$xml.find('activity').each(function(i) {
+				var self = $(this);
+				var name = self.attr('name');
+				var description = self.attr('description');
+				var subactivities = self.find('subactivity');
+
+				// Creating a new constraint model object
+				var amodel = new UP.Activity(name, description);  //lista de subs
+				activitiesCol.add(amodel);
+
+				// Creating a new activity view object
+				var ablock   = $DOMActivities.eq(i);
+				var atab     = $DOMActivitiesTab.eq(i);
+				var acounter = $DOMActivitiesCounter.eq(i);
+				var aview    = new UP.ActivityView({
+					model: amodel,
+					block: ablock,
+					tab: atab,
+					counter: acounter
+				});
+
+				arrayViews.push(aview);
+
+				var cmodel = new UP.Counter();
+				var cview  = new UP.CounterView({
+					model: cmodel,
+					el: acounter
+				});
+
+			});
+
+			for (var i=0; i<arrayViews.length; i++) {
+				var view = arrayViews[i];
+				view.setArrayViews(arrayViews);
 			}
 
-		});
+		}); // end of ajax-get request
 
-	})();
+
+	})();  // end of function
 

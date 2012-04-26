@@ -31,39 +31,39 @@ REMEMBER: Don't use "quotes" inside of a description, name or atributte in gener
 
 	<constraints>
 		<constraintsGroup name="Project Constraints">
-			<constraint name = "Need quick results" description =""></constraint>
-			<constraint name = "Very restricted budget" description = ""></constraint>
-			<constraint name = "Usability important" description = ""></constraint>
-			<constraint name = "Uncertain specification" description = ""></constraint>
+			<constraint name="Need quick results"       description =""></constraint>
+			<constraint name="Very restricted budget"   description = ""></constraint>
+			<constraint name="Usability important"      description = ""></constraint>
+			<constraint name="Uncertain specification"  description = ""></constraint>
 		</constraintsGroup>
 		
 		<constraintsGroup name="User Constraints">
-			<constraint name ="Difficult to involve users" description = ""></constraint>
-			<constraint name ="No access to users" description = ""></constraint>
-			<constraint name ="Some users have disabilities" description = ""></constraint>
-			<constraint name ="Mostly first time users" description = ""></constraint>
+			<constraint name="Difficult to involve users"    description = ""></constraint>
+			<constraint name="No access to users"            description = ""></constraint>
+			<constraint name="Some users have disabilities"  description = ""></constraint>
+			<constraint name="Mostly first time users"       description = ""></constraint>
 		</constraintsGroup>
 		
 		<constraintsGroup name="Task Constraints">
-			<constraint name = "Complex task" description = "4"></constraint>
-			<constraint name = "Many tasks" description = "4"></constraint>
-			<constraint name = "Safety or business critical system" description = "3"></constraint>
-			<constraint name = "Organisational changes needed" description = "5"></constraint>	
+			<constraint name="Complex task"                        description = "4"></constraint>
+			<constraint name="Many tasks"                          description = "4"></constraint>
+			<constraint name="Safety or business critical system"  description = "3"></constraint>
+			<constraint name="Organisational changes needed"       description = "5"></constraint>	
 		</constraintsGroup>
 		
 		<constraintsGroup name="Product Constraints">
-			<constraint name = "Efficiency or accuracy is important" description = ""></constraint>
-			<constraint name = "Adaptation of an existing system" description = ""></constraint>
-			<constraint name = "A well understood product" description = ""></constraint>
-			<constraint name = "Customisable product" description = ""></constraint>
+			<constraint name="Efficiency or accuracy is important"  description = ""></constraint>
+			<constraint name="Adaptation of an existing system"     description = ""></constraint>
+			<constraint name="A well understood product"            description = ""></constraint>
+			<constraint name="Customisable product"                 description = ""></constraint>
 		</constraintsGroup>
 		
 		<constraintsGroup name="Context Constraints">
-			<constraint name = "General purpose: used in many different contexts" description = ""></constraint>
+			<constraint name="General purpose: used in many different contexts"  description = ""></constraint>
 		</constraintsGroup>
 		
 		<constraintsGroup name="Human Constraints">
-			<constraint name = "No usability expertise available" description = ""></constraint>
+			<constraint name="No usability expertise available"  description = ""></constraint>
 		</constraintsGroup>
 	</constraints>
 

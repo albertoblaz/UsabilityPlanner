@@ -1,30 +1,62 @@
 
 
 	UP.ConstraintView = Backbone.View.extend({
-		initialize: function($node) {
-			$el = $node;
+		initialize: function() {
 		},
-		
+
 		events: {
-			"click .constraint" : "constraintSelectedEvent",
+			"click" : "constraintSelected"
 		},
 		
-		constraintSelectedEvent: function(event) {
+		constraintSelected: function(event) {
 			event.preventDefault();
+
+			var checkbox = this.$el.find('.checkboxWrapper');
+			activateCheckbox(checkbox);
 			
-			var $this = $(this);
-			activateCheckbox($this);
-			
-			this.model.selectConstraint();		// Actualizar el modelo de Constraint llamando a su método select
+			this.model.changeSelection();		// Actualizar el modelo de Constraint llamando a su método select
 		}
 		
 	});
 	
+
+
+	UP.CounterView = Backbone.View.extend({
+		increment: function() {
+			this.model.increment();
+			this.updateFilterCount(true);
+		},
+
+		decrement: function() {
+			this.model.decrement();
+			this.updateFilterCount(false);
+		},
+
+		updateFilterCount: function(incrementing) {
+			var value = this.model.get('value');
+			console.log(value);
+			this.$el.find('.filter-count').text(value);
+
+			// Also, we update the total counter
+			var totalCounter = this.$el.siblings('.total-counter').find('.filter-count');
+			value = parseInt(totalCounter.text());
+			if (incrementing) {
+				value++;
+			} else {
+				value--;
+			}
+
+			totalCounter.text(value);
+		}
+		
+	});
+
+
 	
-	UP.MethodView = Backbone.View.extend({	
+	UP.MethodView = Backbone.View.extend({
 		initialize: function(model, $jqNode) {
-			this.model = model;
-			$el = $jqNode;
+			this.options.model = model;
+			this.options.$el = $jqNode;
 
 			// Observing model
 			this.model.bind('change', this.render, this);
@@ -46,7 +78,7 @@
 			event.preventDefault();
 			
 			var checkbox = $(this);
-			checkbox.find('a').toggleClass('checked');
+			activateCheckbox(checkbox);
 
 			var li = checkbox.parent();
 			this.disableMethodAnimation(li);
@@ -97,3 +129,75 @@
 		}
 
 	});
+
+
+	UP.ActivityView = Backbone.View.extend({
+		initialize: function() {
+			this.model   = this.options.model;
+			this.block   = this.options.block;
+			this.tab     = this.options.tab;
+			this.counter = this.options.counter;
+
+			// Handle Events
+			var self = this;
+			this.tab.on('click', function() {
+				return self.displayActivityEvent();
+			});
+
+			
+
+		},
+
+		displayActivityEvent: function() {
+			this.hideRestOfActivities();
+			this.tab.addClass('tab-active');
+
+			$('.container').stop().animate(
+				{height: this.block.height()}, 
+				UP.constants.ACTIVITY_SPEED);
+
+			this.block.removeClass('hidden');
+		},
+/*
+		expandListEvent: function() {
+			var checkbox = this.$el.find('.checkboxWrapper');
+			activateCheckbox(checkbox);
+			
+			this.list.show();
+
+			this.model.changeSelection();
+		},
+*/
+		hideRestOfActivities: function() {
+			for (var i=0; i < this.arrayViews.length; i++) {
+				var view = this.arrayViews[i];
+				if (this != view) {
+					view.hideActivity();
+				}
+			}
+		},
+		
+		hideActivity: function() {
+			this.tab.removeClass('tab-active');
+			this.block.addClass('hidden');
+		},
+
+		updateCounter: function(increment) {
+			if (increment == true) {
+				this.counter.increment();
+			} else {
+				this.counter.decrement();
+			}
+		},
+
+		setArrayViews: function(arrayViews) {
+			this.arrayViews = arrayViews;
+		}
+
+	});
+
+
+	function activateCheckbox(obj) {
+		console.log(obj);
+		obj.find('a').toggleClass('checked');
+	}
