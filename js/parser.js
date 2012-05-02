@@ -10,7 +10,7 @@
 			// Parsing constraints in XML file
 
 			var constraintsCol = new UP.ConstraintCollection();			// Creating collections of models
-			var $DOMConstraints = $('.constraint');					// Getting the DOM constraints
+			var $DOMConstraints = $('.constraint');						// Getting the DOM constraints
 
 			$xml.find('constraints').find('constraint').each(function(i) {
 				var self = $(this);
@@ -28,58 +28,110 @@
 					el: cnode
 				});
 
-			});
+			}); // end of 'constraint' parsing
 
 
 
 			// Parsing activities in XML file
 
-//			var $DOMMethodsDOM = $('.method');
+//			var $DOMMethods = $('.method');
 			var activitiesCol = new UP.ActivityCollection();
-//			var subactivityCol = new UP.ActivityCollection();
+
 //			var methodCol = new UP.MethodCollection();
 
 			var $DOMActivities        = $('.activity');
+			var $DOMActivitiesList    = $('.info-activity');
 			var $DOMActivitiesTab     = $('.tab');
 			var $DOMActivitiesCounter = $('.counter');
 
-			var arrayViews = [];
+			var arrayActivityViews = [];
+
+			var totalcounter      = new UP.Counter();			// Creating the Total Counter
+			var totalcounterView  = new UP.TotalcounterView({
+				model: totalcounter,
+				el: $('.total-counter')
+			});
 
 			$xml.find('activity').each(function(i) {
 				var self = $(this);
-				var name = self.attr('name');
-				var description = self.attr('description');
+				var name          = self.attr('name');
+				var description   = self.attr('description');
 				var subactivities = self.find('subactivity');
 
-				// Creating a new constraint model object
-				var amodel = new UP.Activity(name, description);  //lista de subs
-				activitiesCol.add(amodel);
+				var $DOMSubactivities       = $DOMActivities.eq(i).find('.subactivity');
+				var $DOMSubactivitiesList   = $DOMActivitiesList.eq(i).find('.info-subactivity');
+				var subactivitiesCol        = new UP.SubactivityCollection();
+
+				var arraySubactivityViews = [];
+
+				// Parsing subactivities in XML file
+				subactivities.each(function(j) {
+					var self = $(this);
+					var name        = self.attr('name');
+					var description = self.attr('description');
+					var methods     = self.find('method');
+
+					var smodel = new UP.Subactivity(name, description, {});			// Creating a new 'Subactivity' model object
+
+					subactivitiesCol.add(smodel);			// Adding the 'Subactivity' object to the collection
+
+					var sitem = $DOMSubactivities.eq(j);
+					var slist = $DOMSubactivitiesList.eq(j);
+					var sview = new UP.SubactivityView({		// Creating a new 'Subactivity' controller object
+						model: smodel,
+						item: sitem,
+						list: slist
+					});
+
+					arraySubactivityViews.push(sview);
+				});
+
+				// Creating a new 'Activity' model object
+				var amodel = new UP.Activity();				// Creating a new 'Activity' model object
+				amodel.set({
+					name: name, 
+					description: description, 
+					subactivitiesCol: subactivitiesCol
+				});
+
+				activitiesCol.add(amodel);					// Adding the 'Activity' object to the collection
 
 				// Creating a new activity view object
 				var ablock   = $DOMActivities.eq(i);
+				var alist    = $DOMActivitiesList.eq(i);
 				var atab     = $DOMActivitiesTab.eq(i);
 				var acounter = $DOMActivitiesCounter.eq(i);
-				var aview    = new UP.ActivityView({
+				var aview    = new UP.ActivityView({			// Creating a new 'Activity' controller object
 					model: amodel,
 					block: ablock,
+					list: alist,
 					tab: atab,
 					counter: acounter
 				});
 
-				arrayViews.push(aview);
+				aview.setSubactivities(arraySubactivityViews);
 
-				var cmodel = new UP.Counter();
+				console.log(aview);
+				arrayActivityViews.push(aview);
+
+				var cmodel = new UP.Counter();			// Creating the counter for each activity
 				var cview  = new UP.CounterView({
 					model: cmodel,
-					el: acounter
+					el: acounter,
+					totalcounter: totalcounterView
 				});
 
-			});
+			}); // end of 'activities' parsing
 
-			for (var i=0; i<arrayViews.length; i++) {
-				var view = arrayViews[i];
-				view.setArrayViews(arrayViews);
+
+			// Once all the activities have been stored, the array will be passed to every activity
+			// This happens because every activity needs to have a reference to all of them
+			// And later, when an activity tab is clicked, the rest os activities will be hidden
+			for (var i=0; i<arrayActivityViews.length; i++) {
+				var view = arrayActivityViews[i];
+				view.setActivities(arrayActivityViews);
 			}
+
 
 		}); // end of ajax-get request
 

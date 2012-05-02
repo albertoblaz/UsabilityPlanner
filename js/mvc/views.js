@@ -1,5 +1,4 @@
-
-
+ 
 	UP.ConstraintView = Backbone.View.extend({
 		initialize: function() {
 		},
@@ -20,38 +19,83 @@
 	});
 	
 
+	UP.SliderView = Backbone.View.extend({
+		slidervalue: 0,
+
+		initialize: function() {
+			this.slidervalue = this.model.get('slidervalue');
+
+			this.$el.slider({	/* Slider Configuration Setup */
+				orientation: "horizontal",
+				range: "min",
+				min: 0,
+				max: UP.constants.VALUE.length-1,
+				value: this.slidervalue,
+				animate: true,
+				slide: moveSlider	// Event function to perfom
+			});
+		},
+
+		moveSlider: function(event, ui) {
+			var newSliderValue = ui.value;			// Updating slide text value
+			this.slidervalue = newSliderValue;			// Updating the old value for next function call
+
+			fadingMethods(newSliderValue);			// Showing or hiding methods on the lists
+		}
+
+	});
+
 
 	UP.CounterView = Backbone.View.extend({
-		increment: function() {
-			this.model.increment();
+		initialize: function() {
+			this.totalcounter = this.options.totalcounter;
+			this.$el.on("click", this.scrollToList);
+		},
+
+		scrollToList: function(event) {
+			event.preventDefault();
+
+			var linkCounter = $(this);
+
+			var section = linkCounter.attr('href');
+			var sectionPosition = Math.floor($(section).offset().top);
+
+			$('html, body').animate({scrollTop: sectionPosition}, UP.constants.FADE_SPEED);
+		},
+
+		increment: function(amount) {
+			this.totalcounter.increment(amount);
+			this.model.increment(amount);
 			this.updateFilterCount(true);
 		},
 
-		decrement: function() {
-			this.model.decrement();
+		decrement: function(amount) {
+			this.totalcounter.decrement(amount);
+			this.model.decrement(amount);
 			this.updateFilterCount(false);
 		},
 
 		updateFilterCount: function(incrementing) {
 			var value = this.model.get('value');
-			console.log(value);
 			this.$el.find('.filter-count').text(value);
-
-			// Also, we update the total counter
-			var totalCounter = this.$el.siblings('.total-counter').find('.filter-count');
-			value = parseInt(totalCounter.text());
-			if (incrementing) {
-				value++;
-			} else {
-				value--;
-			}
-
-			totalCounter.text(value);
 		}
 		
 	});
 
 
+	UP.TotalcounterView = UP.CounterView.extend({
+		increment: function(amount) {
+			this.model.increment(amount);
+			this.updateFilterCount(true);
+		},
+
+		decrement: function(amount) {
+			this.model.decrement(amount);
+			this.updateFilterCount(false);
+		}
+		
+	});
+	
 	
 	UP.MethodView = Backbone.View.extend({
 		initialize: function(model, $jqNode) {
@@ -131,21 +175,89 @@
 	});
 
 
-	UP.ActivityView = Backbone.View.extend({
+	UP.SubactivityView = Backbone.View.extend({
 		initialize: function() {
 			this.model   = this.options.model;
-			this.block   = this.options.block;
-			this.tab     = this.options.tab;
-			this.counter = this.options.counter;
+			this.item    = this.options.item;
+			this.list    = this.options.list;
+			console.log(this.list);
 
 			// Handle Events
 			var self = this;
+			this.item.on("click", function() {
+				return self.displayList();
+			});
+
+			this.list.find('.expandable').on('click', function() {
+				return self.expandList();
+			});
+		},
+
+		displayList: function() {
+			var checkbox = this.item.find('.checkboxWrapper');
+			activateCheckbox(checkbox);
+			
+			this.list.toggleClass('hidden');
+			this.model.changeSelection();		// Actualizar el modelo de 'Subactivity' llamando a su método select
+		},
+
+		expandList: function() {
+			var header = this.list.find('.expandable');
+			var headerVisible = true;
+
+			if (header.hasClass('collapsed')) {
+				this.slideDown(headerVisible);
+			} else {
+				this.slideUp(headerVisible);
+			}
+
+			header.toggleClass('collapsed');
+		},
+
+		slideUp: function(headerVisible) {
+			var selected = this.model.get('selected');
+			if (selected) {
+				if (headerVisible == true) {
+					this.list.find('.list-methods').slideUp(UP.constants.SLIDE_SPEED, slideUpFix);
+				} else {
+					this.list.slideUp(UP.constants.SLIDE_SPEED, slideUpFix);
+				}
+			}
+		},
+
+		slideDown: function(headerVisible) {
+			var selected = this.model.get('selected');
+			if (selected) {
+				if (headerVisible == true) {
+					this.list.find('.list-methods').slideDown(UP.constants.SLIDE_SPEED, slideDownFix);					
+				} else {
+					this.list.slideDown(UP.constants.SLIDE_SPEED, slideDownFix);
+				}
+			}
+		}
+
+	});
+
+
+	UP.ActivityView = Backbone.View.extend({
+		initialize: function() {
+			this.model   = this.options.model;				// The Activity Model
+			this.counter = this.options.counter;			// Counter Controller related to this Activity
+			this.block   = this.options.block;				// View: Panel with the description on Activities Window
+			this.tab     = this.options.tab;				// View: Tab above the panel
+			this.list    = this.options.list;				// View: Panel with the description on Activities Window
+
+
+			// Handle Events
+			var self = this;
+
 			this.tab.on('click', function() {
 				return self.displayActivityEvent();
 			});
 
-			
-
+			this.list.children('.expandable').on('click', function() {
+				return self.expandList();
+			});
 		},
 
 		displayActivityEvent: function() {
@@ -158,19 +270,26 @@
 
 			this.block.removeClass('hidden');
 		},
-/*
-		expandListEvent: function() {
-			var checkbox = this.$el.find('.checkboxWrapper');
-			activateCheckbox(checkbox);
-			
-			this.list.show();
 
-			this.model.changeSelection();
+		expandList: function() {
+			var header = this.list.children('.expandable');
+
+			if (header.hasClass('collapsed')) {
+				for (var i=0; i<this.subactivities.length; i++) {
+					this.subactivities[i].slideDown();
+				}
+			} else {
+				for (var i=0; i<this.subactivities.length; i++) {
+					this.subactivities[i].slideUp();
+				}
+			}
+
+			header.toggleClass('collapsed');
 		},
-*/
+
 		hideRestOfActivities: function() {
-			for (var i=0; i < this.arrayViews.length; i++) {
-				var view = this.arrayViews[i];
+			for (var i=0; i < this.activities.length; i++) {
+				var view = this.activities[i];
 				if (this != view) {
 					view.hideActivity();
 				}
@@ -190,14 +309,24 @@
 			}
 		},
 
-		setArrayViews: function(arrayViews) {
-			this.arrayViews = arrayViews;
+		setSubactivities: function(subactivities) {
+			this.subactivities = subactivities;
+		},
+
+		setActivities: function(activities) {
+			this.activities = activities;
 		}
 
 	});
 
+	function slideUpFix() {
+		$(this).css({display : ""}).addClass('hidden');
+	}
+
+	function slideDownFix() {
+		$(this).removeClass('hidden');
+	}
 
 	function activateCheckbox(obj) {
-		console.log(obj);
 		obj.find('a').toggleClass('checked');
 	}

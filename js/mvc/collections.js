@@ -19,6 +19,16 @@
 	});
 
 
+	UP.SubactivityCollection = Backbone.Collection.extend({
+		model: UP.Subactivity,
+
+		comparator: function(todo) {
+//			return this.model.get('value');
+		}
+
+	});
+
+
 	UP.ActivityCollection = Backbone.Collection.extend({
 		model: UP.Activity,
 
