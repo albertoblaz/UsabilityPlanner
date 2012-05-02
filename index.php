@@ -215,12 +215,7 @@ echo($proc->transformToXML($xml));
 	<script type="text/javascript" src="js/parser.js"></script>
 
 	<script type="text/javascript" src="js/animations/stages.js"></script>
-	<!--script type="text/javascript" src="js/animations/activities.js"></script-->
-	<!--script type="text/javascript" src="js/animations/methods.js"></script-->
-	<script type="text/javascript" src="js/animations/logic.js"></script>
-
-	<!--script type="text/javascript" src="js/widgets/jquery-ui.slider.js"></script-->
 	
-	</body>
+</body>
 	
 </html>
