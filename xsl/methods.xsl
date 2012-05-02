@@ -19,11 +19,9 @@
 <xsl:template match="activity">
 	<xsl:variable name="activityName" select="@name" />
 	<div class="info-activity" id="{$activityName}">
-		<header>
-			<h2 class="headline expandable">
-				<xsl:value-of select="@name" />
-			</h2>
-		</header>
+		<h2 class="headline expandable">
+			<xsl:value-of select="@name" />
+		</h2>
 
 		<xsl:apply-templates select="subactivity" />
 	</div>
