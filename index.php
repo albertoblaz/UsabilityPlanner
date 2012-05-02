@@ -133,11 +133,17 @@ echo($proc->transformToXML($xml));
 
 					<section id="methods-selection" class="left">
 						
-						<div class="filtering">							
+						<div class="filtering">						
 							<p class="total-counter"><label class="filter-count">18</label> methods shown:</p>
-							<a class="counter" href="#analysis-methods">Analysis (<label class="filter-count">3</label>)</a>
-							<a class="counter" href="#design-methods">Design (<label class="filter-count">3</label>)</a>
-							<a class="counter" href="#evaluation-methods">Evaluation (<label class="filter-count">3</label>)</a>
+<?php
+$counters = new DomDocument();
+$counters->load('xsl/counters.xsl');
+
+$proc = new xsltprocessor();
+$proc->importStyleSheet($counters);
+
+echo($proc->transformToXML($xml));
+?>
 							
 							<div class="right">
 								<p id="expand"   class="expand-all">Expand All</p>
