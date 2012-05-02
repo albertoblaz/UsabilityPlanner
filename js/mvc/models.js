@@ -1,4 +1,21 @@
 	
+	UP.Weight = function(constraint, value) {
+		// Private vars
+		var constraint = constraint;
+		var value = value;
+		
+		// Public API
+		var obj = {};
+		obj.weightOfConstraint: function(c) {
+			if (constraint == c) {
+				return value;
+			}
+		};
+		
+		return obj;
+	}
+	
+	/*
 	UP.Weight = Backbone.Model.extend({
 		defaults: {
 			constraint: "",
@@ -18,6 +35,7 @@
 			}
 		}
 	});
+	*/
 	
 	UP.Counter = Backbone.Model.extend({
 		initialize: function() {
@@ -36,7 +54,7 @@
 		}
 	});
 
-	
+
 	UP.Method = Backbone.Model.extend({
 		defaults: {
 			weights: [],
