@@ -30,14 +30,9 @@
 
 			}); // end of 'constraint' parsing
 
-
-
 			// Parsing activities in XML file
 
-//			var $DOMMethods = $('.method');
 			var activitiesCol = new UP.ActivityCollection();
-
-//			var methodCol = new UP.MethodCollection();
 
 			var $DOMActivities        = $('.activity');
 			var $DOMActivitiesList    = $('.info-activity');
@@ -65,13 +60,53 @@
 				var arraySubactivityViews = [];
 
 				// Parsing subactivities in XML file
+
 				subactivities.each(function(j) {
 					var self = $(this);
 					var name        = self.attr('name');
 					var description = self.attr('description');
 					var methods     = self.find('method');
 
-					var smodel = new UP.Subactivity(name, description, {});			// Creating a new 'Subactivity' model object
+					var $DOMMethods = $DOMSubactivitiesList.eq(j).find('.method');
+					var methodsCol  = new UP.MethodCollection();
+
+					// Parsing methods in XML file
+
+					methods.each(function(k) {
+						var self = $(this);
+						var name        = self.attr('name');
+						var description = self.attr('description');
+						var constraints = self.find('constraint');
+
+						var weightsCol  = new UP.WeightCollection();
+
+						constraints.each(function(l) {
+							var self = $(this);
+							var name        = self.text();
+							var weightValue = parseInt(self.attr('weight'));
+
+							constraintsCol.each(function(c) {
+								if (c.get('name') == name) {
+									var weight = new UP.Weight(c, weightValue);
+									weightsCol.add(weight);
+								}
+							});	
+										
+
+						});
+
+
+						var mmodel = new UP.Method(name, description, weightsCol);
+						methodsCol.add(mmodel);
+
+						var mitem = $DOMMethods.eq(k);
+						var mview  = new UP.MethodView({
+							model: mmodel,
+							el: mitem
+						});
+					});
+
+					var smodel = new UP.Subactivity(name, description, methodsCol);			// Creating a new 'Subactivity' model object
 
 					subactivitiesCol.add(smodel);			// Adding the 'Subactivity' object to the collection
 
@@ -111,7 +146,6 @@
 
 				aview.setSubactivities(arraySubactivityViews);
 
-				console.log(aview);
 				arrayActivityViews.push(aview);
 
 				var cmodel = new UP.Counter();			// Creating the counter for each activity

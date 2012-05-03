@@ -103,29 +103,37 @@
 			this.options.$el = $jqNode;
 
 			// Observing model
-			this.model.bind('change', this.render, this);
+			this.model.on('change', this.render, this);
 
 			// Event Handlers
-			$el.find('.checkboxWrapper').on("click", this.checkboxEvent);
-			$el.find('.method-info').on("click", this.displayInfoEvent);
+			var self = this;
+
+			this.$el.find('.checkboxWrapper').on("click", function(e) {
+				return self.checkboxEvent(e);
+			});
+
+			this.$el.find('.method-info').on("click", this.displayInfoEvent);
 		},
 		
 		events: {
-			// "click .method-info" : "displayInfoEvent"
+			//"click .method-info" : "displayInfoEvent"
 		},
 		
-		render : function() {
-			$el.find('.valoration').text("Hola!!!");
+		render : function(method) {
+			var newValue = method.get('value');
+			this.$el.find('.valoration').text(newValue);
 		},
 		
 		checkboxEvent: function(event) {
 			event.preventDefault();
-			
-			var checkbox = $(this);
+
+			var checkbox = this.$el.find('.checkboxWrapper');
 			activateCheckbox(checkbox);
 
-			var li = checkbox.parent();
-			this.disableMethodAnimation(li);
+			var method = checkbox.parent('.method');
+			this.disableMethodAnimation(method);
+
+			this.model.changeSelection();
 
 			// Updating tab counters value
 			//updateFilterCounters();
@@ -158,6 +166,9 @@
 		},
 		
 		disableMethodAnimation: function(li) {
+			const FADE_SPEED = UP.constants.FADE_SPEED;
+			const DISABLED_OPACITY = UP.constants.DISABLED_OPACITY;
+
 			var CSSClass = 'disabled';
 			var bar = li.find('.bar');
 			
@@ -180,7 +191,6 @@
 			this.model   = this.options.model;
 			this.item    = this.options.item;
 			this.list    = this.options.list;
-			console.log(this.list);
 
 			// Handle Events
 			var self = this;

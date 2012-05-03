@@ -1,9 +1,18 @@
 	
+	UP.WeightCollection = Backbone.Collection.extend({
+		model: UP.Weight,
+
+		comparator: function(todo) {
+//			return this.model.get('value');
+		}
+
+	});
+
 	UP.MethodCollection = Backbone.Collection.extend({
 		model: UP.Method,
 
 		comparator: function(todo) {
-			return this.model.get('value');
+//			return this.model.get('value');
 		}
 
 	});
@@ -12,8 +21,8 @@
 	UP.ConstraintCollection = Backbone.Collection.extend({
 		model: UP.Constraint,
 
-		comparator: function(todo) {
-//			return this.model.get('value');
+		comparator: function(model) {
+			return model.get('cid');
 		}
 
 	});

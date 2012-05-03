@@ -1,41 +1,18 @@
-	
-	UP.Weight = function(constraint, value) {
-		// Private vars
-		var constraint = constraint;
-		var value = value;
-		
-		// Public API
-		var obj = {};
-		obj.weightOfConstraint = function(c) {
-			if (constraint == c) {
-				return value;
-			}
-		};
-		
-		return obj;
-	}
-	
-	/*
+
 	UP.Weight = Backbone.Model.extend({
-		defaults: {
-			constraint: "",
-			numWeight: 0
-		},
+		initialize: function(constraint, value) {
+			this.constraint = constraint;
+			this.value = value;
 
-		initialize: function(constraint, numWeight) {
-			this.set({
-				"constraint" : constraint,
-				"numWeight" : numWeight
+			var self = this;
+			this.constraint.on("change", function() {
+				self.trigger('change', self.value);
+				self.value *= (-1);
 			});
-		},
-
-		weightOfConstraint : function(constraintName) {
-			if (constraintName === this.constraint) {
-				return numWeight;
-			}
 		}
+
 	});
-	*/
+
 
 	UP.Slider = Backbone.Model.extend({
 		initialize: function() {
@@ -90,16 +67,30 @@
 				"selected": true,
 				"value": 0
 			});
+
+			var self = this;
+			weights.each(function(w) {
+				_.extend(w, Backbone.Events);
+				w.on('change', function() {
+					return self.calculateValue(w.value);
+				});
+			});
+
 		},
 		
-		calculateValue: function() {
-			// Según la constraint seleccionada, se aplicará el peso correspondiente al valor total
-			//this.value += ;
+		calculateValue: function(weightValue) {
+			var oldValue = this.get('value');
+
+			this.set({
+				value : oldValue + weightValue
+			});
+
+			console.log("el valor del metodo ha cambiado = " + this.get('value'));
 		}
 		
 	});
 	
-	
+
 	UP.Constraint = Backbone.Model.extend({		
 		initialize: function(name, description) {
 			this.set({
@@ -112,12 +103,10 @@
 		changeSelection: function() {
 			var selected = this.get('selected');
 			this.set({ "selected" : !selected });
-
-			// En cuanto una constraint ha sido seleccionada, los modelos de Methods deben recalcular su valor
 		}
 		
 	});
-	
+	_.extend(UP.Constraint, Backbone.Events);	
 	
 	UP.Subactivity = Backbone.Model.extend({
 		initialize: function(name, description, methodsCol) {
