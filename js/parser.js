@@ -169,6 +169,9 @@
 
 		}); // end of ajax-get request
 
+		// Starting out the system
+		var App = new UP.App(window);
+
 
 	})();  // end of function
 
