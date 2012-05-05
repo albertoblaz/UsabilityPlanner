@@ -138,45 +138,88 @@ REMEMBER: Don't use "quotes" inside of a description, name or atributte in gener
 		<activity name="Analysis" description="This activity consists on grouping a set of usability concepts and techniques based on the identification and comprehension of the users needs according to their features, their problems and the context where they are inmerse">
 			<subactivity name="User Analysis" description="Analysis of the potential users that will use the system">
 				<method name="Affinity diagramming 1" description="A participatory method where concepts written on cards are sorted into logical groups on the wall" url="http://www.usabilitybok.org/methods/affinity-diagram">
-					<constraint weight="1">Need quick results</constraint>
-					<constraint weight="1">Very restricted budget</constraint>
+					<constraint weight="2">Need quick results</constraint>
+					<constraint weight="4">Very restricted budget</constraint>
+					<constraint weight="5">Usability important</constraint>
 				</method>
 				<method name="Affinity diagramming 2" description="A participatory method where concepts written on cards are sorted into logical groups on the wall" url="http://www.usabilitybok.org/methods/affinity-diagram">
 					<constraint weight="3">Need quick results</constraint>
 					<constraint weight="4">Very restricted budget</constraint>
+					<constraint weight="2">Usability important</constraint>
+				</method>
+				<method name="Affinity diagramming 3" description="A participatory method where concepts written on cards are sorted into logical groups on the wall" url="http://www.usabilitybok.org/methods/affinity-diagram">
+					<constraint weight="5">Need quick results</constraint>
+					<constraint weight="5">Very restricted budget</constraint>
+					<constraint weight="1">Usability important</constraint>
+				</method>
+				<method name="Affinity diagramming 4" description="A participatory method where concepts written on cards are sorted into logical groups on the wall" url="http://www.usabilitybok.org/methods/affinity-diagram">
+					<constraint weight="1">Need quick results</constraint>
+					<constraint weight="1">Very restricted budget</constraint>
+					<constraint weight="4">Usability important</constraint>
+				</method>
+				<method name="Affinity diagramming 5" description="A participatory method where concepts written on cards are sorted into logical groups on the wall" url="http://www.usabilitybok.org/methods/affinity-diagram">
+					<constraint weight="3">Need quick results</constraint>
+					<constraint weight="1">Very restricted budget</constraint>
+					<constraint weight="2">Usability important</constraint>
+				</method>
+				<method name="Affinity diagramming 6" description="A participatory method where concepts written on cards are sorted into logical groups on the wall" url="http://www.usabilitybok.org/methods/affinity-diagram">
+					<constraint weight="1">Need quick results</constraint>
+					<constraint weight="3">Very restricted budget</constraint>
+					<constraint weight="4">Usability important</constraint>
+				</method>
+				<method name="Affinity diagramming 7" description="A participatory method where concepts written on cards are sorted into logical groups on the wall" url="http://www.usabilitybok.org/methods/affinity-diagram">
+					<constraint weight="1">Need quick results</constraint>
+					<constraint weight="5">Very restricted budget</constraint>
+					<constraint weight="1">Usability important</constraint>
 				</method>
 			</subactivity>
 
 
 			<subactivity name="Task Analysis" description="To know how the user works and do his tasks with the current resources">
-				<method name="Affinity diagramming " description="A participatory method where concepts written on cards are sorted into logical groups on the wall" url="http://www.usabilitybok.org/methods/affinity-diagram">
+				<method name="Affinity diagramming 8" description="A participatory method where concepts written on cards are sorted into logical groups on the wall" url="http://www.usabilitybok.org/methods/affinity-diagram">
+					<constraint weight="5">Need quick results</constraint>
+					<constraint weight="5">Very restricted budget</constraint>
 				</method>
 			</subactivity>
 
 
 			<subactivity name="Concept Product Design" description="To think of what kind of features must be satisfied according to the current user needs">
-				<method name="Affinity diagramming " description="A participatory method where concepts written on cards are sorted into logical groups on the wall" url="http://www.usabilitybok.org/methods/affinity-diagram">
+				<method name="Affinity diagramming 9" description="A participatory method where concepts written on cards are sorted into logical groups on the wall" url="http://www.usabilitybok.org/methods/affinity-diagram">
+					<constraint weight="1">Need quick results</constraint>
+					<constraint weight="1">Very restricted budget</constraint>
 				</method>
 			</subactivity>
 
 
 			<subactivity name="Prototyping" description="Development of rapid prototypes to see common mistakes and think how to fix them">
-				<method name="Affinity diagramming 1" description="A participatory method where concepts written on cards are sorted into logical groups on the wall" url="http://www.usabilitybok.org/methods/affinity-diagram">
+				<method name="Affinity diagramming 10" description="A participatory method where concepts written on cards are sorted into logical groups on the wall" url="http://www.usabilitybok.org/methods/affinity-diagram">
+					<constraint weight="2">Need quick results</constraint>
+					<constraint weight="4">Very restricted budget</constraint>
 				</method>
 
-				<method name="Affinity diagramming 2" description="A participatory method where concepts written on cards are sorted into logical groups on the wall" url="http://www.usabilitybok.org/methods/affinity-diagram">
+				<method name="Affinity diagramming 11" description="A participatory method where concepts written on cards are sorted into logical groups on the wall" url="http://www.usabilitybok.org/methods/affinity-diagram">
+					<constraint weight="5">Need quick results</constraint>
+					<constraint weight="1">Very restricted budget</constraint>
 				</method>
 			</subactivity>
 
 
 			<subactivity name="Requirements Specification" description="To establish a set of requierements or usability objectives that a developer must to improve the user experience">
-				<method name="Affinity diagramming 1" description="A participatory method where concepts written on cards are sorted into logical groups on the wall" url="http://www.usabilitybok.org/methods/affinity-diagram">
+				<method name="Affinity diagramming 12" description="A participatory method where concepts written on cards are sorted into logical groups on the wall" url="http://www.usabilitybok.org/methods/affinity-diagram">
+					<constraint weight="2">Need quick results</constraint>
+					<constraint weight="2">Very restricted budget</constraint>
 				</method>
-				<method name="Affinity diagramming 2" description="A participatory method where concepts written on cards are sorted into logical groups on the wall" url="http://www.usabilitybok.org/methods/affinity-diagram">
+				<method name="Affinity diagramming 13" description="A participatory method where concepts written on cards are sorted into logical groups on the wall" url="http://www.usabilitybok.org/methods/affinity-diagram">
+					<constraint weight="3">Need quick results</constraint>
+					<constraint weight="3">Very restricted budget</constraint>
 				</method>
-				<method name="Affinity diagramming 3" description="A participatory method where concepts written on cards are sorted into logical groups on the wall" url="http://www.usabilitybok.org/methods/affinity-diagram">
+				<method name="Affinity diagramming 14" description="A participatory method where concepts written on cards are sorted into logical groups on the wall" url="http://www.usabilitybok.org/methods/affinity-diagram">
+					<constraint weight="1">Need quick results</constraint>
+					<constraint weight="3">Very restricted budget</constraint>
 				</method>
-				<method name="Affinity diagramming 4" description="A participatory method where concepts written on cards are sorted into logical groups on the wall" url="http://www.usabilitybok.org/methods/affinity-diagram">
+				<method name="Affinity diagramming 15" description="A participatory method where concepts written on cards are sorted into logical groups on the wall" url="http://www.usabilitybok.org/methods/affinity-diagram">
+					<constraint weight="4">Need quick results</constraint>
+					<constraint weight="2">Very restricted budget</constraint>
 				</method>
 			</subactivity>
 
