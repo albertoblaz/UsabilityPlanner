@@ -211,17 +211,11 @@ echo($proc->transformToXML($xml));
 	<script type="text/javascript" src="js/lib/underscore-1.3.3.min.js"></script>
 	<script type="text/javascript" src="js/lib/backbone-0.9.2.min.js"></script>
 
-
-	<script type="text/javascript" src="js/mvc/app.js"></script>
-	
-	<script type="text/javascript" src="js/mvc/models.js"></script>
-	<script type="text/javascript" src="js/mvc/collections.js"></script>
-	<script type="text/javascript" src="js/mvc/views.js"></script>
-
-	<script type="text/javascript" src="js/parser.js"></script>
-
-	<script type="text/javascript" src="js/animations/stages.js"></script>
-	
+	<script type="text/javascript" src="js/init.js"></script>
+	<script type="text/javascript" src="js/models.js"></script>
+	<script type="text/javascript" src="js/controllers.js"></script>
+	<script type="text/javascript" src="js/collections.js"></script>
+	<script type="text/javascript" src="js/app.js"></script>
 </body>
 	
 </html>
