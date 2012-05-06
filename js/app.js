@@ -2,10 +2,13 @@
 	UP.App = Backbone.Controller.extend({
 		initialize: function(window) {
 			this.window = window;
-			this.sliderController = new UP.SliderView({ model: new UP.Slider() });
+
 			this.constraintsCol = new UP.ConstraintCollection();
-			this.activitiesCol  = new UP.ActivityCollection();
 			this.allMethodsCol = new UP.MethodCollection();
+
+			//this.activitiesCol  = new UP.ActivityCollection();
+			this.activities = [];
+
 
 
 			// Parsing XML
@@ -16,10 +19,19 @@
 			this.stages   = $('.stage');
 			this.backLink = $('.back');	
 			this.nextLink = $('.next');	
+
+			this.expandButton   = $('#expand');
+			this.collapseButton = $('#collapse');
+
+			this.currentStage  = 0;
+
 			this.container = $('.container'); 
 			this.contents = this.container.find('.main-content');
-			this.currentStage  = 0;
+
 			this.mainContainer = $('.main-container');
+
+			this.slidervalue = UP.constants.SLIDER_VALUE;
+			this.slider = $('#slider');	
 
 
 			// Handle Events
@@ -35,9 +47,11 @@
 		},
 
 		parseXML: function(pathToXML) {
-		var app = this;
-		$.get(pathToXML, function(xml) {
+			var app = this;
+
 			// Caching XML object
+			$.get(pathToXML, function(xml) { 
+
 			var $xml = $(xml);
 
 			// Parsing constraints in XML file
@@ -71,7 +85,7 @@
 
 			var arrayActivityViews = [];
 
-			var totalcounter      = new UP.Counter();			// Creating the Total Counter
+			var totalcounter      = new UP.Totalcounter();			// Creating the Total Counter
 			var totalcounterView  = new UP.TotalcounterView({
 				model: totalcounter,
 				el: $('.total-counter')
@@ -97,8 +111,9 @@
 					var description = self.attr('description');
 					var methods     = self.find('method');
 
-					var $DOMMethods = $DOMSubactivitiesList.eq(j).find('.method');
-					var methodsCol  = new UP.MethodCollection();
+					var $DOMMethods  = $DOMSubactivitiesList.eq(j).find('.method');
+					var methodsCol   = new UP.MethodCollection();
+					var arrayMethods = [];
 
 					// Parsing methods in XML file
 
@@ -135,6 +150,9 @@
 							model: mmodel,
 							el: mitem
 						});
+
+						arrayMethods.push(mview);
+
 					});
 
 					var smodel = new UP.Subactivity(name, description, methodsCol);			// Creating a new 'Subactivity' model object
@@ -149,37 +167,41 @@
 						list: slist
 					});
 
+					sview.setMethods(arrayMethods);
 					arraySubactivityViews.push(sview);
 				});
 
+				// Creating the counter for each activity
+
+				var cview = $DOMActivitiesCounter.eq(i);
+				var cmodel = new UP.Counter();
+				var ccontroller  = new UP.CounterView({
+					model: cmodel,
+					el: cview,
+					totalcounter: totalcounterView
+				});
+
 				// Creating a new 'Activity' model object
-				console.log(subactivitiesCol);
+
 				var amodel = new UP.Activity(name, description, subactivitiesCol);		// Creating a new 'Activity' model object
-				app.activitiesCol.add(amodel);							// Adding the 'Activity' object to the collection
+				//app.activitiesCol.add(amodel);							// Adding the 'Activity' object to the collection
 
 				// Creating a new activity view object
 				var ablock   = $DOMActivities.eq(i);
 				var alist    = $DOMActivitiesList.eq(i);
 				var atab     = $DOMActivitiesTab.eq(i);
-				var acounter = $DOMActivitiesCounter.eq(i);
+
 				var aview    = new UP.ActivityView({			// Creating a new 'Activity' controller object
 					model: amodel,
 					block: ablock,
-					list: alist,
 					tab: atab,
-					counter: acounter
+					list: alist,
+					counter: ccontroller,
+					subactivities : arraySubactivityViews
 				});
 
 				aview.setSubactivities(arraySubactivityViews);
-
 				arrayActivityViews.push(aview);
-
-				var cmodel = new UP.Counter();			// Creating the counter for each activity
-				var cview  = new UP.CounterView({
-					model: cmodel,
-					el: acounter,
-					totalcounter: totalcounterView
-				});
 
 			}); // end of 'activities' parsing
 
@@ -192,9 +214,9 @@
 				view.setActivities(arrayActivityViews);
 			}
 
+			app.activities = arrayActivityViews;
 
-		}); // end of ajax-get request
-
+			});
 
 		},
 
@@ -213,6 +235,14 @@
 
 			this.nextLink.on("click", function(event) {
 				self.nextLinkEvent(event)
+			});
+
+			this.expandButton.on("click", function(event) {
+				self.expandButtonEvent(event);
+			});
+
+			this.collapseButton.on("click", function(event) {
+				self.collapseButtonEvent(event);
 			});
 
 
@@ -236,27 +266,22 @@
 				self.allMethodsCol.each(function(method) {
 					method.updateView();
 				});
+
+				self.hideMethods(self.slidervalue);
 			});
 
-
-			/*
-			self.constraintsCol.on('change', function() {
-				var activities = self.activitiesCol.models;
-				for ( var i=0; i < activities.length; i++ ) {
-					var activity = activities[i];
-					var subactivities = activity.get('subactivitiesCol').models;
-					for ( var j=0; j < subactivities.length; j++ ) {
-						var subactivity = subactivities[j];
-						var methods = subactivity.get('methodsCol').sort().models;
-						for ( var k=0; k < methods.length; k++ ) {
-							var method = methods[k];
-							//method.updateView();
-							method.calculateValue();
-						}
-					}
+			this.slider.slider({		/* Slider Widget Configuration Setup */
+				orientation: "horizontal",
+				range: "min",
+				min: 0,
+				max: UP.constants.VALUE.length-1,
+				value: this.slidervalue,
+				animate: true,
+				slide: function(event, ui) {	// Event function to perfom
+					self.hideMethods(ui.value);
 				}
 			});
-			*/
+
 		},
 
 		animate: function(newIndex, oldIndex) {
@@ -298,6 +323,32 @@
 				this.animate(this.currentStage, oldStage);
 			}
 		},
+
+		expandButtonEvent: function(event) {
+			for ( var i=0; i < this.activities.length; i++ ) {
+				this.activities[i].expandList();
+			}
+		},
+
+		collapseButtonEvent: function(event) {
+			for ( var i=0; i < this.activities.length; i++ ) {
+				this.activities[i].collapseList();
+			}
+		},
+
+		hideMethods: function(newSliderValue) {
+			this.slidervalue = newSliderValue;			// Updating the old value for next function call
+
+			for ( var i=0; i < this.activities.length; i++ ) {
+				var subs = this.activities[i].subactivities;
+				for ( var j=0; j < subs.length; j++ ) {
+					subs[j].hideMethods(newSliderValue);	// Showing or hiding methods on the lists
+				}
+
+				this.activities[i].updateCountersView();
+			}
+
+		}
 
 	});
 
