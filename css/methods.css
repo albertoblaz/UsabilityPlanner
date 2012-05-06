@@ -39,6 +39,7 @@
 #constraints-selection {
 	background: white;
 	border: #C6D3DA 1px solid;
+	border-bottom: 0;
 	width: 33%;
 	min-width: 309px;
 }
@@ -111,12 +112,17 @@
 
 #methods-selection .info-activity {
 	/* margin: 10px 20px; */
-	width: 95%;
 	margin: 0 auto;
+	height: 100%;
+	width: 95%;
 }
 
 .info-activity .info-subactivity {
 	padding: 0 20px;
+}
+
+.last-subactivity {
+	margin-bottom: 40px;
 }
 
 .expandable {
