@@ -5,30 +5,8 @@
 				"constraint" : constraint,
 				"value" : value
 			});
-/*
-			var self = this;
-			this.constraint.on("change", function() {
-				self.trigger('change', self.value);
-				self.value *= (-1);
-			});
-*/
 		}
 
-	});
-
-
-	UP.Slider = Backbone.Model.extend({
-		initialize: function() {
-			this.set({
-				slidervalue : 1
-			});
-		},
-
-		updateValue: function(newvalue) {
-			this.set({
-				slidervalue: newvalue
-			});
-		}
 	});
 
 	
@@ -39,25 +17,29 @@
 			});
 		},
 
-		increment: function(amount) {
-			var inc;
-			if (amount > 0)   inc = amount;
-			else              inc = 1;
+		updateCounterValue: function(amount) {
+			this.set({ value : amount });
+		}
+	});
 
+
+	UP.Totalcounter = Backbone.Model.extend({
+		initialize: function() {
 			this.set({
-				value: this.get('value') + inc
+				value : 0
 			});
 		},
 
-		decrement: function() {
-			var inc;
-			if (amount > 0)   inc = amount;
-			else              inc = 1;
+		increment: function(amount) {
+			var newValue = this.get('value') + amount;
+			this.set({ value : newValue });
+		},
 
-			this.set({
-				value: this.get('value') - inc
-			});
+		decrement: function(amount) {
+			var newValue = this.get('value') - amount;
+			this.set({ value : newValue });
 		}
+
 	});
 
 
@@ -70,15 +52,6 @@
 				"selected": true,
 				"value": 0
 			});
-/*
-			var self = this;
-			weights.each(function(w) {
-				_.extend(w, Backbone.Events);
-				w.on('change', function() {
-					return self.calculateValue(w.value);
-				});
-			});
-*/
 		},
 
 		calculateValue: function() {
@@ -104,20 +77,15 @@
 			console.log(this.get('name') + ": " + this.get('value'));
 		},
 
-/*		
-		calculateValue: function(weightValue) {
-			var oldValue = this.get('value');
-
-			this.set({
-				value : oldValue + weightValue
-			});
-		},
-*/
 		updateView: function() {
 			this.trigger('updatePosition');
-			//this.change();
 		},
-		
+
+		changeSelection: function() {
+			var selected = this.get('selected');
+			this.set({ "selected" : !selected });
+		}
+	
 	});
 	
 
@@ -136,7 +104,6 @@
 		}
 		
 	});
-	_.extend(UP.Constraint, Backbone.Events);	
 	
 	UP.Subactivity = Backbone.Model.extend({
 		initialize: function(name, description, methodsCol) {
@@ -163,8 +130,8 @@
 			this.set({
 				"name" : name,
 				"description" : description,
-				"subactivitiesCol" : subactivitiesCol
+				"subactivitiesCol" : subactivitiesCol,
 			});
 		}
-		
+
 	});
