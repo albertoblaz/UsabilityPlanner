@@ -17,40 +17,12 @@
 		}
 		
 	});
-	
-
-	UP.SliderView = Backbone.Controller.extend({
-		slidervalue: 0,
-
-		initialize: function() {
-			this.slidervalue = this.model.get('slidervalue');
-
-			this.$el = $('#slider');
-
-			this.$el.slider({	/* Slider Configuration Setup */
-				orientation: "horizontal",
-				range: "min",
-				min: 0,
-				max: UP.constants.VALUE.length-1,
-				value: this.slidervalue,
-				animate: true,
-				slide: this.moveSlider	// Event function to perfom
-			});
-		},
-
-		moveSlider: function(event, ui) {
-			var newSliderValue = ui.value;			// Updating slide text value
-			this.slidervalue = newSliderValue;			// Updating the old value for next function call
-
-			fadingMethods(newSliderValue);			// Showing or hiding methods on the lists
-		}
-
-	});
 
 
 	UP.CounterView = Backbone.Controller.extend({
 		initialize: function() {
 			this.totalcounter = this.options.totalcounter;
+
 			this.$el.on("click", this.scrollToList);
 		},
 
@@ -65,21 +37,25 @@
 			$('html, body').animate({scrollTop: sectionPosition}, UP.constants.FADE_SPEED);
 		},
 
-		increment: function(amount) {
-			this.totalcounter.increment(amount);
-			this.model.increment(amount);
-			this.updateFilterCount(true);
-		},
+		updateCounter: function(newValue) {
+			var oldValue = this.model.get('value');
 
-		decrement: function(amount) {
-			this.totalcounter.decrement(amount);
-			this.model.decrement(amount);
-			this.updateFilterCount(false);
-		},
+			this.model.set({ value : newValue });
+			this.$el.find('.filter-count').text(newValue);
 
-		updateFilterCount: function(incrementing) {
-			var value = this.model.get('value');
-			this.$el.find('.filter-count').text(value);
+
+			console.log("newValue = " + newValue);
+			console.log("oldValue = " + oldValue);
+
+			var amount = newValue - oldValue;
+			if ( amount < 0 ) {
+				amount = Math.abs(amount);
+				console.log("Final amount = " + amount);
+				this.totalcounter.decrement(amount);
+			} else if ( amount > 0 ) {
+				console.log("Final amount = " + amount);
+				this.totalcounter.increment(amount);
+			}
 		}
 		
 	});
@@ -88,12 +64,17 @@
 	UP.TotalcounterView = Backbone.Controller.extend({
 		increment: function(amount) {
 			this.model.increment(amount);
-			this.updateFilterCount(true);
+			this.updateFilterCount();
 		},
 
 		decrement: function(amount) {
 			this.model.decrement(amount);
-			this.updateFilterCount(false);
+			this.updateFilterCount();
+		},
+
+		updateFilterCount: function() {
+			var newValue = this.model.get('value');
+			this.$el.find('.filter-count').text(newValue);
 		}
 		
 	});
@@ -105,7 +86,7 @@
 			this.options.$el = $jqNode;
 
 			// Observing model
-			this.model.on('change', this.render, this);
+			this.model.on('change:value', this.render, this);
 			this.model.on('updatePosition', this.updatePosition, this);
 
 			// Event Handlers
@@ -117,11 +98,7 @@
 
 			this.$el.find('.method-info').on("click", this.displayInfoEvent);
 		},
-		
-		events: {
-			//"click .method-info" : "displayInfoEvent"
-		},
-		
+			
 		render: function(method) {
 			var color;
 			var textValue = "";
@@ -162,13 +139,11 @@
 			this.disableMethodAnimation(method);
 
 			this.model.changeSelection();
-
-			// Updating tab counters value
-			//updateFilterCounters();
 		},
 		
 		displayInfoEvent: function() {
 			var FADE_SPEED = UP.constants.FADE_SPEED;
+			var METHOD_HEIGHT = UP.constants.METHOD_HEIGHT;
 
 			var $this = $(this);
 			var description  = $this.siblings('.method-description');
@@ -178,14 +153,16 @@
 			if (description.hasClass('hidden')) {
 				description.css({opacity: 0});
 				description.removeClass('hidden');
-				
+
+				method.css({ height: METHOD_HEIGHT });
+
 				var height = description.height() + 40;
 				method.stop().animate({height: height}, FADE_SPEED);
 				
 				description.stop().animate({opacity: 1}, FADE_SPEED);
 				expandButton.addClass('expanded');
 			} else {
-				method.stop().animate({height: 25}, FADE_SPEED);
+				method.stop().animate({height: METHOD_HEIGHT}, FADE_SPEED);
 				description.stop().animate({opacity: 0}, FADE_SPEED, function() {
 					description.addClass('hidden');
 				});
@@ -209,6 +186,14 @@
 				li.animate({opacity: DISABLED_OPACITY}, FADE_SPEED);
 				bar.animate({opacity: DISABLED_OPACITY}, FADE_SPEED);
 			}
+		}, 
+
+		isSelected: function() {
+			return this.model.get('selected');
+		},
+
+		isVisible: function() {
+			return this.$el.hasClass('visible');
 		}
 
 	});
@@ -223,7 +208,7 @@
 			// Handle Events
 			var self = this;
 			this.item.on("click", function() {
-				return self.displayList();
+				self.displayList();
 			});
 
 			this.list.find('.expandable').on('click', function() {
@@ -237,6 +222,8 @@
 			
 			this.list.toggleClass('hidden');
 			this.model.changeSelection();		// Actualizar el modelo de 'Subactivity' llamando a su método select
+
+			constraintsSelectionFix();
 		},
 
 		expandList: function() {
@@ -250,46 +237,6 @@
 			}
 
 			header.toggleClass('collapsed');
-		},
-
-		reorderMethods: function() {
-/*			var listMethods = this.list.find('.list-method');
-			var methods = listMethods.find('.method');
-			var VALUES = UP.constants.VALUE;
-
-			var i, j;
-			for ( i=0; i < VALUES.length; i++ ) {
-				for ( j=0; j < methods.lentgh; j++ ) {
-					if (m
-				}
-			}
-*/
-		},
-
-		fadingMethods: function() {
-
-	/*
-	fadingMethods(newSliderValue) {
-		var i, j;
-		var text;
-		var methods = $('.method');
-		
-		methods.addClass('hidden').removeClass('visible').removeClass('last-method');
-		
-		for (i=0; i < methods.length; i++) {
-			text = methods.eq(i).find('.valoration').text();
-			for (j=0; j <= newSliderValue && j < valoration.length; j++) {
-				if (text != 'null' && text != 'undefined' && text.localeCompare(valoration[j]) == 0) {
-					methods.eq(i).removeClass('hidden').addClass('visible');
-				}
-			}
-		}
-		
-		for (i=0; i < lists.length; i++) {
-			lists.eq(i).find('.visible').last().addClass('last-method');
-		}
-	}
-	*/
 		},
 
 		slideUp: function(headerVisible) {
@@ -312,7 +259,44 @@
 					this.list.slideDown(UP.constants.SLIDE_SPEED, slideDownFix);
 				}
 			}
-		}
+		},
+
+		hideMethods: function(slidervalue) {
+			var VALUES = UP.constants.VALUE;
+			var stringValue;
+			var i, j;
+			
+			var methods = this.list.find('.method');
+			methods.addClass('hidden').removeClass('visible').removeClass('last-method');
+
+			for ( i=0; i < methods.length; i++ ) {
+				stringValue = methods.eq(i).find('.valoration').text();
+				for ( j=0; j <= slidervalue && j < VALUES.length; j++ ) {
+					if ( stringValue != "" && stringValue != undefined && stringValue.localeCompare(VALUES[j]) == 0) {
+						methods.eq(i).removeClass('hidden').addClass('visible');
+					}
+				}
+			}
+
+			var visibleMethods = methods.filter('.visible');
+			visibleMethods.last().addClass('last-method');
+		},
+
+		setMethods: function(methods) {
+			this.methods = methods;
+		},
+
+		isSelected: function() {
+			return this.model.get('selected');
+		},
+
+		addClassIfLast: function() {
+			console.log("entramos aqui");
+			var subs = $('.info-subactivity').not('hidden');
+			if ( this.list == subs.last() ) {
+				this.list.addClass('last-subactivity');
+			}
+		},
 
 	});
 
@@ -320,10 +304,11 @@
 	UP.ActivityView = Backbone.Controller.extend({
 		initialize: function() {
 			this.model   = this.options.model;				// The Activity Model
-			this.counter = this.options.counter;			// Counter Controller related to this Activity
 			this.block   = this.options.block;				// View: Panel with the description on Activities Window
 			this.tab     = this.options.tab;				// View: Tab above the panel
 			this.list    = this.options.list;				// View: Panel with the description on Activities Window
+			this.counter = this.options.counter;
+			this.subactivities = [];
 
 
 			// Handle Events
@@ -334,7 +319,11 @@
 			});
 
 			this.list.children('.expandable').on('click', function() {
-				return self.expandList();
+				if ( $(this).hasClass('collapsed') ) {
+					self.expandList();
+				} else {
+					self.collapseList();
+				}
 			});
 		},
 
@@ -352,17 +341,25 @@
 		expandList: function() {
 			var header = this.list.children('.expandable');
 
-			if (header.hasClass('collapsed')) {
+			if ( header.hasClass('collapsed') ) {
 				for (var i=0; i<this.subactivities.length; i++) {
 					this.subactivities[i].slideDown();
 				}
-			} else {
+			} 
+
+			header.removeClass('collapsed');
+		},
+
+		collapseList: function() {
+			var header = this.list.children('.expandable');
+
+			if ( !header.hasClass('collapsed') ) {
 				for (var i=0; i<this.subactivities.length; i++) {
 					this.subactivities[i].slideUp();
 				}
 			}
 
-			header.toggleClass('collapsed');
+			header.addClass('collapsed');
 		},
 
 		hideRestOfActivities: function() {
@@ -379,16 +376,47 @@
 			this.block.addClass('hidden');
 		},
 
-		updateCounter: function(increment) {
-			if (increment == true) {
-				this.counter.increment();
-			} else {
-				this.counter.decrement();
+		updateCountersView: function() {	// En cuanto un metodo cambie
+			console.log("updateCountersView");
+			var count = 0;
+
+			for ( var i=0; i < this.subactivities.length; i++ ) {
+				var subactivity = this.subactivities[i];
+				if ( subactivity.isSelected() ) {
+					var methods = this.subactivities[i].methods;
+					for ( var j=0; j < methods.length; j++ ) {
+						var m = methods[j];
+						if ( m.isSelected() && m.isVisible() ) {
+							count++;
+						}
+					}
+				}
 			}
+			
+			this.counter.updateCounter(count);
 		},
 
 		setSubactivities: function(subactivities) {
 			this.subactivities = subactivities;
+
+			var self = this;
+
+			for ( var i=0; i < this.subactivities.length; i++ ) {
+				var subactivity = this.subactivities[i];
+				var methods = subactivity.methods;
+				for ( var j=0; j < methods.length; j++ ) {
+					methods[j].model.on('change:selected', self.updateCountersView, this);
+				}
+
+				subactivity.model.on('change:selected', function() {
+					if ( subactivity.isSelected() ) {
+						console.log("dentro del if");
+						subactivity.addClassIfLast();
+					}
+
+					this.updateCountersView();
+				}, this);
+			}
 		},
 
 		setActivities: function(activities) {
@@ -396,6 +424,16 @@
 		}
 
 	});
+
+
+	/* Auxiliary Function */
+
+	function activateCheckbox(obj) {
+		obj.find('a').toggleClass('checked');
+	}
+
+
+	/* Subactivities Callback Fixes */
 
 	function slideUpFix() {
 		$(this).css({display : ""}).addClass('hidden');
@@ -405,6 +443,10 @@
 		$(this).removeClass('hidden');
 	}
 
-	function activateCheckbox(obj) {
-		obj.find('a').toggleClass('checked');
+
+	/* Constraint Aside Panel Fix */
+
+	function constraintsSelectionFix() {
+		var cs = $('#constraints-selection');
+		cs.height( cs.parent('.content').height() );
 	}
