@@ -42,7 +42,7 @@
 </xsl:template>
 
 <xsl:template match="method">
-	<li class="method">
+	<li class="method visible">
 		<span class="checkboxWrapper"><a href="#" class="checkbox checked"></a><input type="checkbox" class="hidden" /></span>
 
 		<div class="method-info">
@@ -50,8 +50,8 @@
 				<xsl:value-of select="@name" />
 			</p>
 			<div class="expand-button right"></div>
-			<p class="valoration right">strongly recommended</p>
-			<div class="meter right"><span class="green bar"></span></div>
+			<p class="valoration right"></p>
+			<div class="meter right"><span class="bar"></span></div>
 		</div>
 										
 		<article class="method-description hidden">
