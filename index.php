@@ -109,11 +109,13 @@ echo($proc->transformToXML($xml));
 				</header>
 
 				<div class="recommendation">
-					<p class="title">Method Filtering</p>
-					<div class="filter">
-						<p>Most Recommended</p>
-						<div id="slider"></div>
-						<p>All methods</p>
+					<div class="inner-recommendation">
+						<p class="title">Method Filtering</p>
+						<div class="filter">
+							<p>Most Recommended</p>
+							<div id="slider"></div>
+							<p>All methods</p>
+						</div>
 					</div>
 				</div>
 
@@ -173,7 +175,39 @@ echo($proc->transformToXML($xml));
 				</header>
 
 				<div class="content">
-					<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+					<div class="btn-container right">
+
+						<div class="button right" id="btn-upload">
+							<p class="message">Upload a plan file</p>
+						</div>
+
+						<div class="button right" id="btn-download">
+							<a href="/php/download-plan.php"> <span>Download plan</span> </a>
+						</div>
+
+						<!-- input type="file" class="invisible" id="files" name="files" /-->
+						<form id="theuploadform" class="invisible">
+							<input type="file"   id="files"      class="invisible" name="files" />
+							<input type="submit" id="formsubmit" class="invisible" value="Send File" />
+						</form>
+
+						<div class="clear"></div>
+					</div>
+
+					<div>
+
+
+<?php
+$methods = new DomDocument();
+$methods->load('xsl/methods.xsl');
+
+$proc = new xsltprocessor();
+$proc->importStyleSheet($methods);
+
+echo($proc->transformToXML($xml));
+?>
+					</div>
+
 				</div>   <!-- #content -->
 
 			</article>   <!-- #plan -->
@@ -207,7 +241,7 @@ echo($proc->transformToXML($xml));
 	<script type="text/javascript" src="js/lib/html5shiv.js"></script>
 	<script type="text/javascript" src="js/lib/json2.js"></script>
 	<script type="text/javascript" src="js/lib/jquery-1.7.1.min.js"></script>
-	<script type="text/javascript" src="js/lib/jquery-ui-1.8.18.min.js"></script>
+	<script type="text/javascript" src="js/lib/jquery-ui-1.8.20.min.js"></script>
 	<script type="text/javascript" src="js/lib/underscore-1.3.3.min.js"></script>
 	<script type="text/javascript" src="js/lib/backbone-0.9.2.min.js"></script>
 
@@ -215,7 +249,11 @@ echo($proc->transformToXML($xml));
 	<script type="text/javascript" src="js/models.js"></script>
 	<script type="text/javascript" src="js/controllers.js"></script>
 	<script type="text/javascript" src="js/collections.js"></script>
+	<script type="text/javascript" src="js/parser.js"></script>
+	<script type="text/javascript" src="js/filemanager.js"></script>
 	<script type="text/javascript" src="js/app.js"></script>
+
+	<!-- script type="text/javascript" src="js/script.js"></script -->
 </body>
 	
 </html>
