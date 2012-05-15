@@ -2,6 +2,7 @@
 	var UP = UP || {};	
 	window.UP = UP;
 
+
 	/*
 	 * What the framework calls 'Views' are actually 'Controllers' 
 	 * so we rename the module by creating an object Controller that inherits every property of View
@@ -19,5 +20,6 @@
 		SLIDE_SPEED      : 300,
 		SLIDER_VALUE     : 1,
 		STAGES_SPEED     : 500,
-		VALUE            : [ "strongly recommended", "neutral", "slightly recommended", "not recommended" ]
+		VALUE            : [ "strongly recommended", "neutral", "slightly recommended", "not recommended" ],
+		XML              : 'xml/projectStagesDataDevelopers.xml'
 	};
