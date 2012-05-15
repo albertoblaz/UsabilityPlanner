@@ -1,11 +1,13 @@
 /* Recommendation */
 
 .recommendation {
-	background: rgb(235, 240, 243);
-	border: rgb(198, 211, 218) 1px solid;
-	border-right: 0;
+	background: #EBF0F3;
+	border: #C6D3DA 1px solid;
+	border-bottom: 0;
+	float: right;
+	margin-right: 0.5%;
 	height: 32px;
-	margin-left: 33.2%;
+	width: 66.2%;
 }
 
 .recommendation .title {
@@ -38,8 +40,7 @@
 
 #constraints-selection {
 	background: white;
-	border: #C6D3DA 1px solid;
-	border-bottom: 0;
+	border-right: #C6D3DA 1px solid;
 	width: 33%;
 	min-width: 309px;
 }
