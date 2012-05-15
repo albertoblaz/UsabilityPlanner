@@ -81,9 +81,11 @@
 	
 	
 	UP.MethodView = Backbone.Controller.extend({
-		initialize: function(model, $jqNode) {
-			this.options.model = model;
-			this.options.$el = $jqNode;
+		initialize: function() {
+			this.model      = this.options.model;
+			this.methodView = this.options.methodView;
+			this.planView   = this.options.planView;
+
 
 			// Observing model
 			this.model.on('change:value', this.render, this);
@@ -92,11 +94,12 @@
 			// Event Handlers
 			var self = this;
 
-			this.$el.find('.checkboxWrapper').on("click", function(e) {
-				return self.checkboxEvent(e);
+			this.methodView.find('.checkboxWrapper').on("click", function(e) {
+				self.checkboxEvent(e);
 			});
 
-			this.$el.find('.method-info').on("click", this.displayInfoEvent);
+			this.methodView.find('.method-info').on("click", this.displayInfoEvent);
+			this.planView.find('.method-info').on("click", this.displayInfoEvent);
 		},
 			
 		render: function(method) {
@@ -121,24 +124,29 @@
 				color = "red";
 			}
 
-			this.$el.find('.valoration').text(textValue);
-			this.$el.find('.bar').attr('class', 'bar').addClass(color);
+			this.methodView.find('.valoration').text(textValue);
+			this.methodView.find('.bar').attr('class', 'bar').addClass(color);
+
+			this.planView.find('.valoration').text(textValue);
+			this.planView.find('.bar').attr('class', 'bar').addClass(color);
 		},
 		
 		updatePosition: function() {
-			this.$el.parent().prepend(this.$el);
+			this.methodView.parent().prepend(this.methodView);
+			this.planView.parent().prepend(this.planView);
 		},
 
 		checkboxEvent: function(event) {
 			event.preventDefault();
 
-			var checkbox = this.$el.find('.checkboxWrapper');
+			var checkbox = this.methodView.find('.checkboxWrapper');
 			activateCheckbox(checkbox);
 
 			var method = checkbox.parent('.method');
 			this.disableMethodAnimation(method);
 
 			this.model.changeSelection();
+			this.planView.toggleClass('visible hidden');//.toggleClass('hidden');
 		},
 		
 		displayInfoEvent: function() {
@@ -188,12 +196,32 @@
 			}
 		}, 
 
+		hideMethod: function(slidervalue) {
+			var VALUES = UP.constants.VALUE;
+			var stringValue;			
+
+			this.methodView.addClass('hidden').removeClass('visible').removeClass('last-method');
+			this.planView.addClass('hidden').removeClass('visible').removeClass('last-method');
+			this.model.unselectMethod();
+
+			stringValue = this.methodView.find('.valoration').text();
+
+			for ( var j=0; j <= slidervalue && j < VALUES.length; j++ ) {
+				if ( stringValue.localeCompare( VALUES[j] ) == 0 ) {
+					this.methodView.removeClass('hidden').addClass('visible');
+					this.planView.removeClass('hidden').addClass('visible');
+					this.model.selectMethod();
+				}
+			}
+
+		},
+
 		isSelected: function() {
 			return this.model.get('selected');
 		},
 
 		isVisible: function() {
-			return this.$el.hasClass('visible');
+			return this.methodView.hasClass('visible');
 		}
 
 	});
@@ -201,9 +229,10 @@
 
 	UP.SubactivityView = Backbone.Controller.extend({
 		initialize: function() {
-			this.model   = this.options.model;
-			this.item    = this.options.item;
-			this.list    = this.options.list;
+			this.model    = this.options.model;
+			this.item     = this.options.item;
+			this.list     = this.options.list;
+			this.listPlan = this.options.listPlan;
 
 			// Handle Events
 			var self = this;
@@ -212,7 +241,11 @@
 			});
 
 			this.list.find('.expandable').on('click', function() {
-				return self.expandList();
+				self.expandList(self.list);
+			});
+
+			this.listPlan.find('.expandable').on('click', function() {
+				self.expandList(self.listPlan);
 			});
 		},
 
@@ -221,13 +254,14 @@
 			activateCheckbox(checkbox);
 			
 			this.list.toggleClass('hidden');
+			this.listPlan.toggleClass('hidden');
 			this.model.changeSelection();		// Actualizar el modelo de 'Subactivity' llamando a su método select
 
 			constraintsSelectionFix();
 		},
 
-		expandList: function() {
-			var header = this.list.find('.expandable');
+		expandList: function(list) {
+			var header = list.find('.expandable');
 			var headerVisible = true;
 
 			if (header.hasClass('collapsed')) {
@@ -244,8 +278,10 @@
 			if (selected) {
 				if (headerVisible == true) {
 					this.list.find('.list-methods').slideUp(UP.constants.SLIDE_SPEED, slideUpFix);
+					this.listPlan.find('.list-methods').slideUp(UP.constants.SLIDE_SPEED, slideUpFix);
 				} else {
 					this.list.slideUp(UP.constants.SLIDE_SPEED, slideUpFix);
+					this.listPlan.slideUp(UP.constants.SLIDE_SPEED, slideUpFix);
 				}
 			}
 		},
@@ -254,32 +290,23 @@
 			var selected = this.model.get('selected');
 			if (selected) {
 				if (headerVisible == true) {
-					this.list.find('.list-methods').slideDown(UP.constants.SLIDE_SPEED, slideDownFix);					
+					this.list.find('.list-methods').slideDown(UP.constants.SLIDE_SPEED, slideDownFix);
+					this.listPlan.find('.list-methods').slideDown(UP.constants.SLIDE_SPEED, slideDownFix);
 				} else {
 					this.list.slideDown(UP.constants.SLIDE_SPEED, slideDownFix);
+					this.listPlan.slideDown(UP.constants.SLIDE_SPEED, slideDownFix);
 				}
 			}
 		},
 
 		hideMethods: function(slidervalue) {
-			var VALUES = UP.constants.VALUE;
-			var stringValue;
-			var i, j;
-			
-			var methods = this.list.find('.method');
-			methods.addClass('hidden').removeClass('visible').removeClass('last-method');
-
-			for ( i=0; i < methods.length; i++ ) {
-				stringValue = methods.eq(i).find('.valoration').text();
-				for ( j=0; j <= slidervalue && j < VALUES.length; j++ ) {
-					if ( stringValue != "" && stringValue != undefined && stringValue.localeCompare(VALUES[j]) == 0) {
-						methods.eq(i).removeClass('hidden').addClass('visible');
-					}
-				}
+			for ( var i=0; i < this.methods.length; i++ ) {
+				this.methods[i].hideMethod(slidervalue);
 			}
 
-			var visibleMethods = methods.filter('.visible');
-			visibleMethods.last().addClass('last-method');
+			this.list.find('.visible').last().addClass('last-method');
+			this.listPlan.find('.visible').last().addClass('last-method');
+
 		},
 
 		setMethods: function(methods) {
@@ -296,18 +323,19 @@
 			if ( this.list == subs.last() ) {
 				this.list.addClass('last-subactivity');
 			}
-		},
+		}
 
 	});
 
 
 	UP.ActivityView = Backbone.Controller.extend({
 		initialize: function() {
-			this.model   = this.options.model;				// The Activity Model
-			this.block   = this.options.block;				// View: Panel with the description on Activities Window
-			this.tab     = this.options.tab;				// View: Tab above the panel
-			this.list    = this.options.list;				// View: Panel with the description on Activities Window
-			this.counter = this.options.counter;
+			this.model    = this.options.model;				// The Activity Model
+			this.block    = this.options.block;				// View: Panel with the description on 'Activities' Window
+			this.tab      = this.options.tab;					// View: Tab above the panel
+			this.list     = this.options.list;					// View: Subactivities List on 'Methods' Window
+			this.listPlan = this.options.listPlan;				// View: Subactivities List on 'Plan' Window
+			this.counter  = this.options.counter;
 			this.subactivities = [];
 
 
@@ -325,6 +353,15 @@
 					self.collapseList();
 				}
 			});
+
+			this.listPlan.children('.expandable').on('click', function() {
+				if ( $(this).hasClass('collapsed') ) {
+					self.expandList();
+				} else {
+					self.collapseList();
+				}
+			});
+
 		},
 
 		displayActivityEvent: function() {
