@@ -1,6 +1,6 @@
 	
 	UP.WeightCollection = Backbone.Collection.extend({
-		model: UP.Weight,
+		model: UP.Weight
 	});
 
 	UP.MethodCollection = Backbone.Collection.extend({
@@ -13,15 +13,15 @@
 
 	
 	UP.ConstraintCollection = Backbone.Collection.extend({
-		model: UP.Constraint,
+		model: UP.Constraint
 	});
 
 
 	UP.SubactivityCollection = Backbone.Collection.extend({
-		model: UP.Subactivity,
+		model: UP.Subactivity
 	});
 
 
 	UP.ActivityCollection = Backbone.Collection.extend({
-		model: UP.Activity,
+		model: UP.Activity
 	});
