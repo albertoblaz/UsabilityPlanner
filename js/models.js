@@ -5,7 +5,22 @@
 				"constraint" : constraint,
 				"value" : value
 			});
-		}
+		},
+/*
+		stringify: function() {
+			return {
+				constraint : this.get('constraint').get('name'),
+				value      : this.get('value')
+			};
+		},
+*/
+		getConstraintName: function() {
+			return this.get('constraint').get('name');
+		},
+
+		stringify: function() {
+			return (this.get('value') + ";" );
+		}		
 
 	});
 
@@ -49,7 +64,7 @@
 				"name": name,
 				"description": description,
 				"weights": weights,
-				"selected": true,
+				"selected": false,
 				"value": 0
 			});
 		},
@@ -84,8 +99,51 @@
 		changeSelection: function() {
 			var selected = this.get('selected');
 			this.set({ "selected" : !selected });
+		},
+
+		selectMethod: function() {
+			this.set({ "selected" : true });
+		},
+
+		unselectMethod: function() {
+			this.set({ "selected" : false });
+		},
+
+		isSelected: function() {
+			return this.get('selected');
+		},
+/*
+		stringify: function() {
+			var weights = [];
+			this.get('weights').each(function(w) {
+				weights.push( w.stringify() );
+			});
+
+			return {
+				name    : this.get('name'),
+				value   : this.get('value'),
+				weights : weights
+			};
+		},
+*/
+		stringifyWeights: function() {
+			var output = "";
+
+			this.get('weights').each(function(w) {
+				output += w.stringify();
+			});
+
+			return output;
+		},
+
+		stringify: function() {
+			var name    = this.get('name');
+			var value   = this.get('value');
+			var weights = this.stringifyWeights();
+
+			return (name + ";" + value + ";" + weights);
 		}
-	
+
 	});
 	
 
@@ -99,8 +157,12 @@
 		},
 
 		changeSelection: function() {
-			var selected = this.get('selected');
-			this.set({ "selected" : !selected });
+			var wasSelected = this.get('selected');
+			this.set({ "selected" : !wasSelected });
+		},
+
+		stringify: function() {
+			return (this.get('name') + ";") ;
 		}
 		
 	});
@@ -118,8 +180,18 @@
 		},
 
 		changeSelection: function() {
-			var selected = this.get('selected');
-			this.set({ "selected" : !selected });
+			var wasSelected = this.get('selected');
+			this.set({ "selected" : !wasSelected });
+
+			if ( wasSelected ) {
+				this.get('methodsCol').each(function(m) {
+					m.unselectMethod()
+				});
+			} else {
+				this.get('methodsCol').each(function(m) {
+					m.selectMethod()
+				});
+			}
 		}
 
 	});
@@ -130,7 +202,7 @@
 			this.set({
 				"name" : name,
 				"description" : description,
-				"subactivitiesCol" : subactivitiesCol,
+				"subactivitiesCol" : subactivitiesCol
 			});
 		}
 
