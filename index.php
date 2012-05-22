@@ -182,12 +182,11 @@ echo($proc->transformToXML($xml));
 						</div>
 
 						<div class="button right" id="btn-download">
-							<a href="/php/download-plan.php"> <span>Download plan</span> </a>
+							<p>Download plan</p>
 						</div>
 
-						<!-- input type="file" class="invisible" id="files" name="files" /-->
 						<form id="theuploadform" class="invisible">
-							<input type="file"   id="files"      class="invisible" name="files" />
+							<input type="file"   id="userfile"   class="invisible" name="files" />
 							<input type="submit" id="formsubmit" class="invisible" value="Send File" />
 						</form>
 
@@ -245,13 +244,24 @@ echo($proc->transformToXML($xml));
 	<script type="text/javascript" src="js/lib/underscore-1.3.3.min.js"></script>
 	<script type="text/javascript" src="js/lib/backbone-0.9.2.min.js"></script>
 
-	<script type="text/javascript" src="js/init.js"></script>
+
+	<script type="text/javascript" src="js/constants.js"></script>
+
 	<script type="text/javascript" src="js/models.js"></script>
 	<script type="text/javascript" src="js/controllers.js"></script>
 	<script type="text/javascript" src="js/collections.js"></script>
-	<script type="text/javascript" src="js/parser.js"></script>
-	<script type="text/javascript" src="js/filemanager.js"></script>
-	<script type="text/javascript" src="js/app.js"></script>
+
+	<script type="text/javascript" src="js/plan.js"></script>
+
+	<script type="text/javascript" src="js/xml-parser.js"></script>
+	<script type="text/javascript" src="js/csv-parser.js"></script>
+	<script type="text/javascript" src="js/file-manager.js"></script>
+	<script type="text/javascript" src="js/planner.js"></script>
+
+	<script type="text/javascript" src="js/recommender.js"></script>
+	<script type="text/javascript" src="js/facade-controller.js"></script>
+
+	<script type="text/javascript" src="js/main.js"></script>
 
 	<!-- script type="text/javascript" src="js/script.js"></script -->
 </body>

@@ -1,4 +1,4 @@
-	
+
 	var UP = UP || {};	
 	window.UP = UP;
 
@@ -17,9 +17,12 @@
 		FADE_SPEED       : 700,
 		MAX_WEIGHT_VALUE : 5,
 		METHOD_HEIGHT    : 25,
+		PHP_DOWNLOAD     : 'php/download.php',
+		PHP_UPLOAD       : 'php/upload.php',
 		SLIDE_SPEED      : 300,
 		SLIDER_VALUE     : 1,
 		STAGES_SPEED     : 500,
-		VALUE            : [ "strongly recommended", "neutral", "slightly recommended", "not recommended" ],
+		VALUE            : [ "strongly recommended", "recommended", 
+					"slightly recommended", "neutral", "not recommended" ],
 		XML              : 'xml/projectStagesDataDevelopers.xml'
 	};

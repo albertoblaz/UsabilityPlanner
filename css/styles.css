@@ -79,10 +79,10 @@ body {
 .content {
 	background: white;
 	border: #C6D3DA 1px solid;
-	border-top: 0;
+	margin: auto;
 	overflow-x: hidden;
 	height: 100%;
-	width: 100%;
+	width: 99%;
 	min-width: 933px;
 }
 

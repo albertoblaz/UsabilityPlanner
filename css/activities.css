@@ -45,6 +45,7 @@
 .tab {
 	background-color: white;
 	border: #C6D3DA 1px solid;
+	border-top: 0;
 	border-left: 0;
 	cursor: pointer;
 	display: inline;
@@ -63,5 +64,9 @@
 }
 
 .tab-active {
-	background-color: #DDD;
+	background: -webkit-radial-gradient( 
+					ellipse, 
+					rgba(210, 222, 240, 0.5), 
+					rgba(180, 192, 210, 0.4)
+			) no-repeat fixed center center;
 }

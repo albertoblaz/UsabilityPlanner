@@ -1,5 +1,34 @@
 
-	UP.ConstraintView = Backbone.Controller.extend({
+	UP.SliderController = Backbone.Controller.extend({
+		initialize: function() {
+			this.model = this.options.model;
+			this.sliderView = $('#slider');
+
+			this.updateValue( UP.constants.SLIDER_VALUE );
+
+			var self = this;
+			this.sliderView.slider({		/* Slider Widget Configuration Setup */
+				orientation: "horizontal",
+				range: "min",
+				min: 0,
+				max: UP.constants.VALUE.length-1,
+				value: this.sliderValue,
+				animate: true,
+				slide: function(event, ui) {	// Event function to perfom
+					self.updateValue(ui.value);
+				}
+			});
+		},
+
+		updateValue: function(newValue) {
+			this.sliderValue = newValue;
+			this.model.updateValue(newValue);
+		}
+
+	});
+
+
+	UP.ConstraintController = Backbone.Controller.extend({
 		initialize: function() {
 		},
 
@@ -19,9 +48,9 @@
 	});
 
 
-	UP.CounterView = Backbone.Controller.extend({
+	UP.CounterController = Backbone.Controller.extend({
 		initialize: function() {
-			this.totalcounter = this.options.totalcounter;
+			this.model.on('change', this.updateCounter, this);
 
 			this.$el.on("click", this.scrollToList);
 		},
@@ -37,42 +66,20 @@
 			$('html, body').animate({scrollTop: sectionPosition}, UP.constants.FADE_SPEED);
 		},
 
-		updateCounter: function(newValue) {
-			var oldValue = this.model.get('value');
-
-			this.model.set({ value : newValue });
+		updateCounter: function() {
+			var newValue = this.model.get('value');
 			this.$el.find('.filter-count').text(newValue);
-
-
-			console.log("newValue = " + newValue);
-			console.log("oldValue = " + oldValue);
-
-			var amount = newValue - oldValue;
-			if ( amount < 0 ) {
-				amount = Math.abs(amount);
-				console.log("Final amount = " + amount);
-				this.totalcounter.decrement(amount);
-			} else if ( amount > 0 ) {
-				console.log("Final amount = " + amount);
-				this.totalcounter.increment(amount);
-			}
 		}
 		
 	});
 
 
-	UP.TotalcounterView = Backbone.Controller.extend({
-		increment: function(amount) {
-			this.model.increment(amount);
-			this.updateFilterCount();
+	UP.TotalCounterController = Backbone.Controller.extend({
+		initialize: function() {
+			this.model.on('change', this.updateCounter, this);
 		},
 
-		decrement: function(amount) {
-			this.model.decrement(amount);
-			this.updateFilterCount();
-		},
-
-		updateFilterCount: function() {
+		updateCounter: function() {
 			var newValue = this.model.get('value');
 			this.$el.find('.filter-count').text(newValue);
 		}
@@ -80,48 +87,58 @@
 	});
 	
 	
-	UP.MethodView = Backbone.Controller.extend({
+	UP.MethodController = Backbone.Controller.extend({
 		initialize: function() {
 			this.model      = this.options.model;
+
 			this.methodView = this.options.methodView;
 			this.planView   = this.options.planView;
 
 
 			// Observing model
-			this.model.on('change:value', this.render, this);
+			this.model.on('render', this.render, this);
 			this.model.on('updatePosition', this.updatePosition, this);
+			this.model.on('hideMethod', this.hideMethod, this);
+
 
 			// Event Handlers
-			var self = this;
 
-			this.methodView.find('.checkboxWrapper').on("click", function(e) {
+			var self = this;
+			function checkboxAnimation(e) {
 				self.checkboxEvent(e);
-			});
+			}
+
+			this.methodView.find('.checkboxWrapper').on("click", checkboxAnimation);
+			this.planView.find('.checkboxWrapper').on("click", checkboxAnimation);
 
 			this.methodView.find('.method-info').on("click", this.displayInfoEvent);
 			this.planView.find('.method-info').on("click", this.displayInfoEvent);
 		},
+
 			
-		render: function(method) {
+		render: function() {
 			var color;
 			var textValue = "";
 
-			var newValue = method.get('value');
+			var newValue = this.model.getValue();
 
-			if (newValue == 0) {
-				color = "hidden";		// Ocultamos la barra
-			} else	if (newValue >= 0.6) {
+			if (newValue >= 0.8) {
 				textValue = UP.constants.VALUE[0];
 				color = "green";
-			} else if (newValue >= 0.4) {
+			} else if (newValue >= 0.6) {
 				textValue = UP.constants.VALUE[1];
 				color = "yellow";
-			} else if (newValue >= 0.2) {
+			} else if (newValue >= 0.4) {
 				textValue = UP.constants.VALUE[2];
 				color = "orange";
-			} else {
+			} else if (newValue >= 0.2) {
 				textValue = UP.constants.VALUE[3];
 				color = "red";
+			} else if (newValue >= 0.1) {
+				textValue = UP.constants.VALUE[4];
+				color = "red";
+			} else if (newValue == 0) {
+				color = "hidden";
 			}
 
 			this.methodView.find('.valoration').text(textValue);
@@ -129,12 +146,38 @@
 
 			this.planView.find('.valoration').text(textValue);
 			this.planView.find('.bar').attr('class', 'bar').addClass(color);
+
+			console.log("RENDER!!!");
 		},
-		
+
+
 		updatePosition: function() {
 			this.methodView.parent().prepend(this.methodView);
 			this.planView.parent().prepend(this.planView);
 		},
+
+
+		hideMethod: function(event) {
+			var sliderValue = event.sliderValue;
+			var VALUES = UP.constants.VALUE;
+
+			this.methodView.addClass('hidden').removeClass('visible').removeClass('last-method');
+			this.planView.addClass('hidden').removeClass('visible').removeClass('last-method');
+
+			this.model.unselectMethod();
+
+			var stringValue = this.methodView.find('.valoration').text();
+
+			for ( var j=0; j <= sliderValue && j < VALUES.length; j++ ) {
+				if ( stringValue === VALUES[j] ) {
+					this.methodView.removeClass('hidden').addClass('visible');
+					this.planView.removeClass('hidden').addClass('visible');
+					this.model.selectMethod();
+				}
+			}
+
+		},
+
 
 		checkboxEvent: function(event) {
 			event.preventDefault();
@@ -146,9 +189,10 @@
 			this.disableMethodAnimation(method);
 
 			this.model.changeSelection();
-			this.planView.toggleClass('visible hidden');//.toggleClass('hidden');
+			this.planView.toggleClass('visible hidden');
 		},
 		
+
 		displayInfoEvent: function() {
 			var FADE_SPEED = UP.constants.FADE_SPEED;
 			var METHOD_HEIGHT = UP.constants.METHOD_HEIGHT;
@@ -177,6 +221,7 @@
 				expandButton.removeClass('expanded');
 			}
 		},
+
 		
 		disableMethodAnimation: function(li) {
 			var FADE_SPEED = UP.constants.FADE_SPEED;
@@ -196,29 +241,11 @@
 			}
 		}, 
 
-		hideMethod: function(slidervalue) {
-			var VALUES = UP.constants.VALUE;
-			var stringValue;			
-
-			this.methodView.addClass('hidden').removeClass('visible').removeClass('last-method');
-			this.planView.addClass('hidden').removeClass('visible').removeClass('last-method');
-			this.model.unselectMethod();
-
-			stringValue = this.methodView.find('.valoration').text();
-
-			for ( var j=0; j <= slidervalue && j < VALUES.length; j++ ) {
-				if ( stringValue.localeCompare( VALUES[j] ) == 0 ) {
-					this.methodView.removeClass('hidden').addClass('visible');
-					this.planView.removeClass('hidden').addClass('visible');
-					this.model.selectMethod();
-				}
-			}
-
-		},
 
 		isSelected: function() {
 			return this.model.get('selected');
 		},
+
 
 		isVisible: function() {
 			return this.methodView.hasClass('visible');
@@ -227,26 +254,32 @@
 	});
 
 
-	UP.SubactivityView = Backbone.Controller.extend({
+	UP.SubactivityController = Backbone.Controller.extend({
 		initialize: function() {
 			this.model    = this.options.model;
 			this.item     = this.options.item;
 			this.list     = this.options.list;
 			this.listPlan = this.options.listPlan;
 
+
 			// Handle Events
 			var self = this;
-			this.item.on("click", function() {
+
+			this.model.on('updateLastMethod', this.updateLastMethod, this);
+			this.model.on('changeDisplayList', this.displayList, this);
+
+			this.item.on("click", function(e) {
+				e.preventDefault();
+				self.model.changeSelection();	// Actualizar el modelo de 'Subactivity' llamando a su método select
 				self.displayList();
 			});
 
-			this.list.find('.expandable').on('click', function() {
-				self.expandList(self.list);
-			});
+			function expandAnimation() {
+				self.expandList();
+			}
 
-			this.listPlan.find('.expandable').on('click', function() {
-				self.expandList(self.listPlan);
-			});
+			this.list.find('.expandable').on('click', expandAnimation);
+			this.listPlan.find('.expandable').on('click', expandAnimation);
 		},
 
 		displayList: function() {
@@ -255,22 +288,25 @@
 			
 			this.list.toggleClass('hidden');
 			this.listPlan.toggleClass('hidden');
-			this.model.changeSelection();		// Actualizar el modelo de 'Subactivity' llamando a su método select
 
 			constraintsSelectionFix();
 		},
 
-		expandList: function(list) {
-			var header = list.find('.expandable');
-			var headerVisible = true;
+		expandList: function() {
+			var header     = this.list.find('.expandable');
+			var headerPlan = this.listPlan.find('.expandable');
 
-			if (header.hasClass('collapsed')) {
+			var headerVisible = true;
+			var bothCollapsed = header.hasClass('collapsed') && headerPlan.hasClass('collapsed');
+
+			if ( bothCollapsed ) {
 				this.slideDown(headerVisible);
 			} else {
 				this.slideUp(headerVisible);
 			}
 
 			header.toggleClass('collapsed');
+			headerPlan.toggleClass('collapsed');
 		},
 
 		slideUp: function(headerVisible) {
@@ -299,20 +335,21 @@
 			}
 		},
 
-		hideMethods: function(slidervalue) {
-			for ( var i=0; i < this.methods.length; i++ ) {
-				this.methods[i].hideMethod(slidervalue);
-			}
-
+		updateLastMethod: function() {
 			this.list.find('.visible').last().addClass('last-method');
 			this.listPlan.find('.visible').last().addClass('last-method');
+		},
 
+/*
+		hideMethods: function(slidervalue) {
+			this.list.find('.visible').last().addClass('last-method');
+			this.listPlan.find('.visible').last().addClass('last-method');
 		},
 
 		setMethods: function(methods) {
 			this.methods = methods;
 		},
-
+*/
 		isSelected: function() {
 			return this.model.get('selected');
 		},
@@ -328,14 +365,13 @@
 	});
 
 
-	UP.ActivityView = Backbone.Controller.extend({
+	UP.ActivityController = Backbone.Controller.extend({
 		initialize: function() {
 			this.model    = this.options.model;				// The Activity Model
 			this.block    = this.options.block;				// View: Panel with the description on 'Activities' Window
 			this.tab      = this.options.tab;					// View: Tab above the panel
 			this.list     = this.options.list;					// View: Subactivities List on 'Methods' Window
 			this.listPlan = this.options.listPlan;				// View: Subactivities List on 'Plan' Window
-			this.counter  = this.options.counter;
 			this.subactivities = [];
 
 
@@ -346,21 +382,16 @@
 				return self.displayActivityEvent();
 			});
 
-			this.list.children('.expandable').on('click', function() {
+			function expandAnimation() {
 				if ( $(this).hasClass('collapsed') ) {
 					self.expandList();
 				} else {
 					self.collapseList();
 				}
-			});
+			}
 
-			this.listPlan.children('.expandable').on('click', function() {
-				if ( $(this).hasClass('collapsed') ) {
-					self.expandList();
-				} else {
-					self.collapseList();
-				}
-			});
+			this.list.children('.expandable').on('click', expandAnimation);
+			this.listPlan.children('.expandable').on('click', expandAnimation);
 
 		},
 
@@ -368,35 +399,41 @@
 			this.hideRestOfActivities();
 			this.tab.addClass('tab-active');
 
-			$('.container').stop().animate(
-				{height: this.block.height()}, 
-				UP.constants.ACTIVITY_SPEED);
+			$('.container').stop().animate( {height : this.block.height()}, UP.constants.ACTIVITY_SPEED );
 
 			this.block.removeClass('hidden');
 		},
 
 		expandList: function() {
-			var header = this.list.children('.expandable');
+			var header     = this.list.children('.expandable');
+			var headerPlan = this.listPlan.children('.expandable');
 
-			if ( header.hasClass('collapsed') ) {
+			var bothCollapsed = header.hasClass('collapsed') && headerPlan.hasClass('collapsed');
+
+			if ( bothCollapsed ) {
 				for (var i=0; i<this.subactivities.length; i++) {
 					this.subactivities[i].slideDown();
 				}
 			} 
 
 			header.removeClass('collapsed');
+			headerPlan.removeClass('collapsed');
 		},
 
 		collapseList: function() {
 			var header = this.list.children('.expandable');
+			var headerPlan = this.listPlan.children('.expandable');
 
-			if ( !header.hasClass('collapsed') ) {
+			var bothNotCollapsed = !header.hasClass('collapsed') && !headerPlan.hasClass('collapsed');
+
+			if ( bothNotCollapsed ) {
 				for (var i=0; i<this.subactivities.length; i++) {
 					this.subactivities[i].slideUp();
 				}
 			}
 
 			header.addClass('collapsed');
+			headerPlan.addClass('collapsed');
 		},
 
 		hideRestOfActivities: function() {
@@ -413,47 +450,8 @@
 			this.block.addClass('hidden');
 		},
 
-		updateCountersView: function() {	// En cuanto un metodo cambie
-			console.log("updateCountersView");
-			var count = 0;
-
-			for ( var i=0; i < this.subactivities.length; i++ ) {
-				var subactivity = this.subactivities[i];
-				if ( subactivity.isSelected() ) {
-					var methods = this.subactivities[i].methods;
-					for ( var j=0; j < methods.length; j++ ) {
-						var m = methods[j];
-						if ( m.isSelected() && m.isVisible() ) {
-							count++;
-						}
-					}
-				}
-			}
-			
-			this.counter.updateCounter(count);
-		},
-
 		setSubactivities: function(subactivities) {
 			this.subactivities = subactivities;
-
-			var self = this;
-
-			for ( var i=0; i < this.subactivities.length; i++ ) {
-				var subactivity = this.subactivities[i];
-				var methods = subactivity.methods;
-				for ( var j=0; j < methods.length; j++ ) {
-					methods[j].model.on('change:selected', self.updateCountersView, this);
-				}
-
-				subactivity.model.on('change:selected', function() {
-					if ( subactivity.isSelected() ) {
-						console.log("dentro del if");
-						subactivity.addClassIfLast();
-					}
-
-					this.updateCountersView();
-				}, this);
-			}
 		},
 
 		setActivities: function(activities) {
