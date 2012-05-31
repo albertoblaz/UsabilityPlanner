@@ -85,21 +85,44 @@
 }
 
 .meter .green  {
-	background-color: rgb(43,194,83);
-	background-image: -webkit-gradient(
-		linear,
-		left bottom,
-		left top,
-		color-stop(0, rgb(43,194,83)),
-		color-stop(1, rgb(84,240,84))
+	background-color: rgb(43, 194, 83);
+
+	background-image: -webkit-gradient( 
+		linear, 
+		left bottom, 
+		left top, 
+		color-stop(0, rgb(43, 194, 83)), 
+		color-stop(1, rgb(0, 190, 154)) 
+	);
+
+	background-image: -webkit-linear-gradient(rgb(43, 194, 83), rgb(0, 190, 154)); 
+
+	background-image: -moz-linear-gradient(
+		center bottom,
+		rgb(43, 194, 83) 37%,
+		rgb(0, 190, 154) 69%
+	);
+}
+
+.meter .greenyellow {
+	background-color: greenYellow;
+	background-image: -webkit-gradient( 
+		linear, 
+		left bottom, 
+		left top, 
+		color-stop(0, greenYellow), 
+		color-stop(1, rgb(180, 230, 150)) 
 	);
 	
 	background-image: -moz-linear-gradient(
 		center bottom,
-		rgb(43,194,83) 37%,
-		rgb(84,240,84) 69%
+		greenYellow 37%,
+		rgb(180, 230, 150) 69%
 	);
+	
+	background-image: -webkit-linear-gradient(greenYellow, rgb(180, 230, 150)); 
 }
+
 
 .meter .yellow  {
 	background-color: gold;

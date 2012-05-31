@@ -23,6 +23,6 @@
 		SLIDER_VALUE     : 1,
 		STAGES_SPEED     : 500,
 		VALUE            : [ "strongly recommended", "recommended", 
-					"slightly recommended", "neutral", "not recommended" ],
-		XML              : 'xml/projectStagesDataDevelopers.xml'
+							 "slightly recommended", "neutral", "not recommended" ],
+		XML              : 'xml/stages.xml'
 	};

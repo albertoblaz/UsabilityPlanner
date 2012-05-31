@@ -16,16 +16,24 @@
 
 			// Initialization Effect
 			this.adjustContainer();
+			this.adjustActivityContainer();
+			
+
+			var tabs = $('.tab');
+			if (tabs.length == 6) {
+				tabs.find('p').css({ 'font-size' : '16px' });
+				tabs.removeClass('three-columns').addClass('six-columns');
+				$('.stage').eq(0).find('a').text("Stages");
+			}
 		},
 
 
 		initViewElements: function() {
+			this.logo     = $('.logo');
+
 			this.stages   = $('.stage');
 			this.backLink = $('.back');	
 			this.nextLink = $('.next');	
-
-			this.expandButton   = $('#expand');
-			this.collapseButton = $('#collapse');
 
 			this.currentStage  = 0;
 
@@ -49,10 +57,43 @@
 			this.container.height(firstHeight);
 		},
 
+		
+		adjustActivityContainer: function() {
+			var max = 0;
+			var margin;
 
+			var activities = $('.activity');
+
+			var first = activities.first();
+			var margin = parseInt(first.css('margin-top'));
+
+			activities.each(function(i) {
+				var act = activities.eq(i);
+				
+				var h = parseInt(act.css('height'));
+
+				var size = h + margin * 2;
+				if ( size > max ) {
+					max = size;
+				}
+				
+			});
+
+			var hh = this.container.height() + margin;
+			this.container.height( hh );
+
+			$('#activities-selection').css({ 'height' : max });
+		},
+
+		
 		setupEvents: function() {
 			// Event Handlers
 			var self = this;
+
+			this.logo.on("click", function(event) {
+				var stage = self.stages.first();
+				self.stagesEvent(event, stage);
+			});
 
 			this.stages.on("click", function(event) {
 				var stageSelected = $(this);
@@ -65,14 +106,6 @@
 
 			this.nextLink.on("click", function(event) {
 				self.nextLinkEvent(event);
-			});
-
-			this.expandButton.on("click", function(event) {
-				self.expandButtonEvent(event);
-			});
-			
-			this.collapseButton.on("click", function(event) {
-				self.collapseButtonEvent(event);
 			});
 
 			this.downloadButton.on('click', function(event) {
@@ -170,20 +203,6 @@
 				var oldStage = this.currentStage;
 				this.currentStage++;
 				this.animate(this.currentStage, oldStage);
-			}
-		},
-
-
-		expandButtonEvent: function(event) {
-			for ( var i=0; i < this.activities.length; i++ ) {
-				this.activities[i].expandList();
-			}
-		},
-
-
-		collapseButtonEvent: function(event) {
-			for ( var i=0; i < this.activities.length; i++ ) {
-				this.activities[i].collapseList();
 			}
 		},
 

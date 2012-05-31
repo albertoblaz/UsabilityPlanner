@@ -21,11 +21,9 @@
 
 	<div class="wrapper">
 		<header class="header">
-			<a target="_blank" href="http://usabilityplanner.org/">
-				<figure class="logo left">
-					<img src="images/logo.gif" />
-				</figure>
-			</a>
+			<figure class="logo left">
+				<img src="images/logo.gif" />
+			</figure>
 			
 			<nav id="navigation">
 				<ul class="right">
@@ -59,35 +57,31 @@
 				<header>
 					<hgroup>
 						<h1 class="main headline center">Choose the activities where you want to introduce usability improvements in your project</h1>
-						<h2 class="sub headline center"><a href="#">(Why we speak about activities and not stages)</a></h2>
 					</hgroup>
 				</header>
 				
 				<div class="content">
 
-					<nav class="tabs">
-						<div class="tab three-columns tab-active">
-							<p>Analysis</p>
-						</div>
-						
-						<div class="tab three-columns">
-							<p>Design</p>
-						</div>
-						
-						<div class="tab three-columns last-tab">
-							<p>Evaluation</p>
-						</div>
-						
-						<div class="clear"></div>
-					</nav>   <!-- end #tabs -->
+
+<?php
+$xml = new DomDocument();
+$xml->load('xml/stages.xml');
+
+$tabs = new DomDocument();
+$tabs->load('xsl/tabs.xsl');
+
+$proc = new xsltprocessor();
+$proc->importStyleSheet($tabs);
+
+echo($proc->transformToXML($xml));
+?>
+					
 
 					
 					<section id="activities-selection">
 					
 <?php
-$xml = new DomDocument();
-$xml->load('xml/projectStagesDataDevelopers.xml');
-
+/*
 $activities = new DomDocument();
 $activities->load('xsl/activities.xsl');
 
@@ -95,9 +89,46 @@ $proc = new xsltprocessor();
 $proc->importStyleSheet($activities);
 
 echo($proc->transformToXML($xml));
+*/
+?>
+					</section>   <!-- #activities-selection -->
+
+
+					<section id="costs-selection">
+					
+						<table border="0" cellspacing="0" cellpadding="0">
+<thead>
+
+
+<?php
+$tableHead = new DomDocument();
+$tableHead->load('xsl/table-head.xsl');
+
+$proc = new xsltprocessor();
+$proc->importStyleSheet($tableHead);
+
+echo($proc->transformToXML($xml));
 ?>
 
-					</section>   <!-- #activities-selection -->
+</thead>
+
+<tbody>
+
+<?php
+$tableBody = new DomDocument();
+$tableBody->load('xsl/table-body.xsl');
+
+$proc = new xsltprocessor();
+$proc->importStyleSheet($tableBody);
+
+echo($proc->transformToXML($xml));
+?>
+
+</tbody>
+						</table>
+
+					</section>   <!-- #costs-selection -->
+
 
 				</div>   <!-- #content -->
 			
@@ -107,18 +138,21 @@ echo($proc->transformToXML($xml));
 				<header>
 					<h1 class="main headline center">Specify the constraints that will influence which usability methods are appropiate in your situation</h1>
 				</header>
+				
+				<div class="filtering">						
+					<p class="total-counter"><label class="filter-count">0</label> methods shown:</p>
+<?php
+$counters = new DomDocument();
+$counters->load('xsl/counters.xsl');
 
-				<div class="recommendation">
-					<div class="inner-recommendation">
-						<p class="title">Method Filtering</p>
-						<div class="filter">
-							<p>Most Recommended</p>
-							<div id="slider"></div>
-							<p>All methods</p>
-						</div>
-					</div>
+$proc = new xsltprocessor();
+$proc->importStyleSheet($counters);
+
+echo($proc->transformToXML($xml));
+?>
+
 				</div>
-
+				
 				<div class="content">
 				
 					<aside id="constraints-selection" class="left">
@@ -134,25 +168,25 @@ echo($proc->transformToXML($xml));
 					</aside>
 
 					<section id="methods-selection" class="left">
-						
-						<div class="filtering">						
-							<p class="total-counter"><label class="filter-count">18</label> methods shown:</p>
-<?php
-$counters = new DomDocument();
-$counters->load('xsl/counters.xsl');
-
-$proc = new xsltprocessor();
-$proc->importStyleSheet($counters);
-
-echo($proc->transformToXML($xml));
-?>
-							
-							<div class="right">
-								<p id="expand"   class="expand-all">Expand All</p>
-								<p id="collapse" class="expand-all">Collapse All</p>
+					
+						<div class="recommendation">
+							<!--p class="title left">Method Filtering</p-->
+							<div class="filter right">
+								<p class="right">All methods</p>
+								<div id="slider" class="right"></div>
+								<p class="right">Most Recommended</p>
 							</div>
 						</div>
+
+						<div class="clear"></div>
 						
+						<div class="expand-buttons left">
+							<p id="expand"   class="expand-all">Expand All</p>
+							<p id="collapse" class="expand-all">Collapse All</p>
+						</div>
+						
+						<br />
+
 <?php
 $methods = new DomDocument();
 $methods->load('xsl/methods.xsl');

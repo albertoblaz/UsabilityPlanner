@@ -38,6 +38,7 @@
 
 .button {
 	background: url('../images/nav-button.png') no-repeat right center;
+	cursor: pointer;
 	padding: 15px 7px 15px 7px;
 	text-align: center;
 	width: 140px;

@@ -19,15 +19,15 @@
 	overflow: hidden;
 }
 
-#activities-selection .padding {
-	padding: 4% 8%;
+.activity {
+	margin: 4% 10%;
 }
 
 .subactivity {
 	cursor: pointer;
-    display: inline-block;
-    margin: 15px 0;
-    width: 100%;
+	display: inline-block;
+	margin: 15px 0;
+	width: 100%;
 }
 
 .subactivity .description {
@@ -60,7 +60,7 @@
 
 .tab p {
 	display: inline;
-	font-size: 18px;
+	font-size: 17px;
 }
 
 .tab-active {

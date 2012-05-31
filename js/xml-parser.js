@@ -142,36 +142,44 @@
 						methods.each(function(k) {
 							var self = $(this);
 							var name = self.attr('name');
+							var description = "";
+							var url = "";
 							var constraints = self.find('constraint');
 
 							methodCollection.each(function(method) {
 								if ( method.compareNameWith(name) ) {
-									subactivityMethods.add(method);
-
-									var methodView     = $DOMMethods.eq(k);
-									var methodPlanView = $DOMMethodsPlan.eq(k);
-
-									new UP.MethodController({
-										model: method,
-										methodView: methodView,
-										planView: methodPlanView
-									});
-
-									constraints.each(function(l) {
-										var self        = $(this);
-										var name        = self.attr('name');
-										var weightValue = parseInt(self.attr('weight'));
-
-										var weight = new UP.Weight(method, weightValue);
-										method.addWeight( weight );
-
-										constraintCollection.each(function(constraint) {
-											if ( constraint.compareNameWith(name) ) {
-												constraint.addWeight( weight );
-											}
-										});
-									});
+									description = method.getDescription();
+									url = method.getURL();
 								}
+							});
+
+							var method = new UP.Method(name, description, url);
+							subactivityMethods.add( method );
+
+
+							constraints.each(function(l) {
+								var self        = $(this);
+								var name        = self.attr('name');
+								var weightValue = parseInt(self.attr('weight'));
+
+								var weight = new UP.Weight(method, weightValue);
+								method.addWeight( weight );
+
+								constraintCollection.each(function(constraint) {
+									if ( constraint.compareNameWith(name) ) {
+										constraint.addWeight( weight );
+									}
+								});
+							});
+
+
+							var methodView     = $DOMMethods.eq(k);
+							var methodPlanView = $DOMMethodsPlan.eq(k);						
+
+							new UP.MethodController({
+								model: method,
+								methodView: methodView,
+								planView: methodPlanView
 							});
 
 						});

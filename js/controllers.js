@@ -99,6 +99,7 @@
 			this.model.on('render', this.render, this);
 			this.model.on('updatePosition', this.updatePosition, this);
 			this.model.on('hideMethod', this.hideMethod, this);
+			this.model.on('showNeutral', this.showNeutral, this);
 
 
 			// Event Handlers
@@ -113,6 +114,14 @@
 
 			this.methodView.find('.method-info').on("click", this.displayInfoEvent);
 			this.planView.find('.method-info').on("click", this.displayInfoEvent);
+
+
+			// Initialize visual text description
+
+			var description = this.model.getDescription();
+			this.methodView.find('.method-description').text( description );
+			this.planView.find('.method-description').text( description );
+
 		},
 
 			
@@ -127,18 +136,19 @@
 				color = "green";
 			} else if (newValue >= 0.6) {
 				textValue = UP.constants.VALUE[1];
-				color = "yellow";
+				color = "greenyellow";
 			} else if (newValue >= 0.4) {
 				textValue = UP.constants.VALUE[2];
-				color = "orange";
+				color = "yellow";
 			} else if (newValue >= 0.2) {
 				textValue = UP.constants.VALUE[3];
-				color = "red";
-			} else if (newValue >= 0.1) {
+				color = "orange";
+			} else if (newValue > 0) {
 				textValue = UP.constants.VALUE[4];
 				color = "red";
 			} else if (newValue == 0) {
-				color = "hidden";
+				textValue = UP.constants.VALUE[3];
+				color = "orange";
 			}
 
 			this.methodView.find('.valoration').text(textValue);
@@ -158,24 +168,35 @@
 
 
 		hideMethod: function(event) {
-			var sliderValue = event.sliderValue;
-			var VALUES = UP.constants.VALUE;
+			if ( this.model.getValue() == 0 ) {
+				this.showNeutral();
+			} else {
+				var sliderValue = event.sliderValue;
+				var VALUES = UP.constants.VALUE;
 
-			this.methodView.addClass('hidden').removeClass('visible').removeClass('last-method');
-			this.planView.addClass('hidden').removeClass('visible').removeClass('last-method');
+				this.methodView.addClass('hidden').removeClass('visible').removeClass('last-method');
+				this.planView.addClass('hidden').removeClass('visible').removeClass('last-method');
 
-			this.model.unselectMethod();
+				this.model.unselectMethod();
 
-			var stringValue = this.methodView.find('.valoration').text();
+				var stringValue = this.methodView.find('.valoration').text();
 
-			for ( var j=0; j <= sliderValue && j < VALUES.length; j++ ) {
-				if ( stringValue === VALUES[j] ) {
-					this.methodView.removeClass('hidden').addClass('visible');
-					this.planView.removeClass('hidden').addClass('visible');
-					this.model.selectMethod();
+				for ( var j=0; j <= sliderValue && j < VALUES.length; j++ ) {
+					if ( stringValue === VALUES[j] ) {
+						this.methodView.removeClass('hidden').addClass('visible');
+						this.planView.removeClass('hidden').addClass('visible');
+						this.model.selectMethod();
+					}
 				}
 			}
+		},
 
+
+		showNeutral: function() {
+			this.methodView.removeClass('hidden').addClass('visible').removeClass('last-method');
+			this.planView.removeClass('hidden').addClass('visible').removeClass('last-method');
+
+			this.model.selectMethod();
 		},
 
 
@@ -372,11 +393,26 @@
 			this.tab      = this.options.tab;					// View: Tab above the panel
 			this.list     = this.options.list;					// View: Subactivities List on 'Methods' Window
 			this.listPlan = this.options.listPlan;				// View: Subactivities List on 'Plan' Window
+
+			this.expandButton   = $('#expand');
+			this.collapseButton = $('#collapse');
+
 			this.subactivities = [];
+
+			this.model.on('hideHeader', this.hideHeader, this);
+			this.model.on('showHeader', this.showHeader, this);
 
 
 			// Handle Events
 			var self = this;
+
+			this.expandButton.on("click", function(event) {
+				self.expandButtonEvent(event);
+			});
+			
+			this.collapseButton.on("click", function(event) {
+				self.collapseButtonEvent(event);
+			});
 
 			this.tab.on('click', function() {
 				return self.displayActivityEvent();
@@ -395,11 +431,22 @@
 
 		},
 
+
+		hideHeader: function() {
+			this.list.children('.expandable').addClass('hidden');
+			this.listPlan.children('.expandable').addClass('hidden');
+		},
+
+
+		showHeader: function() {
+			this.list.children('.expandable').removeClass('hidden');
+			this.listPlan.children('.expandable').removeClass('hidden');
+		},
+
+
 		displayActivityEvent: function() {
 			this.hideRestOfActivities();
 			this.tab.addClass('tab-active');
-
-			$('.container').stop().animate( {height : this.block.height()}, UP.constants.ACTIVITY_SPEED );
 
 			this.block.removeClass('hidden');
 		},
@@ -449,6 +496,17 @@
 			this.tab.removeClass('tab-active');
 			this.block.addClass('hidden');
 		},
+
+
+		expandButtonEvent: function(event) {
+			this.expandList();
+		},
+
+
+		collapseButtonEvent: function(event) {
+			this.collapseList();
+		},
+
 
 		setSubactivities: function(subactivities) {
 			this.subactivities = subactivities;

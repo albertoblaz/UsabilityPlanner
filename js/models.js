@@ -209,7 +209,11 @@
 
 
 		hideMethod: function(sliderValue) {
-			this.trigger('hideMethod', { sliderValue : sliderValue } );
+			if ( this.get('numIncrements') == 0 && this.get('value') == 0) {
+				this.trigger('showNeutral');
+			} else {
+				this.trigger('hideMethod', { sliderValue : sliderValue } );
+			}
 		},
 
 
@@ -244,6 +248,16 @@
 
 		getName: function() {
 			return this.get('name');
+		},
+
+
+		getDescription: function() {
+			return this.get('description');
+		},
+
+
+		getURL: function() {
+			return this.get('url');
 		},
 
 
@@ -510,6 +524,24 @@
 			});
 
 			subactivitiesCollection.on('updateCounter', this.updateCounter, this);
+			subactivitiesCollection.on('change:selected', this.updateView, this);
+			this.updateView();
+		},
+
+		
+		updateView: function() {
+			var count = 0;
+			this.get('subactivitiesCollection').each(function(sub) {
+				if ( sub.isSelected() ) {
+					count++;
+				}
+			});
+
+			if ( count == 0 ) {
+				this.trigger('hideHeader');
+			} else {
+				this.trigger('showHeader');
+			}
 		},
 
 

@@ -19,7 +19,7 @@
 <xsl:template match="activity">
 	<xsl:variable name="activityName" select="@name" />
 	<div class="info-activity" id="{$activityName}">
-		<h2 class="headline expandable">
+		<h2 class="headline expandable hidden">
 			<xsl:value-of select="@name" />
 		</h2>
 
@@ -43,20 +43,20 @@
 
 <xsl:template match="method">
 	<li class="method visible">
-		<span class="checkboxWrapper"><a href="#" class="checkbox checked"></a><input type="checkbox" class="hidden" /></span>
-
-		<div class="method-info">
+		<div class="method-info left">
+			<div class="expand-button left"></div>
 			<p class="method-title">
 				<xsl:value-of select="@name" />
 			</p>
-			<div class="expand-button right"></div>
-			<p class="valoration right"></p>
-			<div class="meter right"><span class="bar"></span></div>
+			<p class="valoration right">Neutral</p>
+			<div class="meter right"><span class="bar orange"></span></div>
 		</div>
-										
-		<article class="method-description hidden">
-			<xsl:value-of select="@description" />
-		</article>
+		
+		<span class="checkboxWrapper right"><a href="#" class="checkbox checked"></a><input type="checkbox" class="hidden" /></span>
+
+		<div class="clear"></div>
+		
+		<article class="method-description hidden"></article>
 	</li>
 </xsl:template>
 

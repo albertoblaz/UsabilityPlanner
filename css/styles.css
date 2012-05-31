@@ -151,16 +151,8 @@ body {
 	width: 33.1%;
 }
 
-.four-columns {
-	width: 24.7%;
-}
-
 .six-columns {
-	width: 66%;
-}
-
-.nine-columns {
-	width: 99%;
+	width: 16.45%;
 }
 
 
@@ -170,3 +162,36 @@ body {
 	clear: both;
 }
 
+
+table {
+	border: rgb(198, 211, 218) 1px solid;
+}
+
+tr {
+	border: rgb(198, 211, 218) 1px solid;
+	height: 2.5em;
+}
+
+td, th {
+	border: rgb(198, 211, 218) 1px solid;
+	font-family: Calibri, sans-serif;
+	font-size: 15px;
+	padding: 5px 0;
+	text-align: center;
+}
+
+th
+
+
+th {
+	background: -webkit-radial-gradient( ellipse, rgba(210, 222, 240, 0.5), rgba(180, 192, 210, 0.4) ) no-repeat fixed center center;
+	font-weight: normal;
+}
+
+td .checkboxWrapper {
+	float: none;
+}
+
+td .checkboxWrapper a {
+	margin: auto;
+}
