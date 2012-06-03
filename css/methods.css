@@ -75,6 +75,10 @@
 	width: 66.2%;
 }
 
+.filtering-inner {
+	padding: 0 20px;
+}
+
 .filtering a,
 .total-counter {
 	display: inline-block;
