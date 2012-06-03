@@ -138,9 +138,10 @@ echo($proc->transformToXML($xml));
 				<header>
 					<h1 class="main headline center">Specify the constraints that will influence which usability methods are appropiate in your situation</h1>
 				</header>
-				
-				<div class="filtering">						
-					<p class="total-counter"><label class="filter-count">0</label> methods shown:</p>
+
+				<div class="filtering">		
+					<div class="filtering-inner">
+						<p class="total-counter"><label class="filter-count">0</label> methods shown:</p>
 <?php
 $counters = new DomDocument();
 $counters->load('xsl/counters.xsl');
@@ -150,11 +151,11 @@ $proc->importStyleSheet($counters);
 
 echo($proc->transformToXML($xml));
 ?>
-
+					</div>
 				</div>
-				
+
 				<div class="content">
-				
+
 					<aside id="constraints-selection" class="left">
 <?php
 $constraints = new DomDocument();
