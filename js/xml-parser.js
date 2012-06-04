@@ -1,9 +1,28 @@
-
+	
+	/**
+	 * @module UP
+	 * @submodule Util
+	 * @class XMLParser
+	 * @extends Backbone.Model
+	 */	
 	UP.XMLParser = Backbone.Model.extend({
+	
+		/**
+		 * @method initialize
+		 * @param pathToXML {string}
+		 * @constructor
+		 */
 		initialize: function(pathToXML) {
+		
 			this.set({
+			
+				/**
+				 * @property xmlPath
+				 * @type string
+				 */
 				"xmlPath" : pathToXML
 			});
+			
 		},
 /*
 		getRemoteXML: function() {
@@ -24,6 +43,11 @@
 
 		},
 */
+
+		/**
+		 * @method parseConstraints
+		 * @param constraintCollection {ConstraintCollection}
+		 */
 		parseConstraints: function(constraintCollection) {
 			var $DOMConstraints = $('.constraint');					// Getting the DOM constraints
 
@@ -46,7 +70,11 @@
 			}); // end of 'constraint' parsing
 		},
 
-
+		
+		/**
+		 * @method parseMethodModels
+		 * @param methodCollection {MethodCollection}
+		 */
 		parseMethodModels: function(methodCollection) {
 			this.get('xml').find('methods').find('methodInfo').each(function(i) {
 				var self = $(this);
@@ -61,7 +89,11 @@
 			}); // end of 'method' parsing
 		},
 
-
+		
+		/**
+		 * @method createTotalCounter
+		 * @return totalCounter {TotalCounter}
+		 */
 		createTotalCounter: function() {
 			var totalCounter      = new UP.TotalCounter();
 
@@ -74,6 +106,10 @@
 		},
 
 
+		/**
+		 * @method parse
+		 * @return newPlan {Plan}
+		 */
 		parse: function() {
 
 	//		this.getRemoteXML();		// Getting the XML Document we are going to parse by AJAX 

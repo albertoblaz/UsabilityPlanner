@@ -1,8 +1,32 @@
 
+	/**
+	 * @module UP
+	 * @submodule App
+	 * @class FacadeController
+	 * @extends Backbone.Controller
+	 */	
 	UP.FacadeController = Backbone.Controller.extend({
+	
+		/**
+		 * @method initialize
+		 * @param window {object}
+		 * @param recommender {Recommender}
+		 * @constructor
+		 */
 		initialize: function(window, recommender) {
-			// Attributes
+		
+			/* Attributes */
+			
+			/**
+			 * @property window
+			 * @type Object
+			 */
 			this.window = window;
+			
+			/**
+			 * @property recommender
+			 * @type Recommender
+			 */
 			this.recommender = recommender;
 
 
@@ -28,27 +52,89 @@
 		},
 
 
+		/**
+		 * @method initViewElements
+		 */
 		initViewElements: function() {
+		
+			/**
+			 * @property logo
+			 * @type jQuery Object
+			 * @default "logo DOM node"
+			 */
 			this.logo     = $('.logo');
 
+			/**
+			 * @property stages
+			 * @type jQuery Object
+			 * @default "stage DOM nodes"
+			 */
 			this.stages   = $('.stage');
+			
+			/**
+			 * @property backLink
+			 * @type jQuery Object
+			 * @default "backLink DOM node"
+			 */
 			this.backLink = $('.back');	
+			
+			/**
+			 * @property nextLink
+			 * @type jQuery Object
+			 * @default "nextLink DOM node"
+			 */
 			this.nextLink = $('.next');	
 
+			/**
+			 * @property currentStage
+			 * @type number
+			 * @default "0"
+			 */
 			this.currentStage  = 0;
 
+			/**
+			 * @property container
+			 * @type jQuery Object
+			 * @default "container DOM node"
+			 */
 			this.container = $('.container'); 
+			
+			/**
+			 * @property contents
+			 * @type jQuery Object
+			 * @default "main-content DOM nodes"
+			 */
 			this.contents = this.container.find('.main-content');
 
+			/**
+			 * @property mainContainer
+			 * @type jQuery Object
+			 * @default "main-container DOM node"
+			 */
 			this.mainContainer = $('.main-container');
 
+			/**
+			 * @property downloadButton
+			 * @type jQuery Object
+			 * @default "download button DOM node"
+			 */
 			this.downloadButton = $('#btn-download');
+			
+			/**
+			 * @property uploadButton
+			 * @type jQuery Object
+			 * @default "upload button DOM node"
+			 */
 			this.uploadButton   = $('#btn-upload');
+			
 			//this.uploadInput    = $('#files');
 			//this.dropSpace    = $('#drop-space');
 		},
 
 
+		/**
+		 * @method adjustContainer
+		 */
 		adjustContainer: function() {
 			var totalWidth = this.mainContainer.width() * this.contents.length;
 			this.container.width(totalWidth);
@@ -57,7 +143,10 @@
 			this.container.height(firstHeight);
 		},
 
-		
+
+		/**
+		 * @method adjustActivityContainer
+		 */		
 		adjustActivityContainer: function() {
 			var max = 0;
 			var margin;
@@ -85,7 +174,10 @@
 			$('#activities-selection').css({ 'height' : max });
 		},
 
-		
+
+		/**
+		 * @method setupEvents
+		 */		
 		setupEvents: function() {
 			// Event Handlers
 			var self = this;
@@ -163,6 +255,11 @@
 		},
 
 
+		/**
+		 * @method animate
+		 * @param newIndex {number}
+		 * @param oldIndex {number}
+		 */
 		animate: function(newIndex, oldIndex) {
 			var SPEED = UP.constants.STAGES_SPEED;
 
@@ -175,6 +272,11 @@
 		},
 
 
+		/**
+		 * @method stagesEvent
+		 * @param event {event}
+		 * @param stageSelected {jQuery Object}
+		 */
 		stagesEvent: function(event, stageSelected) {
 			event.preventDefault();
 	
@@ -185,6 +287,10 @@
 		},
 
 
+		/**
+		 * @method backlinkEvent
+		 * @param event {event}
+		 */
 		backLinkEvent: function(event) {
 			event.preventDefault();
 
@@ -196,6 +302,10 @@
 		},
 
 
+		/**
+		 * @method nextlinkEvent
+		 * @param event {event}
+		 */
 		nextLinkEvent: function(event) {
 			event.preventDefault();
 
@@ -207,6 +317,10 @@
 		},
 
 
+		/**
+		 * @method adjustReszeWindowEvent
+		 * @param event {event}
+		 */
 		adjustResizeWindowEvent: function(event) {
 			var mainContainerWidth = this.mainContainer.width();
 
@@ -218,5 +332,4 @@
 		}
 
 	});
-
 	

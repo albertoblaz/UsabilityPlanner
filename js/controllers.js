@@ -1,12 +1,41 @@
-
+	
+	/**
+	 * @module UP
+	 * @submodule Controllers
+	 * @class SliderController
+	 * @extends Backbone.Controller
+	 */	
 	UP.SliderController = Backbone.Controller.extend({
+	
+		/**
+		 * @method initialize
+		 * @constructor
+		 */
 		initialize: function() {
+		
+			/* Attributes */
+			
+			/**
+			 * The model bound to the controller
+			 * @property model
+			 * @type Slider
+			 */
 			this.model = this.options.model;
+			
+			/**
+			 * The view represented by the DOM node caught with jQuery
+			 * @property model
+			 * @type jQuery Object
+			 */
 			this.sliderView = $('#slider');
 
+			
+			/* Initialization */
+			
 			this.updateValue( UP.constants.SLIDER_VALUE );
 
 			var self = this;
+			
 			this.sliderView.slider({		/* Slider Widget Configuration Setup */
 				orientation: "horizontal",
 				range: "min",
@@ -18,8 +47,14 @@
 					self.updateValue(ui.value);
 				}
 			});
+			
 		},
-
+		
+		
+		/**
+		 * @method updateValue
+		 * @param newValue {number} The new slider value selected by the user when moving the slider UI component
+		 */
 		updateValue: function(newValue) {
 			this.sliderValue = newValue;
 			this.model.updateValue(newValue);
@@ -27,34 +62,72 @@
 
 	});
 
-
+	
+	
+	/**
+	 * @module UP
+	 * @submodule Controllers
+	 * @class ConstraintController
+	 * @extends Backbone.Controller
+	 */	
 	UP.ConstraintController = Backbone.Controller.extend({
-		initialize: function() {
-		},
-
+	
 		events: {
 			"click" : "constraintSelected"
 		},
 		
+		
+		/**
+		 * @method constraintSelected
+		 * @param event {Event} The jQuery event fired after a constraint has been clicked
+		 */
 		constraintSelected: function(event) {
 			event.preventDefault();
 
 			var checkbox = this.$el.find('.checkboxWrapper');
 			activateCheckbox(checkbox);
 			
-			this.model.changeSelection();		// Actualizar el modelo de Constraint llamando a su método select
+			this.model.changeSelection();
 		}
 		
 	});
 
-
+	
+	
+	/**
+	 * @module UP
+	 * @submodule Controllers
+	 * @class CounterController
+	 * @extends Backbone.Controller
+	 */	
 	UP.CounterController = Backbone.Controller.extend({
+	
+		/**
+		 * @method initialize
+		 * @constructor
+		 */
 		initialize: function() {
+		
+			/**
+			 * The model bound to the controller
+			 * @property model
+			 * @type Counter
+			 */
 			this.model.on('change', this.updateCounter, this);
 
+			/**
+			 * The view (DOM node) associated to the controller
+			 * @property model
+			 * @type jQuery Object
+			 */
 			this.$el.on("click", this.scrollToList);
 		},
 
+
+		/**
+		 * @method scrollToList
+		 * @param event {Event} The jQuery event fired after a constraint has been clicked
+		 */
 		scrollToList: function(event) {
 			event.preventDefault();
 
@@ -65,7 +138,11 @@
 
 			$('html, body').animate({scrollTop: sectionPosition}, UP.constants.FADE_SPEED);
 		},
-
+		
+		
+		/**
+		 * @method scrollToList
+		 */
 		updateCounter: function() {
 			var newValue = this.model.get('value');
 			this.$el.find('.filter-count').text(newValue);
@@ -74,11 +151,27 @@
 	});
 
 
+	
+	/**
+	 * @module UP
+	 * @submodule Controllers
+	 * @class TotalCounterController
+	 * @extends Backbone.Controller
+	 */	
 	UP.TotalCounterController = Backbone.Controller.extend({
+	
+		/**
+		 * @method initialize
+		 * @constructor
+		 */
 		initialize: function() {
 			this.model.on('change', this.updateCounter, this);
 		},
 
+		
+		/**
+		 * @method updateCounter
+		 */
 		updateCounter: function() {
 			var newValue = this.model.get('value');
 			this.$el.find('.filter-count').text(newValue);
@@ -87,11 +180,37 @@
 	});
 	
 	
+	
+	/**
+	 * @module UP
+	 * @submodule Controllers
+	 * @class MethodController
+	 * @extends Backbone.Controller
+	 */	
 	UP.MethodController = Backbone.Controller.extend({
+	
+		/**
+		 * @method initialize
+		 * @constructor
+		 */
 		initialize: function() {
+		
+		    /**
+			 * @property model
+			 * @type Method
+			 */
 			this.model      = this.options.model;
 
+			/**
+			 * @property methodView
+			 * @type jQuery Object
+			 */
 			this.methodView = this.options.methodView;
+			
+			/**
+			 * @property planView
+			 * @type jQuery Object
+			 */
 			this.planView   = this.options.planView;
 
 
@@ -124,7 +243,10 @@
 
 		},
 
-			
+		
+		/**
+		 * @method render
+		 */
 		render: function() {
 			var color;
 			var textValue = "";
@@ -161,12 +283,19 @@
 		},
 
 
+		/**
+		 * @method updatePosition
+		 */
 		updatePosition: function() {
 			this.methodView.parent().prepend(this.methodView);
 			this.planView.parent().prepend(this.planView);
 		},
 
 
+		/**
+		 * @method hideMethod
+		 * @param event {Event} The jQuery event fired
+		 */
 		hideMethod: function(event) {
 			if ( this.model.getValue() == 0 ) {
 				this.showNeutral();
@@ -191,7 +320,10 @@
 			}
 		},
 
-
+		
+		/**
+		 * @method showNeutral
+		 */
 		showNeutral: function() {
 			this.methodView.removeClass('hidden').addClass('visible').removeClass('last-method');
 			this.planView.removeClass('hidden').addClass('visible').removeClass('last-method');
@@ -199,7 +331,11 @@
 			this.model.selectMethod();
 		},
 
-
+		
+		/**
+		 * @method checkboxEvent
+		 * @param event {Event} The jQuery event fired
+		 */
 		checkboxEvent: function(event) {
 			event.preventDefault();
 
@@ -213,7 +349,10 @@
 			this.planView.toggleClass('visible hidden');
 		},
 		
-
+		
+		/**
+		 * @method displayInfoEvent
+		 */
 		displayInfoEvent: function() {
 			var FADE_SPEED = UP.constants.FADE_SPEED;
 			var METHOD_HEIGHT = UP.constants.METHOD_HEIGHT;
@@ -244,6 +383,10 @@
 		},
 
 		
+		/**
+		 * @method disableMethodAnimation
+		 * @param li {jQuery Object} The method which receives a graphic animation
+		 */
 		disableMethodAnimation: function(li) {
 			var FADE_SPEED = UP.constants.FADE_SPEED;
 			var DISABLED_OPACITY = UP.constants.DISABLED_OPACITY;
@@ -263,11 +406,21 @@
 		}, 
 
 
+		/**
+		 * @method isSelected
+		 * @return selected {boolean} returns a boolean value which express whereas the method is selected or not
+		 */
+		 // deprecated ???
 		isSelected: function() {
-			return this.model.get('selected');
+			//return this.model.get('selected');
+			return this.model.isSelected();
 		},
 
-
+		
+		/**
+		 * @method isVisible
+		 * @return visible {boolean} returns a boolean value which express whereas the method is visible or not
+		 */
 		isVisible: function() {
 			return this.methodView.hasClass('visible');
 		}
@@ -275,11 +428,37 @@
 	});
 
 
+	/**
+	 * @module UP
+	 * @submodule Controllers
+	 * @class SubactivityController
+	 * @extends Backbone.Controller
+	 */	
 	UP.SubactivityController = Backbone.Controller.extend({
 		initialize: function() {
+		
+			/**
+			 * @property model
+			 * @type Subactivity
+			 */
 			this.model    = this.options.model;
+			
+			/**
+			 * @property item
+			 * @type jQuery Object
+			 */
 			this.item     = this.options.item;
+			
+			/**
+			 * @property list
+			 * @type jQuery Object
+			 */
 			this.list     = this.options.list;
+			
+			/**
+			 * @property listPlan
+			 * @type jQuery Object
+			 */
 			this.listPlan = this.options.listPlan;
 
 
@@ -303,6 +482,10 @@
 			this.listPlan.find('.expandable').on('click', expandAnimation);
 		},
 
+		
+		/**
+		 * @method isVisible
+		 */
 		displayList: function() {
 			var checkbox = this.item.find('.checkboxWrapper');
 			activateCheckbox(checkbox);
@@ -312,7 +495,11 @@
 
 			constraintsSelectionFix();
 		},
-
+		
+		
+		/**
+		 * @method expandList
+		 */
 		expandList: function() {
 			var header     = this.list.find('.expandable');
 			var headerPlan = this.listPlan.find('.expandable');
@@ -330,6 +517,11 @@
 			headerPlan.toggleClass('collapsed');
 		},
 
+		
+		/**
+		 * @method slideUp
+		 * @param headerVisible {boolean} 
+		 */
 		slideUp: function(headerVisible) {
 			var selected = this.model.get('selected');
 			if (selected) {
@@ -343,6 +535,11 @@
 			}
 		},
 
+		
+		/**
+		 * @method slideDown
+		 * @param headerVisible {boolean} 
+		 */
 		slideDown: function(headerVisible) {
 			var selected = this.model.get('selected');
 			if (selected) {
@@ -356,25 +553,26 @@
 			}
 		},
 
+		
+		/**
+		 * @method updateLastMethod
+		 */
 		updateLastMethod: function() {
 			this.list.find('.visible').last().addClass('last-method');
 			this.listPlan.find('.visible').last().addClass('last-method');
 		},
 
-/*
-		hideMethods: function(slidervalue) {
-			this.list.find('.visible').last().addClass('last-method');
-			this.listPlan.find('.visible').last().addClass('last-method');
-		},
-
-		setMethods: function(methods) {
-			this.methods = methods;
-		},
-*/
+		// deprecated ???
 		isSelected: function() {
-			return this.model.get('selected');
+			//return this.model.get('selected');
+			return this.model.isSelected();
 		},
 
+		
+		// deprecated ???
+		/**
+		 * @method addClassIfLast
+		 */
 		addClassIfLast: function() {
 			console.log("entramos aqui");
 			var subs = $('.info-subactivity').not('hidden');
@@ -385,20 +583,67 @@
 
 	});
 
-
+	
+	
+	/**
+	 * @module UP
+	 * @submodule Controllers
+	 * @class ActivityController
+	 * @extends Backbone.Controller
+	 */	
 	UP.ActivityController = Backbone.Controller.extend({
 		initialize: function() {
+		
+			/**
+			 * @property model
+			 * @type Activity
+			 */
 			this.model    = this.options.model;				// The Activity Model
+			
+			/**
+			 * @property block
+			 * @type jQuery Object
+			 */
 			this.block    = this.options.block;				// View: Panel with the description on 'Activities' Window
+			
+			/**
+			 * @property tab
+			 * @type jQuery Object
+			 */
 			this.tab      = this.options.tab;					// View: Tab above the panel
+			
+			/**
+			 * @property list
+			 * @type jQuery Object
+			 */
 			this.list     = this.options.list;					// View: Subactivities List on 'Methods' Window
+			
+			/**
+			 * @property listPlan
+			 * @type jQuery Object
+			 */
 			this.listPlan = this.options.listPlan;				// View: Subactivities List on 'Plan' Window
 
+			/**
+			 * @property expandButton
+			 * @type jQuery Object
+			 */
 			this.expandButton   = $('#expand');
+			
+			/**
+			 * @property collapseButton
+			 * @type jQuery Object
+			 */
 			this.collapseButton = $('#collapse');
 
+			/**
+			 * @property subactivities
+			 * @type Array[Subactivity]
+			 */
 			this.subactivities = [];
 
+			
+			
 			this.model.on('hideHeader', this.hideHeader, this);
 			this.model.on('showHeader', this.showHeader, this);
 
@@ -418,6 +663,7 @@
 				return self.displayActivityEvent();
 			});
 
+
 			function expandAnimation() {
 				if ( $(this).hasClass('collapsed') ) {
 					self.expandList();
@@ -431,19 +677,28 @@
 
 		},
 
-
+		
+		/**
+		 * @method hideHeader
+		 */
 		hideHeader: function() {
 			this.list.children('.expandable').addClass('hidden');
 			this.listPlan.children('.expandable').addClass('hidden');
 		},
 
-
+		
+		/**
+		 * @method showHeader
+		 */
 		showHeader: function() {
 			this.list.children('.expandable').removeClass('hidden');
 			this.listPlan.children('.expandable').removeClass('hidden');
 		},
 
-
+		
+		/**
+		 * @method displayActivityEvent
+		 */
 		displayActivityEvent: function() {
 			this.hideRestOfActivities();
 			this.tab.addClass('tab-active');
@@ -451,6 +706,10 @@
 			this.block.removeClass('hidden');
 		},
 
+		
+		/**
+		 * @method expandList
+		 */
 		expandList: function() {
 			var header     = this.list.children('.expandable');
 			var headerPlan = this.listPlan.children('.expandable');
@@ -467,6 +726,10 @@
 			headerPlan.removeClass('collapsed');
 		},
 
+		
+		/**
+		 * @method collapseList
+		 */
 		collapseList: function() {
 			var header = this.list.children('.expandable');
 			var headerPlan = this.listPlan.children('.expandable');
@@ -483,6 +746,10 @@
 			headerPlan.addClass('collapsed');
 		},
 
+		
+		/**
+		 * @method hideRestOfActivities
+		 */
 		hideRestOfActivities: function() {
 			for (var i=0; i < this.activities.length; i++) {
 				var view = this.activities[i];
@@ -492,26 +759,47 @@
 			}
 		},
 		
+		
+		/**
+		 * @method hideActivity
+		 */
 		hideActivity: function() {
 			this.tab.removeClass('tab-active');
 			this.block.addClass('hidden');
 		},
 
-
+		
+		/**
+		 * @method expandButtonEvent
+		 * @param event {Event} The jQuery event fired
+		 */
 		expandButtonEvent: function(event) {
 			this.expandList();
 		},
 
-
+		
+		/**
+		 * @method collapseButtonEvent
+		 * @param event {Event} The jQuery event fired
+		 */
 		collapseButtonEvent: function(event) {
 			this.collapseList();
 		},
 
 
+		/**
+		 * @method setSubactivities
+		 * @param subactivities {Array[SubactivityController]} 
+		 */
 		setSubactivities: function(subactivities) {
 			this.subactivities = subactivities;
 		},
 
+		
+		/**
+		 * @method setActivities
+		 * @param activities {Array[ActivityController]} 
+		 */
 		setActivities: function(activities) {
 			this.activities = activities;
 		}

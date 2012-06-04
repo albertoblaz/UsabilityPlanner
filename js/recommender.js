@@ -1,11 +1,46 @@
 
+	/**
+	 * @module UP
+	 * @submodule App
+	 * @class Recommender
+	 * @extends Backbone.Model
+	 */	
 	UP.Recommender = Backbone.Model.extend({
+	
+		/**
+		 * @method initialize
+		 * @constructor
+		 */
 		initialize: function() {
-			// Business Attributes
+
 			this.set({
+			
+				/**
+				 * @property planner
+				 * @type Planner
+				 * @default "new Planner()"
+				 */
 				"planner"     : new UP.Planner(),
+				
+				/**
+				 * @property fileManager
+				 * @type FileManager
+				 * @default "new FileManager()"
+				 */
 				"fileManager" : new UP.FileManager(),
+				
+				/**
+				 * @property csvParser
+				 * @type CSVParser
+				 * @default "new CSVParser()"
+				 */
 				"csvParser"   : new UP.CSVParser(),
+				
+				/**
+				 * @property xmlParser
+				 * @type XMLParser
+				 * @default "new XMLParser()"
+				 */
 				"xmlParser"   : new UP.XMLParser(UP.constants.XML)
 			});
 
@@ -20,7 +55,10 @@
 			this.get('planner').loadInitPlan(plan);
 		},
 
-
+		
+		/**
+		 * @method downloadPlan
+		 */
 		downloadPlan: function() {
 			var success = false;
 
@@ -30,6 +68,10 @@
 		},
 
 
+		/**
+		 * @method uploadPlan
+		 * @param file {Object}
+		 */
 		uploadPlan: function(file) {
 			var success = false;
 

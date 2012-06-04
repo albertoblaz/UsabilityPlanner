@@ -1,13 +1,31 @@
-
+	
+	/**
+	 * @module UP
+	 * @submodule Util
+	 * @class Planner
+	 * @extends Backbone.Model
+	 */	
 	UP.Planner = Backbone.Model.extend({
+	
+		/**
+		 * @method initialize
+		 * @constructor
+		 */
 		initialize: function() {
-			var slider = new UP.Slider();
-
+		
 			this.set({
-				"slider" : slider
+			
+				/**
+				 * @property slider
+				 * @type Slider
+				 * @default "new Slider()"
+				 */
+				"slider" : new UP.Slider();
 			});
 
 			var self = this;
+			var slider = this.get('slider');
+			
 			slider.on('change', function(event) {
 				self.hideMethods();
 			});
@@ -15,9 +33,19 @@
 			new UP.SliderController({ model : slider });
 		},
 
-
+		
+		/**
+		 * @method loadInitPlan
+		 * @param plan {Plan}
+		 */
 		loadInitPlan: function(plan) {
+		
 			this.set({
+			
+				/**
+				* @property plan
+				* @type Plan
+				*/
 				"plan" : plan
 			});
 
@@ -36,6 +64,10 @@
 		},
 
 
+		/**
+		 * @method loadNewPlan
+		 * @param plan {Plan}
+		 */
 		loadNewPlan: function(plan) {
 			console.log("Re-Loaded Plan");
 
@@ -67,6 +99,10 @@
 		},
 
 
+		/**
+		 * @method savePlan
+		 * @return plan {Plan}
+		 */
 		savePlan: function() {
 			console.log("Saved Plan");
 
@@ -75,7 +111,12 @@
 
 		},
 
-
+		
+		/**
+		 * @method replaceConstraintsWeights
+		 * @param newCol {ConstraintCollection}
+		 * @param oldCol {ConstraintCollection}
+		 */
 		replaceConstraintsWeights: function(newCol, oldCol) {
 			newCol.each(function(newC) {
 				oldCol.each(function(oldC) {
@@ -87,6 +128,11 @@
 		},
 
 
+		/**
+		 * @method replaceMethodsWeights
+		 * @param newCol {MethodCollection}
+		 * @param oldCol {MethodCollection}
+		 */
 		replaceMethodsWeights: function(newCol, oldCol) {
 			newCol.each(function(newM) {
 				oldCol.each(function(oldM) {
@@ -99,6 +145,9 @@
 		},
 
 
+		/**
+		 * @method hideMethods
+		 */
 		hideMethods: function() {
 			var sliderValue = this.get('slider').getValue();
 

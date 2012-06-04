@@ -1,9 +1,17 @@
-
+	
+	/**
+	 * @module UP
+	 * @submodule Util
+	 * @class CSVParser
+	 * @extends Backbone.Model
+	 */	
 	UP.CSVParser = Backbone.Model.extend({
-		initialize: function() {
 
-		},
-
+		/**
+		 * @method CSVToArray
+		 * @param strData {string} 
+		 * @param strDelimiter {string} 
+		 */
 		CSVToArray: function(strData, strDelimiter) {
 			// The code of this method has been extracted from:  http://stackoverflow.com/questions/1293147/javascript-code-to-parse-csv-data
 
@@ -70,6 +78,12 @@
 			return( arrData );
 		},
 
+		
+		/**
+		 * @method generatePlanFrom
+		 * @param csv {string} 
+		 * @return newPlan {Plan}
+		 */
 		generatePlanFrom: function(csv) {
 			var data = this.CSVToArray(csv);
 
@@ -108,7 +122,13 @@
 
 			return newPlan;
 		},
-
+		
+		
+		/**
+		 * @method generateCSVFrom
+		 * @param plan {Plan} 
+		 * @return csv {string}
+		 */
 		generateCSVFrom: function(plan) {
 			var constraints = plan.getConstraints();
 			var methods = plan.getSelectedMethods();
