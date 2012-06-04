@@ -27,7 +27,7 @@
 
 		
 		/**
-		 * @method scrollToList
+		 * @method updateValue
 		 * @param newValue {Number} 
 		 */
 		updateValue: function(newValue) {
@@ -38,7 +38,7 @@
 
 		
 		/**
-		 * @method scrollToList
+		 * @method getValue
 		 * @return sliderValue {number}
 		 */
 		getValue: function() {
@@ -111,7 +111,7 @@
 
 		
 		/**
-		 * @method scrollToList
+		 * @method getMethodName
 		 * @return name {string}
 		 */
 		getMethodName: function() {
@@ -120,7 +120,7 @@
 
 		
 		/**
-		 * @method scrollToList
+		 * @method getValue
 		 * @return value {string}
 		 */
 		getValue: function() {
@@ -129,7 +129,7 @@
 
 		
 		/**
-		 * @method scrollToList
+		 * @method changeValue
 		 * @param newValue {number}
 		 */
 		changeValue: function(newValue) {
@@ -229,7 +229,7 @@
 
 		
 		/**
-		 * @method scrollToList
+		 * @method increment
 		 * @param amount {number} 
 		 */
 		increment: function(amount) {
@@ -239,7 +239,7 @@
 
 		
 		/**
-		 * @method scrollToList
+		 * @method decrement
 		 * @param amount {number}
 		 */
 		decrement: function(amount) {
@@ -432,7 +432,7 @@
 
 
 		/**
-		 * @method scrollToList
+		 * @method hideMethod
 		 * @param sliderValue {number}
 		 */
 		hideMethod: function(sliderValue) {
@@ -744,7 +744,7 @@
 
 		
 		/**
-		 * @method compareNameWith
+		 * @method getName
 		 * @return name {string}
 		 */
 		getName: function() {
@@ -753,7 +753,7 @@
 
 		
 		/**
-		 * @method compareNameWith
+		 * @method getWeights
 		 * @return weightCollection {WeightCollection}
 		 */
 		getWeights: function() {

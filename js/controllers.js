@@ -141,7 +141,7 @@
 		
 		
 		/**
-		 * @method scrollToList
+		 * @method updateCounter
 		 */
 		updateCounter: function() {
 			var newValue = this.model.get('value');
@@ -435,6 +435,11 @@
 	 * @extends Backbone.Controller
 	 */	
 	UP.SubactivityController = Backbone.Controller.extend({
+	
+		/**
+		 * @method initialize
+		 * @constructor
+		 */
 		initialize: function() {
 		
 			/**
@@ -592,6 +597,11 @@
 	 * @extends Backbone.Controller
 	 */	
 	UP.ActivityController = Backbone.Controller.extend({
+	
+		/**
+		 * @method initialize
+		 * @constructor
+		 */
 		initialize: function() {
 		
 			/**
