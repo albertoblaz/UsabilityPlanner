@@ -184,7 +184,7 @@
 
 		
 		/**
-		 * @method toCSV
+		 * @method updateValue
 		 * @param newValue {number}
 		 */
 		updateValue: function(newValue) {
