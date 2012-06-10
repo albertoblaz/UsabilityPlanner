@@ -86,11 +86,18 @@
 	padding: 6px;
 }
 
+.filtering a,
+.filtering a:active,
+.filtering a:focus {
+	color: #111;
+}
+
 .expand-buttons {
 	margin-left: 3%;
 }
 
 .expand-all {
+	color: #28527D;
 	cursor: pointer;
 	display: inline-block;
 	font-size: small;
@@ -98,12 +105,6 @@
 	padding-top: 8px;
 }
 
-.expand-all,
-.filtering a,
-.filtering a:active,
-.filtering a:focus {
-	color: #28527D;
-}
 
 .filtering a:hover,
 .expand-all:hover {

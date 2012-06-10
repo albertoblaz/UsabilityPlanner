@@ -20,7 +20,7 @@
 				 * @type Slider
 				 * @default "new Slider()"
 				 */
-				"slider" : new UP.Slider();
+				"slider" : new UP.Slider()
 			});
 
 			var self = this;
@@ -49,7 +49,7 @@
 				"plan" : plan
 			});
 
-			console.log("Loaded Plan");
+			
 
 			plan.getConstraints().on('updateMethods', function() {
 				var sliderValue = this.get('slider').getValue();
@@ -69,7 +69,7 @@
 		 * @param plan {Plan}
 		 */
 		loadNewPlan: function(plan) {
-			console.log("Re-Loaded Plan");
+			
 
 			var oldConstraints = this.get('plan').getConstraints();
 			var newConstraints = plan.getConstraints();
@@ -104,7 +104,7 @@
 		 * @return plan {Plan}
 		 */
 		savePlan: function() {
-			console.log("Saved Plan");
+			
 
 			//return new UP.Plan(this.get('constraints'), this.get('activities'));
 			return this.get('plan');

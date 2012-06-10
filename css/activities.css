@@ -64,9 +64,5 @@
 }
 
 .tab-active {
-	background: -webkit-radial-gradient( 
-					ellipse, 
-					rgba(210, 222, 240, 0.5), 
-					rgba(180, 192, 210, 0.4)
-			) no-repeat fixed center center;
+	background: rgba(205, 212, 240, 0.5);
 }

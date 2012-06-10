@@ -279,7 +279,7 @@
 			this.planView.find('.valoration').text(textValue);
 			this.planView.find('.bar').attr('class', 'bar').addClass(color);
 
-			console.log("RENDER!!!");
+			
 		},
 
 
@@ -579,7 +579,7 @@
 		 * @method addClassIfLast
 		 */
 		addClassIfLast: function() {
-			console.log("entramos aqui");
+			
 			var subs = $('.info-subactivity').not('hidden');
 			if ( this.list == subs.last() ) {
 				this.list.addClass('last-subactivity');

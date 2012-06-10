@@ -286,8 +286,8 @@
 				var Nconstraints = constraintCollection.length;
 				var Nmethods     = methodCollection.length;
 
-				console.log("number of constraints: " + Nconstraints);
-				console.log("number of methods: " + Nmethods);
+				
+				
 
 				var weightsC = 0;
 				var weightsM = 0;
@@ -300,10 +300,10 @@
 					weightsM += m.get('weightCollection').length;
 				});
 
-				console.log("number of weights by constraints: " + weightsC);
-				console.log("number of weights by methods: " + weightsM);
+				
+				
 
-				console.log("Number of methods with failures: " + ((Nconstraints * Nmethods) - weightsM) / Nconstraints);
+				
 			});
 
 			return new UP.Plan(constraintCollection, activityCollection);

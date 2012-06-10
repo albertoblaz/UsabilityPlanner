@@ -40,14 +40,34 @@
 
 			// Initialization Effect
 			this.adjustContainer();
-			this.adjustActivityContainer();
-			
+			this.adjustTabsActivityContainer();
+			this.fixConstraintsDescription();
 
+
+		},
+
+
+		adjustTabsActivityContainer: function() {
 			var tabs = $('.tab');
 			if (tabs.length == 6) {
-				tabs.find('p').css({ 'font-size' : '16px' });
+				var size = 16;
+				if ( navigator.userAgent.indexOf('iPad') != -1 ) {
+					size = 14;
+				}
+
+				tabs.find('p').css({ 'font-size' : size + 'px' });
 				tabs.removeClass('three-columns').addClass('six-columns');
-				$('.stage').eq(0).find('a').text("Stages");
+
+				this.stages.first().find('a').text("Stages");
+			}
+		},
+
+
+		fixConstraintsDescription: function() {
+			var tooltip = $('.tooltip');
+			var text = tooltip.text();
+			if ( text === "" ) {
+				tooltip.text( "(No available description yet)" );
 			}
 		},
 
@@ -154,7 +174,7 @@
 			var activities = $('.activity');
 
 			var first = activities.first();
-			var margin = parseInt(first.css('margin-top'));
+			var margin = 37; //parseInt(first.css('margin-top'));
 
 			activities.each(function(i) {
 				var act = activities.eq(i);
@@ -171,7 +191,7 @@
 			var hh = this.container.height() + margin;
 			this.container.height( hh );
 
-			$('#activities-selection').css({ 'height' : max });
+			$('#activities-selection').css({ 'height' : max+10 });
 		},
 
 
@@ -206,7 +226,7 @@
 			});
 
 			this.recommender.on('downloadReady', function(event) {
-				console.log("hecho click");
+				
 			});
 
 			this.uploadButton.on('click', function(event) {

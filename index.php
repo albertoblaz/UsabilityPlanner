@@ -1,18 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" manifest="offline.appcache">
 
 <head>
-
-	<!-- Meta -->
-	<meta charset="utf-8" />
-	<meta name="description" content="Usability Planner, a tool for helping developers and designers" />
-	<meta name="generator" content="Espresso 2" />
 
 	<!-- Title -->
 	<title>Usability Planner</title>
 
+
 	<!-- CSS -->
 	<link media="all" rel="stylesheet" type="text/css" href="css/styles.css" />
+
+
+	<!-- Meta -->
+	<meta charset="utf-8" />
+
+	<meta name="author" content="Xavier Ferre, Nigel Bevan, Alberto Blazquez" />
+	<meta name="description" content="Usability Planner, a tool for helping developers and designers" />
+	<meta name="generator" content="Espresso 2" />
+
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+	<!--link rel="apple-touch-icon-precomposed" href="images/icon.png"-->
+	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ipad-icon.png">
+	<!--link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/icon@2x.png"-->
+
+	<link rel="apple-touch-startup-image" href="./ipad-startup.png">
+
+	<link rel="shortcut icon" href="favicon.ico">
+	<link rel="icon" href="favicon.ico">
 
 </head>
 
@@ -81,7 +98,6 @@ echo($proc->transformToXML($xml));
 					<section id="activities-selection">
 					
 <?php
-/*
 $activities = new DomDocument();
 $activities->load('xsl/activities.xsl');
 
@@ -89,18 +105,18 @@ $proc = new xsltprocessor();
 $proc->importStyleSheet($activities);
 
 echo($proc->transformToXML($xml));
-*/
 ?>
 					</section>   <!-- #activities-selection -->
 
 
-					<section id="costs-selection">
+					<!--section id="costs-selection">
 					
 						<table border="0" cellspacing="0" cellpadding="0">
 <thead>
 
 
 <?php
+/*
 $tableHead = new DomDocument();
 $tableHead->load('xsl/table-head.xsl');
 
@@ -108,6 +124,7 @@ $proc = new xsltprocessor();
 $proc->importStyleSheet($tableHead);
 
 echo($proc->transformToXML($xml));
+*/
 ?>
 
 </thead>
@@ -115,6 +132,7 @@ echo($proc->transformToXML($xml));
 <tbody>
 
 <?php
+/*
 $tableBody = new DomDocument();
 $tableBody->load('xsl/table-body.xsl');
 
@@ -122,12 +140,13 @@ $proc = new xsltprocessor();
 $proc->importStyleSheet($tableBody);
 
 echo($proc->transformToXML($xml));
+*/
 ?>
 
 </tbody>
 						</table>
 
-					</section>   <!-- #costs-selection -->
+					</section-->   <!-- #costs-selection -->
 
 
 				</div>   <!-- #content -->

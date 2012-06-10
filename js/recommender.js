@@ -51,7 +51,7 @@
 
 
 			var plan = this.get('xmlParser').parse();
-			console.log(plan);
+			
 			this.get('planner').loadInitPlan(plan);
 		},
 

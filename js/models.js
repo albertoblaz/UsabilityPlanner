@@ -86,7 +86,7 @@
 		 */
 		incrementMethodValue: function() {
 			var value = this.get('value');
-			console.log("Incrementando valor: " + value + " al method: " + this.get('method').get('name') );
+			
 			this.get('method').incrementValue(value);
 		},
 
@@ -191,7 +191,7 @@
 			var oldValue = this.get('value');
 			this.set({ value : newValue });
 
-			console.log("updating counter");
+			
 
 			this.get('totalCounter').decrement(oldValue);
 			this.get('totalCounter').increment(newValue);
@@ -564,16 +564,16 @@
 		 * @return csv {string}
 		 */
 		toCSV: function() {
-			console.log(this.get('name'));
-			console.log(typeof this.get('name'));
+			
+			
 
 			var name    = this.get('name') + ";" ;
 			var value   = this.get('value');
 			var weights = this.weightsToCSV();
 
-			console.log(name);
-			console.log(value);
-			console.log(weights);
+			
+			
+			
 
 			return (name + value + weights);
 		}
