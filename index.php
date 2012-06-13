@@ -49,13 +49,13 @@
 				</ul>
 				
 				<ul class="stages">
-					<li class="stage first current-stage">
+					<li class="stage current-stage">
 						<a href="#activities" class="nav-link button">Activities</a>
 					</li>
 					<li class="stage">
 						<a href="#methods" class="nav-link button">Methods</a>
 					</li>
-					<li class="stage last">
+					<li class="stage">
 						<a href="#plan"    class="nav-link button">Your Plan</a>
 					</li>
 				</ul>
@@ -82,7 +82,7 @@
 
 <?php
 $xml = new DomDocument();
-$xml->load('xml/stages.xml');
+$xml->load('xml/activities.xml');
 
 $tabs = new DomDocument();
 $tabs->load('xsl/tabs.xsl');
@@ -270,9 +270,8 @@ echo($proc->transformToXML($xml));
 			<footer id="footer" class="center">	
 				<nav>
 					<ul class="links">
-						<li class="link"><a href="#">UX Professionals version</a></li>
-						<li class="link"><a href="#">iPad version</a></li>
-						<li class="link"><a href="#">Usability Guide</a></li>
+						<li class="link"><a href="..">Home</a></li>
+						<li class="link"><a href="../stages/">Stages version</a></li>
 						<li class="link"><a href="#">About</a></li>
 						<li class="link"><a href="#">Feedback</a></li>
 					</ul>
