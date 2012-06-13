@@ -186,6 +186,7 @@
 								if ( method.compareNameWith(name) ) {
 									description = method.getDescription();
 									url = method.getURL();
+									method.clear();
 								}
 							});
 
@@ -280,31 +281,8 @@
 					var act = arrayActivityControllers[i];
 					act.setActivities(arrayActivityControllers);
 				}
-
-				// Test
-
-				var Nconstraints = constraintCollection.length;
-				var Nmethods     = methodCollection.length;
-
 				
-				
-
-				var weightsC = 0;
-				var weightsM = 0;
-
-				constraintCollection.each(function(c) {
-					weightsC += c.get('weightCollection').length;
-				});
-
-				methodCollection.each(function(m) {
-					weightsM += m.get('weightCollection').length;
-				});
-
-				
-				
-
-				
-			});
+			});	// $.get
 
 			return new UP.Plan(constraintCollection, activityCollection);
 		}
