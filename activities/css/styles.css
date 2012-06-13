@@ -1,0 +1,195 @@
+
+/*
+ * TABLE OF CONTENTS
+ *
+ * 1 Import CSS Stylesheets
+ * 2 Generic Styles
+ *
+ */
+  
+  
+/***  Import CSS Stylesheets  ***/
+
+@import url('normalize.css')         all;
+
+@import url('fonts.css')             all;
+@import url('header.css')            all;
+@import url('footer.css')            all;
+@import url('activities.css')        all;
+@import url('methods.css')           all;
+@import url('plan.css')              all;
+
+@import url('meter-bars.css')        all;
+@import url('jquery-ui-slider.css')  screen;
+
+
+
+/***  Generic Styles  ***/
+
+* {
+	padding:0;
+	margin:0;	
+}
+
+p,
+label {
+	font-family: Calibri, sans-serif;	
+}
+
+input {
+	margin-right: 10px;
+}
+
+body {
+	background: #C6D3DA url('../images/bg.gif') top repeat-x;
+	font-family: 'UbuntuRegular', Arial, sans-serif;
+	
+	/* To keep footer always at the bottom */
+	min-height:100%; 
+	position:relative;
+	height: 100%;	/* IE 6 Hack */
+}
+
+
+/* Main Sections */
+
+.wrapper {   /* Used on header, container and footer */
+	margin: 0 auto;
+	width: 70%;
+	/* min-width: 880px; */
+	min-width: 936px;
+}
+
+.main-container {
+	overflow: hidden;
+	width: 100%;
+}
+
+.container {
+	overflow: hidden;
+	width: 100%;
+}
+
+.main-content {
+	float: left;
+	width: 33.3%;
+	min-width: 33.3%;
+}
+
+.content {
+	background: white;
+	border: #C6D3DA 1px solid;
+	margin: auto;
+	overflow-x: hidden;
+	height: 100%;
+	width: 99%;
+	min-width: 933px;
+}
+
+
+
+/* Headlines */
+
+.headline {
+	color: #4B5565;
+	font-size: 1.0em;
+	margin: 1em 0;
+}
+
+.main {
+	font-size: 1.15em;
+	margin-top: 3%;
+}
+
+.small {
+	font-size: 0.9em;
+}
+
+.underlined {
+	border-bottom: 1px solid #CCC;
+	padding-bottom: 2px;
+}
+
+
+/* Float */
+
+.left {
+	float: left;
+}
+
+.right {
+	float: right;
+}
+
+.center {
+	text-align: center;
+}
+
+
+/* Display */
+
+.block {
+	display: block;
+}
+
+.inline {
+	display: inline;
+}
+
+.inline-block {
+	display: inline-block;
+}
+
+.hidden {
+	display: none;
+}
+
+
+/* Columns */
+
+.three-columns {
+	width: 33.1%;
+}
+
+.six-columns {
+	/* width: 16.45%; */
+	width: 16.5%;
+}
+
+
+/* Clear */
+
+.clear {
+	clear: both;
+}
+
+
+table {
+	border: rgb(198, 211, 218) 1px solid;
+}
+
+tr {
+	border: rgb(198, 211, 218) 1px solid;
+	height: 2.5em;
+}
+
+td, th {
+	border: rgb(198, 211, 218) 1px solid;
+	font-family: Calibri, sans-serif;
+	font-size: 15px;
+	padding: 5px 0;
+	text-align: center;
+}
+
+th {
+	background: -webkit-radial-gradient( ellipse, rgba(210, 222, 240, 0.5), rgba(180, 192, 210, 0.4) ) no-repeat fixed center center;
+	font-weight: normal;
+}
+
+td .checkboxWrapper {
+	float: none;
+}
+
+td .checkboxWrapper a {
+	margin: auto;
+}

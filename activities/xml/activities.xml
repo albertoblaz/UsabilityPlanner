@@ -1,0 +1,1843 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+
+/**
+ * Project: Usability Planner
+ * Description: XML with core information. The operation of the tool depends on this file. 
+ * Change or modify this file can stop working the tool or the results of calculation may be incorrect.
+ *   
+ * @author Alberto Blazquez, Tomas Anton Escobar, Nigel Bevan, Xavier Ferre, Copyright (C) 2012.
+ * @version 2 13/04/2012
+ *   
+ * @see The GNU Public License (GPL)
+ * 
+ * THIS CODE AND INFORMATION ARE PROVIDED "AS IS" WITHOUT WARRANTY OF ANY 
+ * KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A
+ * PARTICULAR PURPOSE.
+ * 
+ */
+
+
+REMEMBER: Don't use "quotes" inside of a description, name or atributte in general. Quotes are XML reserved words
+-->
+
+
+<usabilityPlanner>
+
+	<costBenefits>		
+		<costBenefit name="Development: reduced time/costs" description=""></costBenefit>
+		<costBenefit name="Product usability: improved product sales" description=""></costBenefit>
+		<costBenefit name="Web site usability: improved usage/sales" description=""></costBenefit>
+		<costBenefit name="Efficiency in use: increased productivity" description=""></costBenefit>
+		<costBenefit name="Support and maintenance: reduced costs" description="" ></costBenefit>
+	</costBenefits>
+	
+	
+	<businessRisks>
+		<risk name="Development: increased time/costs" description=""></risk>
+		<risk name="Product usability: reduced product sales" description=""></risk>		
+		<risk name="Web site usability: reduced usage/sales" description=""></risk>
+		<risk name="Efficiency in use: reduced productivity" description=""></risk>
+		<risk name="Support and maintenance: increased costs" description=""></risk>
+	</businessRisks>
+
+
+	<constraints>
+	
+		<constraintsGroup name="Project Constraints">
+			<constraint name="Need quick results"                                description = ""></constraint>
+			<constraint name="Very restricted budget"                            description = ""></constraint>
+			<constraint name="Usability important"                               description = ""></constraint>
+			<constraint name="Uncertain specification"                           description = ""></constraint>
+		</constraintsGroup>
+		
+		<constraintsGroup name="User Constraints">
+			<constraint name="Difficult to involve users"                        description = ""></constraint>
+			<constraint name="No access to users"                                description = ""></constraint>
+			<constraint name="Some users have disabilities"                      description = ""></constraint>
+			<constraint name="Mostly first time users"                           description = ""></constraint>
+		</constraintsGroup>
+		
+		<constraintsGroup name="Task Constraints">
+			<constraint name="Complex task"                                      description = ""></constraint>
+			<constraint name="Many tasks"                                        description = ""></constraint>
+			<constraint name="Safety or business critical system"                description = ""></constraint>
+			<constraint name="Organisational changes needed"                     description = ""></constraint>	
+		</constraintsGroup>
+		
+		<constraintsGroup name="Product Constraints">
+			<constraint name="Efficiency or accuracy is important"               description = ""></constraint>
+			<constraint name="Adaptation of an existing system"                  description = ""></constraint>
+			<constraint name="A well understood product"                         description = ""></constraint>
+			<constraint name="Customisable product"                              description = ""></constraint>
+		</constraintsGroup>
+		
+		<constraintsGroup name="Context Constraints">
+			<constraint name="General purpose: used in many different contexts"  description = ""></constraint>
+		</constraintsGroup>
+		
+		<constraintsGroup name="Human Constraints">
+			<constraint name="No usability expertise available"                  description = ""></constraint>
+		</constraintsGroup>
+		
+	</constraints>
+
+
+	
+	<methods> 
+		<methodInfo name="Claims Analysis" description="A technique for examining the positive and negative consequences of design features that are described in current or future scenarios of use." url="http://www.usabilitybok.org/methods/claims-analysis"></methodInfo>	
+		<methodInfo name="Common Industry Specification for Usability Requirements" description="Supports defining usability requirements in sufficient detail to make an effective contribution to design and development, and defining usability criteria that can be empirically validated subsequently if needed." url="http://zing.ncsl.nist.gov/iusr/"></methodInfo>	
+		<methodInfo name="Competitor Analysis" description="Identifying the strengths and weaknesses of competing products or services before starting work on prototypes." url=" "></methodInfo>	
+		<methodInfo name="Critical Incident Technique" description="A method of gathering facts (incidents) from domain experts or less experienced users of the existing system to gain knowledge of how to improve the performance of the individuals involved." url="http://www.usabilitybok.org/methods/p2052"></methodInfo>	
+		<methodInfo name="Cultural Probe / Diary Study" description="Sets of simple artifacts (such as maps, postcards, cameras, or diaries) that are given to users for them to record specific events, feelings or interactions in their usual environment, in order to get to know them and their culture better, to uncover aspects of culture and human interaction like emotions, values, connections, and trust." url="http://www.usabilitybok.org/methods/cultural-probe"></methodInfo>	
+		<methodInfo name="Event Data Analysis" description="Analysis of observations collected via instrumentation (e.g., keystrokes, communication logs) over time to identify patterns that evaluate use of the system." url=" "></methodInfo>	
+		<methodInfo name="Field Study" description="An investigator views users as they work, taking notes on the activity that takes place, and typically asking questions." url="http://www.usabilitybok.org/methods/field-study"></methodInfo>	
+		<methodInfo name="Focus Groups" description="A focused discussion where a moderator leads a group of participants through a set of questions on a particular topic." url=" "></methodInfo>	
+		<methodInfo name="Heuristic Evaluation" description="A usability evaluation method in which one or more reviewers, preferably experts, compare a software, documentation, or hardware product to a list of design principles (commonly referred to as heuristics)." url="http://www.usabilitybok.org/methods/p275"></methodInfo>	
+		<methodInfo name="Hierarchical Task Analysis" description="One of the most widely used methods in task analysis, based on the hierarchical decomposition of a task into small pieces corresponding to intermediate goals." url=" "></methodInfo>	
+		<methodInfo name="Human Factors Analysis" description="Analyzes human functions, effects and influence in a system, particularly human influence on the reliability of a system   It includes traditional human reliability analysis, human error analysis, man-machine interface analysis, and human character analysis." url=" "></methodInfo>	
+		<methodInfo name="Parallel Design" description="A method where several design groups produce alternative designs in parallel with the objective of incorporating the best aspects of each design in the final solution." url="http://www.usabilitybok.org/methods/parallel-design"></methodInfo>	
+		<methodInfo name="Participatory Design" description="An approach to design that attempts to actively involve the end users in the design process to help ensure that the product designed meets their needs and is usable." url=" "></methodInfo>	
+		<methodInfo name="Participatory Workshops" description="A group activity where users and stakeholders work together to generate one or more design artifacts. The techniques for conducting participatory workshops can vary considerably, but often involve brainstorming of ideas, translation of ideas into rough designs, refinement of the design, and finally evaluation of design." url=" "></methodInfo>	
+		<methodInfo name="Personas" description="Fictional person created to model and describe the goals, needs, and characteristics of a specific type or group of users." url=" "></methodInfo>	
+		<methodInfo name="Photo Study" description="A sample of users are given a set of 'missions' to take photos to highlight important aspects of their lives and day to day context. Data from these studies helps highlight opportunities for new technologies and barriers to their acceptance." url="http://www.usabilitybok.org/methods/p313"></methodInfo>	
+		<methodInfo name="Physical Ergonomics" description="Physical ergonomics is concerned with the impact of anatomy, anthropometry, biomechanics, physiology, and the physical environment on physical activity." url=" "></methodInfo>	
+		<methodInfo name="Quality Function Deployment (QFD)" description="A technique that emerged from the quality movement in manufacturing that uses a variety of tools (for example, interviews, focus groups, technical support logs, field visits) to understand the 'voice of the customer', develop requirements that meet both stated and unstated needs of the customers, and generate plans for translating those requirements into the set of features that will satisfy and delight customers." url=" "></methodInfo>	
+		<methodInfo name="Remote Evaluation" description="Usability testing method where the evaluator is remote from the user." url=" "></methodInfo>	
+		<methodInfo name="Satisfaction Questionnaire" description="Questionnaires used to assess how users feel about the system being tested." url=" "></methodInfo>	
+		<methodInfo name="Scenarios" description="A descriptions of one or more users interacting with a system, device, or process to achieve a goal under specified conditions and constraints. Scenarios are used in design sessions, walkthroughs, and usability tests to ensure that the system design effectively supports users in a wide range of real-life situations." url=" "></methodInfo>	
+		<methodInfo name="Storyboards" description="A technique for illustrating an interaction between a person and a product (or multiple people and multiple products) in narrative format, which includes a series of drawings, sketches, or pictures, and sometimes words that tell a story." url="http://www.usabilitybok.org/methods/storyboard"></methodInfo>	
+		<methodInfo name="Usability Benchmarking" description="Measure existing values of effectiveness, efficiency and satisfaction that provide a benchmark against which future systems can be compared." url=" "></methodInfo>	
+		<methodInfo name="Laboratory Usability Testing" description="A usability evaluation method that involves observing users performing specific tasks with the system." url=" "></methodInfo>	
+		<methodInfo name="Essential Use Cases" description="The description of an interaction between an 'actor' and a system, to achieve a specific outcome. Use cases are a functional perspective on the interaction, written in an implementation-independent way - they describe what a system or process does rather than how it does something specifically. Also sometimes used to refer to a scenario." url=" "></methodInfo>	
+		<methodInfo name="Wireframe" description="Rough outline of navigation and content elements that make up a user interface. Typically visual design and precise layout are not addressed." url=" "></methodInfo>	
+		<methodInfo name="Wizard of Oz" description="User-based evaluation of unimplemented technology by using a human to simulate the response of a system." url="http://www.usabilitybok.org/methods/wizard-of-oz"></methodInfo>	
+	
+	<!-- 
+		Nuevas descripciones 
+	-->
+
+		<methodInfo name="Affinity diagramming" description="A participatory method where concepts written on cards are organized collaboratively into logical groups on a whiteboard or wall." url="http://www.usabilitybok.org/methods/affinity-diagram"></methodInfo>
+		<methodInfo name="Card sorting" description="A method for organizing information that involves giving individual participants a series of cards with terms. Participants are asked to sort the terms into groups that make sense for them. The aim is to get the participants mental model on the kind if information sorted." url="http://www.usabilitybok.org/methods/card-sorting"></methodInfo>
+		<methodInfo name="Ethnographic observation" description="Gathering information about users and tasks directly from users in their normal work, home or leisure environment, trying to minimize the disruption caused by the observation itself." url="http://www.usabilitybok.org/methods/ethnography"></methodInfo>
+	
+	</methods>
+
+	
+	
+	<activities>
+	
+		<activity name="Analysis" description="">
+		
+			<subactivity name="Specification of the Context of Use" description="">
+			
+				<costBenefit name="Development: reduced time/costs" weight="4"></costBenefit>
+				<costBenefit name="Product usability: improved product sales" weight="4"></costBenefit>
+				<costBenefit name="Web site usability: improved usage/sales" weight="4"></costBenefit>
+				<costBenefit name="Efficiency in use: increased productivity" weight="4"></costBenefit>
+				<costBenefit name="Support and maintenance: reduced costs" weight="4"></costBenefit>
+		
+
+				<risk name = "Development: increased time/costs" weight="4"></risk>
+				<risk name = "Product usability: reduced product sales" weight="4"></risk>		
+				<risk name = "Web site usability: reduced usage/sales" weight="4"></risk>
+				<risk name = "Efficiency in use: reduced productivity" weight="4"></risk>
+				<risk name = "Support and maintenance: increased costs" weight="4"></risk>
+
+
+				<method name="Ethnographic Observation" description="">
+					<constraint weight="1" name="Need quick results"></constraint>
+					<constraint weight="1" name="Very restricted budget"></constraint>
+					<constraint weight="5" name="Usability important"></constraint>
+					<constraint weight="5" name="Uncertain specification"></constraint>
+
+					<constraint weight="2" name="Difficult to involve users"></constraint>
+					<constraint weight="1" name="No access to users"></constraint>
+					<constraint weight="4" name="Some users have disabilities"></constraint>
+					<constraint weight="3" name="Mostly first time users"></constraint>
+
+					<constraint weight="5" name="Complex task"></constraint>
+					<constraint weight="5" name="Many tasks"></constraint>
+					<constraint weight="5" name="Safety or business critical system"></constraint>
+					<constraint weight="5" name="Organisational changes needed"></constraint>
+
+					<constraint weight="5" name="Efficiency or accuracy is important"></constraint>
+					<constraint weight="5" name="Adaptation of an existing system"></constraint>
+					<constraint weight="1" name="A well understood product"></constraint>
+					<constraint weight="4" name="Customisable product"></constraint>
+
+					<constraint weight="3" name="General purpose: used in many different contexts"></constraint>
+
+					<constraint weight="2" name="No usability expertise available"></constraint>
+				</method>
+				
+				
+				<method name="Field study" description="">
+					<constraint weight="4" name="Need quick results"></constraint>
+					<constraint weight="3" name="Very restricted budget"></constraint>
+					<constraint weight="5" name="Usability important"></constraint>
+					<constraint weight="5" name="Uncertain specification"></constraint>
+
+					<constraint weight="2" name="Difficult to involve users"></constraint>
+					<constraint weight="1" name="No access to users"></constraint>
+					<constraint weight="4" name="Some users have disabilities"></constraint>
+					<constraint weight="3" name="Mostly first time users"></constraint>
+
+					<constraint weight="5" name="Complex task"></constraint>
+					<constraint weight="4" name="Many tasks"></constraint>
+					<constraint weight="5" name="Safety or business critical system"></constraint>
+					<constraint weight="4" name="Organisational changes needed"></constraint>
+
+					<constraint weight="5" name="Efficiency or accuracy is important"></constraint>
+					<constraint weight="4" name="Adaptation of an existing system"></constraint>
+					<constraint weight="1" name="A well understood product"></constraint>
+					<constraint weight="3" name="Customisable product"></constraint>
+
+					<constraint weight="3" name="General purpose: used in many different contexts"></constraint>
+
+					<constraint weight="3" name="No usability expertise available"></constraint>
+				</method>
+				
+				
+				<method name="In-Depth Analysis of Work and Lifestyles" description="">
+					<constraint weight="1" name="Need quick results"></constraint>
+					<constraint weight="1" name="Very restricted budget"></constraint>
+					<constraint weight="5" name="Usability important"></constraint>
+					<constraint weight="5" name="Uncertain specification"></constraint>
+
+					<constraint weight="1" name="Difficult to involve users"></constraint>
+					<constraint weight="1" name="No access to users"></constraint>
+					<constraint weight="2" name="Some users have disabilities"></constraint>
+					<constraint weight="3" name="Mostly first time users"></constraint>
+
+					<constraint weight="5" name="Complex task"></constraint>
+					<constraint weight="4" name="Many tasks"></constraint>
+					<constraint weight="5" name="Safety or business critical system"></constraint>
+					<constraint weight="5" name="Organisational changes needed"></constraint>
+
+					<constraint weight="5" name="Efficiency or accuracy is important"></constraint>
+					<constraint weight="2" name="Adaptation of an existing system"></constraint>
+					<constraint weight="2" name="A well understood product"></constraint>
+					<constraint weight="3" name="Customisable product"></constraint>
+
+					<constraint weight="2" name="General purpose: used in many different contexts"></constraint>
+
+					<constraint weight="2" name="No usability expertise available"></constraint>
+				</method>
+				
+				
+				<method name="Competitor Analysis" description="">
+					<constraint weight="3" name="Need quick results"></constraint>
+					<constraint weight="2" name="Very restricted budget"></constraint>
+					<constraint weight="5" name="Usability important"></constraint>
+					<constraint weight="5" name="Uncertain specification"></constraint>
+
+					<constraint weight="3" name="Difficult to involve users"></constraint>
+					<constraint weight="3" name="No access to users"></constraint>
+					<constraint weight="3" name="Some users have disabilities"></constraint>
+					<constraint weight="3" name="Mostly first time users"></constraint>
+
+					<constraint weight="4" name="Complex task"></constraint>
+					<constraint weight="4" name="Many tasks"></constraint>
+					<constraint weight="5" name="Safety or business critical system"></constraint>
+					<constraint weight="3" name="Organisational changes needed"></constraint>
+
+					<constraint weight="4" name="Efficiency or accuracy is important"></constraint>
+					<constraint weight="3" name="Adaptation of an existing system"></constraint>
+					<constraint weight="3" name="A well understood product"></constraint>
+					<constraint weight="3" name="Customisable product"></constraint>
+
+					<constraint weight="3" name="General purpose: used in many different contexts"></constraint>
+
+					<constraint weight="3" name="No usability expertise available"></constraint>
+				</method>
+				
+				
+				<method name="Contextual Enquiry" description="">
+					<constraint weight="1" name="Need quick results"></constraint>
+					<constraint weight="1" name="Very restricted budget"></constraint>
+					<constraint weight="5" name="Usability important"></constraint>
+					<constraint weight="5" name="Uncertain specification"></constraint>
+
+					<constraint weight="2" name="Difficult to involve users"></constraint>
+					<constraint weight="1" name="No access to users"></constraint>
+					<constraint weight="3" name="Some users have disabilities"></constraint>
+					<constraint weight="4" name="Mostly first time users"></constraint>
+
+					<constraint weight="4" name="Complex task"></constraint>
+					<constraint weight="4" name="Many tasks"></constraint>
+					<constraint weight="4" name="Safety or business critical system"></constraint>
+					<constraint weight="4" name="Organisational changes needed"></constraint>
+
+					<constraint weight="4" name="Efficiency or accuracy is important"></constraint>
+					<constraint weight="3" name="Adaptation of an existing system"></constraint>
+					<constraint weight="2" name="A well understood product"></constraint>
+					<constraint weight="3" name="Customisable product"></constraint>
+
+					<constraint weight="4" name="General purpose: used in many different contexts"></constraint>
+
+					<constraint weight="2" name="No usability expertise available"></constraint>
+				</method>
+				
+				
+				<method name="Cultural Probe / Diary Study" description="">
+					<constraint weight="1" name="Need quick results"></constraint>
+					<constraint weight="2" name="Very restricted budget"></constraint>
+					<constraint weight="4" name="Usability important"></constraint>
+					<constraint weight="3" name="Uncertain specification"></constraint>
+
+					<constraint weight="2" name="Difficult to involve users"></constraint>
+					<constraint weight="1" name="No access to users"></constraint>
+					<constraint weight="3" name="Some users have disabilities"></constraint>
+					<constraint weight="1" name="Mostly first time users"></constraint>
+
+					<constraint weight="4" name="Complex task"></constraint>
+					<constraint weight="4" name="Many tasks"></constraint>
+					<constraint weight="5" name="Safety or business critical system"></constraint>
+					<constraint weight="3" name="Organisational changes needed"></constraint>
+
+					<constraint weight="3" name="Efficiency or accuracy is important"></constraint>
+					<constraint weight="4" name="Adaptation of an existing system"></constraint>
+					<constraint weight="1" name="A well understood product"></constraint>
+					<constraint weight="3" name="Customisable product"></constraint>
+
+					<constraint weight="3" name="General purpose: used in many different contexts"></constraint>
+
+					<constraint weight="2" name="No usability expertise available"></constraint>
+				</method>
+				
+				
+				<method name="Quality Function Deployment (QFD)" description="">
+					<constraint weight="2" name="Need quick results"></constraint>
+					<constraint weight="2" name="Very restricted budget"></constraint>
+					<constraint weight="4" name="Usability important"></constraint>
+					<constraint weight="3" name="Uncertain specification"></constraint>
+
+					<constraint weight="3" name="Difficult to involve users"></constraint>
+					<constraint weight="3" name="No access to users"></constraint>
+					<constraint weight="3" name="Some users have disabilities"></constraint>
+					<constraint weight="3" name="Mostly first time users"></constraint>
+
+					<constraint weight="4" name="Complex task"></constraint>
+					<constraint weight="4" name="Many tasks"></constraint>
+					<constraint weight="4" name="Safety or business critical system"></constraint>
+					<constraint weight="4" name="Organisational changes needed"></constraint>
+
+					<constraint weight="3" name="Efficiency or accuracy is important"></constraint>
+					<constraint weight="3" name="Adaptation of an existing system"></constraint>
+					<constraint weight="2" name="A well understood product"></constraint>
+					<constraint weight="3" name="Customisable product"></constraint>
+
+					<constraint weight="4" name="General purpose: used in many different contexts"></constraint>
+
+					<constraint weight="2" name="No usability expertise available"></constraint>
+				</method>
+				
+				<!-- pending -->
+				<method name="JEM" description="">
+					<constraint weight="2" name="Need quick results"></constraint>
+					<constraint weight="2" name="Very restricted budget"></constraint>
+					<constraint weight="2" name="Usability important"></constraint>
+					<constraint weight="2" name="Uncertain specification"></constraint>
+
+					<constraint weight="2" name="Difficult to involve users"></constraint>
+					<constraint weight="2" name="No access to users"></constraint>
+					<constraint weight="2" name="Some users have disabilities"></constraint>
+					<constraint weight="2" name="Mostly first time users"></constraint>
+
+					<constraint weight="2" name="Complex task"></constraint>
+					<constraint weight="2" name="Many tasks"></constraint>
+					<constraint weight="2" name="Safety or business critical system"></constraint>
+					<constraint weight="2" name="Organisational changes needed"></constraint>
+
+					<constraint weight="2" name="Efficiency or accuracy is important"></constraint>
+					<constraint weight="2" name="Adaptation of an existing system"></constraint>
+					<constraint weight="2" name="A well understood product"></constraint>
+					<constraint weight="2" name="Customisable product"></constraint>
+
+					<constraint weight="2" name="General purpose: used in many different contexts"></constraint>
+
+					<constraint weight="2" name="No usability expertise available"></constraint>
+				</method>
+				
+				
+				<method name="Human Factors Analysis" description="">
+					<constraint weight="2" name="Need quick results"></constraint>
+					<constraint weight="2" name="Very restricted budget"></constraint>
+					<constraint weight="5" name="Usability important"></constraint>
+					<constraint weight="3" name="Uncertain specification"></constraint>
+
+					<constraint weight="4" name="Difficult to involve users"></constraint>
+					<constraint weight="4" name="No access to users"></constraint>
+					<constraint weight="3" name="Some users have disabilities"></constraint>
+					<constraint weight="3" name="Mostly first time users"></constraint>
+
+					<constraint weight="4" name="Complex task"></constraint>
+					<constraint weight="4" name="Many tasks"></constraint>
+					<constraint weight="5" name="Safety or business critical system"></constraint>
+					<constraint weight="3" name="Organisational changes needed"></constraint>
+
+					<constraint weight="4" name="Efficiency or accuracy is important"></constraint>
+					<constraint weight="3" name="Adaptation of an existing system"></constraint>
+					<constraint weight="2" name="A well understood product"></constraint>
+					<constraint weight="3" name="Customisable product"></constraint>
+
+					<constraint weight="4" name="General purpose: used in many different contexts"></constraint>
+
+					<constraint weight="1" name="No usability expertise available"></constraint>
+				</method>
+				
+				
+				<method name="Personas" description="">
+					<constraint weight="3" name="Need quick results"></constraint>
+					<constraint weight="3" name="Very restricted budget"></constraint>
+					<constraint weight="4" name="Usability important"></constraint>
+					<constraint weight="5" name="Uncertain specification"></constraint>
+
+					<constraint weight="5" name="Difficult to involve users"></constraint>
+					<constraint weight="5" name="No access to users"></constraint>
+					<constraint weight="4" name="Some users have disabilities"></constraint>
+					<constraint weight="3" name="Mostly first time users"></constraint>
+
+					<constraint weight="3" name="Complex task"></constraint>
+					<constraint weight="3" name="Many tasks"></constraint>
+					<constraint weight="4" name="Safety or business critical system"></constraint>
+					<constraint weight="4" name="Organisational changes needed"></constraint>
+
+					<constraint weight="3" name="Efficiency or accuracy is important"></constraint>
+					<constraint weight="4" name="Adaptation of an existing system"></constraint>
+					<constraint weight="3" name="A well understood product"></constraint>
+					<constraint weight="3" name="Customisable product"></constraint>
+
+					<constraint weight="4" name="General purpose: used in many different contexts"></constraint>
+
+					<constraint weight="2" name="No usability expertise available"></constraint>
+				</method>
+				
+				
+				<method name="Structured User Role Model" description="">
+					<constraint weight="3" name="Need quick results"></constraint>
+					<constraint weight="3" name="Very restricted budget"></constraint>
+					<constraint weight="4" name="Usability important"></constraint>
+					<constraint weight="3" name="Uncertain specification"></constraint>
+
+					<constraint weight="4" name="Difficult to involve users"></constraint>
+					<constraint weight="4" name="No access to users"></constraint>
+					<constraint weight="4" name="Some users have disabilities"></constraint>
+					<constraint weight="4" name="Mostly first time users"></constraint>
+
+					<constraint weight="3" name="Complex task"></constraint>
+					<constraint weight="3" name="Many tasks"></constraint>
+					<constraint weight="4" name="Safety or business critical system"></constraint>
+					<constraint weight="4" name="Organisational changes needed"></constraint>
+
+					<constraint weight="3" name="Efficiency or accuracy is important"></constraint>
+					<constraint weight="4" name="Adaptation of an existing system"></constraint>
+					<constraint weight="3" name="A well understood product"></constraint>
+					<constraint weight="3" name="Customisable product"></constraint>
+
+					<constraint weight="4" name="General purpose: used in many different contexts"></constraint>
+
+					<constraint weight="3" name="No usability expertise available"></constraint>
+				</method>
+				
+				<!-- pending -->
+				<method name="User Profiles" description="">
+					<constraint weight="2" name="Need quick results"></constraint>
+					<constraint weight="2" name="Very restricted budget"></constraint>
+					<constraint weight="2" name="Usability important"></constraint>
+					<constraint weight="2" name="Uncertain specification"></constraint>
+
+					<constraint weight="2" name="Difficult to involve users"></constraint>
+					<constraint weight="2" name="No access to users"></constraint>
+					<constraint weight="2" name="Some users have disabilities"></constraint>
+					<constraint weight="2" name="Mostly first time users"></constraint>
+
+					<constraint weight="2" name="Complex task"></constraint>
+					<constraint weight="2" name="Many tasks"></constraint>
+					<constraint weight="2" name="Safety or business critical system"></constraint>
+					<constraint weight="2" name="Organisational changes needed"></constraint>
+
+					<constraint weight="2" name="Efficiency or accuracy is important"></constraint>
+					<constraint weight="2" name="Adaptation of an existing system"></constraint>
+					<constraint weight="2" name="A well understood product"></constraint>
+					<constraint weight="2" name="Customisable product"></constraint>
+
+					<constraint weight="2" name="General purpose: used in many different contexts"></constraint>
+
+					<constraint weight="2" name="No usability expertise available"></constraint>
+				</method>
+				
+				
+				<method name="Photo Study" description="">
+					<constraint weight="4" name="Need quick results"></constraint>
+					<constraint weight="4" name="Very restricted budget"></constraint>
+					<constraint weight="5" name="Usability important"></constraint>
+					<constraint weight="5" name="Uncertain specification"></constraint>
+
+					<constraint weight="2" name="Difficult to involve users"></constraint>
+					<constraint weight="1" name="No access to users"></constraint>
+					<constraint weight="4" name="Some users have disabilities"></constraint>
+					<constraint weight="3" name="Mostly first time users"></constraint>
+
+					<constraint weight="4" name="Complex task"></constraint>
+					<constraint weight="4" name="Many tasks"></constraint>
+					<constraint weight="3" name="Safety or business critical system"></constraint>
+					<constraint weight="3" name="Organisational changes needed"></constraint>
+
+					<constraint weight="3" name="Efficiency or accuracy is important"></constraint>
+					<constraint weight="3" name="Adaptation of an existing system"></constraint>
+					<constraint weight="2" name="A well understood product"></constraint>
+					<constraint weight="3" name="Customisable product"></constraint>
+
+					<constraint weight="4" name="General purpose: used in many different contexts"></constraint>
+
+					<constraint weight="2" name="No usability expertise available"></constraint>
+				</method>
+				
+				
+				<method name="Participatory Workshops" description="">
+					<constraint weight="4" name="Need quick results"></constraint>
+					<constraint weight="3" name="Very restricted budget"></constraint>
+					<constraint weight="5" name="Usability important"></constraint>
+					<constraint weight="5" name="Uncertain specification"></constraint>
+
+					<constraint weight="2" name="Difficult to involve users"></constraint>
+					<constraint weight="1" name="No access to users"></constraint>
+					<constraint weight="4" name="Some users have disabilities"></constraint>
+					<constraint weight="4" name="Mostly first time users"></constraint>
+
+					<constraint weight="4" name="Complex task"></constraint>
+					<constraint weight="4" name="Many tasks"></constraint>
+					<constraint weight="5" name="Safety or business critical system"></constraint>
+					<constraint weight="5" name="Organisational changes needed"></constraint>
+
+					<constraint weight="4" name="Efficiency or accuracy is important"></constraint>
+					<constraint weight="3" name="Adaptation of an existing system"></constraint>
+					<constraint weight="3" name="A well understood product"></constraint>
+					<constraint weight="4" name="Customisable product"></constraint>
+
+					<constraint weight="4" name="General purpose: used in many different contexts"></constraint>
+
+					<constraint weight="2" name="No usability expertise available"></constraint>
+				</method>
+				
+				
+				<method name="Hierarchical Task Analysis (HTA)" description="">
+					<constraint weight="2" name="Need quick results"></constraint>
+					<constraint weight="2" name="Very restricted budget"></constraint>
+					<constraint weight="4" name="Usability important"></constraint>
+					<constraint weight="5" name="Uncertain specification"></constraint>
+
+					<constraint weight="5" name="Difficult to involve users"></constraint>
+					<constraint weight="5" name="No access to users"></constraint>
+					<constraint weight="3" name="Some users have disabilities"></constraint>
+					<constraint weight="3" name="Mostly first time users"></constraint>
+
+					<constraint weight="4" name="Complex task"></constraint>
+					<constraint weight="4" name="Many tasks"></constraint>
+					<constraint weight="5" name="Safety or business critical system"></constraint>
+					<constraint weight="3" name="Organisational changes needed"></constraint>
+
+					<constraint weight="4" name="Efficiency or accuracy is important"></constraint>
+					<constraint weight="2" name="Adaptation of an existing system"></constraint>
+					<constraint weight="2" name="A well understood product"></constraint>
+					<constraint weight="3" name="Customisable product"></constraint>
+
+					<constraint weight="3" name="General purpose: used in many different contexts"></constraint>
+
+					<constraint weight="2" name="No usability expertise available"></constraint>
+				</method>
+				
+				
+				<method name="Essential Use Cases" description="">
+					<constraint weight="3" name="Need quick results"></constraint>
+					<constraint weight="3" name="Very restricted budget"></constraint>
+					<constraint weight="4" name="Usability important"></constraint>
+					<constraint weight="4" name="Uncertain specification"></constraint>
+
+					<constraint weight="3" name="Difficult to involve users"></constraint>
+					<constraint weight="3" name="No access to users"></constraint>
+					<constraint weight="3" name="Some users have disabilities"></constraint>
+					<constraint weight="3" name="Mostly first time users"></constraint>
+
+					<constraint weight="4" name="Complex task"></constraint>
+					<constraint weight="3" name="Many tasks"></constraint>
+					<constraint weight="3" name="Safety or business critical system"></constraint>
+					<constraint weight="3" name="Organisational changes needed"></constraint>
+
+					<constraint weight="5" name="Efficiency or accuracy is important"></constraint>
+					<constraint weight="3" name="Adaptation of an existing system"></constraint>
+					<constraint weight="3" name="A well understood product"></constraint>
+					<constraint weight="3" name="Customisable product"></constraint>
+
+					<constraint weight="3" name="General purpose: used in many different contexts"></constraint>
+
+					<constraint weight="3" name="No usability expertise available"></constraint>
+				</method>
+				
+				
+				<method name="Task Sorting" description="">
+					<constraint weight="3" name="Need quick results"></constraint>
+					<constraint weight="3" name="Very restricted budget"></constraint>
+					<constraint weight="4" name="Usability important"></constraint>
+					<constraint weight="5" name="Uncertain specification"></constraint>
+
+					<constraint weight="2" name="Difficult to involve users"></constraint>
+					<constraint weight="1" name="No access to users"></constraint>
+					<constraint weight="3" name="Some users have disabilities"></constraint>
+					<constraint weight="3" name="Mostly first time users"></constraint>
+
+					<constraint weight="4" name="Complex task"></constraint>
+					<constraint weight="4" name="Many tasks"></constraint>
+					<constraint weight="4" name="Safety or business critical system"></constraint>
+					<constraint weight="4" name="Organisational changes needed"></constraint>
+
+					<constraint weight="4" name="Efficiency or accuracy is important"></constraint>
+					<constraint weight="2" name="Adaptation of an existing system"></constraint>
+					<constraint weight="2" name="A well understood product"></constraint>
+					<constraint weight="3" name="Customisable product"></constraint>
+
+					<constraint weight="3" name="General purpose: used in many different contexts"></constraint>
+
+					<constraint weight="3" name="No usability expertise available"></constraint>
+				</method>
+				
+			</subactivity>
+
+			
+			<subactivity name="Design of the Product Concept" description="">
+			
+				<costBenefit name="Development: reduced time/costs" weight="4"></costBenefit>
+				<costBenefit name="Product usability: improved product sales" weight="4"></costBenefit>
+				<costBenefit name="Web site usability: improved usage/sales" weight="4"></costBenefit>
+				<costBenefit name="Efficiency in use: increased productivity" weight="4"></costBenefit>
+				<costBenefit name="Support and maintenance: reduced costs" weight="4"></costBenefit>
+		
+
+				<risk name = "Development: increased time/costs" weight="4"></risk>
+				<risk name = "Product usability: reduced product sales" weight="4"></risk>		
+				<risk name = "Web site usability: reduced usage/sales" weight="4"></risk>
+				<risk name = "Efficiency in use: reduced productivity" weight="4"></risk>
+				<risk name = "Support and maintenance: increased costs" weight="4"></risk>
+
+
+				<method name="Visual Brainstorming" description="">
+					<constraint weight="5" name="Need quick results"></constraint>
+					<constraint weight="5" name="Very restricted budget"></constraint>
+					<constraint weight="5" name="Usability important"></constraint>
+					<constraint weight="5" name="Uncertain specification"></constraint>
+
+					<constraint weight="3" name="Difficult to involve users"></constraint>
+					<constraint weight="3" name="No access to users"></constraint>
+					<constraint weight="3" name="Some users have disabilities"></constraint>
+					<constraint weight="3" name="Mostly first time users"></constraint>
+
+					<constraint weight="4" name="Complex task"></constraint>
+					<constraint weight="4" name="Many tasks"></constraint>
+					<constraint weight="4" name="Safety or business critical system"></constraint>
+					<constraint weight="4" name="Organisational changes needed"></constraint>
+
+					<constraint weight="3" name="Efficiency or accuracy is important"></constraint>
+					<constraint weight="4" name="Adaptation of an existing system"></constraint>
+					<constraint weight="2" name="A well understood product"></constraint>
+					<constraint weight="3" name="Customisable product"></constraint>
+
+					<constraint weight="4" name="General purpose: used in many different contexts"></constraint>
+
+					<constraint weight="2" name="No usability expertise available"></constraint>
+				</method>
+				
+				
+				<method name="Scenarios" description="">
+					<constraint weight="4" name="Need quick results"></constraint>
+					<constraint weight="4" name="Very restricted budget"></constraint>
+					<constraint weight="5" name="Usability important"></constraint>
+					<constraint weight="5" name="Uncertain specification"></constraint>
+
+					<constraint weight="3" name="Difficult to involve users"></constraint>
+					<constraint weight="3" name="No access to users"></constraint>
+					<constraint weight="3" name="Some users have disabilities"></constraint>
+					<constraint weight="3" name="Mostly first time users"></constraint>
+
+					<constraint weight="5" name="Complex task"></constraint>
+					<constraint weight="3" name="Many tasks"></constraint>
+					<constraint weight="5" name="Safety or business critical system"></constraint>
+					<constraint weight="5" name="Organisational changes needed"></constraint>
+
+					<constraint weight="5" name="Efficiency or accuracy is important"></constraint>
+					<constraint weight="4" name="Adaptation of an existing system"></constraint>
+					<constraint weight="3" name="A well understood product"></constraint>
+					<constraint weight="3" name="Customisable product"></constraint>
+
+					<constraint weight="4" name="General purpose: used in many different contexts"></constraint>
+
+					<constraint weight="3" name="No usability expertise available"></constraint>
+				</method>
+				
+				
+				<method name="Storyboards" description="">
+					<constraint weight="2" name="Need quick results"></constraint>
+					<constraint weight="2" name="Very restricted budget"></constraint>
+					<constraint weight="4" name="Usability important"></constraint>
+					<constraint weight="5" name="Uncertain specification"></constraint>
+
+					<constraint weight="4" name="Difficult to involve users"></constraint>
+					<constraint weight="4" name="No access to users"></constraint>
+					<constraint weight="3" name="Some users have disabilities"></constraint>
+					<constraint weight="3" name="Mostly first time users"></constraint>
+
+					<constraint weight="3" name="Complex task"></constraint>
+					<constraint weight="3" name="Many tasks"></constraint>
+					<constraint weight="3" name="Safety or business critical system"></constraint>
+					<constraint weight="3" name="Organisational changes needed"></constraint>
+
+					<constraint weight="3" name="Efficiency or accuracy is important"></constraint>
+					<constraint weight="3" name="Adaptation of an existing system"></constraint>
+					<constraint weight="2" name="A well understood product"></constraint>
+					<constraint weight="3" name="Customisable product"></constraint>
+
+					<constraint weight="3" name="General purpose: used in many different contexts"></constraint>
+
+					<constraint weight="3" name="No usability expertise available"></constraint>
+				</method>
+				
+				
+				<method name="Parallel Design" description="">
+					<constraint weight="2" name="Need quick results"></constraint>
+					<constraint weight="2" name="Very restricted budget"></constraint>
+					<constraint weight="5" name="Usability important"></constraint>
+					<constraint weight="5" name="Uncertain specification"></constraint>
+
+					<constraint weight="3" name="Difficult to involve users"></constraint>
+					<constraint weight="3" name="No access to users"></constraint>
+					<constraint weight="3" name="Some users have disabilities"></constraint>
+					<constraint weight="3" name="Mostly first time users"></constraint>
+
+					<constraint weight="5" name="Complex task"></constraint>
+					<constraint weight="4" name="Many tasks"></constraint>
+					<constraint weight="4" name="Safety or business critical system"></constraint>
+					<constraint weight="3" name="Organisational changes needed"></constraint>
+
+					<constraint weight="4" name="Efficiency or accuracy is important"></constraint>
+					<constraint weight="3" name="Adaptation of an existing system"></constraint>
+					<constraint weight="3" name="A well understood product"></constraint>
+					<constraint weight="3" name="Customisable product"></constraint>
+
+					<constraint weight="4" name="General purpose: used in many different contexts"></constraint>
+
+					<constraint weight="3" name="No usability expertise available"></constraint>
+				</method>
+				
+			</subactivity>
+			
+			<subactivity name="Prototyping" description="">
+			
+				<costBenefit name="Development: reduced time/costs" weight="4"></costBenefit>
+				<costBenefit name="Product usability: improved product sales" weight="4"></costBenefit>
+				<costBenefit name="Web site usability: improved usage/sales" weight="4"></costBenefit>
+				<costBenefit name="Efficiency in use: increased productivity" weight="4"></costBenefit>
+				<costBenefit name="Support and maintenance: reduced costs" weight="4"></costBenefit>
+		
+
+				<risk name = "Development: increased time/costs" weight="4"></risk>
+				<risk name = "Product usability: reduced product sales" weight="4"></risk>		
+				<risk name = "Web site usability: reduced usage/sales" weight="4"></risk>
+				<risk name = "Efficiency in use: reduced productivity" weight="4"></risk>
+				<risk name = "Support and maintenance: increased costs" weight="4"></risk>
+
+
+				<method name="Wireframe" description="">
+					<constraint weight="5" name="Need quick results"></constraint>
+					<constraint weight="5" name="Very restricted budget"></constraint>
+					<constraint weight="5" name="Usability important"></constraint>
+					<constraint weight="5" name="Uncertain specification"></constraint>
+
+					<constraint weight="3" name="Difficult to involve users"></constraint>
+					<constraint weight="2" name="No access to users"></constraint>
+					<constraint weight="3" name="Some users have disabilities"></constraint>
+					<constraint weight="4" name="Mostly first time users"></constraint>
+
+					<constraint weight="5" name="Complex task"></constraint>
+					<constraint weight="5" name="Many tasks"></constraint>
+					<constraint weight="5" name="Safety or business critical system"></constraint>
+					<constraint weight="3" name="Organisational changes needed"></constraint>
+
+					<constraint weight="5" name="Efficiency or accuracy is important"></constraint>
+					<constraint weight="3" name="Adaptation of an existing system"></constraint>
+					<constraint weight="3" name="A well understood product"></constraint>
+					<constraint weight="3" name="Customisable product"></constraint>
+
+					<constraint weight="3" name="General purpose: used in many different contexts"></constraint>
+
+					<constraint weight="4" name="No usability expertise available"></constraint>
+				</method>
+				
+				
+				<method name="Paper Protoyping" description="">
+					<constraint weight="5" name="Need quick results"></constraint>
+					<constraint weight="5" name="Very restricted budget"></constraint>
+					<constraint weight="5" name="Usability important"></constraint>
+					<constraint weight="5" name="Uncertain specification"></constraint>
+
+					<constraint weight="2" name="Difficult to involve users"></constraint>
+					<constraint weight="1" name="No access to users"></constraint>
+					<constraint weight="3" name="Some users have disabilities"></constraint>
+					<constraint weight="4" name="Mostly first time users"></constraint>
+
+					<constraint weight="5" name="Complex task"></constraint>
+					<constraint weight="5" name="Many tasks"></constraint>
+					<constraint weight="5" name="Safety or business critical system"></constraint>
+					<constraint weight="4" name="Organisational changes needed"></constraint>
+
+					<constraint weight="5" name="Efficiency or accuracy is important"></constraint>
+					<constraint weight="4" name="Adaptation of an existing system"></constraint>
+					<constraint weight="2" name="A well understood product"></constraint>
+					<constraint weight="4" name="Customisable product"></constraint>
+
+					<constraint weight="3" name="General purpose: used in many different contexts"></constraint>
+
+					<constraint weight="3" name="No usability expertise available"></constraint>
+				</method>
+				
+			</subactivity>
+			
+			
+			<subactivity name="Requirements Specification" description="">
+			
+				<costBenefit name="Development: reduced time/costs" weight="4"></costBenefit>
+				<costBenefit name="Product usability: improved product sales" weight="4"></costBenefit>
+				<costBenefit name="Web site usability: improved usage/sales" weight="4"></costBenefit>
+				<costBenefit name="Efficiency in use: increased productivity" weight="4"></costBenefit>
+				<costBenefit name="Support and maintenance: reduced costs" weight="4"></costBenefit>
+		
+
+				<risk name = "Development: increased time/costs" weight="4"></risk>
+				<risk name = "Product usability: reduced product sales" weight="4"></risk>		
+				<risk name = "Web site usability: reduced usage/sales" weight="4"></risk>
+				<risk name = "Efficiency in use: reduced productivity" weight="4"></risk>
+				<risk name = "Support and maintenance: increased costs" weight="4"></risk>
+
+
+				<method name="Establish Performance and Satisfaction Goals for Specific Scenarios of Use" description="">
+					<constraint weight="3" name="Need quick results"></constraint>
+					<constraint weight="3" name="Very restricted budget"></constraint>
+					<constraint weight="5" name="Usability important"></constraint>
+					<constraint weight="5" name="Uncertain specification"></constraint>
+
+					<constraint weight="3" name="Difficult to involve users"></constraint>
+					<constraint weight="3" name="No access to users"></constraint>
+					<constraint weight="4" name="Some users have disabilities"></constraint>
+					<constraint weight="3" name="Mostly first time users"></constraint>
+
+					<constraint weight="3" name="Complex task"></constraint>
+					<constraint weight="3" name="Many tasks"></constraint>
+					<constraint weight="5" name="Safety or business critical system"></constraint>
+					<constraint weight="3" name="Organisational changes needed"></constraint>
+
+					<constraint weight="5" name="Efficiency or accuracy is important"></constraint>
+					<constraint weight="4" name="Adaptation of an existing system"></constraint>
+					<constraint weight="3" name="A well understood product"></constraint>
+					<constraint weight="3" name="Customisable product"></constraint>
+
+					<constraint weight="4" name="General purpose: used in many different contexts"></constraint>
+
+					<constraint weight="3" name="No usability expertise available"></constraint>
+				</method>
+				
+				
+				<method name="Define Detailed User Interface Requirements" description="">
+					<constraint weight="3" name="Need quick results"></constraint>
+					<constraint weight="3" name="Very restricted budget"></constraint>
+					<constraint weight="4" name="Usability important"></constraint>
+					<constraint weight="2" name="Uncertain specification"></constraint>
+
+					<constraint weight="3" name="Difficult to involve users"></constraint>
+					<constraint weight="3" name="No access to users"></constraint>
+					<constraint weight="4" name="Some users have disabilities"></constraint>
+					<constraint weight="3" name="Mostly first time users"></constraint>
+
+					<constraint weight="3" name="Complex task"></constraint>
+					<constraint weight="3" name="Many tasks"></constraint>
+					<constraint weight="3" name="Safety or business critical system"></constraint>
+					<constraint weight="3" name="Organisational changes needed"></constraint>
+
+					<constraint weight="4" name="Efficiency or accuracy is important"></constraint>
+					<constraint weight="3" name="Adaptation of an existing system"></constraint>
+					<constraint weight="3" name="A well understood product"></constraint>
+					<constraint weight="3" name="Customisable product"></constraint>
+
+					<constraint weight="4" name="General purpose: used in many different contexts"></constraint>
+
+					<constraint weight="3" name="No usability expertise available"></constraint>				
+				</method>
+				
+				
+				<method name="Common Industry Specification for Usability Requirements" description="">
+					<constraint weight="3" name="Need quick results"></constraint>
+					<constraint weight="3" name="Very restricted budget"></constraint>
+					<constraint weight="5" name="Usability important"></constraint>
+					<constraint weight="5" name="Uncertain specification"></constraint>
+
+					<constraint weight="3" name="Difficult to involve users"></constraint>
+					<constraint weight="3" name="No access to users"></constraint>
+					<constraint weight="4" name="Some users have disabilities"></constraint>
+					<constraint weight="4" name="Mostly first time users"></constraint>
+
+					<constraint weight="4" name="Complex task"></constraint>
+					<constraint weight="5" name="Many tasks"></constraint>
+					<constraint weight="5" name="Safety or business critical system"></constraint>
+					<constraint weight="5" name="Organisational changes needed"></constraint>
+
+					<constraint weight="5" name="Efficiency or accuracy is important"></constraint>
+					<constraint weight="3" name="Adaptation of an existing system"></constraint>
+					<constraint weight="3" name="A well understood product"></constraint>
+					<constraint weight="3" name="Customisable product"></constraint>
+
+					<constraint weight="4" name="General purpose: used in many different contexts"></constraint>
+
+					<constraint weight="2" name="No usability expertise available"></constraint>				
+				</method>
+				
+				
+				<method name="Function Allocation / Task Allocation" description="">
+					<constraint weight="3" name="Need quick results"></constraint>
+					<constraint weight="3" name="Very restricted budget"></constraint>
+					<constraint weight="5" name="Usability important"></constraint>
+					<constraint weight="5" name="Uncertain specification"></constraint>
+
+					<constraint weight="3" name="Difficult to involve users"></constraint>
+					<constraint weight="3" name="No access to users"></constraint>
+					<constraint weight="3" name="Some users have disabilities"></constraint>
+					<constraint weight="3" name="Mostly first time users"></constraint>
+
+					<constraint weight="5" name="Complex task"></constraint>
+					<constraint weight="5" name="Many tasks"></constraint>
+					<constraint weight="5" name="Safety or business critical system"></constraint>
+					<constraint weight="5" name="Organisational changes needed"></constraint>
+
+					<constraint weight="3" name="Efficiency or accuracy is important"></constraint>
+					<constraint weight="3" name="Adaptation of an existing system"></constraint>
+					<constraint weight="2" name="A well understood product"></constraint>
+					<constraint weight="3" name="Customisable product"></constraint>
+
+					<constraint weight="3" name="General purpose: used in many different contexts"></constraint>
+
+					<constraint weight="2" name="No usability expertise available"></constraint>				
+				</method>
+				
+			</subactivity>
+			
+			
+			<subactivity name="Requirements Validation" description="">
+			
+				<costBenefit name="Development: reduced time/costs" weight="4"></costBenefit>
+				<costBenefit name="Product usability: improved product sales" weight="4"></costBenefit>
+				<costBenefit name="Web site usability: improved usage/sales" weight="4"></costBenefit>
+				<costBenefit name="Efficiency in use: increased productivity" weight="4"></costBenefit>
+				<costBenefit name="Support and maintenance: reduced costs" weight="4"></costBenefit>
+		
+
+				<risk name = "Development: increased time/costs" weight="4"></risk>
+				<risk name = "Product usability: reduced product sales" weight="4"></risk>		
+				<risk name = "Web site usability: reduced usage/sales" weight="4"></risk>
+				<risk name = "Efficiency in use: reduced productivity" weight="4"></risk>
+				<risk name = "Support and maintenance: increased costs" weight="4"></risk>
+
+
+				<method name="Heuristic Evaluation" description="">
+					<constraint weight="4" name="Need quick results"></constraint>
+					<constraint weight="4" name="Very restricted budget"></constraint>
+					<constraint weight="5" name="Usability important"></constraint>
+					<constraint weight="5" name="Uncertain specification"></constraint>
+
+					<constraint weight="5" name="Difficult to involve users"></constraint>
+					<constraint weight="5" name="No access to users"></constraint>
+					<constraint weight="3" name="Some users have disabilities"></constraint>
+					<constraint weight="5" name="Mostly first time users"></constraint>
+
+					<constraint weight="5" name="Complex task"></constraint>
+					<constraint weight="5" name="Many tasks"></constraint>
+					<constraint weight="4" name="Safety or business critical system"></constraint>
+					<constraint weight="3" name="Organisational changes needed"></constraint>
+
+					<constraint weight="3" name="Efficiency or accuracy is important"></constraint>
+					<constraint weight="3" name="Adaptation of an existing system"></constraint>
+					<constraint weight="3" name="A well understood product"></constraint>
+					<constraint weight="3" name="Customisable product"></constraint>
+
+					<constraint weight="4" name="General purpose: used in many different contexts"></constraint>
+
+					<constraint weight="2" name="No usability expertise available"></constraint>				
+				</method>
+				
+				
+				<method name="Collaborative inspections" description="">
+					<constraint weight="2" name="Need quick results"></constraint>
+					<constraint weight="2" name="Very restricted budget"></constraint>
+					<constraint weight="4" name="Usability important"></constraint>
+					<constraint weight="3" name="Uncertain specification"></constraint>
+
+					<constraint weight="3" name="Difficult to involve users"></constraint>
+					<constraint weight="3" name="No access to users"></constraint>
+					<constraint weight="3" name="Some users have disabilities"></constraint>
+					<constraint weight="3" name="Mostly first time users"></constraint>
+
+					<constraint weight="3" name="Complex task"></constraint>
+					<constraint weight="3" name="Many tasks"></constraint>
+					<constraint weight="3" name="Safety or business critical system"></constraint>
+					<constraint weight="3" name="Organisational changes needed"></constraint>
+
+					<constraint weight="3" name="Efficiency or accuracy is important"></constraint>
+					<constraint weight="3" name="Adaptation of an existing system"></constraint>
+					<constraint weight="3" name="A well understood product"></constraint>
+					<constraint weight="3" name="Customisable product"></constraint>
+
+					<constraint weight="3" name="General purpose: used in many different contexts"></constraint>
+
+					<constraint weight="2" name="No usability expertise available"></constraint>				
+				</method>
+				
+				
+				<method name="Cognitive walkthrough" description="">
+					<constraint weight="2" name="Need quick results"></constraint>
+					<constraint weight="3" name="Very restricted budget"></constraint>
+					<constraint weight="4" name="Usability important"></constraint>
+					<constraint weight="3" name="Uncertain specification"></constraint>
+
+					<constraint weight="3" name="Difficult to involve users"></constraint>
+					<constraint weight="3" name="No access to users"></constraint>
+					<constraint weight="3" name="Some users have disabilities"></constraint>
+					<constraint weight="4" name="Mostly first time users"></constraint>
+
+					<constraint weight="3" name="Complex task"></constraint>
+					<constraint weight="3" name="Many tasks"></constraint>
+					<constraint weight="4" name="Safety or business critical system"></constraint>
+					<constraint weight="3" name="Organisational changes needed"></constraint>
+
+					<constraint weight="4" name="Efficiency or accuracy is important"></constraint>
+					<constraint weight="3" name="Adaptation of an existing system"></constraint>
+					<constraint weight="2" name="A well understood product"></constraint>
+					<constraint weight="3" name="Customisable product"></constraint>
+
+					<constraint weight="3" name="General purpose: used in many different contexts"></constraint>
+
+					<constraint weight="1" name="No usability expertise available"></constraint>				
+				</method>
+
+				
+				<method name="Pluralistic walkthrough" description="">
+					<constraint weight="2" name="Need quick results"></constraint>
+					<constraint weight="3" name="Very restricted budget"></constraint>
+					<constraint weight="4" name="Usability important"></constraint>
+					<constraint weight="5" name="Uncertain specification"></constraint>
+
+					<constraint weight="3" name="Difficult to involve users"></constraint>
+					<constraint weight="2" name="No access to users"></constraint>
+					<constraint weight="3" name="Some users have disabilities"></constraint>
+					<constraint weight="4" name="Mostly first time users"></constraint>
+
+					<constraint weight="4" name="Complex task"></constraint>
+					<constraint weight="3" name="Many tasks"></constraint>
+					<constraint weight="3" name="Safety or business critical system"></constraint>
+					<constraint weight="5" name="Organisational changes needed"></constraint>
+
+					<constraint weight="3" name="Efficiency or accuracy is important"></constraint>
+					<constraint weight="3" name="Adaptation of an existing system"></constraint>
+					<constraint weight="2" name="A well understood product"></constraint>
+					<constraint weight="3" name="Customisable product"></constraint>
+
+					<constraint weight="3" name="General purpose: used in many different contexts"></constraint>
+
+					<constraint weight="3" name="No usability expertise available"></constraint>				
+				</method>
+
+			</subactivity>
+
+		</activity>
+
+
+		<activity name="Design" description="">
+		
+			<subactivity name="Interaction Design" description="">
+			
+				<costBenefit name="Development: reduced time/costs" weight="4"></costBenefit>
+				<costBenefit name="Product usability: improved product sales" weight="4"></costBenefit>
+				<costBenefit name="Web site usability: improved usage/sales" weight="4"></costBenefit>
+				<costBenefit name="Efficiency in use: increased productivity" weight="4"></costBenefit>
+				<costBenefit name="Support and maintenance: reduced costs" weight="4"></costBenefit>
+		
+
+				<risk name = "Development: increased time/costs" weight="4"></risk>
+				<risk name = "Product usability: reduced product sales" weight="4"></risk>		
+				<risk name = "Web site usability: reduced usage/sales" weight="4"></risk>
+				<risk name = "Efficiency in use: reduced productivity" weight="4"></risk>
+				<risk name = "Support and maintenance: increased costs" weight="4"></risk>
+
+
+				<method name="Physical Ergonomics" description="">
+					<constraint weight="3" name="Need quick results"></constraint>
+					<constraint weight="3" name="Very restricted budget"></constraint>
+					<constraint weight="4" name="Usability important"></constraint>
+					<constraint weight="3" name="Uncertain specification"></constraint>
+
+					<constraint weight="4" name="Difficult to involve users"></constraint>
+					<constraint weight="4" name="No access to users"></constraint>
+					<constraint weight="4" name="Some users have disabilities"></constraint>
+					<constraint weight="3" name="Mostly first time users"></constraint>
+
+					<constraint weight="3" name="Complex task"></constraint>
+					<constraint weight="3" name="Many tasks"></constraint>
+					<constraint weight="4" name="Safety or business critical system"></constraint>
+					<constraint weight="3" name="Organisational changes needed"></constraint>
+
+					<constraint weight="3" name="Efficiency or accuracy is important"></constraint>
+					<constraint weight="3" name="Adaptation of an existing system"></constraint>
+					<constraint weight="2" name="A well understood product"></constraint>
+					<constraint weight="3" name="Customisable product"></constraint>
+
+					<constraint weight="3" name="General purpose: used in many different contexts"></constraint>
+
+					<constraint weight="2" name="No usability expertise available"></constraint>				
+				</method>
+				
+				
+				<method name="Participatory Design" description="">
+					<constraint weight="2" name="Need quick results"></constraint>
+					<constraint weight="2" name="Very restricted budget"></constraint>
+					<constraint weight="5" name="Usability important"></constraint>
+					<constraint weight="5" name="Uncertain specification"></constraint>
+
+					<constraint weight="2" name="Difficult to involve users"></constraint>
+					<constraint weight="1" name="No access to users"></constraint>
+					<constraint weight="4" name="Some users have disabilities"></constraint>
+					<constraint weight="4" name="Mostly first time users"></constraint>
+
+					<constraint weight="4" name="Complex task"></constraint>
+					<constraint weight="4" name="Many tasks"></constraint>
+					<constraint weight="5" name="Safety or business critical system"></constraint>
+					<constraint weight="5" name="Organisational changes needed"></constraint>
+
+					<constraint weight="4" name="Efficiency or accuracy is important"></constraint>
+					<constraint weight="3" name="Adaptation of an existing system"></constraint>
+					<constraint weight="3" name="A well understood product"></constraint>
+					<constraint weight="4" name="Customisable product"></constraint>
+
+					<constraint weight="4" name="General purpose: used in many different contexts"></constraint>
+
+					<constraint weight="3" name="No usability expertise available"></constraint>				
+				</method>
+				
+				
+				<method name="Card Sorting" description="">
+					<constraint weight="4" name="Need quick results"></constraint>
+					<constraint weight="4" name="Very restricted budget"></constraint>
+					<constraint weight="5" name="Usability important"></constraint>
+					<constraint weight="5" name="Uncertain specification"></constraint>
+
+					<constraint weight="2" name="Difficult to involve users"></constraint>
+					<constraint weight="1" name="No access to users"></constraint>
+					<constraint weight="3" name="Some users have disabilities"></constraint>
+					<constraint weight="3" name="Mostly first time users"></constraint>
+
+					<constraint weight="3" name="Complex task"></constraint>
+					<constraint weight="2" name="Many tasks"></constraint>
+					<constraint weight="4" name="Safety or business critical system"></constraint>
+					<constraint weight="3" name="Organisational changes needed"></constraint>
+
+					<constraint weight="4" name="Efficiency or accuracy is important"></constraint>
+					<constraint weight="3" name="Adaptation of an existing system"></constraint>
+					<constraint weight="2" name="A well understood product"></constraint>
+					<constraint weight="3" name="Customisable product"></constraint>
+
+					<constraint weight="3" name="General purpose: used in many different contexts"></constraint>
+
+					<constraint weight="3" name="No usability expertise available"></constraint>				
+				</method>
+				
+				<!-- pending -->
+				<method name="Menu Trees" description="">
+					<constraint weight="2" name="Need quick results"></constraint>
+					<constraint weight="2" name="Very restricted budget"></constraint>
+					<constraint weight="2" name="Usability important"></constraint>
+					<constraint weight="2" name="Uncertain specification"></constraint>
+
+					<constraint weight="2" name="Difficult to involve users"></constraint>
+					<constraint weight="2" name="No access to users"></constraint>
+					<constraint weight="2" name="Some users have disabilities"></constraint>
+					<constraint weight="2" name="Mostly first time users"></constraint>
+
+					<constraint weight="2" name="Complex task"></constraint>
+					<constraint weight="2" name="Many tasks"></constraint>
+					<constraint weight="2" name="Safety or business critical system"></constraint>
+					<constraint weight="2" name="Organisational changes needed"></constraint>
+
+					<constraint weight="2" name="Efficiency or accuracy is important"></constraint>
+					<constraint weight="2" name="Adaptation of an existing system"></constraint>
+					<constraint weight="2" name="A well understood product"></constraint>
+					<constraint weight="2" name="Customisable product"></constraint>
+
+					<constraint weight="2" name="General purpose: used in many different contexts"></constraint>
+
+					<constraint weight="2" name="No usability expertise available"></constraint>				
+				</method>
+
+				<!-- pending -->
+				<method name="Interface State Transition Diagrams" description="">
+					<constraint weight="2" name="Need quick results"></constraint>
+					<constraint weight="2" name="Very restricted budget"></constraint>
+					<constraint weight="2" name="Usability important"></constraint>
+					<constraint weight="2" name="Uncertain specification"></constraint>
+
+					<constraint weight="2" name="Difficult to involve users"></constraint>
+					<constraint weight="2" name="No access to users"></constraint>
+					<constraint weight="2" name="Some users have disabilities"></constraint>
+					<constraint weight="2" name="Mostly first time users"></constraint>
+
+					<constraint weight="2" name="Complex task"></constraint>
+					<constraint weight="2" name="Many tasks"></constraint>
+					<constraint weight="2" name="Safety or business critical system"></constraint>
+					<constraint weight="2" name="Organisational changes needed"></constraint>
+
+					<constraint weight="2" name="Efficiency or accuracy is important"></constraint>
+					<constraint weight="2" name="Adaptation of an existing system"></constraint>
+					<constraint weight="2" name="A well understood product"></constraint>
+					<constraint weight="2" name="Customisable product"></constraint>
+
+					<constraint weight="2" name="General purpose: used in many different contexts"></constraint>
+
+					<constraint weight="2" name="No usability expertise available"></constraint>				
+				</method>
+
+				<!-- pending -->
+				<method name="Navigation Map" description="">
+					<constraint weight="2" name="Need quick results"></constraint>
+					<constraint weight="2" name="Very restricted budget"></constraint>
+					<constraint weight="2" name="Usability important"></constraint>
+					<constraint weight="2" name="Uncertain specification"></constraint>
+
+					<constraint weight="2" name="Difficult to involve users"></constraint>
+					<constraint weight="2" name="No access to users"></constraint>
+					<constraint weight="2" name="Some users have disabilities"></constraint>
+					<constraint weight="2" name="Mostly first time users"></constraint>
+
+					<constraint weight="2" name="Complex task"></constraint>
+					<constraint weight="2" name="Many tasks"></constraint>
+					<constraint weight="2" name="Safety or business critical system"></constraint>
+					<constraint weight="2" name="Organisational changes needed"></constraint>
+
+					<constraint weight="2" name="Efficiency or accuracy is important"></constraint>
+					<constraint weight="2" name="Adaptation of an existing system"></constraint>
+					<constraint weight="2" name="A well understood product"></constraint>
+					<constraint weight="2" name="Customisable product"></constraint>
+
+					<constraint weight="2" name="General purpose: used in many different contexts"></constraint>
+
+					<constraint weight="2" name="No usability expertise available"></constraint>				
+				</method>
+				
+				<!-- pending -->
+				<method name="Interface Content Model" description="">
+					<constraint weight="2" name="Need quick results"></constraint>
+					<constraint weight="2" name="Very restricted budget"></constraint>
+					<constraint weight="2" name="Usability important"></constraint>
+					<constraint weight="2" name="Uncertain specification"></constraint>
+
+					<constraint weight="2" name="Difficult to involve users"></constraint>
+					<constraint weight="2" name="No access to users"></constraint>
+					<constraint weight="2" name="Some users have disabilities"></constraint>
+					<constraint weight="2" name="Mostly first time users"></constraint>
+
+					<constraint weight="2" name="Complex task"></constraint>
+					<constraint weight="2" name="Many tasks"></constraint>
+					<constraint weight="2" name="Safety or business critical system"></constraint>
+					<constraint weight="2" name="Organisational changes needed"></constraint>
+
+					<constraint weight="2" name="Efficiency or accuracy is important"></constraint>
+					<constraint weight="2" name="Adaptation of an existing system"></constraint>
+					<constraint weight="2" name="A well understood product"></constraint>
+					<constraint weight="2" name="Customisable product"></constraint>
+
+					<constraint weight="2" name="General purpose: used in many different contexts"></constraint>
+
+					<constraint weight="2" name="No usability expertise available"></constraint>				
+				</method>
+				
+				
+				<method name="Claims Analysis" description="">
+					<constraint weight="2" name="Need quick results"></constraint>
+					<constraint weight="2" name="Very restricted budget"></constraint>
+					<constraint weight="4" name="Usability important"></constraint>
+					<constraint weight="3" name="Uncertain specification"></constraint>
+
+					<constraint weight="3" name="Difficult to involve users"></constraint>
+					<constraint weight="3" name="No access to users"></constraint>
+					<constraint weight="3" name="Some users have disabilities"></constraint>
+					<constraint weight="3" name="Mostly first time users"></constraint>
+
+					<constraint weight="3" name="Complex task"></constraint>
+					<constraint weight="3" name="Many tasks"></constraint>
+					<constraint weight="3" name="Safety or business critical system"></constraint>
+					<constraint weight="3" name="Organisational changes needed"></constraint>
+
+					<constraint weight="3" name="Efficiency or accuracy is important"></constraint>
+					<constraint weight="3" name="Adaptation of an existing system"></constraint>
+					<constraint weight="2" name="A well understood product"></constraint>
+					<constraint weight="3" name="Customisable product"></constraint>
+
+					<constraint weight="3" name="General purpose: used in many different contexts"></constraint>
+
+					<constraint weight="2" name="No usability expertise available"></constraint>				
+				</method>
+				
+			</subactivity>
+			
+		</activity>
+
+
+		<activity name="Evaluation" description="">
+		
+			<subactivity name="Expert Evaluation" description="">
+			
+				<costBenefit name="Development: reduced time/costs" weight="4"></costBenefit>
+				<costBenefit name="Product usability: improved product sales" weight="4"></costBenefit>
+				<costBenefit name="Web site usability: improved usage/sales" weight="4"></costBenefit>
+				<costBenefit name="Efficiency in use: increased productivity" weight="4"></costBenefit>
+				<costBenefit name="Support and maintenance: reduced costs" weight="4"></costBenefit>
+		
+
+				<risk name = "Development: increased time/costs" weight="4"></risk>
+				<risk name = "Product usability: reduced product sales" weight="4"></risk>		
+				<risk name = "Web site usability: reduced usage/sales" weight="4"></risk>
+				<risk name = "Efficiency in use: reduced productivity" weight="4"></risk>
+				<risk name = "Support and maintenance: increased costs" weight="4"></risk>
+
+
+				<method name="Heuristic Evaluation" description="">
+					<constraint weight="4" name="Need quick results"></constraint>
+					<constraint weight="4" name="Very restricted budget"></constraint>
+					<constraint weight="5" name="Usability important"></constraint>
+					<constraint weight="5" name="Uncertain specification"></constraint>
+
+					<constraint weight="5" name="Difficult to involve users"></constraint>
+					<constraint weight="5" name="No access to users"></constraint>
+					<constraint weight="3" name="Some users have disabilities"></constraint>
+					<constraint weight="5" name="Mostly first time users"></constraint>
+
+					<constraint weight="5" name="Complex task"></constraint>
+					<constraint weight="5" name="Many tasks"></constraint>
+					<constraint weight="4" name="Safety or business critical system"></constraint>
+					<constraint weight="3" name="Organisational changes needed"></constraint>
+
+					<constraint weight="3" name="Efficiency or accuracy is important"></constraint>
+					<constraint weight="3" name="Adaptation of an existing system"></constraint>
+					<constraint weight="3" name="A well understood product"></constraint>
+					<constraint weight="3" name="Customisable product"></constraint>
+
+					<constraint weight="4" name="General purpose: used in many different contexts"></constraint>
+
+					<constraint weight="2" name="No usability expertise available"></constraint>				
+				</method>
+				
+				
+				<method name="Collaborative Inspections" description="">
+					<constraint weight="2" name="Need quick results"></constraint>
+					<constraint weight="2" name="Very restricted budget"></constraint>
+					<constraint weight="4" name="Usability important"></constraint>
+					<constraint weight="3" name="Uncertain specification"></constraint>
+
+					<constraint weight="3" name="Difficult to involve users"></constraint>
+					<constraint weight="3" name="No access to users"></constraint>
+					<constraint weight="3" name="Some users have disabilities"></constraint>
+					<constraint weight="3" name="Mostly first time users"></constraint>
+
+					<constraint weight="3" name="Complex task"></constraint>
+					<constraint weight="3" name="Many tasks"></constraint>
+					<constraint weight="3" name="Safety or business critical system"></constraint>
+					<constraint weight="3" name="Organisational changes needed"></constraint>
+
+					<constraint weight="3" name="Efficiency or accuracy is important"></constraint>
+					<constraint weight="3" name="Adaptation of an existing system"></constraint>
+					<constraint weight="3" name="A well understood product"></constraint>
+					<constraint weight="3" name="Customisable product"></constraint>
+
+					<constraint weight="3" name="General purpose: used in many different contexts"></constraint>
+
+					<constraint weight="2" name="No usability expertise available"></constraint>				
+				</method>
+				
+				
+				<method name="Conformance Inspections" description="">
+					<constraint weight="3" name="Need quick results"></constraint>
+					<constraint weight="3" name="Very restricted budget"></constraint>
+					<constraint weight="4" name="Usability important"></constraint>
+					<constraint weight="3" name="Uncertain specification"></constraint>
+
+					<constraint weight="3" name="Difficult to involve users"></constraint>
+					<constraint weight="3" name="No access to users"></constraint>
+					<constraint weight="5" name="Some users have disabilities"></constraint>
+					<constraint weight="3" name="Mostly first time users"></constraint>
+
+					<constraint weight="3" name="Complex task"></constraint>
+					<constraint weight="3" name="Many tasks"></constraint>
+					<constraint weight="3" name="Safety or business critical system"></constraint>
+					<constraint weight="3" name="Organisational changes needed"></constraint>
+
+					<constraint weight="3" name="Efficiency or accuracy is important"></constraint>
+					<constraint weight="3" name="Adaptation of an existing system"></constraint>
+					<constraint weight="3" name="A well understood product"></constraint>
+					<constraint weight="3" name="Customisable product"></constraint>
+
+					<constraint weight="3" name="General purpose: used in many different contexts"></constraint>
+
+					<constraint weight="2" name="No usability expertise available"></constraint>				
+				</method>
+				
+				
+				<method name="Pluralistic Walkthrough" description="">
+					<constraint weight="2" name="Need quick results"></constraint>
+					<constraint weight="3" name="Very restricted budget"></constraint>
+					<constraint weight="4" name="Usability important"></constraint>
+					<constraint weight="5" name="Uncertain specification"></constraint>
+
+					<constraint weight="3" name="Difficult to involve users"></constraint>
+					<constraint weight="2" name="No access to users"></constraint>
+					<constraint weight="3" name="Some users have disabilities"></constraint>
+					<constraint weight="4" name="Mostly first time users"></constraint>
+
+					<constraint weight="4" name="Complex task"></constraint>
+					<constraint weight="3" name="Many tasks"></constraint>
+					<constraint weight="3" name="Safety or business critical system"></constraint>
+					<constraint weight="5" name="Organisational changes needed"></constraint>
+
+					<constraint weight="3" name="Efficiency or accuracy is important"></constraint>
+					<constraint weight="3" name="Adaptation of an existing system"></constraint>
+					<constraint weight="2" name="A well understood product"></constraint>
+					<constraint weight="3" name="Customisable product"></constraint>
+
+					<constraint weight="3" name="General purpose: used in many different contexts"></constraint>
+
+					<constraint weight="3" name="No usability expertise available"></constraint>				
+				</method>
+				
+				
+				<method name="Cognitive Walkthrough" description="">
+					<constraint weight="2" name="Need quick results"></constraint>
+					<constraint weight="3" name="Very restricted budget"></constraint>
+					<constraint weight="4" name="Usability important"></constraint>
+					<constraint weight="3" name="Uncertain specification"></constraint>
+
+					<constraint weight="3" name="Difficult to involve users"></constraint>
+					<constraint weight="3" name="No access to users"></constraint>
+					<constraint weight="3" name="Some users have disabilities"></constraint>
+					<constraint weight="4" name="Mostly first time users"></constraint>
+
+					<constraint weight="3" name="Complex task"></constraint>
+					<constraint weight="3" name="Many tasks"></constraint>
+					<constraint weight="4" name="Safety or business critical system"></constraint>
+					<constraint weight="3" name="Organisational changes needed"></constraint>
+
+					<constraint weight="4" name="Efficiency or accuracy is important"></constraint>
+					<constraint weight="3" name="Adaptation of an existing system"></constraint>
+					<constraint weight="2" name="A well understood product"></constraint>
+					<constraint weight="3" name="Customisable product"></constraint>
+
+					<constraint weight="3" name="General purpose: used in many different contexts"></constraint>
+
+					<constraint weight="1" name="No usability expertise available"></constraint>				
+				</method>
+				
+			</subactivity>
+
+			
+			<subactivity name="Usability Tests" description="">
+
+				<costBenefit name="Development: reduced time/costs" weight="4"></costBenefit>
+				<costBenefit name="Product usability: improved product sales" weight="4"></costBenefit>
+				<costBenefit name="Web site usability: improved usage/sales" weight="4"></costBenefit>
+				<costBenefit name="Efficiency in use: increased productivity" weight="4"></costBenefit>
+				<costBenefit name="Support and maintenance: reduced costs" weight="4"></costBenefit>
+		
+
+				<risk name = "Development: increased time/costs" weight="4"></risk>
+				<risk name = "Product usability: reduced product sales" weight="4"></risk>		
+				<risk name = "Web site usability: reduced usage/sales" weight="4"></risk>
+				<risk name = "Efficiency in use: reduced productivity" weight="4"></risk>
+				<risk name = "Support and maintenance: increased costs" weight="4"></risk>
+
+			
+				<method name="Laboratory Usability Testing" description="">
+					<constraint weight="4" name="Need quick results"></constraint>
+					<constraint weight="2" name="Very restricted budget"></constraint>
+					<constraint weight="5" name="Usability important"></constraint>
+					<constraint weight="3" name="Uncertain specification"></constraint>
+
+					<constraint weight="2" name="Difficult to involve users"></constraint>
+					<constraint weight="1" name="No access to users"></constraint>
+					<constraint weight="3" name="Some users have disabilities"></constraint>
+					<constraint weight="3" name="Mostly first time users"></constraint>
+
+					<constraint weight="3" name="Complex task"></constraint>
+					<constraint weight="3" name="Many tasks"></constraint>
+					<constraint weight="4" name="Safety or business critical system"></constraint>
+					<constraint weight="3" name="Organisational changes needed"></constraint>
+
+					<constraint weight="4" name="Efficiency or accuracy is important"></constraint>
+					<constraint weight="3" name="Adaptation of an existing system"></constraint>
+					<constraint weight="3" name="A well understood product"></constraint>
+					<constraint weight="3" name="Customisable product"></constraint>
+
+					<constraint weight="3" name="General purpose: used in many different contexts"></constraint>
+
+					<constraint weight="3" name="No usability expertise available"></constraint>				
+				</method>
+				
+				
+				<method name="Thinking Aloud" description="">
+					<constraint weight="4" name="Need quick results"></constraint>
+					<constraint weight="4" name="Very restricted budget"></constraint>
+					<constraint weight="4" name="Usability important"></constraint>
+					<constraint weight="4" name="Uncertain specification"></constraint>
+
+					<constraint weight="2" name="Difficult to involve users"></constraint>
+					<constraint weight="1" name="No access to users"></constraint>
+					<constraint weight="3" name="Some users have disabilities"></constraint>
+					<constraint weight="3" name="Mostly first time users"></constraint>
+
+					<constraint weight="4" name="Complex task"></constraint>
+					<constraint weight="3" name="Many tasks"></constraint>
+					<constraint weight="3" name="Safety or business critical system"></constraint>
+					<constraint weight="3" name="Organisational changes needed"></constraint>
+
+					<constraint weight="4" name="Efficiency or accuracy is important"></constraint>
+					<constraint weight="3" name="Adaptation of an existing system"></constraint>
+					<constraint weight="3" name="A well understood product"></constraint>
+					<constraint weight="3" name="Customisable product"></constraint>
+
+					<constraint weight="3" name="General purpose: used in many different contexts"></constraint>
+
+					<constraint weight="3" name="No usability expertise available"></constraint>				
+				</method>
+				
+				
+				<method name="Remote Evaluation" description="">
+					<constraint weight="4" name="Need quick results"></constraint>
+					<constraint weight="3" name="Very restricted budget"></constraint>
+					<constraint weight="4" name="Usability important"></constraint>
+					<constraint weight="3" name="Uncertain specification"></constraint>
+
+					<constraint weight="2" name="Difficult to involve users"></constraint>
+					<constraint weight="1" name="No access to users"></constraint>
+					<constraint weight="3" name="Some users have disabilities"></constraint>
+					<constraint weight="4" name="Mostly first time users"></constraint>
+
+					<constraint weight="3" name="Complex task"></constraint>
+					<constraint weight="3" name="Many tasks"></constraint>
+					<constraint weight="3" name="Safety or business critical system"></constraint>
+					<constraint weight="3" name="Organisational changes needed"></constraint>
+
+					<constraint weight="3" name="Efficiency or accuracy is important"></constraint>
+					<constraint weight="3" name="Adaptation of an existing system"></constraint>
+					<constraint weight="3" name="A well understood product"></constraint>
+					<constraint weight="3" name="Customisable product"></constraint>
+
+					<constraint weight="3" name="General purpose: used in many different contexts"></constraint>
+
+					<constraint weight="1" name="No usability expertise available"></constraint>				
+				</method>
+				
+				
+				<method name="Wizard of Oz" description="">
+					<constraint weight="2" name="Need quick results"></constraint>
+					<constraint weight="2" name="Very restricted budget"></constraint>
+					<constraint weight="3" name="Usability important"></constraint>
+					<constraint weight="4" name="Uncertain specification"></constraint>
+
+					<constraint weight="2" name="Difficult to involve users"></constraint>
+					<constraint weight="1" name="No access to users"></constraint>
+					<constraint weight="3" name="Some users have disabilities"></constraint>
+					<constraint weight="4" name="Mostly first time users"></constraint>
+
+					<constraint weight="3" name="Complex task"></constraint>
+					<constraint weight="3" name="Many tasks"></constraint>
+					<constraint weight="3" name="Safety or business critical system"></constraint>
+					<constraint weight="3" name="Organisational changes needed"></constraint>
+
+					<constraint weight="3" name="Efficiency or accuracy is important"></constraint>
+					<constraint weight="3" name="Adaptation of an existing system"></constraint>
+					<constraint weight="2" name="A well understood product"></constraint>
+					<constraint weight="3" name="Customisable product"></constraint>
+
+					<constraint weight="3" name="General purpose: used in many different contexts"></constraint>
+
+					<constraint weight="2" name="No usability expertise available"></constraint>				
+				</method>
+				
+				<method name="Performance Measurement" description="">
+					<constraint weight="2" name="Need quick results"></constraint>
+					<constraint weight="2" name="Very restricted budget"></constraint>
+					<constraint weight="5" name="Usability important"></constraint>
+					<constraint weight="3" name="Uncertain specification"></constraint>
+
+					<constraint weight="2" name="Difficult to involve users"></constraint>
+					<constraint weight="1" name="No access to users"></constraint>
+					<constraint weight="4" name="Some users have disabilities"></constraint>
+					<constraint weight="3" name="Mostly first time users"></constraint>
+
+					<constraint weight="3" name="Complex task"></constraint>
+					<constraint weight="3" name="Many tasks"></constraint>
+					<constraint weight="5" name="Safety or business critical system"></constraint>
+					<constraint weight="5" name="Organisational changes needed"></constraint>
+
+					<constraint weight="5" name="Efficiency or accuracy is important"></constraint>
+					<constraint weight="3" name="Adaptation of an existing system"></constraint>
+					<constraint weight="3" name="A well understood product"></constraint>
+					<constraint weight="3" name="Customisable product"></constraint>
+
+					<constraint weight="3" name="General purpose: used in many different contexts"></constraint>
+
+					<constraint weight="2" name="No usability expertise available"></constraint>				
+				</method>
+				
+				<method name="Satisfaction Questionnaire" description="">
+					<constraint weight="4" name="Need quick results"></constraint>
+					<constraint weight="5" name="Very restricted budget"></constraint>
+					<constraint weight="5" name="Usability important"></constraint>
+					<constraint weight="3" name="Uncertain specification"></constraint>
+
+					<constraint weight="2" name="Difficult to involve users"></constraint>
+					<constraint weight="1" name="No access to users"></constraint>
+					<constraint weight="3" name="Some users have disabilities"></constraint>
+					<constraint weight="3" name="Mostly first time users"></constraint>
+
+					<constraint weight="3" name="Complex task"></constraint>
+					<constraint weight="3" name="Many tasks"></constraint>
+					<constraint weight="4" name="Safety or business critical system"></constraint>
+					<constraint weight="4" name="Organisational changes needed"></constraint>
+
+					<constraint weight="3" name="Efficiency or accuracy is important"></constraint>
+					<constraint weight="3" name="Adaptation of an existing system"></constraint>
+					<constraint weight="3" name="A well understood product"></constraint>
+					<constraint weight="3" name="Customisable product"></constraint>
+
+					<constraint weight="3" name="General purpose: used in many different contexts"></constraint>
+
+					<constraint weight="3" name="No usability expertise available"></constraint>				
+				</method>
+				
+				<method name="Critical Incident Technique" description="">
+					<constraint weight="4" name="Need quick results"></constraint>
+					<constraint weight="4" name="Very restricted budget"></constraint>
+					<constraint weight="4" name="Usability important"></constraint>
+					<constraint weight="3" name="Uncertain specification"></constraint>
+
+					<constraint weight="2" name="Difficult to involve users"></constraint>
+					<constraint weight="1" name="No access to users"></constraint>
+					<constraint weight="3" name="Some users have disabilities"></constraint>
+					<constraint weight="3" name="Mostly first time users"></constraint>
+
+					<constraint weight="3" name="Complex task"></constraint>
+					<constraint weight="3" name="Many tasks"></constraint>
+					<constraint weight="4" name="Safety or business critical system"></constraint>
+					<constraint weight="3" name="Organisational changes needed"></constraint>
+
+					<constraint weight="3" name="Efficiency or accuracy is important"></constraint>
+					<constraint weight="3" name="Adaptation of an existing system"></constraint>
+					<constraint weight="3" name="A well understood product"></constraint>
+					<constraint weight="3" name="Customisable product"></constraint>
+
+					<constraint weight="3" name="General purpose: used in many different contexts"></constraint>
+
+					<constraint weight="2" name="No usability expertise available"></constraint>				
+				</method>
+				
+			</subactivity>
+
+			
+			<subactivity name="Follow-up Studies of Installed Systems" description="">
+
+				<costBenefit name="Development: reduced time/costs" weight="4"></costBenefit>
+				<costBenefit name="Product usability: improved product sales" weight="4"></costBenefit>
+				<costBenefit name="Web site usability: improved usage/sales" weight="4"></costBenefit>
+				<costBenefit name="Efficiency in use: increased productivity" weight="4"></costBenefit>
+				<costBenefit name="Support and maintenance: reduced costs" weight="4"></costBenefit>
+		
+
+				<risk name = "Development: increased time/costs" weight="4"></risk>
+				<risk name = "Product usability: reduced product sales" weight="4"></risk>		
+				<risk name = "Web site usability: reduced usage/sales" weight="4"></risk>
+				<risk name = "Efficiency in use: reduced productivity" weight="4"></risk>
+				<risk name = "Support and maintenance: increased costs" weight="4"></risk>
+
+
+				<method name="Questionnaires and Interviews" description="">
+					<constraint weight="3" name="Need quick results"></constraint>
+					<constraint weight="3" name="Very restricted budget"></constraint>
+					<constraint weight="4" name="Usability important"></constraint>
+					<constraint weight="4" name="Uncertain specification"></constraint>
+
+					<constraint weight="2" name="Difficult to involve users"></constraint>
+					<constraint weight="1" name="No access to users"></constraint>
+					<constraint weight="3" name="Some users have disabilities"></constraint>
+					<constraint weight="3" name="Mostly first time users"></constraint>
+
+					<constraint weight="3" name="Complex task"></constraint>
+					<constraint weight="3" name="Many tasks"></constraint>
+					<constraint weight="4" name="Safety or business critical system"></constraint>
+					<constraint weight="4" name="Organisational changes needed"></constraint>
+
+					<constraint weight="3" name="Efficiency or accuracy is important"></constraint>
+					<constraint weight="3" name="Adaptation of an existing system"></constraint>
+					<constraint weight="3" name="A well understood product"></constraint>
+					<constraint weight="3" name="Customisable product"></constraint>
+
+					<constraint weight="3" name="General purpose: used in many different contexts"></constraint>
+
+					<constraint weight="3" name="No usability expertise available"></constraint>				
+				</method>
+				
+				
+				<method name="Usability Benchmarking" description="">
+					<constraint weight="2" name="Need quick results"></constraint>
+					<constraint weight="2" name="Very restricted budget"></constraint>
+					<constraint weight="5" name="Usability important"></constraint>
+					<constraint weight="3" name="Uncertain specification"></constraint>
+
+					<constraint weight="2" name="Difficult to involve users"></constraint>
+					<constraint weight="1" name="No access to users"></constraint>
+					<constraint weight="3" name="Some users have disabilities"></constraint>
+					<constraint weight="3" name="Mostly first time users"></constraint>
+
+					<constraint weight="3" name="Complex task"></constraint>
+					<constraint weight="3" name="Many tasks"></constraint>
+					<constraint weight="5" name="Safety or business critical system"></constraint>
+					<constraint weight="3" name="Organisational changes needed"></constraint>
+
+					<constraint weight="5" name="Efficiency or accuracy is important"></constraint>
+					<constraint weight="3" name="Adaptation of an existing system"></constraint>
+					<constraint weight="4" name="A well understood product"></constraint>
+					<constraint weight="3" name="Customisable product"></constraint>
+
+					<constraint weight="3" name="General purpose: used in many different contexts"></constraint>
+
+					<constraint weight="2" name="No usability expertise available"></constraint>				
+				</method>
+				
+				
+				<method name="Event Data Analysis" description="">
+					<constraint weight="1" name="Need quick results"></constraint>
+					<constraint weight="4" name="Very restricted budget"></constraint>
+					<constraint weight="4" name="Usability important"></constraint>
+					<constraint weight="3" name="Uncertain specification"></constraint>
+
+					<constraint weight="5" name="Difficult to involve users"></constraint>
+					<constraint weight="5" name="No access to users"></constraint>
+					<constraint weight="2" name="Some users have disabilities"></constraint>
+					<constraint weight="3" name="Mostly first time users"></constraint>
+
+					<constraint weight="3" name="Complex task"></constraint>
+					<constraint weight="3" name="Many tasks"></constraint>
+					<constraint weight="4" name="Safety or business critical system"></constraint>
+					<constraint weight="3" name="Organisational changes needed"></constraint>
+
+					<constraint weight="4" name="Efficiency or accuracy is important"></constraint>
+					<constraint weight="4" name="Adaptation of an existing system"></constraint>
+					<constraint weight="2" name="A well understood product"></constraint>
+					<constraint weight="3" name="Customisable product"></constraint>
+
+					<constraint weight="3" name="General purpose: used in many different contexts"></constraint>
+
+					<constraint weight="3" name="No usability expertise available"></constraint>				
+				</method>
+				
+				
+				<method name="Focus Groups" description="">
+					<constraint weight="3" name="Need quick results"></constraint>
+					<constraint weight="2" name="Very restricted budget"></constraint>
+					<constraint weight="5" name="Usability important"></constraint>
+					<constraint weight="5" name="Uncertain specification"></constraint>
+
+					<constraint weight="2" name="Difficult to involve users"></constraint>
+					<constraint weight="1" name="No access to users"></constraint>
+					<constraint weight="3" name="Some users have disabilities"></constraint>
+					<constraint weight="5" name="Mostly first time users"></constraint>
+
+					<constraint weight="4" name="Complex task"></constraint>
+					<constraint weight="4" name="Many tasks"></constraint>
+					<constraint weight="3" name="Safety or business critical system"></constraint>
+					<constraint weight="5" name="Organisational changes needed"></constraint>
+
+					<constraint weight="2" name="Efficiency or accuracy is important"></constraint>
+					<constraint weight="3" name="Adaptation of an existing system"></constraint>
+					<constraint weight="3" name="A well understood product"></constraint>
+					<constraint weight="4" name="Customisable product"></constraint>
+
+					<constraint weight="4" name="General purpose: used in many different contexts"></constraint>
+
+					<constraint weight="4" name="No usability expertise available"></constraint>				
+				</method>
+				
+				<!-- pending -->
+				<method name="User feedback" description="">
+					<constraint weight="2" name="Need quick results"></constraint>
+					<constraint weight="2" name="Very restricted budget"></constraint>
+					<constraint weight="2" name="Usability important"></constraint>
+					<constraint weight="2" name="Uncertain specification"></constraint>
+
+					<constraint weight="2" name="Difficult to involve users"></constraint>
+					<constraint weight="2" name="No access to users"></constraint>
+					<constraint weight="2" name="Some users have disabilities"></constraint>
+					<constraint weight="2" name="Mostly first time users"></constraint>
+
+					<constraint weight="2" name="Complex task"></constraint>
+					<constraint weight="2" name="Many tasks"></constraint>
+					<constraint weight="2" name="Safety or business critical system"></constraint>
+					<constraint weight="2" name="Organisational changes needed"></constraint>
+
+					<constraint weight="2" name="Efficiency or accuracy is important"></constraint>
+					<constraint weight="2" name="Adaptation of an existing system"></constraint>
+					<constraint weight="2" name="A well understood product"></constraint>
+					<constraint weight="2" name="Customisable product"></constraint>
+
+					<constraint weight="2" name="General purpose: used in many different contexts"></constraint>
+
+					<constraint weight="2" name="No usability expertise available"></constraint>				
+				</method>
+				
+				<!-- pending -->
+				<method name="Logging actual use" description="">
+					<constraint weight="2" name="Need quick results"></constraint>
+					<constraint weight="2" name="Very restricted budget"></constraint>
+					<constraint weight="2" name="Usability important"></constraint>
+					<constraint weight="2" name="Uncertain specification"></constraint>
+
+					<constraint weight="2" name="Difficult to involve users"></constraint>
+					<constraint weight="2" name="No access to users"></constraint>
+					<constraint weight="2" name="Some users have disabilities"></constraint>
+					<constraint weight="2" name="Mostly first time users"></constraint>
+
+					<constraint weight="2" name="Complex task"></constraint>
+					<constraint weight="2" name="Many tasks"></constraint>
+					<constraint weight="2" name="Safety or business critical system"></constraint>
+					<constraint weight="2" name="Organisational changes needed"></constraint>
+
+					<constraint weight="2" name="Efficiency or accuracy is important"></constraint>
+					<constraint weight="2" name="Adaptation of an existing system"></constraint>
+					<constraint weight="2" name="A well understood product"></constraint>
+					<constraint weight="2" name="Customisable product"></constraint>
+
+					<constraint weight="2" name="General purpose: used in many different contexts"></constraint>
+
+					<constraint weight="2" name="No usability expertise available"></constraint>				
+				</method>
+
+			</subactivity>
+
+		</activity>
+
+	</activities>
+
+	
+</usabilityPlanner>
