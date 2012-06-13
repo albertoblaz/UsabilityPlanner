@@ -39,10 +39,21 @@
 
 
 			// Initialization Effect
-			this.adjustContainer();
+			//this.adjustContainer();
+			this.adjustActivityContainer();
 			this.adjustTabsActivityContainer();
 			this.fixConstraintsDescription();
 
+			this.stagesEvent(null, this.stages.first());
+
+
+			var descriptions = $('.description');
+			for (var i=0; i < descriptions.length; i++) {
+				var d = descriptions.eq(i);
+				if ( d.text() === "" ) {
+					d.text( "(No available description yet)" );
+				}
+			}
 
 		},
 
@@ -185,13 +196,13 @@
 				if ( size > max ) {
 					max = size;
 				}
-				
 			});
 
-			var hh = this.container.height() + margin;
-			this.container.height( hh );
+			$('#activities-selection').css({ 'height' : max + 10 });
 
-			$('#activities-selection').css({ 'height' : max+10 });
+			//var hh = this.container.children('#activities').height();
+			//this.container.height( hh );
+
 		},
 
 
@@ -298,7 +309,9 @@
 		 * @param stageSelected {jQuery Object}
 		 */
 		stagesEvent: function(event, stageSelected) {
-			event.preventDefault();
+			if ( event != null) {
+				event.preventDefault();
+			}
 	
 			var newPosition = stageSelected.prevAll().length;
 			this.animate(newPosition, this.currentStage);
