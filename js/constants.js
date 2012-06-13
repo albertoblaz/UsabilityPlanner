@@ -96,7 +96,7 @@
 		 * @final
 		 * @type number
 		 */
-		SLIDER_VALUE     : 1,
+		SLIDER_VALUE     : 3,	// it belongs to 'neutral' recommendation
 		
 		
 		/**
@@ -114,7 +114,12 @@
 		 * @final
 		 * @type Array[string]
 		 */
-		VALUE            : [ "strongly recommended", "recommended", "slightly recommended", "neutral", "not recommended" ],
+		VALUE            : [ "strongly recommended",
+					"recommended",
+					"slightly recommended",
+					"neutral",
+					"not recommended",
+					"inappropiate (not applicable)" ],
 		
 		
 		/**
@@ -123,7 +128,7 @@
 		 * @final
 		 * @type string
 		 */
-		XML              : 'xml/stages.xml'
+		XML              : 'xml/activities.xml'
 		
 	};
 	
