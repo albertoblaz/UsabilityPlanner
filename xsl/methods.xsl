@@ -48,7 +48,7 @@
 			<p class="method-title">
 				<xsl:value-of select="@name" />
 			</p>
-			<p class="valoration right">Neutral</p>
+			<p class="valoration right">neutral</p>
 			<div class="meter right"><span class="bar orange"></span></div>
 		</div>
 		
