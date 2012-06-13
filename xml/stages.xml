@@ -166,10 +166,11 @@
 		<methodInfo name="Web metrics/analytics" description="Measures of behaviour of website users. Commonly measured data includes page hits and visits, paths taken through a website, abandonment rates, conversion rates, feature usage, and frequency of errors." url=" "></methodInfo>	
 		<methodInfo name="Wireframe" description="Rough outline of navigation and content elements that make up a user interface. Typically visual design and precise layout are not addressed." url=" "></methodInfo>	
 		<methodInfo name="Wizard of Oz" description="User-based evaluation of unimplemented technology by using a human to simulate the response of a system." url="http://www.usabilitybok.org/methods/wizard-of-oz"></methodInfo>	
-		<methodInfo name="Work context analysis" description="Context of use analysis, with emphasis on identifying stakeholders, and the enterprise and environmental contexts." url=" "></methodInfo>	
+		<methodInfo name="Work context analysis" description="Context of use analysis, with emphasis on identifying stakeholders, and the enterprise and environmental contexts." url=" "></methodInfo>
 		<methodInfo name="Work domain analysis" description="Analysis of the functional structure of the engineered system or domain for complex systems: the goals to be achieved in the domain, and the means available for achieving those goals. This provides the framework for identifying the tasks to be performed by humans and the cognitive activities those entail." url=" "></methodInfo>	
 		<methodInfo name="Workload assessment" description="Assessment of the amount of work assigned to or expected from a worker in a specified time period and the associated mental workload. Can be measured objectively, or subjectively by the operator." url=" "></methodInfo>	
 		<methodInfo name="KLM-GOMS" description="Part of the GOMS family of predictive models, the Keystroke-Level Model GOMS (KLM-GOMS) is a quantitative modeling tool for predicting how long it will take expert users to complete a specific task with no errors. KLM-GOMS predicts task times based on a simple set of physical and mental operators including keystrokes, button clicks, pointer movement, keyboard to mouse movement, and thinking time. To obtain the predicted time for a task, you add the times for individual operators." url=" "></methodInfo>	
+		
 	</methods>
 	
 	 
@@ -521,8 +522,7 @@
 			
 				</method>
 			
-				<!-- anulado -->
-				<!--method name="Consult stakeholders">
+				<method name="Consult stakeholders">
 					<constraint name="Need quick results" weight="4"></constraint>
 					<constraint name="Very restricted budget" weight="4"></constraint>
 					<constraint name="Usability important" weight="5"></constraint>
@@ -551,7 +551,7 @@
 					<constraint name ="Consumer domain" weight="3"></constraint>
 					<constraint name ="Professional domain" weight="3"></constraint>
 			
-				</method-->
+				</method>
 			
 				<method name="Human factors analysis">
 					<constraint name="Need quick results" weight="2"></constraint>
@@ -689,8 +689,7 @@
 				<risk name = "Support and maintenance: increased costs" weight="4"></risk>
 				
 				
-				<!-- anulado -->
-				<!--method name="Success critical stakeholder identification">
+				<method name="Success critical stakeholder identification">
 					<constraint name="Need quick results" weight="5"></constraint>
 					<constraint name="Very restricted budget" weight="5"></constraint>
 					<constraint name="Usability important" weight="5"></constraint>
@@ -719,7 +718,7 @@
 					<constraint name ="Not web domain" weight="3"></constraint>
 					<constraint name ="Consumer domain" weight="3"></constraint>
 					<constraint name ="Professional domain" weight="4"></constraint>
-				</method-->
+				</method>
 				
 				<method name="Field observations and ethnography">
 					<constraint name="Need quick results" weight="1"></constraint>
@@ -782,8 +781,8 @@
 					<constraint name ="Professional domain" weight="4"></constraint>
 				</method>
 				
-				<!-- anulado -->
-				<!--method name="Work context analysis">
+				
+				<method name="Work context analysis">
 					<constraint name="Need quick results" weight="3"></constraint>
 					<constraint name="Very restricted budget" weight="5"></constraint>
 					<constraint name="Usability important" weight="5"></constraint>
@@ -813,7 +812,7 @@
 					<constraint name ="Consumer domain" weight="1"></constraint>
 					<constraint name ="Professional domain" weight="4"></constraint>
 			
-				</method-->
+				</method>
 				
 				<method name="Context of use analysis">
 					<constraint name="Need quick results" weight="3"></constraint>
@@ -990,8 +989,8 @@
 			
 				</method>
 				
-				<!-- anulado -->
-				<!--method name="Work context analysis">
+
+				<method name="Work context analysis">
 					<constraint name="Need quick results" weight="3"></constraint>
 					<constraint name="Very restricted budget" weight="5"></constraint>
 					<constraint name="Usability important" weight="5"></constraint>
@@ -1021,7 +1020,7 @@
 					<constraint name ="Consumer domain" weight="1"></constraint>
 					<constraint name ="Professional domain" weight="3"></constraint>
 			
-				</method-->
+				</method>
 			</subactivity>	
 			
 			<subactivity name="Usability needs" description="User performance and satisfaction needs">
@@ -1186,8 +1185,7 @@
 				<risk name = "Support and maintenance: increased costs" weight="4"></risk>
 				
 				
-				<!-- anulado -->
-				<!--method name="Early prototyping and usability evaluation">
+				<method name="Early prototyping and usability evaluation">
 					<constraint name="Need quick results" weight="5"></constraint>
 					<constraint name="Very restricted budget" weight="5"></constraint>
 					<constraint name="Usability important" weight="5"></constraint>
@@ -1217,7 +1215,7 @@
 					<constraint name ="Consumer domain" weight="3"></constraint>
 					<constraint name ="Professional domain" weight="3"></constraint>
 			
-				</method-->
+				</method>
 				
 				<method name="Develop simulations">
 					<constraint name="Need quick results" weight="1"></constraint>
