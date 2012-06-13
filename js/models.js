@@ -307,14 +307,29 @@
 				 * @type number
 				 * @default "0"
 				 */
-				"value"            : 0,
+				"value"            : 100,
 				
+				/**
+				 * @property textValue
+				 * @type string
+				 * @default '""'
+				 */
+				"textValue"        : "",
+
+				/**
+				 * @property inappropiate
+				 * @type boolean
+				 * @default "false"
+				 */
+				"inappropiate"     : false,
+
 				/**
 				 * @property numIncrements
 				 * @type number
 				 * @default "0"
 				 */
 				"numIncrements"    : 0
+
 			});
 			
 		},
@@ -325,19 +340,44 @@
 		 * @param weightValue {number}
 		 */
 		incrementValue: function(weightValue) {
-			// Denormalizing the method value
-			var totalValue = this.denormalizeValue();
+			var value = 0;
+			var textValue = "";
+			var currentValue = this.getValue();
+			var inappropiate = this.isInappropiate();
 
-			// Adding the weightValue to the totalValue
-			totalValue += weightValue;
+			switch ( weightValue ) {  
+				case 0 : inappropiate = true;   break;
+				case 1 : value =   -2;   break;
+				case 2 : value =   -1;   break;
+				case 3 : value =    0;   break;
+				case 4 : value =    1;   break;
+				case 5 : value =    2;   break;
+			}
 
-			// Incrementing the counter of increments
-			var oldNumIncrements = this.get('numIncrements');
-			this.set({ "numIncrements" : oldNumIncrements + 1 });
+			currentValue += value;
 
-			// Normalizing again the new value and updating the attribute
-			var normalizedValue = this.normalizeValue(totalValue);
-			this.set({ "value" : normalizedValue });
+			if  ( inappropiate === true ) {
+				textValue = UP.constants.VALUE[5];
+			} else {
+				if ( currentValue < 100 ) {
+					textValue = UP.constants.VALUE[4];
+				} else if ( currentValue === 100 ) {
+					textValue = UP.constants.VALUE[3];
+				} else if ( currentValue === 101 ) {
+					textValue = UP.constants.VALUE[2];
+				} else if ( currentValue === 102 ) {
+					textValue = UP.constants.VALUE[1];
+				} else if ( currentValue >= 103 ) {
+					textValue = UP.constants.VALUE[0];
+				}
+			}
+
+			this.set({
+				"value"         : currentValue,
+				"textValue"     : textValue,
+				"inappropiate"  : inappropiate,
+				"numIncrements" : this.get('numIncrements') + 1
+			});
 
 			// Calling the controller to update the view
 			this.trigger('render');
@@ -349,48 +389,47 @@
 		 * @param weightValue {number}
 		 */
 		decrementValue: function(weightValue) {
-			// Denormalizing the method value
-			var totalValue = this.denormalizeValue();
+			var value = 0;
+			var textValue = "";
+			var currentValue = this.getValue();
+			var inappropiate = this.isInappropiate();
 
-			// Substracting the weightValue to the totalValue
-			totalValue -= weightValue;
+			switch ( weightValue ) {  
+				case 0 : inappropiate = false;   break;
+				case 1 : value =   -2;   break;
+				case 2 : value =   -1;   break;
+				case 3 : value =    0;   break;
+				case 4 : value =    1;   break;
+				case 5 : value =    2;   break;
+			}
 
-			// Decrementing the counter of increments
-			var oldNumIncrements = this.get('numIncrements');
-			this.set({ "numIncrements" : oldNumIncrements - 1 });
+			currentValue += value * (-1);
 
-			// Normalizing again the new value and updating the attribute
-			var normalizedValue = this.normalizeValue(totalValue);
-			this.set({ "value" : normalizedValue });
+			if  ( inappropiate === true ) {
+				textValue = UP.constants.VALUE[5];
+			} else {
+				if ( currentValue < 100 ) {
+					textValue = UP.constants.VALUE[4];
+				} else if ( currentValue === 100 ) {
+					textValue = UP.constants.VALUE[3];
+				} else if ( currentValue === 101 ) {
+					textValue = UP.constants.VALUE[2];
+				} else if ( currentValue === 102 ) {
+					textValue = UP.constants.VALUE[1];
+				} else if ( currentValue >= 103 ) {
+					textValue = UP.constants.VALUE[0];
+				}
+			}
+
+			this.set({
+				"value"         : currentValue,
+				"textValue"     : textValue,
+				"inappropiate"  : inappropiate,
+				"numIncrements" : this.get('numIncrements') - 1
+			});
 
 			// Calling the controller to update the view
 			this.trigger('render');
-		},
-
-
-		/**
-		 * @method normalizeValue
-		 * @param totalValue {number}
-		 * @return newTotalvalue {number}
-		 */
-		normalizeValue: function(totalValue) {
-			var newTotalValue = 0;
-
-			var nInc = this.get('numIncrements');
-			if ( nInc ) {
-				newTotalValue = totalValue / (nInc * UP.constants.MAX_WEIGHT_VALUE);
-			}
-
-			return newTotalValue;
-		},
-		
-		
-		/**
-		 * @method denormalizeValue
-		 * @return totalValue {number}
-		 */
-		denormalizeValue: function() {
-			return this.get('value') * this.get('numIncrements') * UP.constants.MAX_WEIGHT_VALUE;
 		},
 
 		
@@ -436,7 +475,7 @@
 		 * @param sliderValue {number}
 		 */
 		hideMethod: function(sliderValue) {
-			if ( this.get('numIncrements') == 0 && this.get('value') == 0) {
+			if ( this.get('numIncrements') === 0 && !this.isInappropiate()	&& this.getValue() === 100 ) {
 				this.trigger('showNeutral');
 			} else {
 				this.trigger('hideMethod', { sliderValue : sliderValue } );
@@ -488,7 +527,16 @@
 			return this.get('selected');
 		},
 
-		
+
+		/**
+		 * @method isInappropiate
+		 * @return inappropiate {boolean}
+		 */
+		isInappropiate: function() {
+			return this.get('inappropiate');
+		},
+
+
 		/**
 		 * @method getName
 		 * @return name {string}
@@ -525,6 +573,15 @@
 		},
 
 		
+		/**
+		 * @method getTextValue
+		 * @return textValue {string}
+		 */
+		getTextValue: function() {
+			return this.get('textValue');
+		},
+
+
 		/**
 		 * @method getWeights
 		 * @return weightCollection {WeightCollection}
@@ -576,6 +633,11 @@
 			
 
 			return (name + value + weights);
+		},
+
+
+		showLast: function() {
+			this.trigger('showLast');
 		}
 
 	});
@@ -875,9 +937,14 @@
 		 * @method changeOrderMethodsView
 		 */
 		changeOrderMethodsView: function() {
-			this.get('methodCollection').each(function(method) {
+			var col = this.get('methodCollection');
+
+			col.each(function(method) {
 				method.changeOrderView();
 			});
+
+			var lastMethod = col.at( col.length-1 );
+			lastMethod.showLast();
 		},
 
 

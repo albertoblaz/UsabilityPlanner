@@ -40,7 +40,7 @@
 				orientation: "horizontal",
 				range: "min",
 				min: 0,
-				max: UP.constants.VALUE.length-1,
+				max: UP.constants.VALUE.length-2,
 				value: this.sliderValue,
 				animate: true,
 				slide: function(event, ui) {	// Event function to perfom
@@ -237,9 +237,15 @@
 
 			// Initialize visual text description
 
-			var description = this.model.getDescription();
-			this.methodView.find('.method-description').text( description );
-			this.planView.find('.method-description').text( description );
+			var name        = this.model.getName();
+			var description = '<p>' + this.model.getDescription() + '</p>';
+			var url         = this.model.getURL();
+
+			var texturl = '<a href="' + url + '">More Information on ' + name + '</a>';
+			description += texturl;
+
+			this.methodView.find('.method-description').html( description );
+			this.planView.find('.method-description').html( description );
 
 		},
 
@@ -248,29 +254,17 @@
 		 * @method render
 		 */
 		render: function() {
+			var VALUE = UP.constants.VALUE;
+			var textValue = this.model.getTextValue();
 			var color;
-			var textValue = "";
 
-			var newValue = this.model.getValue();
-
-			if (newValue >= 0.8) {
-				textValue = UP.constants.VALUE[0];
-				color = "green";
-			} else if (newValue >= 0.6) {
-				textValue = UP.constants.VALUE[1];
-				color = "greenyellow";
-			} else if (newValue >= 0.4) {
-				textValue = UP.constants.VALUE[2];
-				color = "yellow";
-			} else if (newValue >= 0.2) {
-				textValue = UP.constants.VALUE[3];
-				color = "orange";
-			} else if (newValue > 0) {
-				textValue = UP.constants.VALUE[4];
-				color = "red";
-			} else if (newValue == 0) {
-				textValue = UP.constants.VALUE[3];
-				color = "orange";
+			switch ( textValue ) {
+				case VALUE[0] : color = "green";         break;
+				case VALUE[1] : color = "greenyellow";   break;
+				case VALUE[2] : color = "yellow";        break;
+				case VALUE[3] : color = "orange";        break;
+				case VALUE[4] : color = "red";           break;
+				case VALUE[5] : color = "red";           break;
 			}
 
 			this.methodView.find('.valoration').text(textValue);
@@ -278,8 +272,6 @@
 
 			this.planView.find('.valoration').text(textValue);
 			this.planView.find('.bar').attr('class', 'bar').addClass(color);
-
-			
 		},
 
 
@@ -297,27 +289,25 @@
 		 * @param event {Event} The jQuery event fired
 		 */
 		hideMethod: function(event) {
-			if ( this.model.getValue() == 0 ) {
-				this.showNeutral();
-			} else {
-				var sliderValue = event.sliderValue;
-				var VALUES = UP.constants.VALUE;
+			var VALUES = UP.constants.VALUE;
 
-				this.methodView.addClass('hidden').removeClass('visible').removeClass('last-method');
-				this.planView.addClass('hidden').removeClass('visible').removeClass('last-method');
+			var sliderValue = event.sliderValue;
 
-				this.model.unselectMethod();
+			this.methodView.addClass('hidden').removeClass('visible first last');
+			this.planView.addClass('hidden').removeClass('visible first last');
 
-				var stringValue = this.methodView.find('.valoration').text();
+			this.model.unselectMethod();
 
-				for ( var j=0; j <= sliderValue && j < VALUES.length; j++ ) {
-					if ( stringValue === VALUES[j] ) {
-						this.methodView.removeClass('hidden').addClass('visible');
-						this.planView.removeClass('hidden').addClass('visible');
-						this.model.selectMethod();
-					}
+			var stringValue = this.model.getTextValue();
+
+			for ( var j=0; j <= sliderValue && j < VALUES.length; j++ ) {
+				if ( stringValue === VALUES[j] ) {
+					this.methodView.removeClass('hidden').addClass('visible');
+					this.planView.removeClass('hidden').addClass('visible');
+					this.model.selectMethod();
 				}
 			}
+
 		},
 
 		
@@ -325,13 +315,24 @@
 		 * @method showNeutral
 		 */
 		showNeutral: function() {
-			this.methodView.removeClass('hidden').addClass('visible').removeClass('last-method');
-			this.planView.removeClass('hidden').addClass('visible').removeClass('last-method');
+			this.methodView.addClass('visible').removeClass('hidden first last');
+			this.planView.addClass('visible').removeClass('hidden first last');
 
 			this.model.selectMethod();
 		},
 
-		
+
+		/**
+		 * @method showNeutral
+		 */
+		showLast: function() {
+			this.methodView.addClass('visible').removeClass('hidden first last');
+			this.planView.addClass('visible').removeClass('hidden first last');
+
+			this.model.selectMethod();
+		},
+
+
 		/**
 		 * @method checkboxEvent
 		 * @param event {Event} The jQuery event fired
@@ -423,6 +424,16 @@
 		 */
 		isVisible: function() {
 			return this.methodView.hasClass('visible');
+		},
+
+
+		showFirst: function() {
+			this.addClass('first');
+		},
+
+
+		showLast: function() {
+			this.addClass('last');
 		}
 
 	});
@@ -546,7 +557,7 @@
 		 * @param headerVisible {boolean} 
 		 */
 		slideDown: function(headerVisible) {
-			var selected = this.model.get('selected');
+			var selected = this.model.isSelected();
 			if (selected) {
 				if (headerVisible == true) {
 					this.list.find('.list-methods').slideDown(UP.constants.SLIDE_SPEED, slideDownFix);
@@ -563,27 +574,8 @@
 		 * @method updateLastMethod
 		 */
 		updateLastMethod: function() {
-			this.list.find('.visible').last().addClass('last-method');
-			this.listPlan.find('.visible').last().addClass('last-method');
-		},
-
-		// deprecated ???
-		isSelected: function() {
-			//return this.model.get('selected');
-			return this.model.isSelected();
-		},
-
-		
-		// deprecated ???
-		/**
-		 * @method addClassIfLast
-		 */
-		addClassIfLast: function() {
-			
-			var subs = $('.info-subactivity').not('hidden');
-			if ( this.list == subs.last() ) {
-				this.list.addClass('last-subactivity');
-			}
+			this.list.find('.visible').last().addClass('last');
+			this.listPlan.find('.visible').last().addClass('last');
 		}
 
 	});
