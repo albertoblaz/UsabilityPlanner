@@ -173,14 +173,15 @@
 	margin-top: 0;
 }
 
-.last-method {
+.last {
 	border-bottom-left-radius: 8px;
 	border-bottom-right-radius: 8px;
 	border-bottom: #DEDEDE 1px solid;
 }			
 
-.method.disabled {
+.method.disabled .method-title {
 	font-style: italic;
+	text-decoration: line-through;
 }
 
 .method-info {
