@@ -10,8 +10,14 @@
 	 */
 	Backbone.Controller = Backbone.View.extend({});
 
+		
+	function assets(pathfile) {
+		var ASSETS_FOLDER = "../assets/";
+		return ASSETS_FOLDER + pathfile;
+	};
 
-	
+
+
 	/**
 	 * @module UP
 	 * @submodule Constants
@@ -61,7 +67,7 @@
 		 * @type number
 		 */
 		METHOD_HEIGHT    : 25,
-		
+	
 		
 		/**
 		 * @property PHP_DOWNLOAD
@@ -69,7 +75,7 @@
 		 * @final
 		 * @type string
 		 */
-		PHP_DOWNLOAD     : 'php/download.php',
+		PHP_DOWNLOAD     : assets('php/download.php'),
 		
 		
 		/**
@@ -78,7 +84,16 @@
 		 * @final
 		 * @type string
 		 */
-		PHP_UPLOAD       : 'php/upload.php',
+		PHP_UPLOAD       : assets('php/upload.php'),
+
+
+		/**
+		 * @property PLAN_FILE
+		 * @static
+		 * @final
+		 * @type string
+		 */
+		PLAN_FILE        : 'plan.csv', // assets('plan.csv'),
 		
 		
 		/**
@@ -128,7 +143,7 @@
 		 * @final
 		 * @type string
 		 */
-		XML              : 'xml/stages.xml'
+		XML              : assets('xml/stages.xml')
 		
 	};
 	

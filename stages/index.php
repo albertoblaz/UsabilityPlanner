@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" manifest="offline.appcache">
+<html lang="en" manifest="../assets/offline.appcache">
 
 <head>
 
@@ -8,7 +8,7 @@
 
 
 	<!-- CSS -->
-	<link media="all" rel="stylesheet" type="text/css" href="css/styles.css" />
+	<link media="all" rel="stylesheet" type="text/css" href="../assets/css/styles.css" />
 
 
 	<!-- Meta -->
@@ -22,14 +22,12 @@
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-	<!--link rel="apple-touch-icon-precomposed" href="images/icon.png"-->
-	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ipad-icon.png">
-	<!--link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/icon@2x.png"-->
+	<link rel="apple-touch-icon-precomposed" href="../assets/images/ipad-icon.png">
+	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/images/ipad-icon.png">
+	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/images/ipad-icon@2x.png">
 
-	<link rel="apple-touch-startup-image" href="./ipad-startup.png">
-
-	<link rel="shortcut icon" href="favicon.ico">
-	<link rel="icon" href="favicon.ico">
+	<link rel="shortcut icon" href="../assets/images/favicon.ico">
+	<link rel="icon" href="../assets/images/favicon.ico">
 
 </head>
 
@@ -38,9 +36,7 @@
 
 	<div class="wrapper">
 		<header class="header">
-			<figure class="logo left">
-				<img src="images/logo.gif" />
-			</figure>
+			<figure class="logo left"></figure>
 			
 			<nav id="navigation">
 				<ul class="right">
@@ -82,10 +78,10 @@
 
 <?php
 $xml = new DomDocument();
-$xml->load('xml/stages.xml');
+$xml->load('../assets/xml/stages.xml');
 
 $tabs = new DomDocument();
-$tabs->load('xsl/tabs.xsl');
+$tabs->load('../assets/xsl/tabs.xsl');
 
 $proc = new xsltprocessor();
 $proc->importStyleSheet($tabs);
@@ -99,7 +95,7 @@ echo($proc->transformToXML($xml));
 					
 <?php
 $activities = new DomDocument();
-$activities->load('xsl/activities.xsl');
+$activities->load('../assets/xsl/activities.xsl');
 
 $proc = new xsltprocessor();
 $proc->importStyleSheet($activities);
@@ -118,7 +114,7 @@ echo($proc->transformToXML($xml));
 <?php
 /*
 $tableHead = new DomDocument();
-$tableHead->load('xsl/table-head.xsl');
+$tableHead->load('../assets/xsl/table-head.xsl');
 
 $proc = new xsltprocessor();
 $proc->importStyleSheet($tableHead);
@@ -134,7 +130,7 @@ echo($proc->transformToXML($xml));
 <?php
 /*
 $tableBody = new DomDocument();
-$tableBody->load('xsl/table-body.xsl');
+$tableBody->load('../assets/xsl/table-body.xsl');
 
 $proc = new xsltprocessor();
 $proc->importStyleSheet($tableBody);
@@ -163,7 +159,7 @@ echo($proc->transformToXML($xml));
 						<p class="total-counter"><label class="filter-count">0</label> methods shown:</p>
 <?php
 $counters = new DomDocument();
-$counters->load('xsl/counters.xsl');
+$counters->load('../assets/xsl/counters.xsl');
 
 $proc = new xsltprocessor();
 $proc->importStyleSheet($counters);
@@ -178,7 +174,7 @@ echo($proc->transformToXML($xml));
 					<aside id="constraints-selection" class="left">
 <?php
 $constraints = new DomDocument();
-$constraints->load('xsl/constraints.xsl');
+$constraints->load('../assets/xsl/constraints.xsl');
 
 $proc = new xsltprocessor();
 $proc->importStyleSheet($constraints);
@@ -192,9 +188,9 @@ echo($proc->transformToXML($xml));
 						<div class="recommendation">
 							<!--p class="title left">Method Filtering</p-->
 							<div class="filter right">
-								<p class="right">All methods</p>
+								<p class="right">Show all methods</p>
 								<div id="slider" class="right"></div>
-								<p class="right">Most Recommended</p>
+								<p class="right">Show most recommended</p>
 							</div>
 						</div>
 
@@ -209,7 +205,7 @@ echo($proc->transformToXML($xml));
 
 <?php
 $methods = new DomDocument();
-$methods->load('xsl/methods.xsl');
+$methods->load('../assets/xsl/methods.xsl');
 
 $proc = new xsltprocessor();
 $proc->importStyleSheet($methods);
@@ -252,7 +248,7 @@ echo($proc->transformToXML($xml));
 
 <?php
 $methods = new DomDocument();
-$methods->load('xsl/methods.xsl');
+$methods->load('../assets/xsl/methods.xsl');
 
 $proc = new xsltprocessor();
 $proc->importStyleSheet($methods);
@@ -270,10 +266,10 @@ echo($proc->transformToXML($xml));
 			<footer id="footer" class="center">	
 				<nav>
 					<ul class="links">
-						<li class="link"><a href="..">Home</a></li>
-						<li class="link"><a href="../activities/">Activities version</a></li>
-						<li class="link"><a href="#">About</a></li>
-						<li class="link"><a href="#">Feedback</a></li>
+						<li class="link"><a target="_blank" href="..">Home</a></li>
+						<li class="link"><a target="_blank" href="../activities/">Activities version</a></li>
+						<li class="link"><a target="_blank" href="../about.html">About</a></li>
+						<li class="link"><a target="_blank" href="../feedback.html">Feedback</a></li>
 					</ul>
 				</nav>
 				
@@ -290,33 +286,32 @@ echo($proc->transformToXML($xml));
 
 
 	<!-- JavaScript -->
-	<script type="text/javascript" src="js/lib/html5shiv.js"></script>
-	<script type="text/javascript" src="js/lib/json2.js"></script>
-	<script type="text/javascript" src="js/lib/jquery-1.7.1.min.js"></script>
-	<script type="text/javascript" src="js/lib/jquery-ui-1.8.20.min.js"></script>
-	<script type="text/javascript" src="js/lib/underscore-1.3.3.min.js"></script>
-	<script type="text/javascript" src="js/lib/backbone-0.9.2.min.js"></script>
+	<script type="text/javascript" src="../assets/js/lib/html5shiv.js"></script>
+	<script type="text/javascript" src="../assets/js/lib/json2.js"></script>
+	<script type="text/javascript" src="../assets/js/lib/jquery-1.7.1.min.js"></script>
+	<script type="text/javascript" src="../assets/js/lib/jquery-ui-1.8.20.min.js"></script>
+	<script type="text/javascript" src="../assets/js/lib/underscore-1.3.3.min.js"></script>
+	<script type="text/javascript" src="../assets/js/lib/backbone-0.9.2.min.js"></script>
 
 
 	<script type="text/javascript" src="js/constants.js"></script>
 
-	<script type="text/javascript" src="js/models.js"></script>
-	<script type="text/javascript" src="js/controllers.js"></script>
-	<script type="text/javascript" src="js/collections.js"></script>
+	<script type="text/javascript" src="../assets/js/models.js"></script>
+	<script type="text/javascript" src="../assets/js/controllers.js"></script>
+	<script type="text/javascript" src="../assets/js/collections.js"></script>
 
-	<script type="text/javascript" src="js/plan.js"></script>
+	<script type="text/javascript" src="../assets/js/plan.js"></script>
 
-	<script type="text/javascript" src="js/xml-parser.js"></script>
-	<script type="text/javascript" src="js/csv-parser.js"></script>
-	<script type="text/javascript" src="js/file-manager.js"></script>
-	<script type="text/javascript" src="js/planner.js"></script>
+	<script type="text/javascript" src="../assets/js/xml-parser.js"></script>
+	<script type="text/javascript" src="../assets/js/csv-parser.js"></script>
+	<script type="text/javascript" src="../assets/js/file-manager.js"></script>
+	<script type="text/javascript" src="../assets/js/planner.js"></script>
 
-	<script type="text/javascript" src="js/recommender.js"></script>
-	<script type="text/javascript" src="js/facade-controller.js"></script>
+	<script type="text/javascript" src="../assets/js/recommender.js"></script>
+	<script type="text/javascript" src="../assets/js/facade-controller.js"></script>
 
-	<script type="text/javascript" src="js/main.js"></script>
+	<script type="text/javascript" src="../assets/js/main.js"></script>
 
-	<!-- script type="text/javascript" src="js/script.js"></script -->
 </body>
 	
 </html>

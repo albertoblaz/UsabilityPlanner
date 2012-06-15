@@ -1,0 +1,283 @@
+/* Recommendation */
+
+.recommendation {
+	margin: 0 auto;
+	width: 95%;
+}
+
+.recommendation .title {
+	padding: 6px;
+	width: 20%;
+}
+
+.recommendation .filter {
+	padding: 6px;
+	padding-top: 10px;
+	width: 90%;
+}
+
+.recommendation .filter p {
+	display: inline-block;
+	font-size: 13px;
+	padding: 0 5px;
+}
+
+.recommendation  #slider {
+	background: white;
+	margin-top: 3px;
+	height: 8px;
+	width: 45%;
+}
+
+
+/* Constraints */
+
+#constraints-selection {
+	background: white;
+	border-right: #C6D3DA 1px solid;
+	width: 33%;
+	min-width: 309px;
+}
+
+#constraints-selection .headline {
+	margin: 13px 25px;
+}
+
+#constraints-selection article {
+	margin-bottom: 30px;
+}
+
+#constraints-selection ul {
+	padding: 0 40px;
+}
+
+.constraint {
+	cursor: pointer;
+	padding: 5px 0;
+}
+
+.label-constraint {
+	/* margin-left: 10px; */
+	/* font-size: 13px; */
+	font-size: 15px;
+}
+
+
+/* Filtering */
+
+.filtering {
+	background: #EBF0F3;
+	border: #C6D3DA 1px solid;
+	border-bottom: 0;
+	float: right;
+	margin-right: 0.5%;
+	height: 100%;
+	width: 66.2%;
+}
+
+.filtering-inner {
+	padding: 0 20px;
+}
+
+.filtering a,
+.total-counter {
+	display: inline-block;
+	font-family: Calibri, sans-serif;
+	padding: 6px;
+}
+
+.filtering a,
+.filtering a:active,
+.filtering a:focus {
+	color: #111;
+}
+
+.expand-buttons {
+	margin-left: 3%;
+}
+
+.expand-all {
+	color: #28527D;
+	cursor: pointer;
+	display: inline-block;
+	font-size: small;
+	padding: 4px;
+	padding-top: 8px;
+}
+
+
+.filtering a:hover,
+.expand-all:hover {
+	color: blue;
+}
+
+
+/* Methods */
+
+#methods-selection {
+	min-width: 622px;
+	width: 66.7%;
+}
+
+#methods-selection .info-activity {
+	/* margin: 10px 20px; */
+	margin: 0 auto;
+	height: 100%;
+	width: 95%;
+}
+
+.info-activity .info-subactivity {
+	padding: 0 20px;
+}
+
+.last-subactivity {
+	margin-bottom: 40px;
+}
+
+.expandable {
+	background: url('../images/arrow-down.png') 5px 5px no-repeat;
+	cursor: pointer;
+	padding-left: 30px;
+}
+
+.expandable:hover {
+	color: blue;
+} 
+
+.collapsed {
+	background-image: url('../images/arrow-up.png');
+}
+
+.list-container {
+	padding-bottom: 10px;
+}
+
+.list-methods {
+	padding-top: 1px;
+}
+
+.method {
+	min-height: 25px;
+	padding: 5px 10px;
+	/* background: white; */
+	border: #DEDEDE 1px solid;
+	border-bottom: #CECECE 1px solid;
+	border-top: 0;
+	background: rgb(235,240,243);
+}
+
+.visible:first-child {
+	border-top-left-radius: 8px;
+	border-top-right-radius: 8px;
+	border-top: #DEDEDE 1px solid;
+	margin-top: 0;
+}
+
+.last {
+	border-bottom-left-radius: 8px;
+	border-bottom-right-radius: 8px;
+	border-bottom: #DEDEDE 1px solid;
+}			
+
+.method.disabled .method-title {
+	font-style: italic;
+	text-decoration: line-through;
+}
+
+.method-info {
+	cursor: pointer;
+	margin-top: 1px;
+	width: 94%;
+}
+
+.method-title {
+	display: inline-block;
+	font-size: 15px;
+	padding-left: 5px;
+}
+
+.valoration {	
+	font-size: 13px;
+	margin-top: 1px;
+	text-align: left;
+	width: 140px
+}
+
+.expand-button {
+	background: url('../images/arrow-down.png') no-repeat;
+	display: inline;
+	padding: 10px;
+	margin-top: 6px;
+}
+
+.expand-button.expanded {
+	background-image: url('../images/arrow-up.png');
+}
+
+.method-description {
+	color: #555;
+	font-family: Calibri, sans-serif;
+	font-size: 15px;
+	padding: 10px 27px;
+	padding-bottom: 0;
+}
+
+
+/* Tooltips */
+
+.constraint .tooltip {
+	display: none;
+}
+
+.label-constraint:hover .tooltip {
+	display: block;
+	position: absolute;
+	padding: 0.8em 1em;
+	background: #FFFFAA; 
+	border: 1px solid #FFAD33;
+	border-radius: 5px 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; 
+	box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1); -webkit-box-shadow: 5px 5px rgba(0, 0, 0, 0.1); -moz-box-shadow: 5px 5px rgba(0, 0, 0, 0.1);
+	margin-left: 225px; 
+	margin-top: -30px;
+	width: 30%;
+	z-index: 100;
+}
+
+
+.filter-count {
+	font-size: 15px;
+}
+
+
+/* Checkboxes */
+
+span.checkboxWrapper {
+	display: block;
+	float: left;
+	margin-top: 3px;
+	margin-right: 10px;
+	margin-bottom: 2px;
+}
+
+a.checkbox {
+	background: transparent url('../images/checkbox.png') no-repeat center top;
+	vertical-align: middle;
+	height: 15px;
+	width: 18px;
+	display: block;
+	/*display: -moz-inline-block;*/
+}
+
+a.checked {	/* checked */
+	/*background-image: url('../images/checkmark.png');*/
+	background-position: center bottom;
+}
+
+.method .checkboxWrapper {
+	margin-top: 5px;
+}
+
+.method-title,
+.method-valoration {
+	width: 46%;
+}

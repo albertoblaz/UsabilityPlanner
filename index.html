@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" manifest="offline.appcache">
+<html lang="en" manifest="assets/offline.appcache">
 
 <head>
 
@@ -8,7 +8,7 @@
 
 
 	<!-- CSS -->
-	<link media="all" rel="stylesheet" type="text/css" href="css/styles.css" />
+	<link media="all" rel="stylesheet" type="text/css" href="assets/css/styles.css" />
 
 
 	<!-- Meta -->
@@ -22,10 +22,8 @@
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ipad-icon.png">
-	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ipad-icon@2x.png">
-
-	<link rel="apple-touch-startup-image" href="./ipad-startup.png">
+	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/images/ipad-icon.png">
+	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/images/ipad-icon@2x.png">
 
 	<link rel="shortcut icon" href="favicon.ico">
 	<link rel="icon" href="favicon.ico">
@@ -93,15 +91,15 @@
 }
 
 .home-button .button {
-	background: url('images/buttom-hover-usabilityplanner.png') no-repeat right center
+	background: url('assets/images/buttom-hover-usabilityplanner.png') no-repeat right center
 }
 
 .home-button .button:hover {
-	background: url('images/nav-button.png') no-repeat right center
+	background: url('assets/images/nav-button.png') no-repeat right center
 }
 
 .home-button .button:active {
-	background: url('images/nav-button-selected.gif') no-repeat right center
+	background: url('assets/images/nav-button-selected.gif') no-repeat right center
 }
 
 
@@ -109,11 +107,9 @@
 
 	<div class="wrapper">
 
-		<header>
+		<header class="header">
 		
-			<figure class="home-logo left">
-				<img src="images/logo.gif" />
-			</figure>
+			<figure class="logo left"></figure>
 			
 			<div class="clear"></div>
 		</header>
@@ -124,7 +120,7 @@
 			<div class="home-info">
 				<div class="width45 screenshot left">
 					<figure class="round-borders">
-						<img src="images/imagenPortada.png" />
+						<img src="assets/images/imagenPortada.png" />
 					</figure>
 				</div>
 			
