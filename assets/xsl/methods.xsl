@@ -21,6 +21,7 @@
 	<div class="info-activity" id="{$activityName}">
 		<h2 class="headline expandable hidden">
 			<xsl:value-of select="@name" />
+			(<label class="counter">0</label>)
 		</h2>
 
 		<xsl:apply-templates select="subactivity" />
@@ -30,9 +31,14 @@
 <xsl:template match="subactivity">
 	<article class="info-subactivity hidden">
 		<header>
-			<h3 class="headline small expandable">
+			<h3 class="headline small expandable left">
 				<xsl:value-of select="@name" />
 			</h3>
+
+			<ul class="cost-indicator left">
+			</ul>
+
+			<div class="clear"></div>
 		</header>
 
 		<ul class="list-methods">
@@ -52,7 +58,7 @@
 			<div class="meter right"><span class="bar orange"></span></div>
 		</div>
 		
-		<span class="checkboxWrapper right"><a href="#" class="checkbox checked"></a><input type="checkbox" class="hidden" /></span>
+		<input type="checkbox" checked="checked" />
 
 		<div class="clear"></div>
 		

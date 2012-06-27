@@ -1,0 +1,1295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>models.js</title>
+    <link rel="stylesheet" href="http:&#x2F;&#x2F;yui.yahooapis.com&#x2F;3.5.1&#x2F;build&#x2F;cssgrids&#x2F;cssgrids-min.css">
+    <link rel="stylesheet" href="..&#x2F;assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="..&#x2F;assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="..&#x2F;assets/favicon.png">
+    <script src="http:&#x2F;&#x2F;yui.yahooapis.com&#x2F;combo?3.5.1&#x2F;build&#x2F;yui&#x2F;yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+            
+                <h1><img src="..&#x2F;assets/css/logo.png" title=""></h1>
+            
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: </em>
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+    <h2 class="off-left">APIs</h2>
+    <div id="api-tabview" class="tabview">
+        <ul class="tabs">
+            <li><a href="#api-classes">Classes</a></li>
+            <li><a href="#api-modules">Modules</a></li>
+        </ul>
+
+        <div id="api-tabview-filter">
+            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+        </div>
+
+        <div id="api-tabview-panel">
+            <ul id="api-classes" class="apis classes">
+            
+                <li><a href="..&#x2F;classes/Activity.html">Activity</a></li>
+            
+                <li><a href="..&#x2F;classes/ActivityController.html">ActivityController</a></li>
+            
+                <li><a href="..&#x2F;classes/Constraint.html">Constraint</a></li>
+            
+                <li><a href="..&#x2F;classes/ConstraintController.html">ConstraintController</a></li>
+            
+                <li><a href="..&#x2F;classes/Counter.html">Counter</a></li>
+            
+                <li><a href="..&#x2F;classes/CounterController.html">CounterController</a></li>
+            
+                <li><a href="..&#x2F;classes/CSVParser.html">CSVParser</a></li>
+            
+                <li><a href="..&#x2F;classes/FacadeController.html">FacadeController</a></li>
+            
+                <li><a href="..&#x2F;classes/FileManager.html">FileManager</a></li>
+            
+                <li><a href="..&#x2F;classes/Main.html">Main</a></li>
+            
+                <li><a href="..&#x2F;classes/Method.html">Method</a></li>
+            
+                <li><a href="..&#x2F;classes/MethodController.html">MethodController</a></li>
+            
+                <li><a href="..&#x2F;classes/Plan.html">Plan</a></li>
+            
+                <li><a href="..&#x2F;classes/Planner.html">Planner</a></li>
+            
+                <li><a href="..&#x2F;classes/Recommender.html">Recommender</a></li>
+            
+                <li><a href="..&#x2F;classes/Slider.html">Slider</a></li>
+            
+                <li><a href="..&#x2F;classes/SliderController.html">SliderController</a></li>
+            
+                <li><a href="..&#x2F;classes/Subactivity.html">Subactivity</a></li>
+            
+                <li><a href="..&#x2F;classes/SubactivityController.html">SubactivityController</a></li>
+            
+                <li><a href="..&#x2F;classes/TotalCounter.html">TotalCounter</a></li>
+            
+                <li><a href="..&#x2F;classes/TotalCounterController.html">TotalCounterController</a></li>
+            
+                <li><a href="..&#x2F;classes/Weight.html">Weight</a></li>
+            
+                <li><a href="..&#x2F;classes/WeightCollection.html">WeightCollection</a></li>
+            
+                <li><a href="..&#x2F;classes/XMLParser.html">XMLParser</a></li>
+            
+            </ul>
+
+            <ul id="api-modules" class="apis modules">
+            
+                <li><a href="..&#x2F;modules/App.html">App</a></li>
+            
+                <li><a href="..&#x2F;modules/Collections.html">Collections</a></li>
+            
+                <li><a href="..&#x2F;modules/Constants.html">Constants</a></li>
+            
+                <li><a href="..&#x2F;modules/Controllers.html">Controllers</a></li>
+            
+                <li><a href="..&#x2F;modules/Main.html">Main</a></li>
+            
+                <li><a href="..&#x2F;modules/Models.html">Models</a></li>
+            
+                <li><a href="..&#x2F;modules/Plan.html">Plan</a></li>
+            
+                <li><a href="..&#x2F;modules/UP.html">UP</a></li>
+            
+                <li><a href="..&#x2F;modules/Util.html">Util</a></li>
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+        Show:
+        <label for="api-show-inherited">
+            <input type="checkbox" id="api-show-inherited" checked>
+            Inherited
+        </label>
+
+        <label for="api-show-protected">
+            <input type="checkbox" id="api-show-protected">
+            Protected
+        </label>
+
+        <label for="api-show-private">
+            <input type="checkbox" id="api-show-private">
+            Private
+        </label>
+        <label for="api-show-deprecated">
+            <input type="checkbox" id="api-show-deprecated">
+            Deprecated
+        </label>
+
+    </div>
+
+
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+                        <h1 class="file-heading">File: models.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+	
+	&#x2F;**
+	 * @module UP
+	 * @submodule Models
+	 * @class Slider
+	 * @extends Backbone.Model
+	 *&#x2F;	
+	UP.Slider = Backbone.Model.extend({
+	
+		&#x2F;**
+		 * @method initialize
+		 * @constructor
+		 *&#x2F;
+		initialize: function() {
+		
+			this.set({
+			
+				&#x2F;**
+				 * @property sliderValue
+				 * @type number
+				 * @default &quot;constans.SLIDER_VALUE&quot;
+				 *&#x2F;
+				&quot;sliderValue&quot; : UP.constants.SLIDER_VALUE
+			});
+			
+		},
+
+		
+		&#x2F;**
+		 * @method updateValue
+		 * @param newValue {Number} 
+		 *&#x2F;
+		updateValue: function(newValue) {
+			this.set({
+				&quot;sliderValue&quot; : newValue
+			});
+		},
+
+		
+		&#x2F;**
+		 * @method getValue
+		 * @return sliderValue {number}
+		 *&#x2F;
+		getValue: function() {
+			return this.get(&#x27;sliderValue&#x27;);
+		}
+
+	});
+
+
+	
+	&#x2F;**
+	 * @module UP
+	 * @submodule Models
+	 * @class Weight
+	 * @extends Backbone.Model
+	 *&#x2F;	
+	UP.Weight = Backbone.Model.extend({
+	
+		&#x2F;**
+		 * @method initialize
+		 * @constructor
+		 *&#x2F;
+		initialize: function(method, value) {
+		
+			this.set({
+			
+				&#x2F;**
+				 * @property method
+				 * @type Method
+				 *&#x2F;
+				&quot;method&quot; : method,
+				
+				&#x2F;**
+				 * @property value
+				 * @type number
+				 *&#x2F;
+				&quot;value&quot; : value
+			});
+			
+		},
+
+		
+		&#x2F;**
+		 * @method incrementMethodValue
+		 *&#x2F;
+		incrementMethodValue: function() {
+			var value = this.get(&#x27;value&#x27;);
+			console.log(&quot;Incrementando valor: &quot; + value + &quot; al method: &quot; + this.get(&#x27;method&#x27;).get(&#x27;name&#x27;) );
+			this.get(&#x27;method&#x27;).incrementValue(value);
+		},
+
+		
+		&#x2F;**
+		 * @method decrementMethodValue
+		 *&#x2F;
+		decrementMethodValue: function() {
+			var value = this.get(&#x27;value&#x27;);
+			this.get(&#x27;method&#x27;).decrementValue(value);
+		},
+
+
+		&#x2F;**
+		 * @method compareNameWith
+		 * @param name {string} 
+		 * @return equals {boolean}
+		 *&#x2F;
+		compareNameWith: function(name) {
+			return this.get(&#x27;method&#x27;).compareNameWith(name);
+		},
+
+		
+		&#x2F;**
+		 * @method getMethodName
+		 * @return name {string}
+		 *&#x2F;
+		getMethodName: function() {
+			return this.get(&#x27;method&#x27;).getName();
+		},
+
+		
+		&#x2F;**
+		 * @method getValue
+		 * @return value {string}
+		 *&#x2F;
+		getValue: function() {
+			return this.get(&#x27;value&#x27;);
+		},
+
+		
+		&#x2F;**
+		 * @method changeValue
+		 * @param newValue {number}
+		 *&#x2F;
+		changeValue: function(newValue) {
+			this.set({ &quot;value&quot; : newValue });
+		},
+
+		
+		&#x2F;**
+		 * @method toCSV
+		 * @return csv {string}
+		 *&#x2F;
+		toCSV: function() {
+			return &quot;;&quot; + this.get(&#x27;value&#x27;);
+		}
+
+	});
+
+	
+	
+	&#x2F;**
+	 * @module UP
+	 * @submodule Models
+	 * @class Counter
+	 * @extends Backbone.Model
+	 *&#x2F;	
+	UP.Counter = Backbone.Model.extend({
+	
+		&#x2F;**
+		 * @method initialize
+		 * @param totalCounter {TotalCounter}
+		 * @constructor
+		 *&#x2F;
+		initialize: function(totalCounter) {
+		
+			this.set({
+			
+				&#x2F;**
+				 * @property value
+				 * @type number
+				 * @default &quot;0&quot;
+				 *&#x2F;
+				value : 0,
+				
+				&#x2F;**
+				 * @property totalCounter
+				 * @type TotalCounter
+				 *&#x2F;
+				totalCounter : totalCounter
+			});
+			
+		},
+
+		
+		&#x2F;**
+		 * @method updateValue
+		 * @param newValue {number}
+		 *&#x2F;
+		updateValue: function(newValue) {
+			var oldValue = this.get(&#x27;value&#x27;);
+			this.set({ value : newValue });
+
+			console.log(&quot;updating counter&quot;);
+
+			this.get(&#x27;totalCounter&#x27;).decrement(oldValue);
+			this.get(&#x27;totalCounter&#x27;).increment(newValue);
+		}
+
+	});
+
+
+	
+	&#x2F;**
+	 * @module UP
+	 * @submodule Models
+	 * @class TotalCounter
+	 * @extends Backbone.Model
+	 *&#x2F;	
+	UP.TotalCounter = Backbone.Model.extend({
+	
+		&#x2F;**
+		 * @method initialize
+		 * @constructor
+		 *&#x2F;
+		initialize: function() {
+		
+			this.set({
+			
+				&#x2F;**
+				 * @property value
+				 * @type number
+				 * @default &quot;0&quot;
+				 *&#x2F;
+				value : 0
+			});
+			
+		},
+
+		
+		&#x2F;**
+		 * @method increment
+		 * @param amount {number} 
+		 *&#x2F;
+		increment: function(amount) {
+			var newValue = this.get(&#x27;value&#x27;) + amount;
+			this.set({ value : newValue });
+		},
+
+		
+		&#x2F;**
+		 * @method decrement
+		 * @param amount {number}
+		 *&#x2F;
+		decrement: function(amount) {
+			var newValue = this.get(&#x27;value&#x27;) - amount;
+			this.set({ value : newValue });
+		}
+
+	});
+
+
+	
+	&#x2F;**
+	 * @module UP
+	 * @submodule Models
+	 * @class Method
+	 * @extends Backbone.Model
+	 *&#x2F;	
+	UP.Method = Backbone.Model.extend({
+	
+		&#x2F;**
+		 * @method initialize
+		 * @param name {string}
+		 * @param description {string}
+		 * @param url {string}
+		 * @constructor
+		 *&#x2F;
+		initialize: function(name, description, url) {
+		
+			this.set({
+			
+				&#x2F;**
+				 * @property name
+				 * @type string
+				 *&#x2F;
+				&quot;name&quot;             : name,
+				
+				&#x2F;**
+				 * @property description
+				 * @type string
+				 *&#x2F;
+				&quot;description&quot;      : description,
+				
+				&#x2F;**
+				 * @property url
+				 * @type string
+				 *&#x2F;
+				&quot;url&quot;              : url,
+				
+				&#x2F;**
+				 * @property weightCollection
+				 * @type WeightCollection
+				 * @default &quot;new WeightCollection&quot;
+				 *&#x2F;
+				&quot;weightCollection&quot; : new UP.WeightCollection(),
+				
+				&#x2F;**
+				 * @property selected
+				 * @type boolean
+				 * @default &quot;false&quot;
+				 *&#x2F;
+				&quot;selected&quot;         : false,
+				
+				&#x2F;**
+				 * @property value
+				 * @type number
+				 * @default &quot;0&quot;
+				 *&#x2F;
+				&quot;value&quot;            : 0,
+				
+				&#x2F;**
+				 * @property numIncrements
+				 * @type number
+				 * @default &quot;0&quot;
+				 *&#x2F;
+				&quot;numIncrements&quot;    : 0
+			});
+			
+		},
+
+		
+		&#x2F;**
+		 * @method incrementValue
+		 * @param weightValue {number}
+		 *&#x2F;
+		incrementValue: function(weightValue) {
+			&#x2F;&#x2F; Denormalizing the method value
+			var totalValue = this.denormalizeValue();
+
+			&#x2F;&#x2F; Adding the weightValue to the totalValue
+			totalValue += weightValue;
+
+			&#x2F;&#x2F; Incrementing the counter of increments
+			var oldNumIncrements = this.get(&#x27;numIncrements&#x27;);
+			this.set({ &quot;numIncrements&quot; : oldNumIncrements + 1 });
+
+			&#x2F;&#x2F; Normalizing again the new value and updating the attribute
+			var normalizedValue = this.normalizeValue(totalValue);
+			this.set({ &quot;value&quot; : normalizedValue });
+
+			&#x2F;&#x2F; Calling the controller to update the view
+			this.trigger(&#x27;render&#x27;);
+		},
+
+
+		&#x2F;**
+		 * @method decrementValue
+		 * @param weightValue {number}
+		 *&#x2F;
+		decrementValue: function(weightValue) {
+			&#x2F;&#x2F; Denormalizing the method value
+			var totalValue = this.denormalizeValue();
+
+			&#x2F;&#x2F; Substracting the weightValue to the totalValue
+			totalValue -= weightValue;
+
+			&#x2F;&#x2F; Decrementing the counter of increments
+			var oldNumIncrements = this.get(&#x27;numIncrements&#x27;);
+			this.set({ &quot;numIncrements&quot; : oldNumIncrements - 1 });
+
+			&#x2F;&#x2F; Normalizing again the new value and updating the attribute
+			var normalizedValue = this.normalizeValue(totalValue);
+			this.set({ &quot;value&quot; : normalizedValue });
+
+			&#x2F;&#x2F; Calling the controller to update the view
+			this.trigger(&#x27;render&#x27;);
+		},
+
+
+		&#x2F;**
+		 * @method normalizeValue
+		 * @param totalValue {number}
+		 * @return newTotalvalue {number}
+		 *&#x2F;
+		normalizeValue: function(totalValue) {
+			var newTotalValue = 0;
+
+			var nInc = this.get(&#x27;numIncrements&#x27;);
+			if ( nInc ) {
+				newTotalValue = totalValue &#x2F; (nInc * UP.constants.MAX_WEIGHT_VALUE);
+			}
+
+			return newTotalValue;
+		},
+		
+		
+		&#x2F;**
+		 * @method denormalizeValue
+		 * @return totalValue {number}
+		 *&#x2F;
+		denormalizeValue: function() {
+			return this.get(&#x27;value&#x27;) * this.get(&#x27;numIncrements&#x27;) * UP.constants.MAX_WEIGHT_VALUE;
+		},
+
+		
+		&#x2F;**
+		 * @method addWeight
+		 * @param weight {Weight}
+		 *&#x2F;
+		addWeight: function(weight) {
+			this.get(&#x27;weightCollection&#x27;).add( weight );
+		},
+
+		
+		&#x2F;**
+		 * @method addWeightCollection
+		 * @param col {WeightCollection}
+		 *&#x2F;
+		addWeightCollection: function(col) {
+			var self = this;
+			col.each(function(w) {
+				self.addWeight( w );
+			});
+		},
+
+		
+		&#x2F;**
+		 * @method removeWeights
+		 *&#x2F;
+		removeWeights: function() {
+			this.get(&#x27;weightCollection&#x27;).reset();
+		},
+
+
+		&#x2F;**
+		 * @method changeOrderView
+		 *&#x2F;
+		changeOrderView: function() {
+			this.trigger(&#x27;updatePosition&#x27;);
+		},
+
+
+		&#x2F;**
+		 * @method hideMethod
+		 * @param sliderValue {number}
+		 *&#x2F;
+		hideMethod: function(sliderValue) {
+			if ( this.get(&#x27;numIncrements&#x27;) == 0 &amp;&amp; this.get(&#x27;value&#x27;) == 0) {
+				this.trigger(&#x27;showNeutral&#x27;);
+			} else {
+				this.trigger(&#x27;hideMethod&#x27;, { sliderValue : sliderValue } );
+			}
+		},
+
+		
+		&#x2F;**
+		 * @method changeSelection
+		 *&#x2F;
+		changeSelection: function() {
+			var selected = this.get(&#x27;selected&#x27;);
+			this.set({ &quot;selected&quot; : !selected });
+		},
+
+		
+		&#x2F;**
+		 * @method selectMethod
+		 *&#x2F;
+		selectMethod: function() {
+			if ( this.get(&#x27;value&#x27;) &gt; 0 ) {
+				this.set({ &quot;selected&quot; : true });
+			}
+		},
+
+		
+		&#x2F;**
+		 * @method selectMethodAndSubactivity
+		 *&#x2F;
+		selectMethodAndSubactivity: function() {
+			this.selectMethod();
+			this.trigger(&#x27;select&#x27;);
+		},
+
+		
+		&#x2F;**
+		 * @method unselectMethod
+		 *&#x2F;
+		unselectMethod: function() {
+			this.set({ &quot;selected&quot; : false });
+		},
+
+		
+		&#x2F;**
+		 * @method isSelected
+		 * @return selected {boolean}
+		 *&#x2F;
+		isSelected: function() {
+			return this.get(&#x27;selected&#x27;);
+		},
+
+		
+		&#x2F;**
+		 * @method getName
+		 * @return name {string}
+		 *&#x2F;
+		getName: function() {
+			return this.get(&#x27;name&#x27;);
+		},
+
+
+		&#x2F;**
+		 * @method getDescription
+		 * @return dscription {string}
+		 *&#x2F;
+		getDescription: function() {
+			return this.get(&#x27;description&#x27;);
+		},
+
+		
+		&#x2F;**
+		 * @method getURL
+		 * @return url {string}
+		 *&#x2F;
+		getURL: function() {
+			return this.get(&#x27;url&#x27;);
+		},
+
+		
+		&#x2F;**
+		 * @method getValue
+		 * @return value {number}
+		 *&#x2F;
+		getValue: function() {
+			return this.get(&#x27;value&#x27;);
+		},
+
+		
+		&#x2F;**
+		 * @method getWeights
+		 * @return weightCollection {WeightCollection}
+		 *&#x2F;
+		getWeights: function() {
+			return this.get(&#x27;weightCollection&#x27;);
+		},
+
+		
+		&#x2F;**
+		 * @method compareNameWith
+		 * @param name {string}
+		 * @return equals {boolean}
+		 *&#x2F;
+		compareNameWith: function(name) {
+			return this.get(&#x27;name&#x27;) === name;
+		},
+
+		
+		&#x2F;**
+		 * @method weightsToCSV
+		 * @return output {string}
+		 *&#x2F;
+		weightsToCSV: function() {
+			var output = &quot;&quot;;
+
+			this.get(&#x27;weightCollection&#x27;).each(function(w) {
+				output += w.toCSV();
+			});
+
+			return output;
+		},
+
+		
+		&#x2F;**
+		 * @method toCSV
+		 * @return csv {string}
+		 *&#x2F;
+		toCSV: function() {
+			console.log(this.get(&#x27;name&#x27;));
+			console.log(typeof this.get(&#x27;name&#x27;));
+
+			var name    = this.get(&#x27;name&#x27;) + &quot;;&quot; ;
+			var value   = this.get(&#x27;value&#x27;);
+			var weights = this.weightsToCSV();
+
+			console.log(name);
+			console.log(value);
+			console.log(weights);
+
+			return (name + value + weights);
+		}
+
+	});
+	
+
+	
+	&#x2F;**
+	 * @module UP
+	 * @submodule Models
+	 * @class Constraint
+	 * @extends Backbone.Model
+	 *&#x2F;	
+	UP.Constraint = Backbone.Model.extend({
+	
+		&#x2F;**
+		 * @method initialize
+		 * @param name {string}
+		 * @param description {string}
+		 * @constructor
+		 *&#x2F;
+		initialize: function(name, description) {
+		
+			this.set({
+			
+				&#x2F;**
+				 * @property name
+				 * @type string
+				 *&#x2F;
+				&quot;name&quot;             : name,
+				
+				&#x2F;**
+				 * @property description
+				 * @type string
+				 *&#x2F;
+				&quot;description&quot;      : description,
+				
+				&#x2F;**
+				 * @property weightCollection
+				 * @type WeightCollection
+				 * @default &quot;new WeightCollection&quot;
+				 *&#x2F;
+				&quot;weightCollection&quot; : new UP.WeightCollection(),
+				
+				&#x2F;**
+				 * @property selected
+				 * @type boolean
+				 * @default &quot;false&quot;
+				 *&#x2F;
+				&quot;selected&quot;         : false
+			});
+			
+		},
+
+		
+		&#x2F;**
+		 * @method changeSelection
+		 *&#x2F;
+		changeSelection: function() {
+			var wasSelected = this.get(&#x27;selected&#x27;);
+
+			if ( !wasSelected ) {	&#x2F;&#x2F; If it was not selected, now it is, so it increments the method value
+				this.incrementMethodsValue();
+			} else {
+				this.decrementMethodsValue();
+			}
+
+			this.set({ &quot;selected&quot; : !wasSelected });
+
+			this.trigger(&quot;updateMethods&quot;);
+		},
+
+		
+		&#x2F;**
+		 * @method selectConstraint
+		 *&#x2F;
+		selectConstraint: function() {
+			this.incrementMethodsValue();
+			this.set({ &quot;selected&quot; : true });
+		},
+
+		
+		&#x2F;**
+		 * @method unselectConstraint
+		 *&#x2F;
+		unselectConstraint: function() {
+			this.decrementMethodsValue();
+			this.set({ &quot;selected&quot; : false });
+		},
+
+		
+		&#x2F;**
+		 * @method isSelected
+		 * @return selected {boolean}
+		 *&#x2F;
+		isSelected: function() {
+			return this.get(&#x27;selected&#x27;);
+		},
+
+		
+		&#x2F;**
+		 * @method incrementMethodsValue
+		 *&#x2F;
+		incrementMethodsValue: function() {
+			this.get(&#x27;weightCollection&#x27;).each(function(w) {
+				w.incrementMethodValue();
+			});
+		},
+
+		
+		&#x2F;**
+		 * @method decrementMethodsValue
+		 *&#x2F;
+		decrementMethodsValue: function() {
+			this.get(&#x27;weightCollection&#x27;).each(function(w) {	
+				w.decrementMethodValue();
+			});
+		},
+
+		
+		&#x2F;**
+		 * @method addWeight
+		 * @param weight {Weight}
+		 *&#x2F;
+		addWeight: function(weight) {
+			this.get(&#x27;weightCollection&#x27;).add( weight );
+		},
+
+		
+		&#x2F;**
+		 * @method addWeightCollection
+		 * @param col {WeightCollection}
+		 *&#x2F;
+		addWeightCollection: function(col) {
+			var self = this;
+			col.each(function(w) {
+				self.addWeight( w );
+			});
+		},
+
+		
+		&#x2F;**
+		 * @method replaceWeights
+		 * @param weights {WeightCollection}
+		 *&#x2F;
+		replaceWeights: function(weights) {
+			var self = this;
+
+			weights.each(function(newW) {
+				self.get(&#x27;weightCollection&#x27;).each(function(oldW) {
+					if ( newW.compareNameWith(oldW.getMethodName()) ) {
+						oldW.changeValue( newW.getValue() );
+					}
+				});
+			});
+		},
+
+		
+		&#x2F;**
+		 * @method compareNameWith
+		 * @param name {string}
+		 * @return equals {boolean}
+		 *&#x2F;
+		compareNameWith: function(name) {
+			return this.get(&#x27;name&#x27;) === name;
+		},
+
+		
+		&#x2F;**
+		 * @method getName
+		 * @return name {string}
+		 *&#x2F;
+		getName: function() {
+			return this.get(&#x27;name&#x27;);
+		},
+
+		
+		&#x2F;**
+		 * @method getWeights
+		 * @return weightCollection {WeightCollection}
+		 *&#x2F;
+		getWeights: function() {
+			return this.get(&#x27;weightCollection&#x27;);
+		},
+
+		
+		&#x2F;**
+		 * @method toCSV
+		 * @return csv {string}
+		 *&#x2F;
+		toCSV: function() {
+			return &quot;;&quot; + this.get(&#x27;name&#x27;);
+		}
+		
+	});
+
+
+	
+	&#x2F;**
+	 * @module UP
+	 * @submodule Models
+	 * @class Subactivity
+	 * @extends Backbone.Model
+	 *&#x2F;	
+	UP.Subactivity = Backbone.Model.extend({
+	
+		&#x2F;**
+		 * @method initialize
+		 * @param name {string}
+		 * @param description {string}
+		 * @param methodCollection {MethodCollection}
+		 * @constructor
+		 *&#x2F;
+		initialize: function(name, description, methodCollection) {
+			
+			this.set({
+			
+				&#x2F;**
+				 * @property name
+				 * @type string
+				 *&#x2F;
+				&quot;name&quot;             : name,
+				
+				&#x2F;**
+				 * @property description
+				 * @type string
+				 *&#x2F;
+				&quot;description&quot;      : description,
+				
+				&#x2F;**
+				 * @property methodCollection
+				 * @type MethodCollection
+				 *&#x2F;
+				&quot;methodCollection&quot; : methodCollection,
+				
+				&#x2F;**
+				 * @property selected
+				 * @type boolean
+				 * @default &quot;false&quot;
+				 *&#x2F;
+				&quot;selected&quot;         : false
+			});
+
+			&#x2F;&#x2F; When a new plan is loaded, the new methods are selected
+			&#x2F;&#x2F; so the containing subactivity must be selected too
+			methodCollection.on(&#x27;select&#x27;, this.selectSubactivity, this);
+		},
+
+
+		&#x2F;**
+		 * @method changeSelection
+		 *&#x2F;
+		changeSelection: function() {
+			var wasSelected = this.get(&#x27;selected&#x27;);
+			this.set({ &quot;selected&quot; : !wasSelected });
+
+			if ( wasSelected ) {
+				this.get(&#x27;methodCollection&#x27;).each(function(m) {
+					m.unselectMethod();
+				});
+			} else {
+				this.get(&#x27;methodCollection&#x27;).each(function(m) {
+					m.selectMethod();
+				});
+			}
+
+			this.trigger(&#x27;updateCounter&#x27;);
+		},
+
+		
+		&#x2F;**
+		 * @method selectSubactivity
+		 *&#x2F;
+		selectSubactivity: function() {
+			this.set({ &quot;selected&quot; : true });
+			this.trigger(&#x27;changeDisplayList&#x27;);
+		},
+
+		
+		&#x2F;**
+		 * @method unselectSubactivity
+		 *&#x2F;
+		unselectSubactivity: function() {
+			this.set({ &quot;selected&quot; : false });
+			this.trigger(&#x27;changeDisplayList&#x27;);
+		},
+
+		
+		&#x2F;**
+		 * @method sortMethods
+		 *&#x2F;
+		sortMethods: function() {
+			this.get(&#x27;methodCollection&#x27;).sort();
+		},
+
+
+		&#x2F;**
+		 * @method changeOrderMethodsView
+		 *&#x2F;
+		changeOrderMethodsView: function() {
+			this.get(&#x27;methodCollection&#x27;).each(function(method) {
+				method.changeOrderView();
+			});
+		},
+
+
+		&#x2F;**
+		 * @method hideMethods
+		 * @param sliderValue {number}
+		 *&#x2F;
+		hideMethods: function(sliderValue) {
+			this.get(&#x27;methodCollection&#x27;).each(function(method) {
+				method.hideMethod(sliderValue);
+			});
+
+			this.trigger(&#x27;updateLastMethod&#x27;);
+		},
+
+		
+		&#x2F;**
+		 * @method getMethods
+		 * @return methodCollection {MethodCollection}
+		 *&#x2F;
+		getMethods: function() {
+			return this.get(&#x27;methodCollection&#x27;);
+		},
+
+		
+		&#x2F;**
+		 * @method getSelectedMethods
+		 * @return methodCollection {MethodCollection}
+		 *&#x2F;
+		getSelectedMethods: function() {
+			var methods = new UP.MethodCollection();
+
+			this.get(&#x27;methodCollection&#x27;).each(function(m) {
+				if ( m.isSelected() ) {
+					methods.add( m );
+				}
+			});
+
+			return methods;
+		},
+
+		
+		&#x2F;**
+		 * @method countSelectedMethods
+		 * @return count {number}
+		 *&#x2F;
+		countSelectedMethods: function() {
+			return this.getSelectedMethods().length;
+		},
+
+		
+		&#x2F;**
+		 * @method isSelected
+		 * @return selected {boolean}
+		 *&#x2F;
+		isSelected: function() {
+			return this.get(&#x27;selected&#x27;);
+		}
+
+	});
+	
+	
+	
+	&#x2F;**
+	 * @module UP
+	 * @submodule Models
+	 * @class Activity
+	 * @extends Backbone.Model
+	 *&#x2F;	
+	UP.Activity = Backbone.Model.extend({
+	
+		&#x2F;**
+		 * @method initialize
+		 * @param name {string}
+		 * @param description {string}
+		 * @param counter {Counter} 
+		 * @param subactivitiesCollection {SubactivityCollection} 
+		 * @constructor
+		 *&#x2F;
+		initialize: function(name, description, counter, subactivitiesCollection) {
+		
+			this.set({
+			
+				&#x2F;**
+				 * @property name
+				 * @type string
+				 *&#x2F;
+				&quot;name&quot;                    : name,
+				
+				&#x2F;**
+				 * @property description
+				 * @type string
+				 *&#x2F;
+				&quot;description&quot;             : description,
+				
+				&#x2F;**
+				 * @property counter
+				 * @type Counter
+				 *&#x2F;
+				&quot;counter&quot;                 : counter,
+				
+				&#x2F;**
+				 * @property subactivitiesCollection
+				 * @type SubactivityCollection
+				 *&#x2F;
+				&quot;subactivitiesCollection&quot; : subactivitiesCollection
+			});
+
+			subactivitiesCollection.on(&#x27;updateCounter&#x27;, this.updateCounter, this);
+			subactivitiesCollection.on(&#x27;change:selected&#x27;, this.updateView, this);
+			this.updateView();
+		},
+
+		
+		&#x2F;**
+		 * @method updateView
+		 *&#x2F;
+		updateView: function() {
+			var count = 0;
+			this.get(&#x27;subactivitiesCollection&#x27;).each(function(sub) {
+				if ( sub.isSelected() ) {
+					count++;
+				}
+			});
+
+			if ( count == 0 ) {
+				this.trigger(&#x27;hideHeader&#x27;);
+			} else {
+				this.trigger(&#x27;showHeader&#x27;);
+			}
+		},
+
+		
+		&#x2F;**
+		 * @method sortMethods
+		 *&#x2F;
+		sortMethods: function() {
+			this.get(&#x27;subactivitiesCollection&#x27;).each(function(sub) {
+				sub.sortMethods();
+			});
+		},
+
+		
+		&#x2F;**
+		 * @method changeOrderMethodsView
+		 *&#x2F;
+		changeOrderMethodsView: function() {
+			this.get(&#x27;subactivitiesCollection&#x27;).each(function(sub) {
+				sub.changeOrderMethodsView();
+			});
+		},
+
+		
+		&#x2F;**
+		 * @method hideMethods
+		 * @param sliderValue {number} 
+		 *&#x2F;
+		hideMethods: function(sliderValue) {
+			this.get(&#x27;subactivitiesCollection&#x27;).each(function(sub) {
+				sub.hideMethods(sliderValue);
+			});
+
+			this.updateCounter();
+		},
+
+		
+		&#x2F;**
+		 * @method updateMethods
+		 * @param sliderValue {number}
+		 *&#x2F;
+		updateMethods: function(sliderValue) {
+			this.get(&#x27;subactivitiesCollection&#x27;).each(function(sub) {
+				sub.sortMethods();
+				sub.changeOrderMethodsView();
+				sub.hideMethods(sliderValue);
+			});
+
+			this.updateCounter();
+		},
+
+		
+		&#x2F;**
+		 * @method getMethods
+		 * @return methodCollection {MethodCollection}
+		 *&#x2F;
+		getMethods: function() {
+			var methods = new UP.MethodCollection();
+
+			this.get(&#x27;subactivitiesCollection&#x27;).each(function(sub) {
+				sub.getMethods().each(function(m) {
+					methods.add( m );
+				});
+			});
+
+			return methods;
+		},
+
+		
+		&#x2F;**
+		 * @method getSelectedMethods
+		 * @return methodCollection {MethodCollection}
+		 *&#x2F;
+		getSelectedMethods: function() {
+			var methods = new UP.MethodCollection();
+
+			this.get(&#x27;subactivitiesCollection&#x27;).each(function(sub) {
+				if ( sub.isSelected() ) {
+					sub.getSelectedMethods().each(function(m) {
+						methods.add( m );
+					});
+				}
+			});
+
+			return methods;
+		},
+
+		
+		&#x2F;**
+		 * @method countSelectedMethods
+		 * @return count {number}
+		 *&#x2F;
+		countSelectedMethods: function() {
+			var count = 0;
+
+			this.get(&#x27;subactivitiesCollection&#x27;).each(function(sub) {
+				if ( sub.isSelected() ) {
+					count += sub.countSelectedMethods();
+				}
+			});
+
+			return count;
+		},
+
+		
+		&#x2F;**
+		 * @method isSelected
+		 *&#x2F;
+		updateCounter: function() {
+			var count = this.countSelectedMethods();
+			this.get(&#x27;counter&#x27;).updateValue(count);
+		}
+
+	});
+
+    </pre>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="..&#x2F;assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="..&#x2F;assets/js/yui-prettify.js"></script>
+<script src="..&#x2F;assets/../api.js"></script>
+<script src="..&#x2F;assets/js/api-filter.js"></script>
+<script src="..&#x2F;assets/js/api-list.js"></script>
+<script src="..&#x2F;assets/js/api-search.js"></script>
+<script src="..&#x2F;assets/js/apidocs.js"></script>
+</body>
+</html>

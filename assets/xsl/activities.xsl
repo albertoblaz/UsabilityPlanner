@@ -52,10 +52,7 @@
 
 <xsl:template match="subactivity">
 	<li class="subactivity">
-		<span class="checkboxWrapper">
-			<a href="#" class="checkbox"></a>
-			<input type="checkbox" class="hidden" />
-		</span>
+		<input type="checkbox" />
 
 		<label>
 			<xsl:value-of select="@name" />

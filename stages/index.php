@@ -46,7 +46,7 @@
 				
 				<ul class="stages">
 					<li class="stage current-stage">
-						<a href="#activities" class="nav-link button">Activities</a>
+						<a href="#activities" class="nav-link button">Stages</a>
 					</li>
 					<li class="stage">
 						<a href="#methods" class="nav-link button">Methods</a>
@@ -95,7 +95,7 @@ echo($proc->transformToXML($xml));
 					
 <?php
 $activities = new DomDocument();
-$activities->load('../assets/xsl/activities.xsl');
+$activities->load('../assets/xsl/stages.xsl');
 
 $proc = new xsltprocessor();
 $proc->importStyleSheet($activities);
@@ -155,17 +155,12 @@ echo($proc->transformToXML($xml));
 				</header>
 
 				<div class="filtering">		
-					<div class="filtering-inner">
-						<p class="total-counter"><label class="filter-count">0</label> methods shown:</p>
-<?php
-$counters = new DomDocument();
-$counters->load('../assets/xsl/counters.xsl');
+					<div class="filter adjusted-block">
+						<p   class="left">Show most recommended</p>
+						<div class="left" id="slider"></div>
+						<p   class="left">Show all methods</p>
 
-$proc = new xsltprocessor();
-$proc->importStyleSheet($counters);
-
-echo($proc->transformToXML($xml));
-?>
+						<div class="clear"></div>
 					</div>
 				</div>
 
@@ -184,24 +179,37 @@ echo($proc->transformToXML($xml));
 					</aside>
 
 					<section id="methods-selection" class="left">
-					
-						<div class="recommendation">
-							<!--p class="title left">Method Filtering</p-->
-							<div class="filter right">
-								<p class="right">Show all methods</p>
-								<div id="slider" class="right"></div>
-								<p class="right">Show most recommended</p>
+
+						<div class="adjusted-block">
+							<div class="left">
+								<p id="expand"   class="expand-all">Expand All</p>
+								<p id="collapse" class="expand-all">Collapse All</p>
 							</div>
+						
+							<div class="right total-counter">
+								<p><label class="filter-count">0</label> methods shown</p>
+							</div>
+
+							<div class="clear"></div>
 						</div>
 
-						<div class="clear"></div>
-						
-						<div class="expand-buttons left">
-							<p id="expand"   class="expand-all">Expand All</p>
-							<p id="collapse" class="expand-all">Collapse All</p>
+
+						<div class="links-activities">
+							<p class="inline">Index: </p>
+<?php
+$counters = new DomDocument();
+$counters->load('../assets/xsl/links-activities.xsl');
+
+$proc = new xsltprocessor();
+$proc->importStyleSheet($counters);
+
+echo($proc->transformToXML($xml));
+?>				
+
 						</div>
-						
-						<br />
+
+
+						<div>
 
 <?php
 $methods = new DomDocument();
@@ -212,7 +220,7 @@ $proc->importStyleSheet($methods);
 
 echo($proc->transformToXML($xml));
 ?>
-
+						</div>
 					</section>   <!-- #techniques -->
 					
 				</div>   <!-- #content -->

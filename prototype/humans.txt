@@ -1,0 +1,16 @@
+/* humanstxt.org */
+
+
+/* TEAM */
+  UPM: Alberto
+  Site: http://albertoblazquez.net
+  Twitter: albertoblaz
+  Location: Madrid, Spain
+
+/* THANKS */
+  Names (& URL): Xavier Ferré, Nigel Bevan, Tomás Antón Escobar
+
+/* SITE */
+  Standards: HTML5, CSS3
+  Components: jQuery
+  Software:

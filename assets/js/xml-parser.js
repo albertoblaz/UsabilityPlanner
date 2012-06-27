@@ -140,7 +140,8 @@
 				var $DOMActivitiesList     = $('#methods').find('.info-activity');
 				var $DOMActivitiesListPlan = $('#plan').find('.info-activity');
 				var $DOMActivitiesTab      = $('.tab');
-				var $DOMActivitiesCounter  = $('.counter');
+				var $DOMActivitiesLink     = $('.link-activity');
+
 
 				var arrayActivityControllers = [];
 
@@ -241,7 +242,7 @@
 					// Creating the counter for each activity
 					var counter = new UP.Counter(totalCounter);
 
-					var counterView = $DOMActivitiesCounter.eq(i);
+					var counterView = $DOMActivitiesList.find('.counter').eq(i);
 
 					var counterController  = new UP.CounterController({
 						model: counter,
@@ -257,14 +258,17 @@
 					var actList     = $DOMActivitiesList.eq(i);
 					var actListPlan = $DOMActivitiesListPlan.eq(i);
 					var actTab      = $DOMActivitiesTab.eq(i);
+					var actLink     = $DOMActivitiesLink.eq(i);
+
 
 					// Creating a new activity controller object
 					var activityController = new UP.ActivityController({			// Creating a new 'Activity' controller object
-						model: activity,
-						block: actBlock,
-						tab: actTab,
-						list: actList,
-						listPlan: actListPlan
+						model    : activity,
+						block    : actBlock,
+						tab      : actTab,
+						list     : actList,
+						listPlan : actListPlan,
+						link     : actLink
 					});
 
 					activityController.setSubactivities(arraySubactivityControllers);

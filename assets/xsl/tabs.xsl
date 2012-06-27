@@ -13,10 +13,8 @@
 </xsl:template>
 
 <xsl:template match="activities">
-	<nav class="tabs">
-		<xsl:apply-templates select="activity" />
-		<div class="clear"></div>
-	</nav>
+	<xsl:apply-templates select="activity" />
+	<div class="clear"></div>
 </xsl:template>
 
 <xsl:template match="activity[1]">

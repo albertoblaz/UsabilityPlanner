@@ -1,0 +1,93 @@
+
+/* Activities */
+
+#activities .headline a {
+	color: rgb(75, 85, 172);
+	font-size: 0.85em;
+}
+
+#activities .headline a:hover {
+	color: rgb(75, 75, 255);
+}
+
+#activities  .sub-headline {
+	margin-top: -1.5%;
+	margin-bottom: 3%;
+}
+
+#activities-selection {
+	overflow: hidden;
+}
+
+.activity {
+	margin: 4% 10%;
+}
+
+.subactivity {
+	cursor: pointer;
+	display: inline-block;
+	margin: 15px 0;
+	width: 100%;
+}
+
+.subactivity .description {
+	width: 65%;
+}
+
+
+/* Tabs */
+
+.tabs {
+	width: 101%;
+
+}
+
+.tab {
+	background-color: white;
+	border: #C6D3DA 1px solid;
+	border-top: 0;
+	border-left: 0;
+	cursor: pointer;
+	display: inline;
+	float: left;
+	text-align: center;
+	padding: 13px 0;
+}
+
+.last-tab {
+	border-right: 0;
+}
+
+.tab p {
+	display: inline;
+	font-size: 17px;
+}
+
+.tab-active {
+	background: rgba(205, 212, 240, 0.5);
+}
+
+.cell {
+	background: #FFFAB0;
+}
+
+.act-buttons {
+	margin-left: -137px;
+	margin-top: 66px;
+	position: absolute;
+	width: 140px;
+	z-index: 80;
+}
+
+.act-button {
+	width: 100%;
+	height: 22px;
+}
+
+.act-button.tab{
+	border-left: #C6D3DA 1px solid;
+}
+
+.act-button.first {
+	border-top: #C6D3DA 1px solid;
+}

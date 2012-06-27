@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en" manifest="../assets/offline.appcache">
+
+<head>
+
+	<!-- Title -->
+	<title>Usability Planner</title>
+
+
+	<!-- CSS -->
+	<link media="all" rel="stylesheet" type="text/css" href="../assets/css/styles.css" />
+
+
+	<!-- Meta -->
+	<meta charset="utf-8" />
+
+	<meta name="author" content="Xavier Ferre, Nigel Bevan, Alberto Blazquez" />
+	<meta name="description" content="Usability Planner, a tool for helping developers and designers" />
+	<meta name="generator" content="Espresso 2" />
+
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/images/ipad-icon.png">
+	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/images/ipad-icon@2x.png">
+
+	<link rel="shortcut icon" href="../assets/images/favicon.ico">
+	<link rel="icon" href="../assets/images/favicon.ico">
+
+</head>
+
+
+<body>
+
+<style>
+
+.box {
+	width: 29%;
+}
+
+.box .button {
+	cursor: auto;
+}
+
+.box-description {
+	font-family: Calibri, Helvetica, sans-serif;
+	margin: 0 auto;
+	padding-top: 10px;
+	text-align: justify;
+	width: 85%;
+}
+
+.home-screenshots {
+	padding-bottom: 1em;
+}
+
+.screenshot {
+	width: 95%;
+}
+
+.home-info {
+	padding-top: 0.1em;
+}
+
+.home-screenshots {
+	padding-top: 1em;
+}
+
+.home-logo {
+	padding: 15px;
+}
+
+.reason {
+	padding-top: 25px;
+}
+
+.reason.first {
+	padding-top: 0;
+}
+
+.auto {
+	margin: auto;
+}
+
+.home-links {
+	padding-top: 9px;
+}
+
+.home-buttons {
+	margin-top: 2em;
+	margin-bottom: 3em;
+	width: 70%;
+}
+
+.width35 {
+	width: 35%;
+}
+
+.width75 {
+	width: 75%;
+}
+
+.home-buttons .button:hover {
+	background: url('../assets/images/buttom-hover-usabilityplanner.png') no-repeat right center
+}
+
+.home-buttons .button:active {
+	background: url('../assets/images/nav-button.png') no-repeat right center
+}
+
+/*
+.home-button .button:hover {
+	background: url('assets/images/nav-button.png') no-repeat right center
+}
+
+.home-button .button:active {
+	background: url('assets/images/nav-button-selected.gif') no-repeat right center
+}
+*/
+
+.progress-arrow {
+	background: url('../assets/images/progress-icon-usabilityplanner.png') no-repeat center center;
+	height: 49px;
+	width: 49px;
+}
+
+.button.selected {
+	background: url('../assets/images/nav-button-selected.gif') no-repeat right center;
+}
+
+</style>
+
+	<div class="wrapper">
+
+		<header class="header">
+		
+			<figure class="left">
+				<a href=".">
+					<h1>
+						<img src="../assets/images/logo.gif" alt="Usability Planner"/>
+					</h1>
+				</a>
+			</figure>
+			
+			<div class="clear"></div>
+		</header>
+
+
+		
+		<div class="home-content">
+		
+			<section class="home-info">
+				<h2 class="main headline">Usability Planner Admin Page</h2>
+
+				<p class="reason first">This site was created to let developers and admins maintain the application properly and modify the configuration of the usability techniques provided by our plans. This way, everyone may edit the values and weights of every method provided just using a CSV file opened by Excel or any other similar tool</p>
+
+				<p class="reason">Therefore, you are working with a comfortable table instead of a huge XML file. You just need to push the 'Download' button below to obtain the current configuration, and upload it later to update the state of the application.</p>
+			</section>
+			
+
+			<section class="home-info">
+				<h2 class="main headline">Select the version you wish to manage and then, push the buttons</h2>
+				
+				<form class="width35 auto center">
+					<div class="left">
+						<input type="radio" id="activities" name="version" value="activities"/>
+						<label for="activities">Activities version</label>
+					</div>
+
+					<div class="right">
+						<input type="radio" id="stages" name="version" value="stages"/>
+						<label for="stages">Stages version</label>
+					</div>
+
+					<div class="clear"></div>
+				</form>
+			</section>
+
+
+			<section class="home-buttons auto center">
+				<div class="width75 auto">
+					<div class="home-button left" id="btn-download">
+						<p class="button selected nav-link">Download plan</p>
+					</div>
+
+					<div class="home-button right" id="btn-upload">
+						<p class="button selected nav-link">Upload plan</p>
+					</div>
+
+					<div class="clear"></div>
+
+					<form id="theuploadform" class="invisible">
+						<input type="file"   id="userfile"   class="invisible" name="files" />
+						<input type="submit" id="formsubmit" class="invisible" value="Send File" />
+						<input type="hidden" id="parameter"  name="parameter"  value="Parameter to be sent to the server" />
+					</form>
+				</div>
+			</section>
+
+		</div>
+
+		
+		
+		<footer id="footer">
+		
+			<nav>
+				<ul class="home-links right">
+					<li class="link"><a class="normal-font" href="..">Home</a></li>
+					<li class="link"><a class="normal-font" href="../about.html">About</a></li>
+					<li class="link"><a class="normal-font" href="../feedback.html">Feedback</a></li>
+				</ul>
+			</nav>
+			
+			<div class="copyright auto" style="font-size: 16px;">
+				<p>Usability Planner by <a href="http://www.nigelbevan.com">Nigel Bevan</a>, <a href="http://is.ls.fi.upm.es/xavier/index_e.html">Xavier Ferre</a></p>
+			</div>
+
+		</footer>
+
+	</div>
+		
+	<!-- JavaScript -->
+	<script type="text/javascript" src="../assets/js/lib/html5shiv.js"></script>
+	<script type="text/javascript" src="../assets/js/lib/jquery-1.7.1.min.js"></script>
+	<script type="text/javascript" src="uploader.js"></script>
+
+</body>
+
+</html>

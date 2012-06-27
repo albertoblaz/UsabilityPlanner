@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>facade-controller.js</title>
+    <link rel="stylesheet" href="http:&#x2F;&#x2F;yui.yahooapis.com&#x2F;3.5.1&#x2F;build&#x2F;cssgrids&#x2F;cssgrids-min.css">
+    <link rel="stylesheet" href="..&#x2F;assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="..&#x2F;assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="..&#x2F;assets/favicon.png">
+    <script src="http:&#x2F;&#x2F;yui.yahooapis.com&#x2F;combo?3.5.1&#x2F;build&#x2F;yui&#x2F;yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+            
+                <h1><img src="..&#x2F;assets/css/logo.png" title=""></h1>
+            
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: </em>
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+    <h2 class="off-left">APIs</h2>
+    <div id="api-tabview" class="tabview">
+        <ul class="tabs">
+            <li><a href="#api-classes">Classes</a></li>
+            <li><a href="#api-modules">Modules</a></li>
+        </ul>
+
+        <div id="api-tabview-filter">
+            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+        </div>
+
+        <div id="api-tabview-panel">
+            <ul id="api-classes" class="apis classes">
+            
+                <li><a href="..&#x2F;classes/Activity.html">Activity</a></li>
+            
+                <li><a href="..&#x2F;classes/ActivityController.html">ActivityController</a></li>
+            
+                <li><a href="..&#x2F;classes/Constraint.html">Constraint</a></li>
+            
+                <li><a href="..&#x2F;classes/ConstraintController.html">ConstraintController</a></li>
+            
+                <li><a href="..&#x2F;classes/Counter.html">Counter</a></li>
+            
+                <li><a href="..&#x2F;classes/CounterController.html">CounterController</a></li>
+            
+                <li><a href="..&#x2F;classes/CSVParser.html">CSVParser</a></li>
+            
+                <li><a href="..&#x2F;classes/FacadeController.html">FacadeController</a></li>
+            
+                <li><a href="..&#x2F;classes/FileManager.html">FileManager</a></li>
+            
+                <li><a href="..&#x2F;classes/Main.html">Main</a></li>
+            
+                <li><a href="..&#x2F;classes/Method.html">Method</a></li>
+            
+                <li><a href="..&#x2F;classes/MethodController.html">MethodController</a></li>
+            
+                <li><a href="..&#x2F;classes/Plan.html">Plan</a></li>
+            
+                <li><a href="..&#x2F;classes/Planner.html">Planner</a></li>
+            
+                <li><a href="..&#x2F;classes/Recommender.html">Recommender</a></li>
+            
+                <li><a href="..&#x2F;classes/Slider.html">Slider</a></li>
+            
+                <li><a href="..&#x2F;classes/SliderController.html">SliderController</a></li>
+            
+                <li><a href="..&#x2F;classes/Subactivity.html">Subactivity</a></li>
+            
+                <li><a href="..&#x2F;classes/SubactivityController.html">SubactivityController</a></li>
+            
+                <li><a href="..&#x2F;classes/TotalCounter.html">TotalCounter</a></li>
+            
+                <li><a href="..&#x2F;classes/TotalCounterController.html">TotalCounterController</a></li>
+            
+                <li><a href="..&#x2F;classes/Weight.html">Weight</a></li>
+            
+                <li><a href="..&#x2F;classes/WeightCollection.html">WeightCollection</a></li>
+            
+                <li><a href="..&#x2F;classes/XMLParser.html">XMLParser</a></li>
+            
+            </ul>
+
+            <ul id="api-modules" class="apis modules">
+            
+                <li><a href="..&#x2F;modules/App.html">App</a></li>
+            
+                <li><a href="..&#x2F;modules/Collections.html">Collections</a></li>
+            
+                <li><a href="..&#x2F;modules/Constants.html">Constants</a></li>
+            
+                <li><a href="..&#x2F;modules/Controllers.html">Controllers</a></li>
+            
+                <li><a href="..&#x2F;modules/Main.html">Main</a></li>
+            
+                <li><a href="..&#x2F;modules/Models.html">Models</a></li>
+            
+                <li><a href="..&#x2F;modules/Plan.html">Plan</a></li>
+            
+                <li><a href="..&#x2F;modules/UP.html">UP</a></li>
+            
+                <li><a href="..&#x2F;modules/Util.html">Util</a></li>
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+        Show:
+        <label for="api-show-inherited">
+            <input type="checkbox" id="api-show-inherited" checked>
+            Inherited
+        </label>
+
+        <label for="api-show-protected">
+            <input type="checkbox" id="api-show-protected">
+            Protected
+        </label>
+
+        <label for="api-show-private">
+            <input type="checkbox" id="api-show-private">
+            Private
+        </label>
+        <label for="api-show-deprecated">
+            <input type="checkbox" id="api-show-deprecated">
+            Deprecated
+        </label>
+
+    </div>
+
+
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+                        <h1 class="file-heading">File: facade-controller.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+
+	&#x2F;**
+	 * @module UP
+	 * @submodule App
+	 * @class FacadeController
+	 * @extends Backbone.Controller
+	 *&#x2F;	
+	UP.FacadeController = Backbone.Controller.extend({
+	
+		&#x2F;**
+		 * @method initialize
+		 * @param window {object}
+		 * @param recommender {Recommender}
+		 * @constructor
+		 *&#x2F;
+		initialize: function(window, recommender) {
+		
+			&#x2F;* Attributes *&#x2F;
+			
+			&#x2F;**
+			 * @property window
+			 * @type Object
+			 *&#x2F;
+			this.window = window;
+			
+			&#x2F;**
+			 * @property recommender
+			 * @type Recommender
+			 *&#x2F;
+			this.recommender = recommender;
+
+
+			&#x2F;&#x2F; Caching View Elements with jQuery
+			this.initViewElements();
+
+
+			&#x2F;&#x2F; Handle Events
+			this.setupEvents();
+
+
+			&#x2F;&#x2F; Initialization Effect
+			this.adjustContainer();
+			this.adjustActivityContainer();
+			
+
+			var tabs = $(&#x27;.tab&#x27;);
+			if (tabs.length == 6) {
+				tabs.find(&#x27;p&#x27;).css({ &#x27;font-size&#x27; : &#x27;16px&#x27; });
+				tabs.removeClass(&#x27;three-columns&#x27;).addClass(&#x27;six-columns&#x27;);
+				$(&#x27;.stage&#x27;).eq(0).find(&#x27;a&#x27;).text(&quot;Stages&quot;);
+			}
+		},
+
+
+		&#x2F;**
+		 * @method initViewElements
+		 *&#x2F;
+		initViewElements: function() {
+		
+			&#x2F;**
+			 * @property logo
+			 * @type jQuery Object
+			 * @default &quot;logo DOM node&quot;
+			 *&#x2F;
+			this.logo     = $(&#x27;.logo&#x27;);
+
+			&#x2F;**
+			 * @property stages
+			 * @type jQuery Object
+			 * @default &quot;stage DOM nodes&quot;
+			 *&#x2F;
+			this.stages   = $(&#x27;.stage&#x27;);
+			
+			&#x2F;**
+			 * @property backLink
+			 * @type jQuery Object
+			 * @default &quot;backLink DOM node&quot;
+			 *&#x2F;
+			this.backLink = $(&#x27;.back&#x27;);	
+			
+			&#x2F;**
+			 * @property nextLink
+			 * @type jQuery Object
+			 * @default &quot;nextLink DOM node&quot;
+			 *&#x2F;
+			this.nextLink = $(&#x27;.next&#x27;);	
+
+			&#x2F;**
+			 * @property currentStage
+			 * @type number
+			 * @default &quot;0&quot;
+			 *&#x2F;
+			this.currentStage  = 0;
+
+			&#x2F;**
+			 * @property container
+			 * @type jQuery Object
+			 * @default &quot;container DOM node&quot;
+			 *&#x2F;
+			this.container = $(&#x27;.container&#x27;); 
+			
+			&#x2F;**
+			 * @property contents
+			 * @type jQuery Object
+			 * @default &quot;main-content DOM nodes&quot;
+			 *&#x2F;
+			this.contents = this.container.find(&#x27;.main-content&#x27;);
+
+			&#x2F;**
+			 * @property mainContainer
+			 * @type jQuery Object
+			 * @default &quot;main-container DOM node&quot;
+			 *&#x2F;
+			this.mainContainer = $(&#x27;.main-container&#x27;);
+
+			&#x2F;**
+			 * @property downloadButton
+			 * @type jQuery Object
+			 * @default &quot;download button DOM node&quot;
+			 *&#x2F;
+			this.downloadButton = $(&#x27;#btn-download&#x27;);
+			
+			&#x2F;**
+			 * @property uploadButton
+			 * @type jQuery Object
+			 * @default &quot;upload button DOM node&quot;
+			 *&#x2F;
+			this.uploadButton   = $(&#x27;#btn-upload&#x27;);
+			
+			&#x2F;&#x2F;this.uploadInput    = $(&#x27;#files&#x27;);
+			&#x2F;&#x2F;this.dropSpace    = $(&#x27;#drop-space&#x27;);
+		},
+
+
+		&#x2F;**
+		 * @method adjustContainer
+		 *&#x2F;
+		adjustContainer: function() {
+			var totalWidth = this.mainContainer.width() * this.contents.length;
+			this.container.width(totalWidth);
+	
+			var firstHeight = this.contents.height();
+			this.container.height(firstHeight);
+		},
+
+
+		&#x2F;**
+		 * @method adjustActivityContainer
+		 *&#x2F;		
+		adjustActivityContainer: function() {
+			var max = 0;
+			var margin;
+
+			var activities = $(&#x27;.activity&#x27;);
+
+			var first = activities.first();
+			var margin = parseInt(first.css(&#x27;margin-top&#x27;));
+
+			activities.each(function(i) {
+				var act = activities.eq(i);
+				
+				var h = parseInt(act.css(&#x27;height&#x27;));
+
+				var size = h + margin * 2;
+				if ( size &gt; max ) {
+					max = size;
+				}
+				
+			});
+
+			var hh = this.container.height() + margin;
+			this.container.height( hh );
+
+			$(&#x27;#activities-selection&#x27;).css({ &#x27;height&#x27; : max });
+		},
+
+
+		&#x2F;**
+		 * @method setupEvents
+		 *&#x2F;		
+		setupEvents: function() {
+			&#x2F;&#x2F; Event Handlers
+			var self = this;
+
+			this.logo.on(&quot;click&quot;, function(event) {
+				var stage = self.stages.first();
+				self.stagesEvent(event, stage);
+			});
+
+			this.stages.on(&quot;click&quot;, function(event) {
+				var stageSelected = $(this);
+				self.stagesEvent(event, stageSelected);
+			});
+
+			this.backLink.on(&quot;click&quot;, function(event) {
+				self.backLinkEvent(event);
+			});
+
+			this.nextLink.on(&quot;click&quot;, function(event) {
+				self.nextLinkEvent(event);
+			});
+
+			this.downloadButton.on(&#x27;click&#x27;, function(event) {
+				var success = self.recommender.downloadPlan();
+				return false;
+			});
+
+			this.recommender.on(&#x27;downloadReady&#x27;, function(event) {
+				console.log(&quot;hecho click&quot;);
+			});
+
+			this.uploadButton.on(&#x27;click&#x27;, function(event) {
+				&#x2F;&#x2F;self.uploadInput.trigger(&#x27;click&#x27;);
+				$(&quot;#userfile&quot;).trigger(&#x27;click&#x27;);
+			});		
+
+
+			$(&quot;#userfile&quot;).on(&#x27;change&#x27;, function() {
+				var iframe = $(&#x27;&lt;iframe name=&quot;postiframe&quot; id=&quot;postiframe&quot; style=&quot;display: none&quot; &#x2F;&gt;&#x27;);
+				$(&quot;body&quot;).append(iframe);
+
+				var form = $(&#x27;#theuploadform&#x27;);
+				form.attr(&quot;action&quot;, UP.constants.PHP_UPLOAD);
+				form.attr(&quot;method&quot;, &quot;post&quot;);
+				form.attr(&quot;enctype&quot;, &quot;multipart&#x2F;form-data&quot;);
+				form.attr(&quot;encoding&quot;, &quot;multipart&#x2F;form-data&quot;);
+				form.attr(&quot;target&quot;, &quot;postiframe&quot;);
+				form.attr(&quot;file&quot;, $(&#x27;#userfile&#x27;).val());
+				form.submit();
+
+				$(&quot;#postiframe&quot;).load(function () {
+					self.recommender.uploadPlan( $(&quot;#postiframe&quot;) );
+				});
+
+				return false;
+			});
+
+
+			$(this.window).on(&#x27;resize&#x27;, function(event) {
+				self.adjustResizeWindowEvent(event);
+			});
+
+			$(this.window).trigger(&#x27;resize&#x27;);
+
+
+&#x2F;*
+	if (window.File &amp;&amp; window.FileReader &amp;&amp; window.FormData) {
+		&#x2F;&#x2F; Great success! All the File APIs are supported.
+	} else {
+		alert(&#x27;The File APIs are not fully supported in this browser.&#x27;);
+	}
+*&#x2F;
+
+
+		},
+
+
+		&#x2F;**
+		 * @method animate
+		 * @param newIndex {number}
+		 * @param oldIndex {number}
+		 *&#x2F;
+		animate: function(newIndex, oldIndex) {
+			var SPEED = UP.constants.STAGES_SPEED;
+
+			this.stages.eq(oldIndex).removeClass(&#x27;current-stage&#x27;);   &#x2F;&#x2F; Old tab
+			this.stages.eq(newIndex).addClass(&#x27;current-stage&#x27;);	 &#x2F;&#x2F; New tab
+		
+			var height = this.contents.eq(newIndex).height();
+			var pos = (this.mainContainer.width()+1) * -newIndex;
+			this.container.stop().animate({marginLeft: pos, height: height}, SPEED);
+		},
+
+
+		&#x2F;**
+		 * @method stagesEvent
+		 * @param event {event}
+		 * @param stageSelected {jQuery Object}
+		 *&#x2F;
+		stagesEvent: function(event, stageSelected) {
+			event.preventDefault();
+	
+			var newPosition = stageSelected.prevAll().length;
+			this.animate(newPosition, this.currentStage);
+		
+			this.currentStage = newPosition;		&#x2F;&#x2F; Updating to the new current stage
+		},
+
+
+		&#x2F;**
+		 * @method backlinkEvent
+		 * @param event {event}
+		 *&#x2F;
+		backLinkEvent: function(event) {
+			event.preventDefault();
+
+			if (this.currentStage &gt; 0) {
+				var oldStage = this.currentStage;
+				this.currentStage--;
+				this.animate(this.currentStage, oldStage);
+			}
+		},
+
+
+		&#x2F;**
+		 * @method nextlinkEvent
+		 * @param event {event}
+		 *&#x2F;
+		nextLinkEvent: function(event) {
+			event.preventDefault();
+
+			if (this.currentStage &lt; this.stages.length-1) {
+				var oldStage = this.currentStage;
+				this.currentStage++;
+				this.animate(this.currentStage, oldStage);
+			}
+		},
+
+
+		&#x2F;**
+		 * @method adjustReszeWindowEvent
+		 * @param event {event}
+		 *&#x2F;
+		adjustResizeWindowEvent: function(event) {
+			var mainContainerWidth = this.mainContainer.width();
+
+			this.contents.width(mainContainerWidth);
+			var width = mainContainerWidth * 3;
+			this.container.width(width);
+			var pos = (mainContainerWidth + 1) * -self.currentStage;
+			this.container.css({marginLeft: pos});
+		}
+
+	});
+	
+    </pre>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="..&#x2F;assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="..&#x2F;assets/js/yui-prettify.js"></script>
+<script src="..&#x2F;assets/../api.js"></script>
+<script src="..&#x2F;assets/js/api-filter.js"></script>
+<script src="..&#x2F;assets/js/api-list.js"></script>
+<script src="..&#x2F;assets/js/api-search.js"></script>
+<script src="..&#x2F;assets/js/apidocs.js"></script>
+</body>
+</html>

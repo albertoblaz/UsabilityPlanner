@@ -66,3 +66,7 @@
 .tab-active {
 	background: rgba(205, 212, 240, 0.5);
 }
+
+.cell {
+	background: #FFFAB0;
+}

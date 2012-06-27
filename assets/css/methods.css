@@ -1,32 +1,22 @@
 /* Recommendation */
 
-.recommendation {
-	margin: 0 auto;
-	width: 95%;
+.filter {
+	padding: 10px 6px;
 }
 
-.recommendation .title {
-	padding: 6px;
-	width: 20%;
-}
-
-.recommendation .filter {
-	padding: 6px;
-	padding-top: 10px;
-	width: 90%;
-}
-
-.recommendation .filter p {
+.filter p {
 	display: inline-block;
-	font-size: 13px;
-	padding: 0 5px;
+	font-size: 15px;
+	padding: 0 16px;
 }
 
-.recommendation  #slider {
+#slider {
 	background: white;
+	clear: none;
+	margin: 0 5px;
 	margin-top: 3px;
 	height: 8px;
-	width: 45%;
+	width: 40%;
 }
 
 
@@ -75,25 +65,26 @@
 	width: 66.2%;
 }
 
-.filtering-inner {
+.links-activities {
 	padding: 0 20px;
 }
 
-.filtering a,
+.link-activity,
 .total-counter {
 	display: inline-block;
 	font-family: Calibri, sans-serif;
 	padding: 6px;
 }
 
-.filtering a,
-.filtering a:active,
-.filtering a:focus {
+.link-activity,
+.link-activity:active,
+.link-activity:focus {
 	color: #111;
 }
 
-.expand-buttons {
-	margin-left: 3%;
+.link-activity:hover,
+.expand-all:hover {
+	color: blue;
 }
 
 .expand-all {
@@ -103,12 +94,6 @@
 	font-size: small;
 	padding: 4px;
 	padding-top: 8px;
-}
-
-
-.filtering a:hover,
-.expand-all:hover {
-	color: blue;
 }
 
 
@@ -222,6 +207,10 @@
 	padding-bottom: 0;
 }
 
+.adjusted-block {
+	margin: 0 auto;
+	width: 95%;
+}
 
 /* Tooltips */
 
@@ -281,3 +270,12 @@ a.checked {	/* checked */
 .method-valoration {
 	width: 46%;
 }
+
+.cost-indicator {
+	margin: 0.75em 1em;
+}
+
+.dollar {
+	background: url('../images/dollar-icon.png');
+}
+

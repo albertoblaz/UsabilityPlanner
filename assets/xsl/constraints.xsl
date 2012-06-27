@@ -29,10 +29,8 @@
 
 <xsl:template match="constraint">
 	<li class="constraint">
-		<span class="checkboxWrapper">
-			<a href="#" class="checkbox"></a>
-			<input type="checkbox" class="hidden" />
-		</span>
+		<input type="checkbox" />
+
 		<label class="label-constraint">
 			<xsl:value-of select="@name" />
 			<span class="tooltip">

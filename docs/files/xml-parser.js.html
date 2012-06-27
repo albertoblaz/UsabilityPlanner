@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>xml-parser.js</title>
+    <link rel="stylesheet" href="http:&#x2F;&#x2F;yui.yahooapis.com&#x2F;3.5.1&#x2F;build&#x2F;cssgrids&#x2F;cssgrids-min.css">
+    <link rel="stylesheet" href="..&#x2F;assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="..&#x2F;assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="..&#x2F;assets/favicon.png">
+    <script src="http:&#x2F;&#x2F;yui.yahooapis.com&#x2F;combo?3.5.1&#x2F;build&#x2F;yui&#x2F;yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+            
+                <h1><img src="..&#x2F;assets/css/logo.png" title=""></h1>
+            
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: </em>
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+    <h2 class="off-left">APIs</h2>
+    <div id="api-tabview" class="tabview">
+        <ul class="tabs">
+            <li><a href="#api-classes">Classes</a></li>
+            <li><a href="#api-modules">Modules</a></li>
+        </ul>
+
+        <div id="api-tabview-filter">
+            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+        </div>
+
+        <div id="api-tabview-panel">
+            <ul id="api-classes" class="apis classes">
+            
+                <li><a href="..&#x2F;classes/Activity.html">Activity</a></li>
+            
+                <li><a href="..&#x2F;classes/ActivityController.html">ActivityController</a></li>
+            
+                <li><a href="..&#x2F;classes/Constraint.html">Constraint</a></li>
+            
+                <li><a href="..&#x2F;classes/ConstraintController.html">ConstraintController</a></li>
+            
+                <li><a href="..&#x2F;classes/Counter.html">Counter</a></li>
+            
+                <li><a href="..&#x2F;classes/CounterController.html">CounterController</a></li>
+            
+                <li><a href="..&#x2F;classes/CSVParser.html">CSVParser</a></li>
+            
+                <li><a href="..&#x2F;classes/FacadeController.html">FacadeController</a></li>
+            
+                <li><a href="..&#x2F;classes/FileManager.html">FileManager</a></li>
+            
+                <li><a href="..&#x2F;classes/Main.html">Main</a></li>
+            
+                <li><a href="..&#x2F;classes/Method.html">Method</a></li>
+            
+                <li><a href="..&#x2F;classes/MethodController.html">MethodController</a></li>
+            
+                <li><a href="..&#x2F;classes/Plan.html">Plan</a></li>
+            
+                <li><a href="..&#x2F;classes/Planner.html">Planner</a></li>
+            
+                <li><a href="..&#x2F;classes/Recommender.html">Recommender</a></li>
+            
+                <li><a href="..&#x2F;classes/Slider.html">Slider</a></li>
+            
+                <li><a href="..&#x2F;classes/SliderController.html">SliderController</a></li>
+            
+                <li><a href="..&#x2F;classes/Subactivity.html">Subactivity</a></li>
+            
+                <li><a href="..&#x2F;classes/SubactivityController.html">SubactivityController</a></li>
+            
+                <li><a href="..&#x2F;classes/TotalCounter.html">TotalCounter</a></li>
+            
+                <li><a href="..&#x2F;classes/TotalCounterController.html">TotalCounterController</a></li>
+            
+                <li><a href="..&#x2F;classes/Weight.html">Weight</a></li>
+            
+                <li><a href="..&#x2F;classes/WeightCollection.html">WeightCollection</a></li>
+            
+                <li><a href="..&#x2F;classes/XMLParser.html">XMLParser</a></li>
+            
+            </ul>
+
+            <ul id="api-modules" class="apis modules">
+            
+                <li><a href="..&#x2F;modules/App.html">App</a></li>
+            
+                <li><a href="..&#x2F;modules/Collections.html">Collections</a></li>
+            
+                <li><a href="..&#x2F;modules/Constants.html">Constants</a></li>
+            
+                <li><a href="..&#x2F;modules/Controllers.html">Controllers</a></li>
+            
+                <li><a href="..&#x2F;modules/Main.html">Main</a></li>
+            
+                <li><a href="..&#x2F;modules/Models.html">Models</a></li>
+            
+                <li><a href="..&#x2F;modules/Plan.html">Plan</a></li>
+            
+                <li><a href="..&#x2F;modules/UP.html">UP</a></li>
+            
+                <li><a href="..&#x2F;modules/Util.html">Util</a></li>
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+        Show:
+        <label for="api-show-inherited">
+            <input type="checkbox" id="api-show-inherited" checked>
+            Inherited
+        </label>
+
+        <label for="api-show-protected">
+            <input type="checkbox" id="api-show-protected">
+            Protected
+        </label>
+
+        <label for="api-show-private">
+            <input type="checkbox" id="api-show-private">
+            Private
+        </label>
+        <label for="api-show-deprecated">
+            <input type="checkbox" id="api-show-deprecated">
+            Deprecated
+        </label>
+
+    </div>
+
+
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+                        <h1 class="file-heading">File: xml-parser.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+	
+	&#x2F;**
+	 * @module UP
+	 * @submodule Util
+	 * @class XMLParser
+	 * @extends Backbone.Model
+	 *&#x2F;	
+	UP.XMLParser = Backbone.Model.extend({
+	
+		&#x2F;**
+		 * @method initialize
+		 * @param pathToXML {string}
+		 * @constructor
+		 *&#x2F;
+		initialize: function(pathToXML) {
+		
+			this.set({
+			
+				&#x2F;**
+				 * @property xmlPath
+				 * @type string
+				 *&#x2F;
+				&quot;xmlPath&quot; : pathToXML
+			});
+			
+		},
+&#x2F;*
+		getRemoteXML: function() {
+			var xml  = this.get(&#x27;xmlPath&#x27;);
+			var self = this;
+			var xmlD;
+
+			$.get(xml, function(xmlDocument) {
+				xmlD = xmlDocument;
+				self.set({
+					&quot;xml&quot; : $(xmlDocument)
+				});
+			});
+
+			this.set({
+				&quot;xml&quot; : xmlD
+			});
+
+		},
+*&#x2F;
+
+		&#x2F;**
+		 * @method parseConstraints
+		 * @param constraintCollection {ConstraintCollection}
+		 *&#x2F;
+		parseConstraints: function(constraintCollection) {
+			var $DOMConstraints = $(&#x27;.constraint&#x27;);					&#x2F;&#x2F; Getting the DOM constraints
+
+			this.get(&#x27;xml&#x27;).find(&#x27;constraints&#x27;).find(&#x27;constraint&#x27;).each(function(i) {
+				var self = $(this);
+				var name = self.attr(&#x27;name&#x27;);
+				var description = self.attr(&#x27;description&#x27;);
+
+				&#x2F;&#x2F; Creating a new constraint model object
+				var constraintModel = new UP.Constraint(name, description);
+				constraintCollection.add(constraintModel);
+
+				&#x2F;&#x2F; Creating a new constraint view object
+				var constraintView       = $DOMConstraints.eq(i);
+				var constraintController = new UP.ConstraintController({
+					model: constraintModel, 
+					el: constraintView
+				});
+
+			}); &#x2F;&#x2F; end of &#x27;constraint&#x27; parsing
+		},
+
+		
+		&#x2F;**
+		 * @method parseMethodModels
+		 * @param methodCollection {MethodCollection}
+		 *&#x2F;
+		parseMethodModels: function(methodCollection) {
+			this.get(&#x27;xml&#x27;).find(&#x27;methods&#x27;).find(&#x27;methodInfo&#x27;).each(function(i) {
+				var self = $(this);
+				var name        = self.attr(&#x27;name&#x27;);
+				var description = self.attr(&#x27;description&#x27;);
+				var url         = self.attr(&#x27;url&#x27;);
+
+				&#x2F;&#x2F; Creating a new constraint model object
+				var methodModel = new UP.Method(name, description, url);
+				methodCollection.add(methodModel);
+
+			}); &#x2F;&#x2F; end of &#x27;method&#x27; parsing
+		},
+
+		
+		&#x2F;**
+		 * @method createTotalCounter
+		 * @return totalCounter {TotalCounter}
+		 *&#x2F;
+		createTotalCounter: function() {
+			var totalCounter      = new UP.TotalCounter();
+
+			var totalCounterController  = new UP.TotalCounterController({
+				model: totalCounter,
+				el: $(&#x27;.total-counter&#x27;)
+			});
+
+			return totalCounter;
+		},
+
+
+		&#x2F;**
+		 * @method parse
+		 * @return newPlan {Plan}
+		 *&#x2F;
+		parse: function() {
+
+	&#x2F;&#x2F;		this.getRemoteXML();		&#x2F;&#x2F; Getting the XML Document we are going to parse by AJAX 
+
+			var self = this;
+			var xmlPath = this.get(&#x27;xmlPath&#x27;);
+
+			var constraintCollection = new UP.ConstraintCollection();
+			var activityCollection = new UP.ActivityCollection();
+
+			$.get(xmlPath, function(xmlDocument) {
+				self.set({
+					&quot;xml&quot; : $(xmlDocument)
+				});
+
+				&#x2F;&#x2F; Parsing constraints in XML file
+				self.parseConstraints(constraintCollection);
+
+
+				&#x2F;&#x2F; Parsing methods in XML file to build only Method Models
+				var methodCollection = new UP.MethodCollection();
+				self.parseMethodModels(methodCollection);
+
+
+				&#x2F;&#x2F; Parsing activities in XML file
+
+				var $DOMActivities         = $(&#x27;.activity&#x27;);
+				var $DOMActivitiesList     = $(&#x27;#methods&#x27;).find(&#x27;.info-activity&#x27;);
+				var $DOMActivitiesListPlan = $(&#x27;#plan&#x27;).find(&#x27;.info-activity&#x27;);
+				var $DOMActivitiesTab      = $(&#x27;.tab&#x27;);
+				var $DOMActivitiesCounter  = $(&#x27;.counter&#x27;);
+
+				var arrayActivityControllers = [];
+
+				var totalCounter = self.createTotalCounter();
+
+				self.get(&#x27;xml&#x27;).find(&#x27;activity&#x27;).each(function(i) {
+					var self = $(this);
+					var name          = self.attr(&#x27;name&#x27;);
+					var description   = self.attr(&#x27;description&#x27;);
+					var subactivities = self.find(&#x27;subactivity&#x27;);
+
+					var $DOMSubactivities         = $DOMActivities.eq(i).find(&#x27;.subactivity&#x27;);
+					var $DOMSubactivitiesList     = $DOMActivitiesList.eq(i).find(&#x27;.info-subactivity&#x27;);
+					var $DOMSubactivitiesListPlan = $DOMActivitiesListPlan.eq(i).find(&#x27;.info-subactivity&#x27;)
+
+					var subactivitiesCollection = new UP.SubactivityCollection();
+
+					var arraySubactivityControllers = [];
+
+					&#x2F;&#x2F; Parsing subactivities in XML file
+
+					subactivities.each(function(j) {
+						var self = $(this);
+						var name        = self.attr(&#x27;name&#x27;);
+						var description = self.attr(&#x27;description&#x27;);
+						var methods     = self.find(&#x27;method&#x27;);
+
+						var subactivityMethods  = new UP.MethodCollection();
+
+						var $DOMMethods     = $DOMSubactivitiesList.eq(j).find(&#x27;.method&#x27;);
+						var $DOMMethodsPlan = $DOMSubactivitiesListPlan.eq(j).find(&#x27;.method&#x27;);
+
+						&#x2F;&#x2F; Parsing methods in XML file
+
+						methods.each(function(k) {
+							var self = $(this);
+							var name = self.attr(&#x27;name&#x27;);
+							var description = &quot;&quot;;
+							var url = &quot;&quot;;
+							var constraints = self.find(&#x27;constraint&#x27;);
+
+							methodCollection.each(function(method) {
+								if ( method.compareNameWith(name) ) {
+									description = method.getDescription();
+									url = method.getURL();
+								}
+							});
+
+							var method = new UP.Method(name, description, url);
+							subactivityMethods.add( method );
+
+
+							constraints.each(function(l) {
+								var self        = $(this);
+								var name        = self.attr(&#x27;name&#x27;);
+								var weightValue = parseInt(self.attr(&#x27;weight&#x27;));
+
+								var weight = new UP.Weight(method, weightValue);
+								method.addWeight( weight );
+
+								constraintCollection.each(function(constraint) {
+									if ( constraint.compareNameWith(name) ) {
+										constraint.addWeight( weight );
+									}
+								});
+							});
+
+
+							var methodView     = $DOMMethods.eq(k);
+							var methodPlanView = $DOMMethodsPlan.eq(k);						
+
+							new UP.MethodController({
+								model: method,
+								methodView: methodView,
+								planView: methodPlanView
+							});
+
+						});
+
+						var subactivity = new UP.Subactivity(name, description, subactivityMethods);			&#x2F;&#x2F; Creating a new &#x27;Subactivity&#x27; model object
+
+						subactivitiesCollection.add(subactivity);			&#x2F;&#x2F; Adding the &#x27;Subactivity&#x27; object to the collection
+
+						var subItem     = $DOMSubactivities.eq(j);
+						var subList     = $DOMSubactivitiesList.eq(j);
+						var subListPlan = $DOMSubactivitiesListPlan.eq(j);
+
+						var subactivityController = new UP.SubactivityController({		&#x2F;&#x2F; Creating a new &#x27;Subactivity&#x27; controller object
+							model: subactivity,
+							item: subItem,
+							list: subList,
+							listPlan: subListPlan
+						});
+
+						arraySubactivityControllers.push(subactivityController);
+					});
+
+					&#x2F;&#x2F; Creating the counter for each activity
+					var counter = new UP.Counter(totalCounter);
+
+					var counterView = $DOMActivitiesCounter.eq(i);
+
+					var counterController  = new UP.CounterController({
+						model: counter,
+						el: counterView
+					});
+
+					&#x2F;&#x2F; Creating a new &#x27;Activity&#x27; model object
+					var activity = new UP.Activity(name, description, counter, subactivitiesCollection);		&#x2F;&#x2F; Creating a new &#x27;Activity&#x27; model object
+					activityCollection.add(activity);
+
+					&#x2F;&#x2F; Activity Views					
+					var actBlock    = $DOMActivities.eq(i);
+					var actList     = $DOMActivitiesList.eq(i);
+					var actListPlan = $DOMActivitiesListPlan.eq(i);
+					var actTab      = $DOMActivitiesTab.eq(i);
+
+					&#x2F;&#x2F; Creating a new activity controller object
+					var activityController = new UP.ActivityController({			&#x2F;&#x2F; Creating a new &#x27;Activity&#x27; controller object
+						model: activity,
+						block: actBlock,
+						tab: actTab,
+						list: actList,
+						listPlan: actListPlan
+					});
+
+					activityController.setSubactivities(arraySubactivityControllers);
+					arrayActivityControllers.push(activityController);
+
+				}); &#x2F;&#x2F; end of &#x27;activities&#x27; parsing
+
+
+				&#x2F;&#x2F; Once all the activities have been stored, the array will be passed to every activity
+				&#x2F;&#x2F; This happens because every activity needs to have a reference to all of them
+				&#x2F;&#x2F; And later, when an activity tab is clicked, the rest os activities will be hidden
+				for (var i=0; i&lt;arrayActivityControllers.length; i++) {
+					var act = arrayActivityControllers[i];
+					act.setActivities(arrayActivityControllers);
+				}
+
+				&#x2F;&#x2F; Test
+
+				var Nconstraints = constraintCollection.length;
+				var Nmethods     = methodCollection.length;
+
+				console.log(&quot;number of constraints: &quot; + Nconstraints);
+				console.log(&quot;number of methods: &quot; + Nmethods);
+
+				var weightsC = 0;
+				var weightsM = 0;
+
+				constraintCollection.each(function(c) {
+					weightsC += c.get(&#x27;weightCollection&#x27;).length;
+				});
+
+				methodCollection.each(function(m) {
+					weightsM += m.get(&#x27;weightCollection&#x27;).length;
+				});
+
+				console.log(&quot;number of weights by constraints: &quot; + weightsC);
+				console.log(&quot;number of weights by methods: &quot; + weightsM);
+
+				console.log(&quot;Number of methods with failures: &quot; + ((Nconstraints * Nmethods) - weightsM) &#x2F; Nconstraints);
+			});
+
+			return new UP.Plan(constraintCollection, activityCollection);
+		}
+
+	});
+
+    </pre>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="..&#x2F;assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="..&#x2F;assets/js/yui-prettify.js"></script>
+<script src="..&#x2F;assets/../api.js"></script>
+<script src="..&#x2F;assets/js/api-filter.js"></script>
+<script src="..&#x2F;assets/js/api-list.js"></script>
+<script src="..&#x2F;assets/js/api-search.js"></script>
+<script src="..&#x2F;assets/js/apidocs.js"></script>
+</body>
+</html>

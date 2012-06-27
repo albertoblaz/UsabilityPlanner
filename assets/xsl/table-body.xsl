@@ -21,12 +21,20 @@
 
 
 <xsl:template match="activity">
+	<tr class="row-activity hidden">
+		<td class="cell">
+			<xsl:value-of select="@name" />
+		</td>
+
+		<xsl:apply-templates select="subactivity[1]/costBenefit" />
+	</tr>	
+
 	<xsl:apply-templates select="subactivity" />
 </xsl:template>
 
 
 <xsl:template match="subactivity">
-	<tr>
+	<tr class="row-subactivity hidden">
 		<td>
 			<xsl:value-of select="@name" />
 		</td>
@@ -38,10 +46,7 @@
 
 <xsl:template match="costBenefit">
 	<td>
-		<span class="checkboxWrapper">
-			<a href="#" class="checkbox"></a>
-			<input type="checkbox" class="hidden" />
-		</span>
+		<input type="checkbox" />
 	</td>
 </xsl:template>
 

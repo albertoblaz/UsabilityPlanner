@@ -1,0 +1,3589 @@
+{
+    "project": {},
+    "files": {
+        "collections.js": {
+            "name": "collections.js",
+            "modules": {
+                "Collections": 1
+            },
+            "classes": {
+                "WeightCollection": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "constants.js": {
+            "name": "constants.js",
+            "modules": {
+                "Constants": 1
+            },
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "controllers.js": {
+            "name": "controllers.js",
+            "modules": {
+                "Controllers": 1
+            },
+            "classes": {
+                "SliderController": 1,
+                "ConstraintController": 1,
+                "CounterController": 1,
+                "TotalCounterController": 1,
+                "MethodController": 1,
+                "SubactivityController": 1,
+                "ActivityController": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "csv-parser.js": {
+            "name": "csv-parser.js",
+            "modules": {
+                "Util": 1
+            },
+            "classes": {
+                "CSVParser": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "facade-controller.js": {
+            "name": "facade-controller.js",
+            "modules": {
+                "App": 1
+            },
+            "classes": {
+                "FacadeController": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "file-manager.js": {
+            "name": "file-manager.js",
+            "modules": {},
+            "classes": {
+                "FileManager": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "main.js": {
+            "name": "main.js",
+            "modules": {
+                "Main": 1
+            },
+            "classes": {
+                "Main": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "models.js": {
+            "name": "models.js",
+            "modules": {
+                "Models": 1
+            },
+            "classes": {
+                "Slider": 1,
+                "Weight": 1,
+                "Counter": 1,
+                "TotalCounter": 1,
+                "Method": 1,
+                "Constraint": 1,
+                "Subactivity": 1,
+                "Activity": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "plan.js": {
+            "name": "plan.js",
+            "modules": {
+                "Plan": 1
+            },
+            "classes": {
+                "Plan": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "planner.js": {
+            "name": "planner.js",
+            "modules": {},
+            "classes": {
+                "Planner": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "recommender.js": {
+            "name": "recommender.js",
+            "modules": {},
+            "classes": {
+                "Recommender": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "xml-parser.js": {
+            "name": "xml-parser.js",
+            "modules": {},
+            "classes": {
+                "XMLParser": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        }
+    },
+    "modules": {
+        "UP": {
+            "name": "UP",
+            "submodules": {
+                "Collections": 1,
+                "Constants": 1,
+                "Controllers": 1,
+                "Util": 1,
+                "App": 1,
+                "Main": 1,
+                "Models": 1,
+                "Plan": 1
+            },
+            "classes": {
+                "WeightCollection": 1,
+                "SliderController": 1,
+                "ConstraintController": 1,
+                "CounterController": 1,
+                "TotalCounterController": 1,
+                "MethodController": 1,
+                "SubactivityController": 1,
+                "ActivityController": 1,
+                "CSVParser": 1,
+                "FacadeController": 1,
+                "FileManager": 1,
+                "Main": 1,
+                "Slider": 1,
+                "Weight": 1,
+                "Counter": 1,
+                "TotalCounter": 1,
+                "Method": 1,
+                "Constraint": 1,
+                "Subactivity": 1,
+                "Activity": 1,
+                "Plan": 1,
+                "Planner": 1,
+                "Recommender": 1,
+                "XMLParser": 1
+            },
+            "fors": {},
+            "namespaces": {},
+            "file": "xml-parser.js",
+            "line": 2
+        },
+        "Collections": {
+            "name": "Collections",
+            "submodules": {},
+            "classes": {
+                "WeightCollection": 1
+            },
+            "fors": {},
+            "is_submodule": 1,
+            "namespaces": {},
+            "module": "UP",
+            "namespace": "",
+            "file": "collections.js",
+            "line": 88,
+            "extends": "Backbone.Collection"
+        },
+        "Constants": {
+            "name": "Constants",
+            "submodules": {},
+            "classes": {},
+            "fors": {},
+            "is_submodule": 1,
+            "namespaces": {},
+            "module": "UP",
+            "namespace": "",
+            "file": "constants.js",
+            "line": 15
+        },
+        "Controllers": {
+            "name": "Controllers",
+            "submodules": {},
+            "classes": {
+                "SliderController": 1,
+                "ConstraintController": 1,
+                "CounterController": 1,
+                "TotalCounterController": 1,
+                "MethodController": 1,
+                "SubactivityController": 1,
+                "ActivityController": 1
+            },
+            "fors": {},
+            "is_submodule": 1,
+            "namespaces": {},
+            "module": "UP",
+            "namespace": "",
+            "file": "controllers.js",
+            "line": 593,
+            "extends": "Backbone.Controller"
+        },
+        "Util": {
+            "name": "Util",
+            "submodules": {},
+            "classes": {
+                "CSVParser": 1,
+                "FileManager": 1,
+                "Planner": 1,
+                "XMLParser": 1
+            },
+            "fors": {},
+            "is_submodule": 1,
+            "namespaces": {},
+            "module": "UP",
+            "namespace": "",
+            "file": "xml-parser.js",
+            "line": 2,
+            "extends": "Backbone.Model"
+        },
+        "App": {
+            "name": "App",
+            "submodules": {},
+            "classes": {
+                "FacadeController": 1,
+                "Recommender": 1
+            },
+            "fors": {},
+            "is_submodule": 1,
+            "namespaces": {},
+            "module": "UP",
+            "namespace": "",
+            "file": "recommender.js",
+            "line": 2,
+            "extends": "Backbone.Controller"
+        },
+        "Main": {
+            "name": "Main",
+            "submodules": {},
+            "classes": {
+                "Main": 1
+            },
+            "fors": {},
+            "is_submodule": 1,
+            "namespaces": {},
+            "module": "UP",
+            "namespace": "",
+            "file": "main.js",
+            "line": 2
+        },
+        "Models": {
+            "name": "Models",
+            "submodules": {},
+            "classes": {
+                "Slider": 1,
+                "Weight": 1,
+                "Counter": 1,
+                "TotalCounter": 1,
+                "Method": 1,
+                "Constraint": 1,
+                "Subactivity": 1,
+                "Activity": 1
+            },
+            "fors": {},
+            "is_submodule": 1,
+            "namespaces": {},
+            "module": "UP",
+            "namespace": "",
+            "file": "models.js",
+            "line": 944,
+            "extends": "Backbone.Model"
+        },
+        "Plan": {
+            "name": "Plan",
+            "submodules": {},
+            "classes": {
+                "Plan": 1
+            },
+            "fors": {},
+            "is_submodule": 1,
+            "namespaces": {},
+            "module": "UP",
+            "namespace": "",
+            "file": "plan.js",
+            "line": 2,
+            "extends": "Backbone.Model"
+        }
+    },
+    "classes": {
+        "WeightCollection": {
+            "name": "WeightCollection",
+            "shortname": "WeightCollection",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "UP",
+            "submodule": "Collections",
+            "namespace": "",
+            "file": "collections.js",
+            "line": 88
+        },
+        "SliderController": {
+            "name": "SliderController",
+            "shortname": "SliderController",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "UP",
+            "submodule": "Controllers",
+            "namespace": "",
+            "file": "controllers.js",
+            "line": 2
+        },
+        "ConstraintController": {
+            "name": "ConstraintController",
+            "shortname": "ConstraintController",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "UP",
+            "submodule": "Controllers",
+            "namespace": "",
+            "file": "controllers.js",
+            "line": 67
+        },
+        "CounterController": {
+            "name": "CounterController",
+            "shortname": "CounterController",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "UP",
+            "submodule": "Controllers",
+            "namespace": "",
+            "file": "controllers.js",
+            "line": 97
+        },
+        "TotalCounterController": {
+            "name": "TotalCounterController",
+            "shortname": "TotalCounterController",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "UP",
+            "submodule": "Controllers",
+            "namespace": "",
+            "file": "controllers.js",
+            "line": 155
+        },
+        "MethodController": {
+            "name": "MethodController",
+            "shortname": "MethodController",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "UP",
+            "submodule": "Controllers",
+            "namespace": "",
+            "file": "controllers.js",
+            "line": 184
+        },
+        "SubactivityController": {
+            "name": "SubactivityController",
+            "shortname": "SubactivityController",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "UP",
+            "submodule": "Controllers",
+            "namespace": "",
+            "file": "controllers.js",
+            "line": 431
+        },
+        "ActivityController": {
+            "name": "ActivityController",
+            "shortname": "ActivityController",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "UP",
+            "submodule": "Controllers",
+            "namespace": "",
+            "file": "controllers.js",
+            "line": 593
+        },
+        "CSVParser": {
+            "name": "CSVParser",
+            "shortname": "CSVParser",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "UP",
+            "submodule": "Util",
+            "namespace": "",
+            "file": "csv-parser.js",
+            "line": 2
+        },
+        "FacadeController": {
+            "name": "FacadeController",
+            "shortname": "FacadeController",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "UP",
+            "submodule": "App",
+            "namespace": "",
+            "file": "facade-controller.js",
+            "line": 2
+        },
+        "FileManager": {
+            "name": "FileManager",
+            "shortname": "FileManager",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "UP",
+            "submodule": "Util",
+            "namespace": "",
+            "file": "file-manager.js",
+            "line": 2
+        },
+        "Main": {
+            "name": "Main",
+            "shortname": "Main",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "UP",
+            "submodule": "Main",
+            "namespace": "",
+            "file": "main.js",
+            "line": 2
+        },
+        "Slider": {
+            "name": "Slider",
+            "shortname": "Slider",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "UP",
+            "submodule": "Models",
+            "namespace": "",
+            "file": "models.js",
+            "line": 2
+        },
+        "Weight": {
+            "name": "Weight",
+            "shortname": "Weight",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "UP",
+            "submodule": "Models",
+            "namespace": "",
+            "file": "models.js",
+            "line": 52
+        },
+        "Counter": {
+            "name": "Counter",
+            "shortname": "Counter",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "UP",
+            "submodule": "Models",
+            "namespace": "",
+            "file": "models.js",
+            "line": 152
+        },
+        "TotalCounter": {
+            "name": "TotalCounter",
+            "shortname": "TotalCounter",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "UP",
+            "submodule": "Models",
+            "namespace": "",
+            "file": "models.js",
+            "line": 204
+        },
+        "Method": {
+            "name": "Method",
+            "shortname": "Method",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "UP",
+            "submodule": "Models",
+            "namespace": "",
+            "file": "models.js",
+            "line": 254
+        },
+        "Constraint": {
+            "name": "Constraint",
+            "shortname": "Constraint",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "UP",
+            "submodule": "Models",
+            "namespace": "",
+            "file": "models.js",
+            "line": 585
+        },
+        "Subactivity": {
+            "name": "Subactivity",
+            "shortname": "Subactivity",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "UP",
+            "submodule": "Models",
+            "namespace": "",
+            "file": "models.js",
+            "line": 776
+        },
+        "Activity": {
+            "name": "Activity",
+            "shortname": "Activity",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "UP",
+            "submodule": "Models",
+            "namespace": "",
+            "file": "models.js",
+            "line": 944
+        },
+        "Plan": {
+            "name": "Plan",
+            "shortname": "Plan",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "UP",
+            "submodule": "Plan",
+            "namespace": "",
+            "file": "plan.js",
+            "line": 2
+        },
+        "Planner": {
+            "name": "Planner",
+            "shortname": "Planner",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "UP",
+            "submodule": "Util",
+            "namespace": "",
+            "file": "planner.js",
+            "line": 2
+        },
+        "Recommender": {
+            "name": "Recommender",
+            "shortname": "Recommender",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "UP",
+            "submodule": "App",
+            "namespace": "",
+            "file": "recommender.js",
+            "line": 2
+        },
+        "XMLParser": {
+            "name": "XMLParser",
+            "shortname": "XMLParser",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "UP",
+            "submodule": "Util",
+            "namespace": "",
+            "file": "xml-parser.js",
+            "line": 2
+        }
+    },
+    "classitems": [
+        {
+            "file": "collections.js",
+            "line": 10,
+            "description": "The type of model object contained by the collection",
+            "itemtype": "property",
+            "name": "model",
+            "type": "Weight",
+            "class": "WeightCollection",
+            "module": "UP",
+            "submodule": "Collections"
+        },
+        {
+            "file": "collections.js",
+            "line": 29,
+            "description": "The type of model object contained by the collection",
+            "itemtype": "property",
+            "name": "model",
+            "type": "Method",
+            "class": "WeightCollection",
+            "module": "UP",
+            "submodule": "Collections"
+        },
+        {
+            "file": "collections.js",
+            "line": 37,
+            "itemtype": "method",
+            "name": "comparator",
+            "params": [
+                {
+                    "name": "method",
+                    "description": "The object used to make a comparison when sorting",
+                    "type": "Method"
+                }
+            ],
+            "return": {
+                "description": "value  The value of the method compared",
+                "type": "Number"
+            },
+            "class": "WeightCollection",
+            "module": "UP",
+            "submodule": "Collections"
+        },
+        {
+            "file": "collections.js",
+            "line": 58,
+            "description": "The type of model object contained by the collection",
+            "itemtype": "property",
+            "name": "model",
+            "type": "Constraint",
+            "class": "WeightCollection",
+            "module": "UP",
+            "submodule": "Collections"
+        },
+        {
+            "file": "collections.js",
+            "line": 77,
+            "description": "The type of model object contained by the collection",
+            "itemtype": "property",
+            "name": "model",
+            "type": "Subactivity",
+            "class": "WeightCollection",
+            "module": "UP",
+            "submodule": "Collections"
+        },
+        {
+            "file": "collections.js",
+            "line": 96,
+            "description": "The type of model object contained by the collection",
+            "itemtype": "property",
+            "name": "model",
+            "type": "Activity",
+            "class": "WeightCollection",
+            "module": "UP",
+            "submodule": "Collections"
+        },
+        {
+            "file": "constants.js",
+            "line": 21,
+            "itemtype": "property",
+            "name": "ACTIVITY_SPEED",
+            "static": 1,
+            "final": 1,
+            "type": "number",
+            "class": "SliderController",
+            "module": "UP",
+            "submodule": "Constants"
+        },
+        {
+            "file": "constants.js",
+            "line": 30,
+            "itemtype": "property",
+            "name": "DISABLED_OPACITY",
+            "static": 1,
+            "final": 1,
+            "type": "number",
+            "class": "SliderController",
+            "module": "UP",
+            "submodule": "Constants"
+        },
+        {
+            "file": "constants.js",
+            "line": 39,
+            "itemtype": "property",
+            "name": "FADE_SPEED",
+            "static": 1,
+            "final": 1,
+            "type": "number",
+            "class": "SliderController",
+            "module": "UP",
+            "submodule": "Constants"
+        },
+        {
+            "file": "constants.js",
+            "line": 48,
+            "itemtype": "property",
+            "name": "MAX_WEIGHT_VALUE",
+            "static": 1,
+            "final": 1,
+            "type": "number",
+            "class": "SliderController",
+            "module": "UP",
+            "submodule": "Constants"
+        },
+        {
+            "file": "constants.js",
+            "line": 57,
+            "itemtype": "property",
+            "name": "METHOD_HEIGHT",
+            "static": 1,
+            "final": 1,
+            "type": "number",
+            "class": "SliderController",
+            "module": "UP",
+            "submodule": "Constants"
+        },
+        {
+            "file": "constants.js",
+            "line": 66,
+            "itemtype": "property",
+            "name": "PHP_DOWNLOAD",
+            "static": 1,
+            "final": 1,
+            "type": "string",
+            "class": "SliderController",
+            "module": "UP",
+            "submodule": "Constants"
+        },
+        {
+            "file": "constants.js",
+            "line": 75,
+            "itemtype": "property",
+            "name": "PHP_UPLOAD",
+            "static": 1,
+            "final": 1,
+            "type": "string",
+            "class": "SliderController",
+            "module": "UP",
+            "submodule": "Constants"
+        },
+        {
+            "file": "constants.js",
+            "line": 84,
+            "itemtype": "property",
+            "name": "SLIDE_SPEED",
+            "static": 1,
+            "final": 1,
+            "type": "number",
+            "class": "SliderController",
+            "module": "UP",
+            "submodule": "Constants"
+        },
+        {
+            "file": "constants.js",
+            "line": 93,
+            "itemtype": "property",
+            "name": "SLIDER_VALUE",
+            "static": 1,
+            "final": 1,
+            "type": "number",
+            "class": "SliderController",
+            "module": "UP",
+            "submodule": "Constants"
+        },
+        {
+            "file": "constants.js",
+            "line": 102,
+            "itemtype": "property",
+            "name": "STAGES_SPEED",
+            "static": 1,
+            "final": 1,
+            "type": "number",
+            "class": "SliderController",
+            "module": "UP",
+            "submodule": "Constants"
+        },
+        {
+            "file": "constants.js",
+            "line": 111,
+            "itemtype": "property",
+            "name": "VALUE",
+            "static": 1,
+            "final": 1,
+            "type": "Array[string]",
+            "class": "SliderController",
+            "module": "UP",
+            "submodule": "Constants"
+        },
+        {
+            "file": "constants.js",
+            "line": 120,
+            "itemtype": "property",
+            "name": "XML",
+            "static": 1,
+            "final": 1,
+            "type": "string",
+            "class": "SliderController",
+            "module": "UP",
+            "submodule": "Constants"
+        },
+        {
+            "file": "controllers.js",
+            "line": 10,
+            "itemtype": "method",
+            "name": "initialize",
+            "is_constructor": 1,
+            "class": "SliderController",
+            "module": "UP",
+            "submodule": "Controllers"
+        },
+        {
+            "file": "controllers.js",
+            "line": 18,
+            "description": "The model bound to the controller",
+            "itemtype": "property",
+            "name": "model",
+            "type": "Slider",
+            "class": "SliderController",
+            "module": "UP",
+            "submodule": "Controllers"
+        },
+        {
+            "file": "controllers.js",
+            "line": 25,
+            "description": "The view represented by the DOM node caught with jQuery",
+            "itemtype": "property",
+            "name": "model",
+            "type": "jQuery Object",
+            "class": "SliderController",
+            "module": "UP",
+            "submodule": "Controllers"
+        },
+        {
+            "file": "controllers.js",
+            "line": 54,
+            "itemtype": "method",
+            "name": "updateValue",
+            "params": [
+                {
+                    "name": "newValue",
+                    "description": "The new slider value selected by the user when moving the slider UI component",
+                    "type": "Number"
+                }
+            ],
+            "class": "SliderController",
+            "module": "UP",
+            "submodule": "Controllers"
+        },
+        {
+            "file": "controllers.js",
+            "line": 80,
+            "itemtype": "method",
+            "name": "constraintSelected",
+            "params": [
+                {
+                    "name": "event",
+                    "description": "The jQuery event fired after a constraint has been clicked",
+                    "type": "Event"
+                }
+            ],
+            "class": "ConstraintController",
+            "module": "UP",
+            "submodule": "Controllers"
+        },
+        {
+            "file": "controllers.js",
+            "line": 105,
+            "itemtype": "method",
+            "name": "initialize",
+            "is_constructor": 1,
+            "class": "CounterController",
+            "module": "UP",
+            "submodule": "Controllers"
+        },
+        {
+            "file": "controllers.js",
+            "line": 111,
+            "description": "The model bound to the controller",
+            "itemtype": "property",
+            "name": "model",
+            "type": "Counter",
+            "class": "CounterController",
+            "module": "UP",
+            "submodule": "Controllers"
+        },
+        {
+            "file": "controllers.js",
+            "line": 118,
+            "description": "The view (DOM node) associated to the controller",
+            "itemtype": "property",
+            "name": "model",
+            "type": "jQuery Object",
+            "class": "CounterController",
+            "module": "UP",
+            "submodule": "Controllers"
+        },
+        {
+            "file": "controllers.js",
+            "line": 127,
+            "itemtype": "method",
+            "name": "scrollToList",
+            "params": [
+                {
+                    "name": "event",
+                    "description": "The jQuery event fired after a constraint has been clicked",
+                    "type": "Event"
+                }
+            ],
+            "class": "CounterController",
+            "module": "UP",
+            "submodule": "Controllers"
+        },
+        {
+            "file": "controllers.js",
+            "line": 143,
+            "itemtype": "method",
+            "name": "updateCounter",
+            "class": "CounterController",
+            "module": "UP",
+            "submodule": "Controllers"
+        },
+        {
+            "file": "controllers.js",
+            "line": 163,
+            "itemtype": "method",
+            "name": "initialize",
+            "is_constructor": 1,
+            "class": "TotalCounterController",
+            "module": "UP",
+            "submodule": "Controllers"
+        },
+        {
+            "file": "controllers.js",
+            "line": 172,
+            "itemtype": "method",
+            "name": "updateCounter",
+            "class": "TotalCounterController",
+            "module": "UP",
+            "submodule": "Controllers"
+        },
+        {
+            "file": "controllers.js",
+            "line": 192,
+            "itemtype": "method",
+            "name": "initialize",
+            "is_constructor": 1,
+            "class": "MethodController",
+            "module": "UP",
+            "submodule": "Controllers"
+        },
+        {
+            "file": "controllers.js",
+            "line": 198,
+            "itemtype": "property",
+            "name": "model",
+            "type": "Method",
+            "class": "MethodController",
+            "module": "UP",
+            "submodule": "Controllers"
+        },
+        {
+            "file": "controllers.js",
+            "line": 204,
+            "itemtype": "property",
+            "name": "methodView",
+            "type": "jQuery Object",
+            "class": "MethodController",
+            "module": "UP",
+            "submodule": "Controllers"
+        },
+        {
+            "file": "controllers.js",
+            "line": 210,
+            "itemtype": "property",
+            "name": "planView",
+            "type": "jQuery Object",
+            "class": "MethodController",
+            "module": "UP",
+            "submodule": "Controllers"
+        },
+        {
+            "file": "controllers.js",
+            "line": 247,
+            "itemtype": "method",
+            "name": "render",
+            "class": "MethodController",
+            "module": "UP",
+            "submodule": "Controllers"
+        },
+        {
+            "file": "controllers.js",
+            "line": 286,
+            "itemtype": "method",
+            "name": "updatePosition",
+            "class": "MethodController",
+            "module": "UP",
+            "submodule": "Controllers"
+        },
+        {
+            "file": "controllers.js",
+            "line": 295,
+            "itemtype": "method",
+            "name": "hideMethod",
+            "params": [
+                {
+                    "name": "event",
+                    "description": "The jQuery event fired",
+                    "type": "Event"
+                }
+            ],
+            "class": "MethodController",
+            "module": "UP",
+            "submodule": "Controllers"
+        },
+        {
+            "file": "controllers.js",
+            "line": 324,
+            "itemtype": "method",
+            "name": "showNeutral",
+            "class": "MethodController",
+            "module": "UP",
+            "submodule": "Controllers"
+        },
+        {
+            "file": "controllers.js",
+            "line": 335,
+            "itemtype": "method",
+            "name": "checkboxEvent",
+            "params": [
+                {
+                    "name": "event",
+                    "description": "The jQuery event fired",
+                    "type": "Event"
+                }
+            ],
+            "class": "MethodController",
+            "module": "UP",
+            "submodule": "Controllers"
+        },
+        {
+            "file": "controllers.js",
+            "line": 353,
+            "itemtype": "method",
+            "name": "displayInfoEvent",
+            "class": "MethodController",
+            "module": "UP",
+            "submodule": "Controllers"
+        },
+        {
+            "file": "controllers.js",
+            "line": 386,
+            "itemtype": "method",
+            "name": "disableMethodAnimation",
+            "params": [
+                {
+                    "name": "li",
+                    "description": "The method which receives a graphic animation",
+                    "type": "JQuery Object"
+                }
+            ],
+            "class": "MethodController",
+            "module": "UP",
+            "submodule": "Controllers"
+        },
+        {
+            "file": "controllers.js",
+            "line": 409,
+            "itemtype": "method",
+            "name": "isSelected",
+            "return": {
+                "description": "selected  returns a boolean value which express whereas the method is selected or not",
+                "type": "Boolean"
+            },
+            "class": "MethodController",
+            "module": "UP",
+            "submodule": "Controllers"
+        },
+        {
+            "file": "controllers.js",
+            "line": 420,
+            "itemtype": "method",
+            "name": "isVisible",
+            "return": {
+                "description": "visible  returns a boolean value which express whereas the method is visible or not",
+                "type": "Boolean"
+            },
+            "class": "MethodController",
+            "module": "UP",
+            "submodule": "Controllers"
+        },
+        {
+            "file": "controllers.js",
+            "line": 439,
+            "itemtype": "method",
+            "name": "initialize",
+            "is_constructor": 1,
+            "class": "SubactivityController",
+            "module": "UP",
+            "submodule": "Controllers"
+        },
+        {
+            "file": "controllers.js",
+            "line": 445,
+            "itemtype": "property",
+            "name": "model",
+            "type": "Subactivity",
+            "class": "SubactivityController",
+            "module": "UP",
+            "submodule": "Controllers"
+        },
+        {
+            "file": "controllers.js",
+            "line": 451,
+            "itemtype": "property",
+            "name": "item",
+            "type": "jQuery Object",
+            "class": "SubactivityController",
+            "module": "UP",
+            "submodule": "Controllers"
+        },
+        {
+            "file": "controllers.js",
+            "line": 457,
+            "itemtype": "property",
+            "name": "list",
+            "type": "jQuery Object",
+            "class": "SubactivityController",
+            "module": "UP",
+            "submodule": "Controllers"
+        },
+        {
+            "file": "controllers.js",
+            "line": 463,
+            "itemtype": "property",
+            "name": "listPlan",
+            "type": "jQuery Object",
+            "class": "SubactivityController",
+            "module": "UP",
+            "submodule": "Controllers"
+        },
+        {
+            "file": "controllers.js",
+            "line": 491,
+            "itemtype": "method",
+            "name": "isVisible",
+            "class": "SubactivityController",
+            "module": "UP",
+            "submodule": "Controllers"
+        },
+        {
+            "file": "controllers.js",
+            "line": 505,
+            "itemtype": "method",
+            "name": "expandList",
+            "class": "SubactivityController",
+            "module": "UP",
+            "submodule": "Controllers"
+        },
+        {
+            "file": "controllers.js",
+            "line": 526,
+            "itemtype": "method",
+            "name": "slideUp",
+            "params": [
+                {
+                    "name": "headerVisible",
+                    "description": "",
+                    "type": "Boolean"
+                }
+            ],
+            "class": "SubactivityController",
+            "module": "UP",
+            "submodule": "Controllers"
+        },
+        {
+            "file": "controllers.js",
+            "line": 544,
+            "itemtype": "method",
+            "name": "slideDown",
+            "params": [
+                {
+                    "name": "headerVisible",
+                    "description": "",
+                    "type": "Boolean"
+                }
+            ],
+            "class": "SubactivityController",
+            "module": "UP",
+            "submodule": "Controllers"
+        },
+        {
+            "file": "controllers.js",
+            "line": 562,
+            "itemtype": "method",
+            "name": "updateLastMethod",
+            "class": "SubactivityController",
+            "module": "UP",
+            "submodule": "Controllers"
+        },
+        {
+            "file": "controllers.js",
+            "line": 578,
+            "itemtype": "method",
+            "name": "addClassIfLast",
+            "class": "SubactivityController",
+            "module": "UP",
+            "submodule": "Controllers"
+        },
+        {
+            "file": "controllers.js",
+            "line": 601,
+            "itemtype": "method",
+            "name": "initialize",
+            "is_constructor": 1,
+            "class": "ActivityController",
+            "module": "UP",
+            "submodule": "Controllers"
+        },
+        {
+            "file": "controllers.js",
+            "line": 607,
+            "itemtype": "property",
+            "name": "model",
+            "type": "Activity",
+            "class": "ActivityController",
+            "module": "UP",
+            "submodule": "Controllers"
+        },
+        {
+            "file": "controllers.js",
+            "line": 613,
+            "itemtype": "property",
+            "name": "block",
+            "type": "jQuery Object",
+            "class": "ActivityController",
+            "module": "UP",
+            "submodule": "Controllers"
+        },
+        {
+            "file": "controllers.js",
+            "line": 619,
+            "itemtype": "property",
+            "name": "tab",
+            "type": "jQuery Object",
+            "class": "ActivityController",
+            "module": "UP",
+            "submodule": "Controllers"
+        },
+        {
+            "file": "controllers.js",
+            "line": 625,
+            "itemtype": "property",
+            "name": "list",
+            "type": "jQuery Object",
+            "class": "ActivityController",
+            "module": "UP",
+            "submodule": "Controllers"
+        },
+        {
+            "file": "controllers.js",
+            "line": 631,
+            "itemtype": "property",
+            "name": "listPlan",
+            "type": "jQuery Object",
+            "class": "ActivityController",
+            "module": "UP",
+            "submodule": "Controllers"
+        },
+        {
+            "file": "controllers.js",
+            "line": 637,
+            "itemtype": "property",
+            "name": "expandButton",
+            "type": "jQuery Object",
+            "class": "ActivityController",
+            "module": "UP",
+            "submodule": "Controllers"
+        },
+        {
+            "file": "controllers.js",
+            "line": 643,
+            "itemtype": "property",
+            "name": "collapseButton",
+            "type": "jQuery Object",
+            "class": "ActivityController",
+            "module": "UP",
+            "submodule": "Controllers"
+        },
+        {
+            "file": "controllers.js",
+            "line": 649,
+            "itemtype": "property",
+            "name": "subactivities",
+            "type": "Array[Subactivity]",
+            "class": "ActivityController",
+            "module": "UP",
+            "submodule": "Controllers"
+        },
+        {
+            "file": "controllers.js",
+            "line": 691,
+            "itemtype": "method",
+            "name": "hideHeader",
+            "class": "ActivityController",
+            "module": "UP",
+            "submodule": "Controllers"
+        },
+        {
+            "file": "controllers.js",
+            "line": 700,
+            "itemtype": "method",
+            "name": "showHeader",
+            "class": "ActivityController",
+            "module": "UP",
+            "submodule": "Controllers"
+        },
+        {
+            "file": "controllers.js",
+            "line": 709,
+            "itemtype": "method",
+            "name": "displayActivityEvent",
+            "class": "ActivityController",
+            "module": "UP",
+            "submodule": "Controllers"
+        },
+        {
+            "file": "controllers.js",
+            "line": 720,
+            "itemtype": "method",
+            "name": "expandList",
+            "class": "ActivityController",
+            "module": "UP",
+            "submodule": "Controllers"
+        },
+        {
+            "file": "controllers.js",
+            "line": 740,
+            "itemtype": "method",
+            "name": "collapseList",
+            "class": "ActivityController",
+            "module": "UP",
+            "submodule": "Controllers"
+        },
+        {
+            "file": "controllers.js",
+            "line": 760,
+            "itemtype": "method",
+            "name": "hideRestOfActivities",
+            "class": "ActivityController",
+            "module": "UP",
+            "submodule": "Controllers"
+        },
+        {
+            "file": "controllers.js",
+            "line": 773,
+            "itemtype": "method",
+            "name": "hideActivity",
+            "class": "ActivityController",
+            "module": "UP",
+            "submodule": "Controllers"
+        },
+        {
+            "file": "controllers.js",
+            "line": 782,
+            "itemtype": "method",
+            "name": "expandButtonEvent",
+            "params": [
+                {
+                    "name": "event",
+                    "description": "The jQuery event fired",
+                    "type": "Event"
+                }
+            ],
+            "class": "ActivityController",
+            "module": "UP",
+            "submodule": "Controllers"
+        },
+        {
+            "file": "controllers.js",
+            "line": 791,
+            "itemtype": "method",
+            "name": "collapseButtonEvent",
+            "params": [
+                {
+                    "name": "event",
+                    "description": "The jQuery event fired",
+                    "type": "Event"
+                }
+            ],
+            "class": "ActivityController",
+            "module": "UP",
+            "submodule": "Controllers"
+        },
+        {
+            "file": "controllers.js",
+            "line": 800,
+            "itemtype": "method",
+            "name": "setSubactivities",
+            "params": [
+                {
+                    "name": "subactivities",
+                    "description": "",
+                    "type": "Array[SubactivityController]"
+                }
+            ],
+            "class": "ActivityController",
+            "module": "UP",
+            "submodule": "Controllers"
+        },
+        {
+            "file": "controllers.js",
+            "line": 809,
+            "itemtype": "method",
+            "name": "setActivities",
+            "params": [
+                {
+                    "name": "activities",
+                    "description": "",
+                    "type": "Array[ActivityController]"
+                }
+            ],
+            "class": "ActivityController",
+            "module": "UP",
+            "submodule": "Controllers"
+        },
+        {
+            "file": "csv-parser.js",
+            "line": 10,
+            "itemtype": "method",
+            "name": "CSVToArray",
+            "params": [
+                {
+                    "name": "strData",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "strDelimiter",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "class": "CSVParser",
+            "module": "UP",
+            "submodule": "Util"
+        },
+        {
+            "file": "csv-parser.js",
+            "line": 82,
+            "itemtype": "method",
+            "name": "generatePlanFrom",
+            "params": [
+                {
+                    "name": "csv",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "newPlan",
+                "type": "Plan"
+            },
+            "class": "CSVParser",
+            "module": "UP",
+            "submodule": "Util"
+        },
+        {
+            "file": "csv-parser.js",
+            "line": 127,
+            "itemtype": "method",
+            "name": "generateCSVFrom",
+            "params": [
+                {
+                    "name": "plan",
+                    "description": "",
+                    "type": "Plan"
+                }
+            ],
+            "return": {
+                "description": "csv",
+                "type": "String"
+            },
+            "class": "CSVParser",
+            "module": "UP",
+            "submodule": "Util"
+        },
+        {
+            "file": "facade-controller.js",
+            "line": 10,
+            "itemtype": "method",
+            "name": "initialize",
+            "params": [
+                {
+                    "name": "window",
+                    "description": "",
+                    "type": "Object"
+                },
+                {
+                    "name": "recommender",
+                    "description": "",
+                    "type": "Recommender"
+                }
+            ],
+            "is_constructor": 1,
+            "class": "FacadeController",
+            "module": "UP",
+            "submodule": "App"
+        },
+        {
+            "file": "facade-controller.js",
+            "line": 20,
+            "itemtype": "property",
+            "name": "window",
+            "type": "Object",
+            "class": "FacadeController",
+            "module": "UP",
+            "submodule": "App"
+        },
+        {
+            "file": "facade-controller.js",
+            "line": 26,
+            "itemtype": "property",
+            "name": "recommender",
+            "type": "Recommender",
+            "class": "FacadeController",
+            "module": "UP",
+            "submodule": "App"
+        },
+        {
+            "file": "facade-controller.js",
+            "line": 55,
+            "itemtype": "method",
+            "name": "initViewElements",
+            "class": "FacadeController",
+            "module": "UP",
+            "submodule": "App"
+        },
+        {
+            "file": "facade-controller.js",
+            "line": 60,
+            "itemtype": "property",
+            "name": "logo",
+            "type": "jQuery Object",
+            "default": "\"logo DOM node\"",
+            "class": "FacadeController",
+            "module": "UP",
+            "submodule": "App"
+        },
+        {
+            "file": "facade-controller.js",
+            "line": 67,
+            "itemtype": "property",
+            "name": "stages",
+            "type": "jQuery Object",
+            "default": "\"stage DOM nodes\"",
+            "class": "FacadeController",
+            "module": "UP",
+            "submodule": "App"
+        },
+        {
+            "file": "facade-controller.js",
+            "line": 74,
+            "itemtype": "property",
+            "name": "backLink",
+            "type": "jQuery Object",
+            "default": "\"backLink DOM node\"",
+            "class": "FacadeController",
+            "module": "UP",
+            "submodule": "App"
+        },
+        {
+            "file": "facade-controller.js",
+            "line": 81,
+            "itemtype": "property",
+            "name": "nextLink",
+            "type": "jQuery Object",
+            "default": "\"nextLink DOM node\"",
+            "class": "FacadeController",
+            "module": "UP",
+            "submodule": "App"
+        },
+        {
+            "file": "facade-controller.js",
+            "line": 88,
+            "itemtype": "property",
+            "name": "currentStage",
+            "type": "number",
+            "default": "\"0\"",
+            "class": "FacadeController",
+            "module": "UP",
+            "submodule": "App"
+        },
+        {
+            "file": "facade-controller.js",
+            "line": 95,
+            "itemtype": "property",
+            "name": "container",
+            "type": "jQuery Object",
+            "default": "\"container DOM node\"",
+            "class": "FacadeController",
+            "module": "UP",
+            "submodule": "App"
+        },
+        {
+            "file": "facade-controller.js",
+            "line": 102,
+            "itemtype": "property",
+            "name": "contents",
+            "type": "jQuery Object",
+            "default": "\"main-content DOM nodes\"",
+            "class": "FacadeController",
+            "module": "UP",
+            "submodule": "App"
+        },
+        {
+            "file": "facade-controller.js",
+            "line": 109,
+            "itemtype": "property",
+            "name": "mainContainer",
+            "type": "jQuery Object",
+            "default": "\"main-container DOM node\"",
+            "class": "FacadeController",
+            "module": "UP",
+            "submodule": "App"
+        },
+        {
+            "file": "facade-controller.js",
+            "line": 116,
+            "itemtype": "property",
+            "name": "downloadButton",
+            "type": "jQuery Object",
+            "default": "\"download button DOM node\"",
+            "class": "FacadeController",
+            "module": "UP",
+            "submodule": "App"
+        },
+        {
+            "file": "facade-controller.js",
+            "line": 123,
+            "itemtype": "property",
+            "name": "uploadButton",
+            "type": "jQuery Object",
+            "default": "\"upload button DOM node\"",
+            "class": "FacadeController",
+            "module": "UP",
+            "submodule": "App"
+        },
+        {
+            "file": "facade-controller.js",
+            "line": 135,
+            "itemtype": "method",
+            "name": "adjustContainer",
+            "class": "FacadeController",
+            "module": "UP",
+            "submodule": "App"
+        },
+        {
+            "file": "facade-controller.js",
+            "line": 147,
+            "itemtype": "method",
+            "name": "adjustActivityContainer",
+            "class": "FacadeController",
+            "module": "UP",
+            "submodule": "App"
+        },
+        {
+            "file": "facade-controller.js",
+            "line": 178,
+            "itemtype": "method",
+            "name": "setupEvents",
+            "class": "FacadeController",
+            "module": "UP",
+            "submodule": "App"
+        },
+        {
+            "file": "facade-controller.js",
+            "line": 258,
+            "itemtype": "method",
+            "name": "animate",
+            "params": [
+                {
+                    "name": "newIndex",
+                    "description": "",
+                    "type": "Number"
+                },
+                {
+                    "name": "oldIndex",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "class": "FacadeController",
+            "module": "UP",
+            "submodule": "App"
+        },
+        {
+            "file": "facade-controller.js",
+            "line": 275,
+            "itemtype": "method",
+            "name": "stagesEvent",
+            "params": [
+                {
+                    "name": "event",
+                    "description": "",
+                    "type": "Event"
+                },
+                {
+                    "name": "stageSelected",
+                    "description": "",
+                    "type": "JQuery Object"
+                }
+            ],
+            "class": "FacadeController",
+            "module": "UP",
+            "submodule": "App"
+        },
+        {
+            "file": "facade-controller.js",
+            "line": 290,
+            "itemtype": "method",
+            "name": "backlinkEvent",
+            "params": [
+                {
+                    "name": "event",
+                    "description": "",
+                    "type": "Event"
+                }
+            ],
+            "class": "FacadeController",
+            "module": "UP",
+            "submodule": "App"
+        },
+        {
+            "file": "facade-controller.js",
+            "line": 305,
+            "itemtype": "method",
+            "name": "nextlinkEvent",
+            "params": [
+                {
+                    "name": "event",
+                    "description": "",
+                    "type": "Event"
+                }
+            ],
+            "class": "FacadeController",
+            "module": "UP",
+            "submodule": "App"
+        },
+        {
+            "file": "facade-controller.js",
+            "line": 320,
+            "itemtype": "method",
+            "name": "adjustReszeWindowEvent",
+            "params": [
+                {
+                    "name": "event",
+                    "description": "",
+                    "type": "Event"
+                }
+            ],
+            "class": "FacadeController",
+            "module": "UP",
+            "submodule": "App"
+        },
+        {
+            "file": "file-manager.js",
+            "line": 10,
+            "itemtype": "method",
+            "name": "downloadFile",
+            "params": [
+                {
+                    "name": "csv",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "class": "FileManager",
+            "module": "UP",
+            "submodule": "Util"
+        },
+        {
+            "file": "file-manager.js",
+            "line": 38,
+            "itemtype": "method",
+            "name": "uploadFile",
+            "params": [
+                {
+                    "name": "file",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "csv",
+                "type": "String"
+            },
+            "class": "FileManager",
+            "module": "UP",
+            "submodule": "Util"
+        },
+        {
+            "file": "main.js",
+            "line": 9,
+            "description": "The App Delegate which acts like a orchestra conductor",
+            "itemtype": "property",
+            "name": "recommender",
+            "type": "Recommender",
+            "default": "\"new Recommender()\"",
+            "class": "Main",
+            "module": "UP",
+            "submodule": "Main"
+        },
+        {
+            "file": "main.js",
+            "line": 17,
+            "description": "The App Delegate Controller",
+            "itemtype": "property",
+            "name": "facadeController",
+            "type": "FacadeController",
+            "default": "\"new FacadeController(window, recommender)\"",
+            "class": "Main",
+            "module": "UP",
+            "submodule": "Main"
+        },
+        {
+            "file": "models.js",
+            "line": 10,
+            "itemtype": "method",
+            "name": "initialize",
+            "is_constructor": 1,
+            "class": "Slider",
+            "module": "UP",
+            "submodule": "Models"
+        },
+        {
+            "file": "models.js",
+            "line": 18,
+            "itemtype": "property",
+            "name": "sliderValue",
+            "type": "number",
+            "default": "\"constans.SLIDER_VALUE\"",
+            "class": "Slider",
+            "module": "UP",
+            "submodule": "Models"
+        },
+        {
+            "file": "models.js",
+            "line": 29,
+            "itemtype": "method",
+            "name": "updateValue",
+            "params": [
+                {
+                    "name": "newValue",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "class": "Slider",
+            "module": "UP",
+            "submodule": "Models"
+        },
+        {
+            "file": "models.js",
+            "line": 40,
+            "itemtype": "method",
+            "name": "getValue",
+            "return": {
+                "description": "sliderValue",
+                "type": "Number"
+            },
+            "class": "Slider",
+            "module": "UP",
+            "submodule": "Models"
+        },
+        {
+            "file": "models.js",
+            "line": 60,
+            "itemtype": "method",
+            "name": "initialize",
+            "is_constructor": 1,
+            "class": "Weight",
+            "module": "UP",
+            "submodule": "Models"
+        },
+        {
+            "file": "models.js",
+            "line": 68,
+            "itemtype": "property",
+            "name": "method",
+            "type": "Method",
+            "class": "Weight",
+            "module": "UP",
+            "submodule": "Models"
+        },
+        {
+            "file": "models.js",
+            "line": 74,
+            "itemtype": "property",
+            "name": "value",
+            "type": "number",
+            "class": "Weight",
+            "module": "UP",
+            "submodule": "Models"
+        },
+        {
+            "file": "models.js",
+            "line": 84,
+            "itemtype": "method",
+            "name": "incrementMethodValue",
+            "class": "Weight",
+            "module": "UP",
+            "submodule": "Models"
+        },
+        {
+            "file": "models.js",
+            "line": 94,
+            "itemtype": "method",
+            "name": "decrementMethodValue",
+            "class": "Weight",
+            "module": "UP",
+            "submodule": "Models"
+        },
+        {
+            "file": "models.js",
+            "line": 103,
+            "itemtype": "method",
+            "name": "compareNameWith",
+            "params": [
+                {
+                    "name": "name",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "equals",
+                "type": "Boolean"
+            },
+            "class": "Weight",
+            "module": "UP",
+            "submodule": "Models"
+        },
+        {
+            "file": "models.js",
+            "line": 113,
+            "itemtype": "method",
+            "name": "getMethodName",
+            "return": {
+                "description": "name",
+                "type": "String"
+            },
+            "class": "Weight",
+            "module": "UP",
+            "submodule": "Models"
+        },
+        {
+            "file": "models.js",
+            "line": 122,
+            "itemtype": "method",
+            "name": "getValue",
+            "return": {
+                "description": "value",
+                "type": "String"
+            },
+            "class": "Weight",
+            "module": "UP",
+            "submodule": "Models"
+        },
+        {
+            "file": "models.js",
+            "line": 131,
+            "itemtype": "method",
+            "name": "changeValue",
+            "params": [
+                {
+                    "name": "newValue",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "class": "Weight",
+            "module": "UP",
+            "submodule": "Models"
+        },
+        {
+            "file": "models.js",
+            "line": 140,
+            "itemtype": "method",
+            "name": "toCSV",
+            "return": {
+                "description": "csv",
+                "type": "String"
+            },
+            "class": "Weight",
+            "module": "UP",
+            "submodule": "Models"
+        },
+        {
+            "file": "models.js",
+            "line": 160,
+            "itemtype": "method",
+            "name": "initialize",
+            "params": [
+                {
+                    "name": "totalCounter",
+                    "description": "",
+                    "type": "TotalCounter"
+                }
+            ],
+            "is_constructor": 1,
+            "class": "Counter",
+            "module": "UP",
+            "submodule": "Models"
+        },
+        {
+            "file": "models.js",
+            "line": 169,
+            "itemtype": "property",
+            "name": "value",
+            "type": "number",
+            "default": "\"0\"",
+            "class": "Counter",
+            "module": "UP",
+            "submodule": "Models"
+        },
+        {
+            "file": "models.js",
+            "line": 176,
+            "itemtype": "property",
+            "name": "totalCounter",
+            "type": "TotalCounter",
+            "class": "Counter",
+            "module": "UP",
+            "submodule": "Models"
+        },
+        {
+            "file": "models.js",
+            "line": 186,
+            "itemtype": "method",
+            "name": "updateValue",
+            "params": [
+                {
+                    "name": "newValue",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "class": "Counter",
+            "module": "UP",
+            "submodule": "Models"
+        },
+        {
+            "file": "models.js",
+            "line": 212,
+            "itemtype": "method",
+            "name": "initialize",
+            "is_constructor": 1,
+            "class": "TotalCounter",
+            "module": "UP",
+            "submodule": "Models"
+        },
+        {
+            "file": "models.js",
+            "line": 220,
+            "itemtype": "property",
+            "name": "value",
+            "type": "number",
+            "default": "\"0\"",
+            "class": "TotalCounter",
+            "module": "UP",
+            "submodule": "Models"
+        },
+        {
+            "file": "models.js",
+            "line": 231,
+            "itemtype": "method",
+            "name": "increment",
+            "params": [
+                {
+                    "name": "amount",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "class": "TotalCounter",
+            "module": "UP",
+            "submodule": "Models"
+        },
+        {
+            "file": "models.js",
+            "line": 241,
+            "itemtype": "method",
+            "name": "decrement",
+            "params": [
+                {
+                    "name": "amount",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "class": "TotalCounter",
+            "module": "UP",
+            "submodule": "Models"
+        },
+        {
+            "file": "models.js",
+            "line": 262,
+            "itemtype": "method",
+            "name": "initialize",
+            "params": [
+                {
+                    "name": "name",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "description",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "url",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "is_constructor": 1,
+            "class": "Method",
+            "module": "UP",
+            "submodule": "Models"
+        },
+        {
+            "file": "models.js",
+            "line": 273,
+            "itemtype": "property",
+            "name": "name",
+            "type": "string",
+            "class": "Method",
+            "module": "UP",
+            "submodule": "Models"
+        },
+        {
+            "file": "models.js",
+            "line": 279,
+            "itemtype": "property",
+            "name": "description",
+            "type": "string",
+            "class": "Method",
+            "module": "UP",
+            "submodule": "Models"
+        },
+        {
+            "file": "models.js",
+            "line": 285,
+            "itemtype": "property",
+            "name": "url",
+            "type": "string",
+            "class": "Method",
+            "module": "UP",
+            "submodule": "Models"
+        },
+        {
+            "file": "models.js",
+            "line": 291,
+            "itemtype": "property",
+            "name": "weightCollection",
+            "type": "WeightCollection",
+            "default": "\"new WeightCollection\"",
+            "class": "Method",
+            "module": "UP",
+            "submodule": "Models"
+        },
+        {
+            "file": "models.js",
+            "line": 298,
+            "itemtype": "property",
+            "name": "selected",
+            "type": "boolean",
+            "default": "\"false\"",
+            "class": "Method",
+            "module": "UP",
+            "submodule": "Models"
+        },
+        {
+            "file": "models.js",
+            "line": 305,
+            "itemtype": "property",
+            "name": "value",
+            "type": "number",
+            "default": "\"0\"",
+            "class": "Method",
+            "module": "UP",
+            "submodule": "Models"
+        },
+        {
+            "file": "models.js",
+            "line": 312,
+            "itemtype": "property",
+            "name": "numIncrements",
+            "type": "number",
+            "default": "\"0\"",
+            "class": "Method",
+            "module": "UP",
+            "submodule": "Models"
+        },
+        {
+            "file": "models.js",
+            "line": 323,
+            "itemtype": "method",
+            "name": "incrementValue",
+            "params": [
+                {
+                    "name": "weightValue",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "class": "Method",
+            "module": "UP",
+            "submodule": "Models"
+        },
+        {
+            "file": "models.js",
+            "line": 347,
+            "itemtype": "method",
+            "name": "decrementValue",
+            "params": [
+                {
+                    "name": "weightValue",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "class": "Method",
+            "module": "UP",
+            "submodule": "Models"
+        },
+        {
+            "file": "models.js",
+            "line": 371,
+            "itemtype": "method",
+            "name": "normalizeValue",
+            "params": [
+                {
+                    "name": "totalValue",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "newTotalvalue",
+                "type": "Number"
+            },
+            "class": "Method",
+            "module": "UP",
+            "submodule": "Models"
+        },
+        {
+            "file": "models.js",
+            "line": 388,
+            "itemtype": "method",
+            "name": "denormalizeValue",
+            "return": {
+                "description": "totalValue",
+                "type": "Number"
+            },
+            "class": "Method",
+            "module": "UP",
+            "submodule": "Models"
+        },
+        {
+            "file": "models.js",
+            "line": 397,
+            "itemtype": "method",
+            "name": "addWeight",
+            "params": [
+                {
+                    "name": "weight",
+                    "description": "",
+                    "type": "Weight"
+                }
+            ],
+            "class": "Method",
+            "module": "UP",
+            "submodule": "Models"
+        },
+        {
+            "file": "models.js",
+            "line": 406,
+            "itemtype": "method",
+            "name": "addWeightCollection",
+            "params": [
+                {
+                    "name": "col",
+                    "description": "",
+                    "type": "WeightCollection"
+                }
+            ],
+            "class": "Method",
+            "module": "UP",
+            "submodule": "Models"
+        },
+        {
+            "file": "models.js",
+            "line": 418,
+            "itemtype": "method",
+            "name": "removeWeights",
+            "class": "Method",
+            "module": "UP",
+            "submodule": "Models"
+        },
+        {
+            "file": "models.js",
+            "line": 426,
+            "itemtype": "method",
+            "name": "changeOrderView",
+            "class": "Method",
+            "module": "UP",
+            "submodule": "Models"
+        },
+        {
+            "file": "models.js",
+            "line": 434,
+            "itemtype": "method",
+            "name": "hideMethod",
+            "params": [
+                {
+                    "name": "sliderValue",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "class": "Method",
+            "module": "UP",
+            "submodule": "Models"
+        },
+        {
+            "file": "models.js",
+            "line": 447,
+            "itemtype": "method",
+            "name": "changeSelection",
+            "class": "Method",
+            "module": "UP",
+            "submodule": "Models"
+        },
+        {
+            "file": "models.js",
+            "line": 456,
+            "itemtype": "method",
+            "name": "selectMethod",
+            "class": "Method",
+            "module": "UP",
+            "submodule": "Models"
+        },
+        {
+            "file": "models.js",
+            "line": 466,
+            "itemtype": "method",
+            "name": "selectMethodAndSubactivity",
+            "class": "Method",
+            "module": "UP",
+            "submodule": "Models"
+        },
+        {
+            "file": "models.js",
+            "line": 475,
+            "itemtype": "method",
+            "name": "unselectMethod",
+            "class": "Method",
+            "module": "UP",
+            "submodule": "Models"
+        },
+        {
+            "file": "models.js",
+            "line": 483,
+            "itemtype": "method",
+            "name": "isSelected",
+            "return": {
+                "description": "selected",
+                "type": "Boolean"
+            },
+            "class": "Method",
+            "module": "UP",
+            "submodule": "Models"
+        },
+        {
+            "file": "models.js",
+            "line": 492,
+            "itemtype": "method",
+            "name": "getName",
+            "return": {
+                "description": "name",
+                "type": "String"
+            },
+            "class": "Method",
+            "module": "UP",
+            "submodule": "Models"
+        },
+        {
+            "file": "models.js",
+            "line": 501,
+            "itemtype": "method",
+            "name": "getDescription",
+            "return": {
+                "description": "dscription",
+                "type": "String"
+            },
+            "class": "Method",
+            "module": "UP",
+            "submodule": "Models"
+        },
+        {
+            "file": "models.js",
+            "line": 510,
+            "itemtype": "method",
+            "name": "getURL",
+            "return": {
+                "description": "url",
+                "type": "String"
+            },
+            "class": "Method",
+            "module": "UP",
+            "submodule": "Models"
+        },
+        {
+            "file": "models.js",
+            "line": 519,
+            "itemtype": "method",
+            "name": "getValue",
+            "return": {
+                "description": "value",
+                "type": "Number"
+            },
+            "class": "Method",
+            "module": "UP",
+            "submodule": "Models"
+        },
+        {
+            "file": "models.js",
+            "line": 528,
+            "itemtype": "method",
+            "name": "getWeights",
+            "return": {
+                "description": "weightCollection",
+                "type": "WeightCollection"
+            },
+            "class": "Method",
+            "module": "UP",
+            "submodule": "Models"
+        },
+        {
+            "file": "models.js",
+            "line": 537,
+            "itemtype": "method",
+            "name": "compareNameWith",
+            "params": [
+                {
+                    "name": "name",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "equals",
+                "type": "Boolean"
+            },
+            "class": "Method",
+            "module": "UP",
+            "submodule": "Models"
+        },
+        {
+            "file": "models.js",
+            "line": 547,
+            "itemtype": "method",
+            "name": "weightsToCSV",
+            "return": {
+                "description": "output",
+                "type": "String"
+            },
+            "class": "Method",
+            "module": "UP",
+            "submodule": "Models"
+        },
+        {
+            "file": "models.js",
+            "line": 562,
+            "itemtype": "method",
+            "name": "toCSV",
+            "return": {
+                "description": "csv",
+                "type": "String"
+            },
+            "class": "Method",
+            "module": "UP",
+            "submodule": "Models"
+        },
+        {
+            "file": "models.js",
+            "line": 593,
+            "itemtype": "method",
+            "name": "initialize",
+            "params": [
+                {
+                    "name": "name",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "description",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "is_constructor": 1,
+            "class": "Constraint",
+            "module": "UP",
+            "submodule": "Models"
+        },
+        {
+            "file": "models.js",
+            "line": 603,
+            "itemtype": "property",
+            "name": "name",
+            "type": "string",
+            "class": "Constraint",
+            "module": "UP",
+            "submodule": "Models"
+        },
+        {
+            "file": "models.js",
+            "line": 609,
+            "itemtype": "property",
+            "name": "description",
+            "type": "string",
+            "class": "Constraint",
+            "module": "UP",
+            "submodule": "Models"
+        },
+        {
+            "file": "models.js",
+            "line": 615,
+            "itemtype": "property",
+            "name": "weightCollection",
+            "type": "WeightCollection",
+            "default": "\"new WeightCollection\"",
+            "class": "Constraint",
+            "module": "UP",
+            "submodule": "Models"
+        },
+        {
+            "file": "models.js",
+            "line": 622,
+            "itemtype": "property",
+            "name": "selected",
+            "type": "boolean",
+            "default": "\"false\"",
+            "class": "Constraint",
+            "module": "UP",
+            "submodule": "Models"
+        },
+        {
+            "file": "models.js",
+            "line": 633,
+            "itemtype": "method",
+            "name": "changeSelection",
+            "class": "Constraint",
+            "module": "UP",
+            "submodule": "Models"
+        },
+        {
+            "file": "models.js",
+            "line": 651,
+            "itemtype": "method",
+            "name": "selectConstraint",
+            "class": "Constraint",
+            "module": "UP",
+            "submodule": "Models"
+        },
+        {
+            "file": "models.js",
+            "line": 660,
+            "itemtype": "method",
+            "name": "unselectConstraint",
+            "class": "Constraint",
+            "module": "UP",
+            "submodule": "Models"
+        },
+        {
+            "file": "models.js",
+            "line": 669,
+            "itemtype": "method",
+            "name": "isSelected",
+            "return": {
+                "description": "selected",
+                "type": "Boolean"
+            },
+            "class": "Constraint",
+            "module": "UP",
+            "submodule": "Models"
+        },
+        {
+            "file": "models.js",
+            "line": 678,
+            "itemtype": "method",
+            "name": "incrementMethodsValue",
+            "class": "Constraint",
+            "module": "UP",
+            "submodule": "Models"
+        },
+        {
+            "file": "models.js",
+            "line": 688,
+            "itemtype": "method",
+            "name": "decrementMethodsValue",
+            "class": "Constraint",
+            "module": "UP",
+            "submodule": "Models"
+        },
+        {
+            "file": "models.js",
+            "line": 698,
+            "itemtype": "method",
+            "name": "addWeight",
+            "params": [
+                {
+                    "name": "weight",
+                    "description": "",
+                    "type": "Weight"
+                }
+            ],
+            "class": "Constraint",
+            "module": "UP",
+            "submodule": "Models"
+        },
+        {
+            "file": "models.js",
+            "line": 707,
+            "itemtype": "method",
+            "name": "addWeightCollection",
+            "params": [
+                {
+                    "name": "col",
+                    "description": "",
+                    "type": "WeightCollection"
+                }
+            ],
+            "class": "Constraint",
+            "module": "UP",
+            "submodule": "Models"
+        },
+        {
+            "file": "models.js",
+            "line": 719,
+            "itemtype": "method",
+            "name": "replaceWeights",
+            "params": [
+                {
+                    "name": "weights",
+                    "description": "",
+                    "type": "WeightCollection"
+                }
+            ],
+            "class": "Constraint",
+            "module": "UP",
+            "submodule": "Models"
+        },
+        {
+            "file": "models.js",
+            "line": 736,
+            "itemtype": "method",
+            "name": "compareNameWith",
+            "params": [
+                {
+                    "name": "name",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "equals",
+                "type": "Boolean"
+            },
+            "class": "Constraint",
+            "module": "UP",
+            "submodule": "Models"
+        },
+        {
+            "file": "models.js",
+            "line": 746,
+            "itemtype": "method",
+            "name": "getName",
+            "return": {
+                "description": "name",
+                "type": "String"
+            },
+            "class": "Constraint",
+            "module": "UP",
+            "submodule": "Models"
+        },
+        {
+            "file": "models.js",
+            "line": 755,
+            "itemtype": "method",
+            "name": "getWeights",
+            "return": {
+                "description": "weightCollection",
+                "type": "WeightCollection"
+            },
+            "class": "Constraint",
+            "module": "UP",
+            "submodule": "Models"
+        },
+        {
+            "file": "models.js",
+            "line": 764,
+            "itemtype": "method",
+            "name": "toCSV",
+            "return": {
+                "description": "csv",
+                "type": "String"
+            },
+            "class": "Constraint",
+            "module": "UP",
+            "submodule": "Models"
+        },
+        {
+            "file": "models.js",
+            "line": 784,
+            "itemtype": "method",
+            "name": "initialize",
+            "params": [
+                {
+                    "name": "name",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "description",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "methodCollection",
+                    "description": "",
+                    "type": "MethodCollection"
+                }
+            ],
+            "is_constructor": 1,
+            "class": "Subactivity",
+            "module": "UP",
+            "submodule": "Models"
+        },
+        {
+            "file": "models.js",
+            "line": 795,
+            "itemtype": "property",
+            "name": "name",
+            "type": "string",
+            "class": "Subactivity",
+            "module": "UP",
+            "submodule": "Models"
+        },
+        {
+            "file": "models.js",
+            "line": 801,
+            "itemtype": "property",
+            "name": "description",
+            "type": "string",
+            "class": "Subactivity",
+            "module": "UP",
+            "submodule": "Models"
+        },
+        {
+            "file": "models.js",
+            "line": 807,
+            "itemtype": "property",
+            "name": "methodCollection",
+            "type": "MethodCollection",
+            "class": "Subactivity",
+            "module": "UP",
+            "submodule": "Models"
+        },
+        {
+            "file": "models.js",
+            "line": 813,
+            "itemtype": "property",
+            "name": "selected",
+            "type": "boolean",
+            "default": "\"false\"",
+            "class": "Subactivity",
+            "module": "UP",
+            "submodule": "Models"
+        },
+        {
+            "file": "models.js",
+            "line": 827,
+            "itemtype": "method",
+            "name": "changeSelection",
+            "class": "Subactivity",
+            "module": "UP",
+            "submodule": "Models"
+        },
+        {
+            "file": "models.js",
+            "line": 848,
+            "itemtype": "method",
+            "name": "selectSubactivity",
+            "class": "Subactivity",
+            "module": "UP",
+            "submodule": "Models"
+        },
+        {
+            "file": "models.js",
+            "line": 857,
+            "itemtype": "method",
+            "name": "unselectSubactivity",
+            "class": "Subactivity",
+            "module": "UP",
+            "submodule": "Models"
+        },
+        {
+            "file": "models.js",
+            "line": 866,
+            "itemtype": "method",
+            "name": "sortMethods",
+            "class": "Subactivity",
+            "module": "UP",
+            "submodule": "Models"
+        },
+        {
+            "file": "models.js",
+            "line": 874,
+            "itemtype": "method",
+            "name": "changeOrderMethodsView",
+            "class": "Subactivity",
+            "module": "UP",
+            "submodule": "Models"
+        },
+        {
+            "file": "models.js",
+            "line": 884,
+            "itemtype": "method",
+            "name": "hideMethods",
+            "params": [
+                {
+                    "name": "sliderValue",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "class": "Subactivity",
+            "module": "UP",
+            "submodule": "Models"
+        },
+        {
+            "file": "models.js",
+            "line": 897,
+            "itemtype": "method",
+            "name": "getMethods",
+            "return": {
+                "description": "methodCollection",
+                "type": "MethodCollection"
+            },
+            "class": "Subactivity",
+            "module": "UP",
+            "submodule": "Models"
+        },
+        {
+            "file": "models.js",
+            "line": 906,
+            "itemtype": "method",
+            "name": "getSelectedMethods",
+            "return": {
+                "description": "methodCollection",
+                "type": "MethodCollection"
+            },
+            "class": "Subactivity",
+            "module": "UP",
+            "submodule": "Models"
+        },
+        {
+            "file": "models.js",
+            "line": 923,
+            "itemtype": "method",
+            "name": "countSelectedMethods",
+            "return": {
+                "description": "count",
+                "type": "Number"
+            },
+            "class": "Subactivity",
+            "module": "UP",
+            "submodule": "Models"
+        },
+        {
+            "file": "models.js",
+            "line": 932,
+            "itemtype": "method",
+            "name": "isSelected",
+            "return": {
+                "description": "selected",
+                "type": "Boolean"
+            },
+            "class": "Subactivity",
+            "module": "UP",
+            "submodule": "Models"
+        },
+        {
+            "file": "models.js",
+            "line": 952,
+            "itemtype": "method",
+            "name": "initialize",
+            "params": [
+                {
+                    "name": "name",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "description",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "counter",
+                    "description": "",
+                    "type": "Counter"
+                },
+                {
+                    "name": "subactivitiesCollection",
+                    "description": "",
+                    "type": "SubactivityCollection"
+                }
+            ],
+            "is_constructor": 1,
+            "class": "Activity",
+            "module": "UP",
+            "submodule": "Models"
+        },
+        {
+            "file": "models.js",
+            "line": 964,
+            "itemtype": "property",
+            "name": "name",
+            "type": "string",
+            "class": "Activity",
+            "module": "UP",
+            "submodule": "Models"
+        },
+        {
+            "file": "models.js",
+            "line": 970,
+            "itemtype": "property",
+            "name": "description",
+            "type": "string",
+            "class": "Activity",
+            "module": "UP",
+            "submodule": "Models"
+        },
+        {
+            "file": "models.js",
+            "line": 976,
+            "itemtype": "property",
+            "name": "counter",
+            "type": "Counter",
+            "class": "Activity",
+            "module": "UP",
+            "submodule": "Models"
+        },
+        {
+            "file": "models.js",
+            "line": 982,
+            "itemtype": "property",
+            "name": "subactivitiesCollection",
+            "type": "SubactivityCollection",
+            "class": "Activity",
+            "module": "UP",
+            "submodule": "Models"
+        },
+        {
+            "file": "models.js",
+            "line": 995,
+            "itemtype": "method",
+            "name": "updateView",
+            "class": "Activity",
+            "module": "UP",
+            "submodule": "Models"
+        },
+        {
+            "file": "models.js",
+            "line": 1014,
+            "itemtype": "method",
+            "name": "sortMethods",
+            "class": "Activity",
+            "module": "UP",
+            "submodule": "Models"
+        },
+        {
+            "file": "models.js",
+            "line": 1024,
+            "itemtype": "method",
+            "name": "changeOrderMethodsView",
+            "class": "Activity",
+            "module": "UP",
+            "submodule": "Models"
+        },
+        {
+            "file": "models.js",
+            "line": 1034,
+            "itemtype": "method",
+            "name": "hideMethods",
+            "params": [
+                {
+                    "name": "sliderValue",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "class": "Activity",
+            "module": "UP",
+            "submodule": "Models"
+        },
+        {
+            "file": "models.js",
+            "line": 1047,
+            "itemtype": "method",
+            "name": "updateMethods",
+            "params": [
+                {
+                    "name": "sliderValue",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "class": "Activity",
+            "module": "UP",
+            "submodule": "Models"
+        },
+        {
+            "file": "models.js",
+            "line": 1062,
+            "itemtype": "method",
+            "name": "getMethods",
+            "return": {
+                "description": "methodCollection",
+                "type": "MethodCollection"
+            },
+            "class": "Activity",
+            "module": "UP",
+            "submodule": "Models"
+        },
+        {
+            "file": "models.js",
+            "line": 1079,
+            "itemtype": "method",
+            "name": "getSelectedMethods",
+            "return": {
+                "description": "methodCollection",
+                "type": "MethodCollection"
+            },
+            "class": "Activity",
+            "module": "UP",
+            "submodule": "Models"
+        },
+        {
+            "file": "models.js",
+            "line": 1098,
+            "itemtype": "method",
+            "name": "countSelectedMethods",
+            "return": {
+                "description": "count",
+                "type": "Number"
+            },
+            "class": "Activity",
+            "module": "UP",
+            "submodule": "Models"
+        },
+        {
+            "file": "models.js",
+            "line": 1115,
+            "itemtype": "method",
+            "name": "isSelected",
+            "class": "Activity",
+            "module": "UP",
+            "submodule": "Models"
+        },
+        {
+            "file": "plan.js",
+            "line": 10,
+            "itemtype": "method",
+            "name": "initialize",
+            "params": [
+                {
+                    "name": "constraints",
+                    "description": "",
+                    "type": "ConstraintCollection"
+                },
+                {
+                    "name": "activities",
+                    "description": "",
+                    "type": "ActivityCollection"
+                }
+            ],
+            "is_constructor": 1,
+            "class": "Plan",
+            "module": "UP",
+            "submodule": "Plan"
+        },
+        {
+            "file": "plan.js",
+            "line": 20,
+            "itemtype": "property",
+            "name": "constraints",
+            "type": "ConstraintCollection",
+            "class": "Plan",
+            "module": "UP",
+            "submodule": "Plan"
+        },
+        {
+            "file": "plan.js",
+            "line": 26,
+            "itemtype": "property",
+            "name": "activities",
+            "type": "ActivityCollection",
+            "class": "Plan",
+            "module": "UP",
+            "submodule": "Plan"
+        },
+        {
+            "file": "plan.js",
+            "line": 36,
+            "itemtype": "method",
+            "name": "getConstraints",
+            "return": {
+                "description": "constraints",
+                "type": "ConstraintCollection"
+            },
+            "class": "Plan",
+            "module": "UP",
+            "submodule": "Plan"
+        },
+        {
+            "file": "plan.js",
+            "line": 45,
+            "itemtype": "method",
+            "name": "getSelectedConstraints",
+            "return": {
+                "description": "constraints",
+                "type": "ConstraintCollection"
+            },
+            "class": "Plan",
+            "module": "UP",
+            "submodule": "Plan"
+        },
+        {
+            "file": "plan.js",
+            "line": 62,
+            "itemtype": "method",
+            "name": "getActivities",
+            "return": {
+                "description": "activities",
+                "type": "ActivityCollection"
+            },
+            "class": "Plan",
+            "module": "UP",
+            "submodule": "Plan"
+        },
+        {
+            "file": "plan.js",
+            "line": 71,
+            "itemtype": "method",
+            "name": "getMethods",
+            "return": {
+                "description": "methods",
+                "type": "MethodCollection"
+            },
+            "class": "Plan",
+            "module": "UP",
+            "submodule": "Plan"
+        },
+        {
+            "file": "plan.js",
+            "line": 88,
+            "itemtype": "method",
+            "name": "getSelectedMethods",
+            "return": {
+                "description": "methods",
+                "type": "MethodCollection"
+            },
+            "class": "Plan",
+            "module": "UP",
+            "submodule": "Plan"
+        },
+        {
+            "file": "plan.js",
+            "line": 105,
+            "itemtype": "method",
+            "name": "getNewMethods",
+            "return": {
+                "description": "methods",
+                "type": "MethodCollection"
+            },
+            "class": "Plan",
+            "module": "UP",
+            "submodule": "Plan"
+        },
+        {
+            "file": "plan.js",
+            "line": 114,
+            "itemtype": "method",
+            "name": "setNewMethods",
+            "params": [
+                {
+                    "name": "methods",
+                    "description": "",
+                    "type": "MethodCollection"
+                }
+            ],
+            "class": "Plan",
+            "module": "UP",
+            "submodule": "Plan"
+        },
+        {
+            "file": "planner.js",
+            "line": 10,
+            "itemtype": "method",
+            "name": "initialize",
+            "is_constructor": 1,
+            "class": "Planner",
+            "module": "UP",
+            "submodule": "Util"
+        },
+        {
+            "file": "planner.js",
+            "line": 18,
+            "itemtype": "property",
+            "name": "slider",
+            "type": "Slider",
+            "default": "\"new Slider()\"",
+            "class": "Planner",
+            "module": "UP",
+            "submodule": "Util"
+        },
+        {
+            "file": "planner.js",
+            "line": 37,
+            "itemtype": "method",
+            "name": "loadInitPlan",
+            "params": [
+                {
+                    "name": "plan",
+                    "description": "",
+                    "type": "Plan"
+                }
+            ],
+            "class": "Planner",
+            "module": "UP",
+            "submodule": "Util"
+        },
+        {
+            "file": "planner.js",
+            "line": 45,
+            "itemtype": "property",
+            "name": "plan",
+            "type": "Plan",
+            "class": "Planner",
+            "module": "UP",
+            "submodule": "Util"
+        },
+        {
+            "file": "planner.js",
+            "line": 67,
+            "itemtype": "method",
+            "name": "loadNewPlan",
+            "params": [
+                {
+                    "name": "plan",
+                    "description": "",
+                    "type": "Plan"
+                }
+            ],
+            "class": "Planner",
+            "module": "UP",
+            "submodule": "Util"
+        },
+        {
+            "file": "planner.js",
+            "line": 102,
+            "itemtype": "method",
+            "name": "savePlan",
+            "return": {
+                "description": "plan",
+                "type": "Plan"
+            },
+            "class": "Planner",
+            "module": "UP",
+            "submodule": "Util"
+        },
+        {
+            "file": "planner.js",
+            "line": 115,
+            "itemtype": "method",
+            "name": "replaceConstraintsWeights",
+            "params": [
+                {
+                    "name": "newCol",
+                    "description": "",
+                    "type": "ConstraintCollection"
+                },
+                {
+                    "name": "oldCol",
+                    "description": "",
+                    "type": "ConstraintCollection"
+                }
+            ],
+            "class": "Planner",
+            "module": "UP",
+            "submodule": "Util"
+        },
+        {
+            "file": "planner.js",
+            "line": 131,
+            "itemtype": "method",
+            "name": "replaceMethodsWeights",
+            "params": [
+                {
+                    "name": "newCol",
+                    "description": "",
+                    "type": "MethodCollection"
+                },
+                {
+                    "name": "oldCol",
+                    "description": "",
+                    "type": "MethodCollection"
+                }
+            ],
+            "class": "Planner",
+            "module": "UP",
+            "submodule": "Util"
+        },
+        {
+            "file": "planner.js",
+            "line": 148,
+            "itemtype": "method",
+            "name": "hideMethods",
+            "class": "Planner",
+            "module": "UP",
+            "submodule": "Util"
+        },
+        {
+            "file": "recommender.js",
+            "line": 10,
+            "itemtype": "method",
+            "name": "initialize",
+            "is_constructor": 1,
+            "class": "Recommender",
+            "module": "UP",
+            "submodule": "App"
+        },
+        {
+            "file": "recommender.js",
+            "line": 18,
+            "itemtype": "property",
+            "name": "planner",
+            "type": "Planner",
+            "default": "\"new Planner()\"",
+            "class": "Recommender",
+            "module": "UP",
+            "submodule": "App"
+        },
+        {
+            "file": "recommender.js",
+            "line": 25,
+            "itemtype": "property",
+            "name": "fileManager",
+            "type": "FileManager",
+            "default": "\"new FileManager()\"",
+            "class": "Recommender",
+            "module": "UP",
+            "submodule": "App"
+        },
+        {
+            "file": "recommender.js",
+            "line": 32,
+            "itemtype": "property",
+            "name": "csvParser",
+            "type": "CSVParser",
+            "default": "\"new CSVParser()\"",
+            "class": "Recommender",
+            "module": "UP",
+            "submodule": "App"
+        },
+        {
+            "file": "recommender.js",
+            "line": 39,
+            "itemtype": "property",
+            "name": "xmlParser",
+            "type": "XMLParser",
+            "default": "\"new XMLParser()\"",
+            "class": "Recommender",
+            "module": "UP",
+            "submodule": "App"
+        },
+        {
+            "file": "recommender.js",
+            "line": 59,
+            "itemtype": "method",
+            "name": "downloadPlan",
+            "class": "Recommender",
+            "module": "UP",
+            "submodule": "App"
+        },
+        {
+            "file": "recommender.js",
+            "line": 71,
+            "itemtype": "method",
+            "name": "uploadPlan",
+            "params": [
+                {
+                    "name": "file",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
+            "class": "Recommender",
+            "module": "UP",
+            "submodule": "App"
+        },
+        {
+            "file": "xml-parser.js",
+            "line": 10,
+            "itemtype": "method",
+            "name": "initialize",
+            "params": [
+                {
+                    "name": "pathToXML",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "is_constructor": 1,
+            "class": "XMLParser",
+            "module": "UP",
+            "submodule": "Util"
+        },
+        {
+            "file": "xml-parser.js",
+            "line": 19,
+            "itemtype": "property",
+            "name": "xmlPath",
+            "type": "string",
+            "class": "XMLParser",
+            "module": "UP",
+            "submodule": "Util"
+        },
+        {
+            "file": "xml-parser.js",
+            "line": 47,
+            "itemtype": "method",
+            "name": "parseConstraints",
+            "params": [
+                {
+                    "name": "constraintCollection",
+                    "description": "",
+                    "type": "ConstraintCollection"
+                }
+            ],
+            "class": "XMLParser",
+            "module": "UP",
+            "submodule": "Util"
+        },
+        {
+            "file": "xml-parser.js",
+            "line": 74,
+            "itemtype": "method",
+            "name": "parseMethodModels",
+            "params": [
+                {
+                    "name": "methodCollection",
+                    "description": "",
+                    "type": "MethodCollection"
+                }
+            ],
+            "class": "XMLParser",
+            "module": "UP",
+            "submodule": "Util"
+        },
+        {
+            "file": "xml-parser.js",
+            "line": 93,
+            "itemtype": "method",
+            "name": "createTotalCounter",
+            "return": {
+                "description": "totalCounter",
+                "type": "TotalCounter"
+            },
+            "class": "XMLParser",
+            "module": "UP",
+            "submodule": "Util"
+        },
+        {
+            "file": "xml-parser.js",
+            "line": 109,
+            "itemtype": "method",
+            "name": "parse",
+            "return": {
+                "description": "newPlan",
+                "type": "Plan"
+            },
+            "class": "XMLParser",
+            "module": "UP",
+            "submodule": "Util"
+        }
+    ]
+}

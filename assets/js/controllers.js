@@ -73,7 +73,8 @@
 	UP.ConstraintController = Backbone.Controller.extend({
 	
 		events: {
-			"click" : "constraintSelected"
+			"click .label-constraint" : "labelClicked",
+			"click input"             : "inputClicked"
 		},
 		
 		
@@ -81,12 +82,15 @@
 		 * @method constraintSelected
 		 * @param event {Event} The jQuery event fired after a constraint has been clicked
 		 */
-		constraintSelected: function(event) {
-			event.preventDefault();
+		labelClicked: function(event) {
+			var input = this.$el.find('input');
+			activateCheckbox(input);
 
-			var checkbox = this.$el.find('.checkboxWrapper');
-			activateCheckbox(checkbox);
-			
+			this.model.changeSelection();
+		},
+
+
+		inputClicked: function(event) {
 			this.model.changeSelection();
 		}
 		
@@ -115,28 +119,6 @@
 			 */
 			this.model.on('change', this.updateCounter, this);
 
-			/**
-			 * The view (DOM node) associated to the controller
-			 * @property model
-			 * @type jQuery Object
-			 */
-			this.$el.on("click", this.scrollToList);
-		},
-
-
-		/**
-		 * @method scrollToList
-		 * @param event {Event} The jQuery event fired after a constraint has been clicked
-		 */
-		scrollToList: function(event) {
-			event.preventDefault();
-
-			var linkCounter = $(this);
-
-			var section = linkCounter.attr('href');
-			var sectionPosition = Math.floor($(section).offset().top);
-
-			$('html, body').animate({scrollTop: sectionPosition}, UP.constants.FADE_SPEED);
 		},
 		
 		
@@ -145,7 +127,7 @@
 		 */
 		updateCounter: function() {
 			var newValue = this.model.get('value');
-			this.$el.find('.filter-count').text(newValue);
+			this.$el.text(newValue);
 		}
 		
 	});
@@ -224,33 +206,35 @@
 			// Event Handlers
 
 			var self = this;
-			function checkboxAnimation(e) {
-				self.checkboxEvent(e);
+			function checkboxAnimation() {
+				self.checkboxEvent();
 			}
 
-			this.methodView.find('.checkboxWrapper').on("click", checkboxAnimation);
-			this.planView.find('.checkboxWrapper').on("click", checkboxAnimation);
+			this.methodView.find('input').on("click", checkboxAnimation);
+			this.planView.find('input').on("click", checkboxAnimation);
 
 			this.methodView.find('.method-info').on("click", this.displayInfoEvent);
 			this.planView.find('.method-info').on("click", this.displayInfoEvent);
 
+			this.initializeURL();
+		},
 
-			// Initialize visual text description
 
+		initializeURL: function() {
 			var name = this.model.getName();
 			var description = '<p>' + this.model.getDescription() + '</p>';
 			var url = this.model.getURL();
 
-			var texturl = '<a href="' + url + '">More Information on ' + name + '</a>';
-			description += texturl;
+			if (url != "") {
+				var texturl = '<a target="_blank" href="' + url + '">More Information on ' + name + '</a>';
+				description += texturl;
+			}
 
-			
 			this.methodView.find('.method-description').html( description );
 			this.planView.find('.method-description').html( description );
+		},		
 
-		},
 
-		
 		/**
 		 * @method render
 		 */
@@ -338,14 +322,8 @@
 		 * @method checkboxEvent
 		 * @param event {Event} The jQuery event fired
 		 */
-		checkboxEvent: function(event) {
-			event.preventDefault();
-
-			var checkbox = this.methodView.find('.checkboxWrapper');
-			activateCheckbox(checkbox);
-
-			var method = checkbox.parent('.method');
-			this.disableMethodAnimation(method);
+		checkboxEvent: function() {
+			this.disableMethodAnimation();
 
 			this.model.changeSelection();
 			this.planView.toggleClass('visible hidden');
@@ -389,11 +367,12 @@
 		 * @method disableMethodAnimation
 		 * @param li {jQuery Object} The method which receives a graphic animation
 		 */
-		disableMethodAnimation: function(li) {
+		disableMethodAnimation: function() {
 			var FADE_SPEED = UP.constants.FADE_SPEED;
 			var DISABLED_OPACITY = UP.constants.DISABLED_OPACITY;
 
 			var CSSClass = 'disabled';
+			var li  = this.methodView;
 			var bar = li.find('.bar');
 			
 			if (li.hasClass(CSSClass)) {
@@ -485,11 +464,14 @@
 			this.model.on('updateLastMethod', this.updateLastMethod, this);
 			this.model.on('changeDisplayList', this.displayList, this);
 
-			this.item.on("click", function(e) {
-				e.preventDefault();
-				self.model.changeSelection();	// Actualizar el modelo de 'Subactivity' llamando a su método select
-				self.displayList();
-			});
+			function selectSubactivity() {
+				var element = $(this);
+				self.selectList(element);
+			}
+
+			this.item.find('input').on('click', selectSubactivity);
+			this.item.find('label').on('click', selectSubactivity);
+
 
 			function expandAnimation() {
 				self.expandList();
@@ -499,14 +481,28 @@
 			this.listPlan.find('.expandable').on('click', expandAnimation);
 		},
 
-		
+
+		selectList: function(element) {
+			if ( element.is('label') ) {
+				var input = this.item.find('input');
+				activateCheckbox(input);
+			}
+
+			this.model.changeSelection();	// Actualizar el modelo de 'Subactivity' llamando a su método select
+			this.displayList();
+		},
+
+
 		/**
 		 * @method isVisible
 		 */
 		displayList: function() {
-			var checkbox = this.item.find('.checkboxWrapper');
-			activateCheckbox(checkbox);
-			
+/*
+			if ( this.model.isSelected() ) {
+				var input = this.item.find('input');
+				activateCheckbox(input);
+			}
+*/
 			this.list.toggleClass('hidden');
 			this.listPlan.toggleClass('hidden');
 
@@ -613,19 +609,25 @@
 			 * @property tab
 			 * @type jQuery Object
 			 */
-			this.tab      = this.options.tab;					// View: Tab above the panel
+			this.tab      = this.options.tab;				// View: Tab above the panel
 			
 			/**
 			 * @property list
 			 * @type jQuery Object
 			 */
-			this.list     = this.options.list;					// View: Subactivities List on 'Methods' Window
+			this.list     = this.options.list;				// View: Subactivities List on 'Methods' Window
 			
 			/**
 			 * @property listPlan
 			 * @type jQuery Object
 			 */
 			this.listPlan = this.options.listPlan;				// View: Subactivities List on 'Plan' Window
+
+			/**
+			 * @property link
+			 * @type jQuery Object
+			 */
+			this.link = this.options.link;					// View: Subactivities List on 'Plan' Window
 
 			/**
 			 * @property expandButton
@@ -646,12 +648,16 @@
 			this.subactivities = [];
 
 			
+
+			// Model Events 
 			
 			this.model.on('hideHeader', this.hideHeader, this);
 			this.model.on('showHeader', this.showHeader, this);
 
 
-			// Handle Events
+
+			// Handle View Events
+
 			var self = this;
 
 			this.expandButton.on("click", function(event) {
@@ -678,6 +684,26 @@
 			this.list.children('.expandable').on('click', expandAnimation);
 			this.listPlan.children('.expandable').on('click', expandAnimation);
 
+
+			this.link.on('click', this.scrollToList);
+			this.linksActivities = $('.links-activities');
+
+		},
+
+
+		/**
+		 * @method scrollToList
+		 * @param event {Event} The jQuery event fired after a constraint has been clicked
+		 */
+		scrollToList: function(event) {
+			event.preventDefault();
+
+			var linkCounter = $(this);
+
+			var section = linkCounter.attr('href');
+			var sectionPosition = Math.floor($(section).offset().top);
+
+			$('html, body').animate({scrollTop: sectionPosition}, UP.constants.FADE_SPEED);
 		},
 
 		
@@ -747,6 +773,7 @@
 
 			header.addClass('collapsed');
 			headerPlan.addClass('collapsed');
+
 		},
 
 		
@@ -778,6 +805,7 @@
 		 */
 		expandButtonEvent: function(event) {
 			this.expandList();
+			this.linksActivities.show(UP.constants.FADE_SPEED);
 		},
 
 		
@@ -787,6 +815,7 @@
 		 */
 		collapseButtonEvent: function(event) {
 			this.collapseList();
+			this.linksActivities.hide(UP.constants.FADE_SPEED);
 		},
 
 
@@ -810,10 +839,14 @@
 	});
 
 
-	/* Auxiliary Function */
+	function activateCheckbox(input) {
+		var checked = input.attr('checked');
 
-	function activateCheckbox(obj) {
-		obj.find('a').toggleClass('checked');
+		if ( checked ) {
+			input.removeAttr('checked');
+		} else {
+			input.attr({ 'checked' : true });
+		}
 	}
 
 
