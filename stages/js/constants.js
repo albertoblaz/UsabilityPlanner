@@ -10,6 +10,7 @@
 	 */
 	Backbone.Controller = Backbone.View.extend({});
 
+
 		
 	function assets(pathfile) {
 		var ASSETS_FOLDER = "../assets/";
@@ -17,12 +18,12 @@
 	};
 
 
-
 	/**
 	 * @module UP
 	 * @submodule Constants
 	 */	
 	UP.constants = {
+
 	
 		/**
 		 * @property ACTIVITY_SPEED
@@ -67,7 +68,7 @@
 		 * @type number
 		 */
 		METHOD_HEIGHT    : 25,
-	
+		
 		
 		/**
 		 * @property PHP_DOWNLOAD
@@ -85,7 +86,7 @@
 		 * @type string
 		 */
 		PHP_UPLOAD       : assets('php/upload.php'),
-
+		
 
 		/**
 		 * @property PLAN_FILE
@@ -93,9 +94,9 @@
 		 * @final
 		 * @type string
 		 */
-		PLAN_FILE        : 'plan.csv', // assets('plan.csv'),
-		
-		
+		PLAN_FILE        : assets('plan.csv'),
+	
+
 		/**
 		 * @property SLIDE_SPEED
 		 * @static
@@ -143,7 +144,8 @@
 		 * @final
 		 * @type string
 		 */
-		XML              : assets('xml/stages.xml')
+		XML              : assets('xml/stages.xml'),
 		
 	};
-	
+
+

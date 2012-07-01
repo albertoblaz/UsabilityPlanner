@@ -1,8 +1,43 @@
-Method;Value;Need quick results;Very restricted budget;Usability important;Uncertain specification;Difficult to involve users;No access to users;Some users have disabilities;Mostly first time users;Complex task;Many tasks;Safety or business critical system;Organisational changes needed;Efficiency or accuracy is important;Adaptation of an existing system;A well understood product;Customisable product;General purpose: used in many different contexts;No usability expertise available
-Photo Study;101;4;4;5;5;2;1;4;3;4;4;3;3;3;3;2;3;4;2
-Thinking Aloud;101;4;4;4;4;2;1;3;3;4;3;3;3;4;3;3;3;3;3
-Critical Incident Technique;101;4;4;4;3;2;1;3;3;3;3;4;3;3;3;3;3;3;2
-Personas;102;3;3;4;5;5;5;4;3;3;3;4;4;3;4;3;3;4;2
-Satisfaction Questionnaire;102;4;5;5;3;2;1;3;3;3;3;4;4;3;3;3;3;3;3
-Paper Protoyping;103;5;5;5;5;2;1;3;4;5;5;5;4;5;4;2;4;3;3
-Wireframe;104;5;5;5;5;3;2;3;4;5;5;5;3;5;3;3;3;3;4
+Activities;Subactivities;Methods;Selected;Recommendation;
+Concept;Envisioning opportunities;Preliminary field visit;Yes;strongly recommended;
+Concept;Envisioning opportunities;Photo study;Yes;strongly recommended;
+Concept;Envisioning opportunities;Braindrawing;No;strongly recommended;
+Concept;Envisioning opportunities;Brainstorming;Yes;strongly recommended;
+Concept;System scoping;Consult stakeholders;Yes;strongly recommended;
+Concept;System scoping;Context of use analysis;Yes;strongly recommended;
+
+
+Filter Value;0;
+
+
+Constraints;Selected;
+Need quick results;No;
+Very restricted budget;Yes;
+Usability important;Yes;
+Uncertain specification;No;
+Difficult to involve users;No;
+No access to users;No;
+Some users have disabilities;No;
+Mostly first time users;No;
+Complex task;No;
+Many tasks;No;
+Safety or business critical system;No;
+Organisational changes needed;No;
+Efficiency or accuracy is important;No;
+Adaptation of an existing system;No;
+A well understood product;No;
+Customisable product;No;
+General purpose: used in many different contexts;No;
+No usability expertise available;No;
+
+
+
+Activities;Subactivities;Cost Benefits Selected;
+Concept;Envisioning opportunities;Development: reduced time/costs;
+Concept;Envisioning opportunities;Product usability: improved product sales;
+Concept;Envisioning opportunities;Web site usability: improved usage/sales;
+Concept;System scoping;Development: reduced time/costs;
+Concept;System scoping;Product usability: improved product sales;
+
+
+

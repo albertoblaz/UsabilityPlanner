@@ -78,6 +78,11 @@
 			return( arrData );
 		},
 
+
+		organizeDataInArrays: function(csv) {
+			this.CSVToArray(csv);
+		},
+
 		
 		/**
 		 * @method generatePlanFrom
@@ -88,39 +93,108 @@
 			var data = this.CSVToArray(csv);
 
 			var newConstraints = new UP.ConstraintCollection();
-			var newMethods     = new UP.MethodCollection();
+			var newActivities  = new UP.ActivityCollection();
+			var sliderValue;
 
-			var constraintsName = data[0];
-			var name, c;
-			for ( var i=2; i < constraintsName.length; i++) {
-				name = constraintsName[i];
-				c = new UP.Constraint(name);
-				newConstraints.add( c );
-			}
+			var actName, subName, methodName, constraintName;
+			var oldActName, oldSubName, title;
 
-			var dataMethod, name, m;
-			for ( var i=1; i < data.length; i++ ) {
-				dataMethod = data[i];
-				name = dataMethod[0];
-				m = new UP.Method( name );
+			var activity, subactivity, method, selected;
 
+			var arrayConstraintsName = [];
+			var arrayMethodsName = [];
 
-				var weightValue, w, c;
-				for ( var j=2; j < dataMethod.length; j++ ) {
-					weightValue = parseInt( dataMethod[j] );
-					w = new UP.Weight( m, weightValue);
-					m.addWeight( w );
-					c = newConstraints.at( j-2 );
-					c.addWeight( w );
+			var row;
+			for ( var i=0; i < data.length; i++ ) {
+				row = data[i];
+
+				title = row[0];
+				if (title === "Filter Value") {
+					sliderValue = row[1];
+				} else if (title != "Activities" && title != "Constraints") {
+
+					if ( row.length === 6) {		// Methods
+						actName    = row[0];
+						subName    = row[1];
+						methodName = row[2];
+						selected   = row[3];
+
+						if ( oldActName != actName ) {
+							subactivity = new UP.Subactivity(subName);
+							activity    = new UP.Activity(actName);
+							activity.addSubactivity(subactivity);
+							newActivities.add(activity);
+
+						} else if ( oldSubName != subName ) {
+							subactivity = new UP.Subactivity(subName);
+							activity.addSubactivity(subactivity);
+						}
+
+						method = new UP.Method(methodName, "", "", selected);
+						subactivity.addMethod(method);
+
+						if ( selected === "Yes" ) {
+							arrayMethodsName.push( methodName );
+						}
+
+						oldActName = actName;
+						oldSubName = subName;
+
+					} else if ( row.length === 3) {		// Constraints
+						constraintName = row[0];
+						selected = row[1];
+
+						if ( selected === "Yes" ) {
+							arrayConstraintsName.push( constraintName );
+						}
+
+						constraint = new UP.Constraint(constraintName, "", selected);
+						newConstraints.add(constraint);
+				
+					} else if ( row.length === 4) {		// Cost Benefits
+						subName  = row[1];
+						costName = row[2];
+
+						costBenefit = new UP.CostBenefitChild(costName);
+
+						newActivities.each(function(act) {
+							act.getSubactivities().each(function(sub) {
+								sub.addCostBenefit( costBenefit );
+							});
+						});
+
+					}
+
+				} // if
+
+			} // for
+
+			var length = arrayConstraintsName.length;
+			var str = "Plan uploaded.\n\nSelected constraints (" + length + "): ";
+			for (var i=0; i < length; i++) {
+				if ( i === length-1 ) {
+					str += arrayConstraintsName[i] + ".\n\n";
+				} else {
+					str += arrayConstraintsName[i] + ", ";
 				}
-
-				newMethods.add( m );
 			}
 
-			var newPlan = new UP.Plan( newConstraints, null );
-			newPlan.setNewMethods( newMethods );
+			var length = arrayMethodsName.length;
+			str += "Selected methods (" + length + "): ";
+			for (var i=0; i < length; i++) {
+				if ( i === length-1 ) {
+					str += arrayMethodsName[i] + ".\n\n";
+				} else {
+					str += arrayMethodsName[i] + ", ";
+				}
+			}
 
-			return newPlan;
+			alert(str);
+
+			var plan = new UP.Plan( newConstraints, newActivities );
+			plan.setSliderValue( sliderValue );
+
+			return plan;
 		},
 		
 		
@@ -130,18 +204,38 @@
 		 * @return csv {string}
 		 */
 		generateCSVFrom: function(plan) {
+			var csv = "";
+
 			var constraints = plan.getConstraints();
-			var methods = plan.getSelectedMethods();
+			var activities  = plan.getActivities();
+			var sliderValue = plan.getSliderValue();
 
-			var csv = "Method;Value";
 
+			// Converting the methods
+			csv += "Activities;Subactivities;Methods;Selected;Recommendation;\r\n";
+			activities.each(function(act) {
+				csv += act.selectedToCSV();
+			});
+
+			csv += "\r\n\r\n";
+			csv += "Filter Value;" + sliderValue + ";\r\n"
+			csv += "\r\n\r\n";
+
+
+			// Converting the constraints
+			csv += "Constraints;Selected;\r\n";
 			constraints.each(function(c) {
-				csv += c.toCSV();
+				csv += c.toCSV() + ";\r\n";
 			});
+			csv += "\r\n\r\n\r\n";
 
-			methods.each(function(m) {
-				csv += ("\r\n" + m.toCSV());
+		
+			// Converting the activities and cost benefits
+			csv += "Activities;Subactivities;Cost Benefits Selected;\r\n";
+			activities.each(function(act) {
+				csv += act.costBenefitsToCSV();
 			});
+			csv += "\r\n\r\n\r\n";
 
 			return csv;
 		}

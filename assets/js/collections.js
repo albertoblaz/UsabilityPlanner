@@ -1,4 +1,23 @@
+		
+	/**
+	 * @module UP
+	 * @submodule Collections
+	 * @class CostBenefitCollection
+	 * @extends Backbone.Collection
+	 */	
+	UP.CostBenefitCollection = Backbone.Collection.extend({
 	
+		/**
+		 * The type of model object contained by the collection
+		 * @property model
+		 * @type CostBenefit
+		 */
+		model: UP.CostBenefit
+		
+	});
+
+
+
 	/**
 	 * @module UP
 	 * @submodule Collections

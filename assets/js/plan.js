@@ -27,7 +27,13 @@
 				 * @property activities
 				 * @type ActivityCollection
 				 */
-				"activities"  : activities
+				"activities"  : activities,
+
+				/**
+				 * @property sliderValue
+				 * @type Number
+				 */
+				"sliderValue" : UP.constants.SLIDER_VALUE
 			});
 			
 		},
@@ -41,23 +47,6 @@
 			return this.get('constraints');
 		},
 
-		
-		/**
-		 * @method getSelectedConstraints
-		 * @return constraints {ConstraintCollection}
-		 */
-		getSelectedConstraints: function() {
-			var constraints = new UP.ConstraintCollection();
-
-			this.get('constraints').each(function(c) {
-				if ( c.isSelected() ) {
-					constraints.add( c );
-				}
-			});
-
-			return constraints;
-		},
-
 
 		/**
 		 * @method getActivities
@@ -67,58 +56,18 @@
 			return this.get('activities');
 		},
 
-		
+
 		/**
-		 * @method getMethods
-		 * @return methods {MethodCollection}
+		 * @method getSliderValue
+		 * @return sliderValue {Number}
 		 */
-		getMethods: function() {
-			var methods = new UP.MethodCollection();
-
-			this.get('activities').each(function(act) {
-				act.getMethods().each(function(m) {
-					methods.add( m );
-				});
-			});
-
-			return methods;
+		getSliderValue: function() {
+			return this.get('sliderValue');
 		},
 
 
-		/**
-		 * @method getSelectedMethods
-		 * @return methods {MethodCollection}
-		 */
-		getSelectedMethods: function() {
-			var methods = new UP.MethodCollection();
-
-			this.get('activities').each(function(act) {
-				act.getSelectedMethods().each(function(m) {
-					methods.add( m );
-				});
-			});
-
-			return methods;
-		},
-
-
-		/**
-		 * @method getNewMethods
-		 * @return methods {MethodCollection}
-		 */
-		getNewMethods: function() {
-			return this.get('newMethods');
-		},
-
-
-		/**
-		 * @method setNewMethods
-		 * @param methods {MethodCollection}
-		 */
-		setNewMethods: function(methods) {
-			this.set({
-				"newMethods" : methods
-			});
+		setSliderValue: function(value) {
+			this.set({ "sliderValue" : value });
 		}
 
 	});

@@ -39,26 +39,25 @@
 
 
 			// Initialization Effect
-			//this.adjustContainer();
-			this.adjustActivityContainer();
-			this.adjustTabsActivityContainer();
+			this.fixEmptyDescriptions();
 			this.fixConstraintsDescription();
+			this.fixContainerChanges();
 
-			this.stagesEvent(null, this.stages.first());
+			this.adjustContainerSize();
+			this.adjustTabsActivityContainer();
+		},
 
-			var descriptions = $('.description');
-			for (var i=0; i < descriptions.length; i++) {
-				var d = descriptions.eq(i);
-				if ( d.text() == "" ) {
-					d.text( "(No available description yet)");
-				}
-			}
 
+		adjustContainerSize: function() {
+			var self = this;
+			this.window.setTimeout(function() {
+				self.stagesEvent(null, self.stages.filter('.current-stage'));
+			}, 5);
 		},
 
 
 		adjustTabsActivityContainer: function() {
-			var tabs = $('.tab');
+			var tabs = $('.tabs').find('.tab');
 			if (tabs.length == 6) {
 				var size = 16;
 				if ( navigator.userAgent.indexOf('iPad') != -1 ) {
@@ -67,9 +66,18 @@
 
 				tabs.find('p').css({ 'font-size' : size + 'px' });
 				tabs.removeClass('three-columns').addClass('six-columns');
-
-				this.stages.first().find('a').text("Stages");
 			}
+		},
+	
+
+		fixEmptyDescriptions: function() {
+			var descriptions = $('.description');
+			for (var i=0; i < descriptions.length; i++) {
+				var d = descriptions.eq(i);
+				if ( d.text() == "" ) {
+					d.text( "(No available description yet)" );
+				}
+			}		
 		},
 
 
@@ -79,6 +87,20 @@
 			if ( text === "" ) {
 				tooltip.text( "(No available description yet)" );
 			}
+		},
+
+		
+		fixContainerChanges: function() {
+			var self = this;
+
+			this.contentPanels.on('change', function() {
+				console.log('change');
+			});
+
+			this.contentPanels.on('resize', function() {
+				console.log('resize');
+				self.adjustContainerSize();
+			});
 		},
 
 
@@ -141,70 +163,63 @@
 			 * @type jQuery Object
 			 * @default "main-container DOM node"
 			 */
-			this.mainContainer = $('.main-container');
+			this.mainContainer   = $('.main-container');
+
+			/**
+			 * @property actButtons
+			 * @type jQuery Object
+			 * @default "act-button DOM nodes"
+			 */
+			this.actButtons      = $('.act-button');
+
+			/**
+			 * @property btn-prioritize
+			 * @type jQuery Object
+			 * @default "btn-prioritize DOM nodes"
+			 */
+			this.prioButton      = $('.btn-prioritize');
+
+			/**
+			 * @property tableHeads
+			 * @type jQuery Object
+			 * @default "table-heads DOM nodes"
+			 */
+			this.tableHeads      = $('.table-heads');
+
+			/**
+			 * @property actHeaders
+			 * @type jQuery Object
+			 * @default "act-header DOM nodes"
+			 */
+			this.actHeaders      = $('.act-header');
+
+			/**
+			 * @property activitiesPanel
+			 * @type jQuery Object
+			 * @default "activities-panel DOM nodes"
+			 */
+			this.activitiesPanel = $('.activities-panel');
 
 			/**
 			 * @property downloadButton
 			 * @type jQuery Object
 			 * @default "download button DOM node"
 			 */
-			this.downloadButton = $('#btn-download');
+			this.downloadButton  = $('#btn-download');
 			
 			/**
 			 * @property uploadButton
 			 * @type jQuery Object
 			 * @default "upload button DOM node"
 			 */
-			this.uploadButton   = $('#btn-upload');
+			this.uploadButton    = $('#btn-upload');
+
+			this.tabs            = $('.tabs').find('.tab');
+
+			this.contentPanels   = $('.content');
 			
 			//this.uploadInput    = $('#files');
 			//this.dropSpace    = $('#drop-space');
-		},
-
-
-		/**
-		 * @method adjustContainer
-		 */
-		adjustContainer: function() {
-			var totalWidth = this.mainContainer.width() * this.contents.length;
-			this.container.width(totalWidth);
-	
-			var firstHeight = this.contents.height();
-			this.container.height(firstHeight);
-		},
-
-
-		/**
-		 * @method adjustActivityContainer
-		 */		
-		adjustActivityContainer: function() {
-			var max = 0;
-			var margin;
-
-			var activities = $('.activity');
-
-			var first = activities.first();
-			var margin = 37; //parseInt(first.css('margin-top'));
-
-			activities.each(function(i) {
-				var act = activities.eq(i);
-				
-				var h = parseInt(act.css('height'));
-
-				var size = h + margin * 2;
-				if ( size > max ) {
-					max = size;
-				}
-				
-			});
-
-                        $('#activities-selection').css({ 'height' : max+10 });
-/*
-			var hh = $('#activities').height();
-			console.log(hh);
-			console.log( $('#activities').css('height') );
-			this.container.height( hh );
-*/
 		},
 
 
@@ -233,18 +248,45 @@
 				self.nextLinkEvent(event);
 			});
 
+			this.actButtons.on('click', function() {
+				var hidden = 'hidden';
+				var active = 'tab-active';
+
+				var pos = $(this).prevAll().length;
+		
+				self.actButtons.removeClass( active );
+				self.actButtons.eq(pos).addClass( active );
+
+				self.tableHeads.addClass( hidden );
+				self.tableHeads.eq(pos).removeClass( hidden );
+
+				self.adjustContainerSize();
+			});
+
+			this.prioButton.on('click', function() {
+				var hidden = 'hidden';
+
+				self.prioButton.children().toggleClass( hidden );
+
+				self.actHeaders.toggleClass( hidden );
+				self.actButtons.toggleClass( hidden );
+				self.activitiesPanel.toggleClass( hidden );
+
+				self.adjustContainerSize();
+			});
+
+			this.tabs.on('click', function() {
+				self.adjustContainerSize();
+			});
+
 			this.downloadButton.on('click', function(event) {
 				var success = self.recommender.downloadPlan();
 				return false;
 			});
 
-			this.recommender.on('downloadReady', function(event) {
-				
-			});
-
 			this.uploadButton.on('click', function(event) {
-				//self.uploadInput.trigger('click');
-				$("#userfile").trigger('click');
+				var user = $("#userfile").trigger('click');
+				$('#theuploadform').attr('file', "");
 			});		
 
 
@@ -263,7 +305,14 @@
 
 				$("#postiframe").load(function () {
 					self.recommender.uploadPlan( $("#postiframe") );
+					form.attr('file', "");
 				});
+
+				form.attr("file", "");
+				$('#userfile').val("");
+
+
+				self.adjustContainerSize();
 
 				return false;
 			});
@@ -271,19 +320,7 @@
 
 			$(this.window).on('resize', function(event) {
 				self.adjustResizeWindowEvent(event);
-			});
-
-			$(this.window).trigger('resize');
-
-
-/*
-	if (window.File && window.FileReader && window.FormData) {
-		// Great success! All the File APIs are supported.
-	} else {
-		alert('The File APIs are not fully supported in this browser.');
-	}
-*/
-
+			}).trigger('resize');
 
 		},
 

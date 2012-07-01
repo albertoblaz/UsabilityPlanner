@@ -272,10 +272,11 @@ a.checked {	/* checked */
 }
 
 .cost-indicator {
-	margin: 0.75em 1em;
+	margin: 0.65em 1em;
 }
 
 .dollar {
-	background: url('../images/dollar-icon.png');
+	background: url('../images/dollar-icon.png') no-repeat center;
+	height: 24px;
+	width: 14px;
 }
-

@@ -69,29 +69,24 @@
 		 * @param plan {Plan}
 		 */
 		loadNewPlan: function(plan) {
-			
-
 			var oldConstraints = this.get('plan').getConstraints();
 			var newConstraints = plan.getConstraints();
 
-			var oldSelectedConstraints = this.get('plan').getSelectedConstraints();
+			this.replaceConstraints(newConstraints, oldConstraints);
 
-			oldSelectedConstraints.each(function(c) {
-				c.unselectConstraint();
-			});
 
-			this.replaceConstraintsWeights(newConstraints, oldConstraints);
 
-			var oldMethods = this.get('plan').getMethods();
-			var newMethods = plan.getNewMethods();
+			var oldActivities = this.get('plan').getActivities();
+			var newActivities = plan.getActivities();
 
-			this.replaceMethodsWeights(newMethods, oldMethods);
+			this.replaceActivities(newActivities, oldActivities);
 
-			oldSelectedConstraints.each(function(c) {
-				c.selectConstraint();
-			});
 
-			var sliderValue = this.get('slider').getValue();
+
+
+			var sliderValue = plan.getSliderValue();
+			this.get('slider').setValue( sliderValue );
+
 			this.get('plan').getActivities().each(function(act) {
 				act.updateMethods(sliderValue);
 			});
@@ -104,24 +99,25 @@
 		 * @return plan {Plan}
 		 */
 		savePlan: function() {
-			
+			var sliderValue = this.get('slider').getValue();
 
-			//return new UP.Plan(this.get('constraints'), this.get('activities'));
-			return this.get('plan');
+			var plan = this.get('plan');
+			plan.setSliderValue( sliderValue );
 
+			return plan;
 		},
 
 		
 		/**
-		 * @method replaceConstraintsWeights
+		 * @method replaceConstraints
 		 * @param newCol {ConstraintCollection}
 		 * @param oldCol {ConstraintCollection}
 		 */
-		replaceConstraintsWeights: function(newCol, oldCol) {
-			newCol.each(function(newC) {
-				oldCol.each(function(oldC) {
+		replaceConstraints: function(newCol, oldCol) {
+			oldCol.each(function(oldC) {
+				newCol.each(function(newC) {
 					if ( newC.compareNameWith(oldC.getName()) ) {
-						oldC.replaceWeights( newC.getWeights() );
+						oldC.replaceData( newC );
 					}
 				});
 			});
@@ -129,16 +125,19 @@
 
 
 		/**
-		 * @method replaceMethodsWeights
-		 * @param newCol {MethodCollection}
-		 * @param oldCol {MethodCollection}
+		 * @method replaceActivities
+		 * @param newCol {ActivityCollection}
+		 * @param oldCol {ActivityCollection}
 		 */
-		replaceMethodsWeights: function(newCol, oldCol) {
-			newCol.each(function(newM) {
-				oldCol.each(function(oldM) {
-					if ( newM.compareNameWith(oldM.getName()) ) {
-						oldM.removeWeights();
-						oldM.addWeightCollection( newM.getWeights() );
+		replaceActivities: function(newCol, oldCol) {
+			var name;
+
+			newCol.each(function(newA) {
+				oldCol.each(function(oldA) {
+					name = oldA.getName();
+
+					if ( newA.compareNameWith(oldA.getName()) ) {
+						oldA.replaceData( newA );
 					}
 				});
 			});

@@ -51,7 +51,7 @@
 	display: inline;
 	float: left;
 	text-align: center;
-	padding: 10px 0;
+	padding: 13px 0;
 }
 
 .last-tab {
@@ -70,3 +70,46 @@
 .cell {
 	background: #FFFAB0;
 }
+
+.act-buttons {
+	margin-left: -137px;
+/*	margin-top: 66px;	*/
+	margin-top: 52px;
+	position: absolute;
+	width: 140px;
+	z-index: 80;
+}
+
+.act-button {
+	padding: 3px 0;
+	height: 43px;
+	width: 100%;
+}
+
+.act-button p {
+	font-size: 15px;
+}
+
+.act-button.tab {
+	border-left: #C6D3DA 1px solid;
+}
+
+.act-button:first-child {
+	border-top: #C6D3DA 1px solid;
+}
+
+.header-act {
+	margin: auto;
+	width: 99%;
+}
+
+.btn-prioritize {
+	padding: 2px 5px;
+	font-size: 15px;
+}
+
+.prio {
+	position: relative;
+	top: -15px;
+}
+

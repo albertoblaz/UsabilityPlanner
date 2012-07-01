@@ -36,7 +36,7 @@
 
 			var self = this;
 			
-			this.sliderView.slider({		/* Slider Widget Configuration Setup */
+			this.config = {		/* Slider Widget Configuration Setup */
 				orientation: "horizontal",
 				range: "min",
 				min: 0,
@@ -46,6 +46,14 @@
 				slide: function(event, ui) {	// Event function to perfom
 					self.updateValue(ui.value);
 				}
+			};
+
+			this.sliderView.slider( this.config );
+
+			this.model.on('render', function() {
+				var newValue = self.model.getValue();
+				self.config["value"] = newValue;
+				self.sliderView.slider( self.config );
 			});
 			
 		},
@@ -62,8 +70,88 @@
 
 	});
 
+
+
+	/** 
+	 * @module UP
+	 * @submodule Controllers
+	 * @class CostBenefitController
+	 * @extends Backbone.Controller
+	 */	
+	UP.CostBenefitController = Backbone.Controller.extend({
+
+		initialize: function() {
+			this.model.on('allSelected', this.checkInput, this);
+			//this.model.on('checkInput', this.checkInput, this);
+		},
+
+		events: {
+			"click" : "costBenefitSelected"
+		},
+		
+		
+		/**
+		 * @method costBenefitSelected
+		 * @param event {Event} The jQuery event fired after a constraint has been clicked
+		 */
+		costBenefitSelected: function(event) {
+			this.model.changeSelection();
+		},
+
+
+		checkInput: function() {
+			activateCheckbox(this.$el);
+		}
+		
+	});
+
+
 	
+	/** 
+	 * @module UP
+	 * @submodule Controllers
+	 * @class CostBenefitController
+	 * @extends Backbone.Controller
+	 */	
+	UP.CostBenefitChildController = UP.CostBenefitController.extend({
+
+		initialize: function() {
+			//this.model.on('change:visible', this.display, this);
+			this.model.on('checkInput', this.checkInput, this);
+			this.model.on('uncheckInput', this.uncheckInput, this);
+		},
+
+		events: {
+			"click" : "costBenefitSelected"
+		},
+		
+		
+		/**
+		 * @method costBenefitSelected
+		 * @param event {Event} The jQuery event fired after a constraint has been clicked
+		 */
+		costBenefitSelected: function(event) {
+			this.model.changeSelection();
+		},
+
+
+		checkInput: function() {
+			var row = this.$el.parent('.row-subactivity');
+			if ( !row.hasClass('hidden') ) {
+				this.model.setVisible(true);
+				this.$el.attr({ 'checked' : true });
+			}
+		},
+
+		
+		uncheckInput: function() {
+			this.$el.removeAttr('checked');
+		}
+		
+	});
 	
+
+
 	/**
 	 * @module UP
 	 * @submodule Controllers
@@ -71,10 +159,14 @@
 	 * @extends Backbone.Controller
 	 */	
 	UP.ConstraintController = Backbone.Controller.extend({
+
+		initialize: function() {
+			this.model.on('change:selected', this.activate, this);
+		},
 	
 		events: {
-			"click .label-constraint" : "labelClicked",
-			"click input"             : "inputClicked"
+			"click .label-constraint" : "constraintSelected",
+			"click input"             : "constraintSelected"
 		},
 		
 		
@@ -82,17 +174,14 @@
 		 * @method constraintSelected
 		 * @param event {Event} The jQuery event fired after a constraint has been clicked
 		 */
-		labelClicked: function(event) {
-			var input = this.$el.find('input');
-			activateCheckbox(input);
-
+		constraintSelected: function(event) {
 			this.model.changeSelection();
 		},
 
-
-		inputClicked: function(event) {
-			this.model.changeSelection();
-		}
+		activate: function() {
+			var input = this.$el.find('input');
+			activateCheckbox(input);
+		},
 		
 	});
 
@@ -112,6 +201,12 @@
 		 */
 		initialize: function() {
 		
+			this.view = this.options.view;
+
+
+			this.viewPlan = this.options.viewPlan;
+
+
 			/**
 			 * The model bound to the controller
 			 * @property model
@@ -127,7 +222,8 @@
 		 */
 		updateCounter: function() {
 			var newValue = this.model.get('value');
-			this.$el.text(newValue);
+			this.view.text(newValue);
+			this.viewPlan.text(newValue);
 		}
 		
 	});
@@ -201,6 +297,8 @@
 			this.model.on('updatePosition', this.updatePosition, this);
 			this.model.on('hideMethod', this.hideMethod, this);
 			this.model.on('showNeutral', this.showNeutral, this);
+			this.model.on('disable', this.disableMethodAnimation, this);
+			this.model.on('enable', this.enableMethodAnimation, this);
 
 
 			// Event Handlers
@@ -323,10 +421,12 @@
 		 * @param event {Event} The jQuery event fired
 		 */
 		checkboxEvent: function() {
-			this.disableMethodAnimation();
-
 			this.model.changeSelection();
 			this.planView.toggleClass('visible hidden');
+
+//			if ( !this.model.isEnabled() ) {
+				this.disableMethodAnimation();
+//			}
 		},
 		
 		
@@ -368,22 +468,31 @@
 		 * @param li {jQuery Object} The method which receives a graphic animation
 		 */
 		disableMethodAnimation: function() {
+			var disabled = 'disabled';
+			var hidden   = 'hidden';
+
 			var FADE_SPEED = UP.constants.FADE_SPEED;
 			var DISABLED_OPACITY = UP.constants.DISABLED_OPACITY;
 
-			var CSSClass = 'disabled';
-			var li  = this.methodView;
-			var bar = li.find('.bar');
-			
-			if (li.hasClass(CSSClass)) {
-				li.removeClass(CSSClass);
+			var li    = this.methodView;
+			var bar   = li.find('.bar');
+			var input = li.find('input');
+
+			if ( this.model.isEnabled() ) {
+				this.planView.removeClass( hidden );
+				li.removeClass( disabled );
 				li.animate({opacity: '1'}, FADE_SPEED);
 				bar.animate({opacity: '1'}, FADE_SPEED);
+				input.attr({'checked' : true});
+
 			} else {
-				li.addClass(CSSClass);
+				this.planView.addClass( hidden );
+				li.addClass( disabled );
 				li.animate({opacity: DISABLED_OPACITY}, FADE_SPEED);
 				bar.animate({opacity: DISABLED_OPACITY}, FADE_SPEED);
+				input.removeAttr('checked');
 			}
+
 		}, 
 
 
@@ -457,16 +566,24 @@
 			 */
 			this.listPlan = this.options.listPlan;
 
+			/**
+			 * @property listPlan
+			 * @type jQuery Object
+			 */
+			this.row = this.options.row;
+
+
 
 			// Handle Events
 			var self = this;
 
 			this.model.on('updateLastMethod', this.updateLastMethod, this);
 			this.model.on('changeDisplayList', this.displayList, this);
+			this.model.on('change:costValue', this.showCostValue, this);
 
 			function selectSubactivity() {
 				var element = $(this);
-				self.selectList(element);
+				self.selectList();
 			}
 
 			this.item.find('input').on('click', selectSubactivity);
@@ -482,12 +599,31 @@
 		},
 
 
-		selectList: function(element) {
-			if ( element.is('label') ) {
-				var input = this.item.find('input');
-				activateCheckbox(input);
-			}
+		showCostValue: function() {
+			var costValue = this.model.getCostValue() - 100;
+			
+			var costBenefit = this.listPlan.find('.cost-indicator');
+			costBenefit.html("");
 
+			var child = '<li class="dollar left"></li>';
+			for (var i=0; i < costValue; i++) {
+				costBenefit.append( child );
+			}
+		},
+
+
+		checkSubactivity: function() {
+			var input = this.item.find('input');
+
+			if ( this.model.isSelected() ) {
+				input.attr({ 'checked' : true });
+			} else {
+				input.removeAttr('checked');
+			}
+		},
+
+
+		selectList: function(element) {
 			this.model.changeSelection();	// Actualizar el modelo de 'Subactivity' llamando a su método select
 			this.displayList();
 		},
@@ -497,15 +633,19 @@
 		 * @method isVisible
 		 */
 		displayList: function() {
-/*
-			if ( this.model.isSelected() ) {
-				var input = this.item.find('input');
-				activateCheckbox(input);
-			}
-*/
-			this.list.toggleClass('hidden');
-			this.listPlan.toggleClass('hidden');
+			var hidden = 'hidden';
 
+			if ( this.model.isSelected() ) {
+				this.list.removeClass( hidden );
+				this.listPlan.removeClass( hidden );
+				this.row.removeClass( hidden );
+			} else {
+				this.list.addClass( hidden );
+				this.listPlan.addClass( hidden );
+				this.row.addClass( hidden );
+			}
+
+			this.checkSubactivity();
 			constraintsSelectionFix();
 		},
 		
@@ -624,10 +764,16 @@
 			this.listPlan = this.options.listPlan;				// View: Subactivities List on 'Plan' Window
 
 			/**
+			 * @property row
+			 * @type jQuery Object
+			 */
+			this.row = this.options.row;					// View: Subactivities Row on CostBenefits Panel
+
+			/**
 			 * @property link
 			 * @type jQuery Object
 			 */
-			this.link = this.options.link;					// View: Subactivities List on 'Plan' Window
+			this.link = this.options.link;					// View: Subactivities Link on 'Methods' Window
 
 			/**
 			 * @property expandButton
@@ -651,9 +797,11 @@
 
 			// Model Events 
 			
+			this.model.on('showActivityRow', this.showActivityRow, this);
+			this.model.on('hideActivityRow', this.hideActivityRow, this);
+
 			this.model.on('hideHeader', this.hideHeader, this);
 			this.model.on('showHeader', this.showHeader, this);
-
 
 
 			// Handle View Events
@@ -688,6 +836,16 @@
 			this.link.on('click', this.scrollToList);
 			this.linksActivities = $('.links-activities');
 
+		},
+
+
+		showActivityRow: function() {
+			this.row.removeClass('hidden');
+		},
+
+
+		hideActivityRow: function() {
+			this.row.addClass('hidden');
 		},
 
 

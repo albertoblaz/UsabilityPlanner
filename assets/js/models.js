@@ -43,12 +43,350 @@
 		 */
 		getValue: function() {
 			return this.get('sliderValue');
+		},
+
+
+		/**
+		 * @method getValue
+		 * @return sliderValue {number}
+		 */
+		setValue: function(value) {
+			this.set({ 'sliderValue' : value });
+			this.trigger('render');
 		}
 
 	});
 
 
+	/**
+	 * @module UP
+	 * @submodule Models
+	 * @class CostBenefit
+	 * @extends Backbone.Model
+	 */	
+	UP.CostBenefit = Backbone.Model.extend({
+
+		/**
+		 * @method initialize
+		 * @param name {string}
+		 * @param description {string}
+		 * @param weightCollection {WeightCollection}
+		 * @constructor
+		 */
+		initialize: function(name, description) {
+			this.set({
+
+				/**
+				 * @property name
+				 * @type string
+				 */
+				"name"             : name,
+
+				/**
+				 * @property name
+				 * @type string
+				 */
+				"description"      : description,
+			
+				/**
+				 * @property name
+				 * @type string
+				 */
+				"selected"         : false,
+
+				/**
+				 * @property costBenefitCollection
+				 * @type CostBenefitCollection
+				 */
+				"costBenefitCollection" : new UP.CostBenefitCollection()
+
+			});
+
+		},
+
+		
+		changeSelection: function() {
+			var oldState = this.get('selected');
+			
+			if ( oldState === false ) {
+				this.selectCostBenefit();
+			} else {
+				this.unselectCostBenefit();
+			}
+
+		},
+
+		
+		selectCostBenefit: function() {
+			this.set({ "selected" : true });
+			this.selectAllChildren();
+		},
+
+		
+		unselectCostBenefit: function() {
+			this.set({ "selected" : false });
+			this.unselectAllChildren();
+		},
+		
+		
+		selectAllChildren: function() {
+			var col = this.get('costBenefitCollection');
+			col.each(function(cb) {
+				cb.selectFromParent();
+			});
+		},
+
+
+		unselectAllChildren: function() {
+			var col = this.get('costBenefitCollection');
+			col.each(function(cb) {
+				cb.unselectFromParent();
+			});
+		},
+
+
+		compareNameWith: function(name) {
+			return this.get('name') === name;
+		},
+
+
+		getName: function() {
+			return this.get('name');
+		},
+
+
+		getDescription: function() {
+			return this.get('description');
+		},
+
+
+		addCostBenefit: function(cb) {
+			var col = this.get('costBenefitCollection').add( cb );
+			//col.on('check', this.checkAllSelected, this);
+		},
+
+
+		addCostBenefits: function(list) {
+			var col = this.get('costBenefitCollection');
+			list.each(function(cb) {
+				col.add( cb );
+			});
+		},
+
+
+		isSelected: function() {
+			return this.get('selected');
+		}
+
+	});	
+
+
+	/**
+	 * @module UP
+	 * @submodule Models
+	 * @class CostBenefitChild
+	 * @extends UP.CostBenefit
+	 */	
+	UP.CostBenefitChild = UP.CostBenefit.extend({
+
+		/**
+		 * @method initialize
+		 * @param name {string}
+		 * @param description {string}
+		 * @param weightCollection {WeightCollection}
+		 * @constructor
+		 */
+		initialize: function(name, description, weightCollection) {
+			this.set({
+
+				/**
+				 * @property name
+				 * @type string
+				 */
+				"name"             : name,
+
+				/**
+				 * @property name
+				 * @type string
+				 */
+				"description"      : description,
+
+				/**
+				 * @property weightCollection
+				 * @type WeightCollection
+				 */
+				"weightCollection" : new UP.WeightCollection(),
 	
+				/**
+				 * @property selected
+				 * @type boolean
+				 */
+				"selected"         : false,
+
+				/**
+				 * @property visible
+				 * @type boolean
+				 */
+				"visible"          : false
+
+			});
+
+		},
+
+
+		show: function() {
+			this.set({ "visible" : true });
+		},
+
+
+		hide: function() {
+			this.set({ "visible" : false });
+		},
+
+
+		changeSelection: function() {
+			var oldState = this.get('selected');
+			
+			if ( oldState === false ) {
+				this.selectCostBenefit();
+			} else {
+				this.unselectCostBenefit();
+			}
+/*
+			var oldVisible = this.get('visible');
+			this.set({ 'visible' : !oldVisible });
+*/
+
+//			this.trigger('check');
+		},
+
+
+		selectFromParent: function() {
+			this.selectCostBenefit();
+			this.trigger('checkInput');
+/*
+			var selected = true;
+			var col = this.get('weightCollection');
+
+			col.each(function(w) {
+				var sub = w.getMeasurable();
+				if ( !sub.isSelected() ) {
+					selected = false;
+				}
+			});
+
+			if ( selected ) {
+				this.selectCostBenefit();
+				this.trigger('checkInput');
+			}
+*/
+		},
+
+
+		unselectFromParent: function() {
+			this.unselectCostBenefit();
+			this.trigger('uncheckInput');
+/*
+			var selected = true;
+			var col = this.get('weightCollection');
+
+			col.each(function(w) {
+				var sub = w.getMeasurable();
+				if ( !sub.isSelected() ) {
+					selected = false;
+				}
+			});
+
+
+			if ( selected ) {
+				this.unselectCostBenefit();
+				this.trigger('uncheckInput');
+			}
+*/
+		},
+
+
+		selectCostBenefit: function() {
+			var selected = this.get('selected');
+			if ( !selected ) {
+				this.set({ "selected" : true });
+				this.incrementValue();
+			}
+		},
+
+		
+		unselectCostBenefit: function() {
+			this.set({ "selected" : false });
+			this.decrementValue();
+		},
+		
+		
+		incrementValue: function() {
+			this.get('weightCollection').each(function(w) {
+				w.incrementValue();
+			});
+		},
+		
+		
+		decrementValue: function() {
+			this.get('weightCollection').each(function(w) {	
+				w.decrementValue();
+			});
+		},
+
+
+		compareNameWith: function(name) {
+			return this.get('name') === name;
+		},
+
+
+		getName: function() {
+			return this.get('name');
+		},
+
+
+		getDescription: function() {
+			return this.get('description');
+		},
+
+
+		addWeight: function(w) {
+			this.get('weightCollection').add( w );
+		},
+
+
+		addWeights: function(ww) {
+			var col = this.get('weightCollection');
+
+			ww.each(function(w) {
+				col.add( w );
+			});
+		},
+
+
+		isSelected: function() {
+			return this.get('selected');
+		}, 	
+
+
+		isVisible: function() {
+			return this.get('visible');
+		}, 
+
+
+		setVisible: function(param) {
+			this.set({ 'visible' : param });
+		},
+
+
+		toCSV: function() {
+			return this.get('name');
+		}
+
+	});	
+
+
+
 	/**
 	 * @module UP
 	 * @submodule Models
@@ -61,7 +399,7 @@
 		 * @method initialize
 		 * @constructor
 		 */
-		initialize: function(method, value) {
+		initialize: function(measurable, value) {
 		
 			this.set({
 			
@@ -69,7 +407,7 @@
 				 * @property method
 				 * @type Method
 				 */
-				"method" : method,
+				"measurable" : measurable,
 				
 				/**
 				 * @property value
@@ -82,21 +420,20 @@
 
 		
 		/**
-		 * @method incrementMethodValue
+		 * @method incrementValue
 		 */
-		incrementMethodValue: function() {
+		incrementValue: function() {
 			var value = this.get('value');
-			
-			this.get('method').incrementValue(value);
+			this.get('measurable').incrementValue(value);
 		},
 
 		
 		/**
-		 * @method decrementMethodValue
+		 * @method decrementValue
 		 */
-		decrementMethodValue: function() {
+		decrementValue: function() {
 			var value = this.get('value');
-			this.get('method').decrementValue(value);
+			this.get('measurable').decrementValue(value);
 		},
 
 
@@ -106,7 +443,7 @@
 		 * @return equals {boolean}
 		 */
 		compareNameWith: function(name) {
-			return this.get('method').compareNameWith(name);
+			return this.get('measurable').compareNameWith(name);
 		},
 
 		
@@ -115,7 +452,7 @@
 		 * @return name {string}
 		 */
 		getMethodName: function() {
-			return this.get('method').getName();
+			return this.get('measurable').getName();
 		},
 
 		
@@ -127,7 +464,12 @@
 			return this.get('value');
 		},
 
-		
+	
+		getMeasurable: function() {
+			return this.get('measurable');
+		},
+
+	
 		/**
 		 * @method changeValue
 		 * @param newValue {number}
@@ -190,8 +532,6 @@
 		updateValue: function(newValue) {
 			var oldValue = this.get('value');
 			this.set({ value : newValue });
-
-			
 
 			this.get('totalCounter').decrement(oldValue);
 			this.get('totalCounter').increment(newValue);
@@ -266,8 +606,13 @@
 		 * @param url {string}
 		 * @constructor
 		 */
-		initialize: function(name, description, url) {
-		
+		initialize: function(name, description, url, selected) {
+			if ( selected === "Yes" ) {
+				selected = true;
+			} else {
+				selected = false;
+			}
+
 			this.set({
 			
 				/**
@@ -300,8 +645,15 @@
 				 * @type boolean
 				 * @default "false"
 				 */
-				"selected"         : false,
-				
+				"selected"         : false || selected,
+
+				/**
+				 * @property enabled
+				 * @type boolean
+				 * @default "false"
+				 */
+				"enabled"         : false,
+							
 				/**
 				 * @property value
 				 * @type number
@@ -478,7 +830,8 @@
 			if ( this.get('numIncrements') === 0 && !this.isInappropiate()	&& this.getValue() === 100 ) {
 				this.trigger('showNeutral');
 			} else {
-				this.trigger('hideMethod', { sliderValue : sliderValue } );
+				var param = { sliderValue : sliderValue };
+				this.trigger('hideMethod', param);
 			}
 		},
 
@@ -487,8 +840,12 @@
 		 * @method changeSelection
 		 */
 		changeSelection: function() {
+/*
 			var selected = this.get('selected');
 			this.set({ "selected" : !selected });
+*/
+			var enabled = this.get('enabled');
+			this.set({ "enabled" : !enabled });
 		},
 
 		
@@ -497,34 +854,54 @@
 		 */
 		selectMethod: function() {
 			if ( this.get('value') > 0 ) {
-				this.set({ "selected" : true });
+				this.set({
+					"selected" : true
+				});
 			}
 		},
 
-		
-		/**
-		 * @method selectMethodAndSubactivity
-		 */
-		selectMethodAndSubactivity: function() {
-			this.selectMethod();
-			this.trigger('select');
+		enableMethod: function() {
+			this.set({
+				"enabled"  : true
+			});
+
+			this.trigger('disable');
 		},
 
-		
+				
 		/**
 		 * @method unselectMethod
 		 */
 		unselectMethod: function() {
-			this.set({ "selected" : false });
+			this.set({
+				"selected" : false
+			});
 		},
 
-		
+
+		/**
+		 * @method disableMethod
+		 */
+		disableMethod: function() {
+			this.set({
+				"enabled"  : false
+			});
+
+			this.trigger('disable');
+		},
+	
+	
 		/**
 		 * @method isSelected
 		 * @return selected {boolean}
 		 */
 		isSelected: function() {
 			return this.get('selected');
+		},
+
+
+		isEnabled: function() {
+			return this.get('enabled');
 		},
 
 
@@ -621,18 +998,17 @@
 		 * @return csv {string}
 		 */
 		toCSV: function() {
-			
-			
+			var name     = this.get('name') + ";" ;
+			var enabled  = this.get('enabled');
+			var value    = this.get('textValue');
 
-			var name    = this.get('name') + ";" ;
-			var value   = this.get('value');
-			var weights = this.weightsToCSV();
+			if ( enabled === true ) {
+				enabled = "Yes;";
+			} else {
+				enabled = "No;";
+			}
 
-			
-			
-			
-
-			return (name + value + weights);
+			return (name + enabled + value);
 		},
 
 
@@ -658,8 +1034,14 @@
 		 * @param description {string}
 		 * @constructor
 		 */
-		initialize: function(name, description) {
+		initialize: function(name, description, selected) {
 		
+			if ( selected === "Yes") {
+				selected = true;
+			} else {
+				selected = false;
+			}
+
 			this.set({
 			
 				/**
@@ -686,7 +1068,8 @@
 				 * @type boolean
 				 * @default "false"
 				 */
-				"selected"         : false
+				"selected"         : false || selected
+
 			});
 			
 		},
@@ -742,7 +1125,7 @@
 		 */
 		incrementMethodsValue: function() {
 			this.get('weightCollection').each(function(w) {
-				w.incrementMethodValue();
+				w.incrementValue();
 			});
 		},
 
@@ -752,7 +1135,7 @@
 		 */
 		decrementMethodsValue: function() {
 			this.get('weightCollection').each(function(w) {	
-				w.decrementMethodValue();
+				w.decrementValue();
 			});
 		},
 
@@ -794,7 +1177,7 @@
 			});
 		},
 
-		
+
 		/**
 		 * @method compareNameWith
 		 * @param name {string}
@@ -828,7 +1211,26 @@
 		 * @return csv {string}
 		 */
 		toCSV: function() {
-			return ";" + this.get('name');
+			var name = this.get('name') + ";";
+			var selected = this.get('selected');
+
+			if ( selected ) {
+				selected = "Yes";
+			} else {
+				selected = "No";
+			}
+
+			return (name + selected);
+		},
+
+		replaceData: function( newC ) {
+			if ( this.isSelected() ) {
+				this.unselectConstraint();
+			}
+
+			if ( newC.isSelected() ) {
+				this.selectConstraint();
+			}
 		}
 		
 	});
@@ -850,7 +1252,7 @@
 		 * @param methodCollection {MethodCollection}
 		 * @constructor
 		 */
-		initialize: function(name, description, methodCollection) {
+		initialize: function(name, description) {
 			
 			this.set({
 			
@@ -858,31 +1260,42 @@
 				 * @property name
 				 * @type string
 				 */
-				"name"             : name,
+				"name"                         : name,
 				
 				/**
 				 * @property description
 				 * @type string
 				 */
-				"description"      : description,
+				"description"                  : description,
 				
 				/**
 				 * @property methodCollection
 				 * @type MethodCollection
 				 */
-				"methodCollection" : methodCollection,
-				
+				"methodCollection"             : new UP.MethodCollection(),
+
+				/**
+				 * @property costBenefitCollection
+				 * @type CostBenefitCollection
+				 */
+				"costBenefitCollection"        : new UP.CostBenefitCollection(),
+			
 				/**
 				 * @property selected
 				 * @type boolean
 				 * @default "false"
 				 */
-				"selected"         : false
+				"selected"                     : false,
+
+				/**
+				 * @property costValue
+				 * @type Number
+				 * @default "100"
+				 */
+				"costValue"                    : 100
+
 			});
 
-			// When a new plan is loaded, the new methods are selected
-			// so the containing subactivity must be selected too
-			methodCollection.on('select', this.selectSubactivity, this);
 		},
 
 
@@ -894,16 +1307,21 @@
 			this.set({ "selected" : !wasSelected });
 
 			if ( wasSelected ) {
+				this.hideBenefits();
 				this.get('methodCollection').each(function(m) {
 					m.unselectMethod();
+					m.disableMethod();
 				});
 			} else {
+				this.showBenefits();
 				this.get('methodCollection').each(function(m) {
 					m.selectMethod();
+					m.enableMethod();
 				});
 			}
 
 			this.trigger('updateCounter');
+			//this.trigger('displayBenefits');
 		},
 
 		
@@ -913,15 +1331,34 @@
 		selectSubactivity: function() {
 			this.set({ "selected" : true });
 			this.trigger('changeDisplayList');
+			//this.trigger('displayBenefits');
+			this.showBenefits();
 		},
 
-		
+
 		/**
 		 * @method unselectSubactivity
 		 */
 		unselectSubactivity: function() {
 			this.set({ "selected" : false });
 			this.trigger('changeDisplayList');
+			this.hideBenefits();
+		},
+	
+	
+		showBenefits: function() {
+			var col = this.get('costBenefitCollection');
+			col.each(function(cb) {
+				cb.show();
+			});
+		},
+
+
+		hideBenefits: function() {
+			var col = this.get('costBenefitCollection');
+			col.each(function(cb) {
+				cb.hide();
+			});
 		},
 
 		
@@ -1002,8 +1439,145 @@
 		 */
 		isSelected: function() {
 			return this.get('selected');
-		}
+		},
 
+
+		addCostBenefit: function(cb) {
+			this.get('costBenefitCollection').add( cb );
+		},
+
+
+		/**
+		 * @method incrementValue
+		 * @param weightValue {Number}
+		 */
+		incrementValue: function(weightValue) {
+			var value        = 0;
+			var currentValue = this.get('costValue');
+
+			switch ( weightValue ) {  
+				case 1 : value =   -2;   break;
+				case 2 : value =   -1;   break;
+				case 3 : value =    0;   break;
+				case 4 : value =    1;   break;
+				case 5 : value =    2;   break;
+			}
+
+			currentValue += value;
+			this.set({ 'costValue' : currentValue });
+		},
+
+
+		/**
+		 * @method decrementValue
+		 * @param weightValue {Number}
+		 */
+		decrementValue: function(weightValue) {
+			var value        = 0;
+			var currentValue = this.get('costValue');
+
+			switch ( weightValue ) {  
+				case 1 : value =   -2;   break;
+				case 2 : value =   -1;   break;
+				case 3 : value =    0;   break;
+				case 4 : value =    1;   break;
+				case 5 : value =    2;   break;
+			}
+
+			currentValue -= value;
+
+			this.set({ 'costValue' : currentValue });
+		},
+
+		getCostValue: function() {
+			return this.get('costValue');
+		},
+
+		toCSV: function() {
+			var output = this.get('name') + ";";
+
+			this.get('methodCollection').each(function(m) {
+				output += m.toCSV()
+			});
+
+			return output;
+		},
+
+
+		selectedToCSV: function() {
+			var name = this.get('name');
+			var output = "";
+
+			this.get('methodCollection').each(function(m) {
+				if ( m.isSelected() ) {
+					output += name + ";" + m.toCSV() + ";\r\n";
+				}
+			});
+
+			return output;
+		},
+
+		costBenefitsToCSV: function() {
+			var name = this.get('name');
+			var output = "";
+
+			this.get('costBenefitCollection').each(function(cb) {
+				if ( cb.isSelected() ) {
+					output += name + ";" + cb.toCSV() + ";\r\n";
+				}
+			});
+
+			return output;
+		},
+
+		addMethod: function(m) {
+			this.get('methodCollection').add( m );
+		},
+
+		replaceData: function(newS) {
+			var oldMethods = this.get('methodCollection');
+			var newMethods = newS.getMethods();
+
+			oldMethods.each(function(oldM) {
+				oldM.enableMethod();
+				oldM.unselectMethod();
+			});
+
+			oldMethods.each(function(oldM) {
+				newMethods.each(function(newM) {
+					if ( newM.compareNameWith(oldM.getName()) ) {
+						oldM.selectMethod();
+						if ( !newM.isSelected() ) {
+							oldM.disableMethod();
+						}
+					}
+				});
+			});
+
+			var oldCosts = this.get('costBenefitCollection');
+			var newCosts = newS.get('costBenefitCollection');
+
+			oldCosts.each(function(cb) {
+				cb.unselectFromParent();
+			});
+
+			oldCosts.each(function(oldCB) {
+				newCosts.each(function(newCB) {
+					if ( newCB.compareNameWith(oldCB.getName()) ) {
+						oldCB.selectFromParent();
+					}
+				});
+			});
+	
+		},
+
+		compareNameWith: function(name) {
+			return this.get('name') === name;
+		},
+
+		getName: function() {
+			return this.get('name');
+		},
 	});
 	
 	
@@ -1024,7 +1598,7 @@
 		 * @param subactivitiesCollection {SubactivityCollection} 
 		 * @constructor
 		 */
-		initialize: function(name, description, counter, subactivitiesCollection) {
+		initialize: function(name, description, counter) {
 		
 			this.set({
 			
@@ -1032,29 +1606,33 @@
 				 * @property name
 				 * @type string
 				 */
-				"name"                    : name,
+				"name"                        : name,
 				
 				/**
 				 * @property description
 				 * @type string
 				 */
-				"description"             : description,
+				"description"                 : description,
 				
 				/**
 				 * @property counter
 				 * @type Counter
 				 */
-				"counter"                 : counter,
+				"counter"                     : counter,
 				
 				/**
 				 * @property subactivitiesCollection
 				 * @type SubactivityCollection
 				 */
-				"subactivitiesCollection" : subactivitiesCollection
+				"subactivitiesCollection"     : new UP.SubactivityCollection(),
+
+				/**
+				 * @property costBenefitWeightCollection
+				 * @type SubactivityCollection
+				 */
+				"costBenefitWeightCollection" : new UP.WeightCollection()
 			});
 
-			subactivitiesCollection.on('updateCounter', this.updateCounter, this);
-			subactivitiesCollection.on('change:selected', this.updateView, this);
 			this.updateView();
 		},
 
@@ -1072,12 +1650,38 @@
 
 			if ( count == 0 ) {
 				this.trigger('hideHeader');
+				this.trigger('hideActivityRow');
 			} else {
 				this.trigger('showHeader');
+				this.trigger('showActivityRow');
 			}
+
+			//this.checkAllSubactivitiesSelected();
 		},
 
-		
+
+		checkAllSubactivitiesSelected: function() {
+			var self = this;
+			var col = this.get('subactivitiesCollection');
+			var noSelected = false;
+
+			col.each(function(sub) {
+				if ( sub.isSelected() ) {
+					self.trigger('showActivityRow');
+					noSelected = true;
+					return noSelected;
+				}
+			});
+
+			
+			if ( noSelected == false ) {
+				this.trigger('hideActivityRow');
+			}
+
+			return noSelected;
+		},
+
+
 		/**
 		 * @method sortMethods
 		 */
@@ -1178,13 +1782,122 @@
 			return count;
 		},
 
-		
+
+		/**
+		 * @method getSubactivities
+		 * @return subactivities
+		 */
+		getSubactivities: function() {
+			return this.get('subactivitiesCollection');
+		},
+
+
+		/**
+		 * @method getSubactivities
+		 * @return subactivities
+		 */
+		getSelectedSubactivities: function() {
+			var col = new UP.SubactivityCollection();
+
+			this.get('subactivitiesCollection').each(function(sub) {
+				if ( sub.isSelected() ) {
+					col.add( sub );
+				}
+			});
+
+			return col;
+		},
+
+
 		/**
 		 * @method isSelected
 		 */
 		updateCounter: function() {
 			var count = this.countSelectedMethods();
 			this.get('counter').updateValue(count);
+		},
+
+
+		costBenefitsToCSV: function() {
+			var subs = this.getSelectedSubactivities();
+
+			var output = "";
+			subs.each(function(s) {
+				output += s.costBenefitsToCSV();
+			});
+
+			output = this.insertActivityName(output);
+			return output;
+		},
+
+
+		selectedToCSV: function() {
+			var subs = this.getSelectedSubactivities();
+
+			var output = "";
+			subs.each(function(s) {
+				output += s.selectedToCSV();
+			});
+
+			output = this.insertActivityName(output);
+			return output;
+		},
+
+
+		insertActivityName: function(text) {
+			var name = this.get('name') + ";";
+			var guess = "\r\n";
+
+			var oldIndex = 0;
+			var index = text.indexOf(guess);
+
+			var output = "";
+			while(index >= 0) {
+				index+=2;
+				output += name + text.substring(oldIndex, index);
+				oldIndex = index;
+				index = text.indexOf(guess, index);
+			}
+
+			return output;
+		},
+
+		addSubactivity: function(sub) {
+			var col = this.get('subactivitiesCollection');
+
+			col.add( sub );
+			col.on('updateCounter', this.updateCounter, this);
+			col.on('change:selected', this.updateView, this);
+		},
+
+		replaceData: function(newA) {
+			this.unselectAllSubactivities();
+
+			var oldSubs = this.get('subactivitiesCollection');
+			var newSubs = newA.getSubactivities();
+
+			oldSubs.each(function(oldS) {
+				newSubs.each(function(newS) {
+					if ( newS.compareNameWith(oldS.getName()) ) {
+						oldS.selectSubactivity();
+						oldS.replaceData( newS );
+					}
+				});
+			});
+		},
+
+		getName: function() {
+			return this.get('name');
+		},
+
+		compareNameWith: function(name) {
+			return this.get('name') === name;
+		},
+
+		unselectAllSubactivities: function() {
+			this.get('subactivitiesCollection').each(function(s) {
+				s.unselectSubactivity();
+			});
 		}
 
 	});

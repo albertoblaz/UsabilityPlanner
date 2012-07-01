@@ -94,7 +94,7 @@
 		 * @final
 		 * @type string
 		 */
-		PLAN_FILE        : 'plan.csv', //assets('plan.csv'),
+		PLAN_FILE        : assets('plan.csv'),
 	
 
 		/**

@@ -11,8 +11,12 @@
 
 
 <xsl:template match="usabilityPlanner">
-	<tr>
+	<tr class="table-heads">
 		<xsl:apply-templates select="costBenefits" />
+	</tr>
+
+	<tr class="table-heads hidden">
+		<xsl:apply-templates select="businessRisks" />
 	</tr>
 </xsl:template>
 
@@ -27,6 +31,22 @@
 
 
 <xsl:template match="costBenefit">
+	<th>
+		<xsl:value-of select="@name" />
+	</th>
+</xsl:template>
+
+
+<xsl:template match="businessRisks">
+	<th>
+		<xsl:value-of select="@name" />
+	</th>
+
+	<xsl:apply-templates select="risk" />
+</xsl:template>
+
+
+<xsl:template match="risk">
 	<th>
 		<xsl:value-of select="@name" />
 	</th>

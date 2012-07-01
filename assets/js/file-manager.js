@@ -14,7 +14,6 @@
 		downloadFile: function(csv, success) {
 			
 			
-
 			var self = this;
 
 			$.post(UP.constants.PHP_DOWNLOAD, { msg : csv }, function(data) {
@@ -24,8 +23,8 @@
 					success = true;
 					
 //					self.trigger('downloadReady');
-					document.location.href = 'plan.csv';
-//					document.location.href = UP.constants.PLAN_FILE;
+//					document.location.href = 'plan.csv';
+					document.location.href = UP.constants.PLAN_FILE;
 				}
 
 			}).fail(function(jqXHR, textStatus) {
