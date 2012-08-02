@@ -1,21 +1,25 @@
 # Usability Planner
 
-This project is not finished and currently being developed.
+A tool created to make easier the integration of Usability and User-centred design techniques into software engineering processes
+Mostly oriented to developers with few or none skills about User Experience and design.
 
-Project URL address -  http://raptor.ls.fi.upm.es/usabilityplanner/
+Project URL address -  http://usabilityplanner.org/
 
 
 ## Features
 
 * Developed with HTML5
 * Cross-browser compatible (Chrome, Opera, Safari, Firefox 3+, IE9+).
+* Mobile compatible (iPad)
 * An optimized Google Analytics snippet. (pending to add)
 * Apache server caching, compression, and other configuration defaults for Grade-A performance.
 
 
 ## Contributing
 
-Tomas Antón Escobar with the original previous version: http://usabilityplanner.org
+Xavier Ferré (leader of the development team and Usability expert)
+Nigel Bevan (co-leader of the development team and Usability expert)
+Tomas Antón Escobar (developer of the previous version)
 
 Anyone and everyone is welcome to [contribute]
 
@@ -23,8 +27,8 @@ Anyone and everyone is welcome to [contribute]
 ## Project information
 
 * Source: http://github.com/albertoblaz/usability-planner
-* Web: http://raptor.ls.fi.upm.es/usabilityplanner/
-* Docs: http://raptor.ls.fi.upm.es/usabilityplanner/docs
+* Web: http://usabilityplanner.org/
+* Docs: http://usabilityplanner.org/docs
 
 
 ## License
