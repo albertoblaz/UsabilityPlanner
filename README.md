@@ -3,7 +3,7 @@
 A tool created to make easier the integration of Usability and User-centred design techniques into software engineering processes
 Mostly oriented to developers with few or none skills about User Experience and design.
 
-Project URL address -  http://usabilityplanner.org/
+Project URL address -  http://usabilityplanner.albertoblazquez.net/
 
 
 ## Features
@@ -17,18 +17,19 @@ Project URL address -  http://usabilityplanner.org/
 
 ## Contributing
 
-Xavier Ferré (leader of the development team and Usability expert)
-Nigel Bevan (co-leader of the development team and Usability expert)
-Tomas Antón Escobar (developer of the previous version)
+- Alberto Blázquez (developer and Usability learner)
+- Xavier Ferré (leader of the project and Usability expert)
+- Nigel Bevan (co-leader and Usability expert)
+- Tomas Antón Escobar (developer of the previous version)
 
-Anyone and everyone is welcome to [contribute]
+Anyone and everyone is welcome to contribute too :)
 
 
 ## Project information
 
 * Source: http://github.com/albertoblaz/usability-planner
-* Web: http://usabilityplanner.org/
-* Docs: http://usabilityplanner.org/docs
+* Web: http://usabilityplanner.albertoblazquez.net/
+* Docs: http://usabilityplanner.albertoblazquez.net/docs/
 
 
 ## License
@@ -39,5 +40,7 @@ Anyone and everyone is welcome to [contribute]
 
 ### Major components
 
+* Backbone: Public domain
 * jQuery: MIT/GPL license
-* Normalize.css: Public Domain
+* Normalize.css: Public domain
+
