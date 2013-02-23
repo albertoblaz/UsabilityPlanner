@@ -1,7 +1,8 @@
 # Usability Planner
 
-A tool created to make easier the integration of Usability and User-centred design techniques into software engineering processes
-Mostly oriented to developers with few or none skills about User Experience and design.
+A tool created to make easier the integration of Usability and User-centred design techniques into software engineering processes depending on the constraints given by the project. Mostly oriented to developers with few or none skills about User Experience and design.
+
+The project was developed while I was participating as an intern in the Software Engineering Laboratory (Technical University of Madrid).
 
 Project URL address -  http://usabilityplanner.albertoblazquez.net/
 
@@ -17,10 +18,10 @@ Project URL address -  http://usabilityplanner.albertoblazquez.net/
 
 ## Contributing
 
-- Alberto Bl·zquez (developer and Usability learner)
-- Xavier FerrÈ (leader of the project and Usability expert)
+- Alberto Bl√°zquez (developer and Usability learner)
+- Xavier Ferr√© (leader of the project and Usability expert)
 - Nigel Bevan (co-leader and Usability expert)
-- Tomas AntÛn Escobar (developer of the previous version)
+- Tomas Ant√≥n Escobar (developer of the previous version)
 
 Anyone and everyone is welcome to contribute too :)
 
